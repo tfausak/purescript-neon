@@ -156,3 +156,27 @@ instance equalString :: Equal String where
 (==) :: forall a. (Equal a) => a -> a -> Boolean
 (==) x y = equal x y
 infix 4 ==
+
+class BooleanAlgebra a where
+  and :: a -> a -> a
+  or :: a -> a -> a
+  not :: a -> a
+
+instance booleanAlgebraBoolean :: BooleanAlgebra Boolean where
+  and x y = case x of
+    true -> y
+    false -> false
+  or x y = case x of
+    true -> true
+    false -> y
+  not x = case x of
+    true -> false
+    false -> true
+
+(&&) :: forall a. (BooleanAlgebra a) => a -> a -> a
+(&&) x y = and x y
+infixr 3 &&
+
+(||) :: forall a. (BooleanAlgebra a) => a -> a -> a
+(||) x y = or x y
+infixr 2 ||
