@@ -23,3 +23,21 @@ instance zeroInt :: Zero Int where
 
 instance zeroNumber :: Zero Number where
   zero = 0.0
+
+class (Zero a) <= Subtract a where
+  subtract :: a -> a -> a
+
+foreign import subtractInt :: Int -> Int -> Int
+instance subtractInt' :: Subtract Int where
+  subtract x y = subtractInt x y
+
+foreign import subtractNumber :: Number -> Number -> Number
+instance subtractNumber' :: Subtract Number where
+  subtract x y = subtractNumber x y
+
+(-) :: forall a. (Subtract a) => a -> a -> a
+(-) x y = subtract x y
+infixl 6 -
+
+negate :: forall a. (Subtract a) => a -> a
+negate x = zero - x

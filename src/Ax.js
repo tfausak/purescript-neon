@@ -12,5 +12,15 @@ module.exports = {
     return function (y) {
       return x + y;
     };
+  },
+  subtractInt: function (x) {
+    return function (y) {
+      return x - y;
+    };
+  },
+  subtractNumber: function (x) {
+    return function (y) {
+      return x - y;
+    };
   }
 };
