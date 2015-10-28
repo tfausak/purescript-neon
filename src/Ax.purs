@@ -302,3 +302,37 @@ instance boundedFunction :: (Bounded b) => Bounded (a -> b) where
 instance boundedOrdering :: Bounded Ordering where
   bottom = LessThan
   top = GreaterThan
+
+class Show a where
+  show :: a -> String
+
+foreign import jsShowArray :: forall a. (Show a) => (a -> String) -> Array a -> String
+instance showArray :: (Show a) => Show (Array a) where
+  show x = jsShowArray show x
+
+instance showBoolean :: Show Boolean where
+  show x = case x of
+    true -> "true"
+    false -> "false"
+
+foreign import jsShowChar :: Char -> String
+instance showChar :: Show Char where
+  show x = jsShowChar x
+
+foreign import jsShowInt :: Int -> String
+instance showInt :: Show Int where
+  show x = jsShowInt x
+
+foreign import jsShowNumber :: Number -> String
+instance showNumber :: Show Number where
+  show x = jsShowNumber x
+
+foreign import jsShowString :: String -> String
+instance showString :: Show String where
+  show x = jsShowString x
+
+instance showOrdering :: Show Ordering where
+  show x = case x of
+    LessThan -> "LessThan"
+    EqualTo -> "EqualTo"
+    GreaterThan -> "GreaterThan"
