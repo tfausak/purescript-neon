@@ -157,6 +157,13 @@ instance equalString :: Equal String where
 (==) x y = equal x y
 infix 4 ==
 
+notEqual :: forall a. (Equal a) => a -> a -> Boolean
+notEqual x y = not (equal x y)
+
+(!=) :: forall a. (Equal a) => a -> a -> Boolean
+(!=) x y = notEqual x y
+infix 4 !=
+
 class BooleanAlgebra a where
   and :: a -> a -> a
   or :: a -> a -> a
