@@ -3,32 +3,32 @@
 // module Ax
 
 module.exports = {
-  addInt: function (x) {
+  jsAddInt: function (x) {
     return function (y) {
       return x + y;
     };
   },
-  addNumber: function (x) {
+  jsAddNumber: function (x) {
     return function (y) {
       return x + y;
     };
   },
-  multiplyInt: function (x) {
+  jsMultiplyInt: function (x) {
     return function (y) {
       return x * y;
     };
   },
-  multiplyNumber: function (x) {
+  jsMultiplyNumber: function (x) {
     return function (y) {
       return x * y;
     };
   },
-  subtractInt: function (x) {
+  jsSubtractInt: function (x) {
     return function (y) {
       return x - y;
     };
   },
-  subtractNumber: function (x) {
+  jsSubtractNumber: function (x) {
     return function (y) {
       return x - y;
     };
