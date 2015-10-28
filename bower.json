@@ -1,0 +1,32 @@
+{
+  "authors": [
+    {
+      "email": "taylor@fausak.me",
+      "homepage": "http://taylor.fausak.me",
+      "name": "Taylor Fausak"
+    }
+  ],
+  "description": "TODO",
+  "homepage": "https://github.com/tfausak/TODO",
+  "ignore": [
+    "/.psci",
+    "/.psci_modules/",
+    "/bower_components/",
+    "/docs/",
+    "/node_modules/",
+    "/npm-debug.log",
+    "/output/"
+  ],
+  "keywords": [
+    "purescript"
+  ],
+  "license": "MIT",
+  "main": [
+    "src/Ax.purs"
+  ],
+  "name": "purescript-ax",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tfausak/purescript-TODO.git"
+  }
+}
