@@ -149,6 +149,18 @@ foreign import jsEqualObject :: forall o. Object (| o) -> Object (| o) -> Boolea
 instance equalObject :: Equal (Object (| o)) where
   equal x y = jsEqualObject x y
 
+instance equalOrdering :: Equal Ordering where
+  equal x y = case x of
+    LessThan -> case y of
+      LessThan -> true
+      _ -> false
+    EqualTo -> case y of
+      EqualTo -> true
+      _ -> false
+    GreaterThan -> case y of
+      GreaterThan -> true
+      _ -> false
+
 foreign import jsEqualString :: String -> String -> Boolean
 instance equalString :: Equal String where
   equal x y = jsEqualString x y
@@ -187,3 +199,8 @@ infixr 3 &&
 (||) :: forall a. (BooleanAlgebra a) => a -> a -> a
 (||) x y = or x y
 infixr 2 ||
+
+data Ordering
+  = LessThan
+  | EqualTo
+  | GreaterThan
