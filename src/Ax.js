@@ -23,6 +23,106 @@ module.exports = {
       return x + y;
     };
   },
+  jsCompareArray: function (_) {
+    return function (lessThan) {
+      return function (equalTo) {
+        return function (greaterThan) {
+          return function (compare) {
+            return function (x) {
+              return function (y) {
+                var i;
+                var xl = x.length;
+                var yl = y.length;
+                for (i = 0; i < xl && i < yl; ++i) {
+                  switch (compare(x[i])(y[i])) {
+                    case lessThan:
+                      return lessThan;
+                    case greaterThan:
+                      return greaterThan;
+                  }
+                }
+                if (xl < yl) {
+                  return lessThan;
+                } else if (xl > yl) {
+                  return greaterThan;
+                } else {
+                  return equalTo;
+                }
+              };
+            };
+          };
+        };
+      };
+    };
+  },
+  jsCompareChar: function (lessThan) {
+    return function (equalTo) {
+      return function (greaterThan) {
+        return function (x) {
+          return function (y) {
+            if (x < y) {
+              return lessThan;
+            } else if (x > y) {
+              return greaterThan;
+            } else {
+              return equalTo;
+            }
+          };
+        };
+      };
+    };
+  },
+  jsCompareInt: function (lessThan) {
+    return function (equalTo) {
+      return function (greaterThan) {
+        return function (x) {
+          return function (y) {
+            if (x < y) {
+              return lessThan;
+            } else if (x > y) {
+              return greaterThan;
+            } else {
+              return equalTo;
+            }
+          };
+        };
+      };
+    };
+  },
+  jsCompareNumber: function (lessThan) {
+    return function (equalTo) {
+      return function (greaterThan) {
+        return function (x) {
+          return function (y) {
+            if (x < y) {
+              return lessThan;
+            } else if (x > y) {
+              return greaterThan;
+            } else {
+              return equalTo;
+            }
+          };
+        };
+      };
+    };
+  },
+  jsCompareString: function (lessThan) {
+    return function (equalTo) {
+      return function (greaterThan) {
+        return function (x) {
+          return function (y) {
+            if (x < y) {
+              return lessThan;
+            } else if (x > y) {
+              return greaterThan;
+            } else {
+              return equalTo;
+            }
+          };
+        };
+      };
+    };
+  },
   jsDivideInt: function (x) {
     return function (y) {
       return (x / y) | 0;

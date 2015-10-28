@@ -204,3 +204,70 @@ data Ordering
   = LessThan
   | EqualTo
   | GreaterThan
+
+class (Equal a) <= Compare a where
+  compare :: a -> a -> Ordering
+
+foreign import jsCompareArray :: forall a. (Compare a) => Ordering -> Ordering -> Ordering -> (a -> a -> Ordering) -> Array a -> Array a -> Ordering
+instance compareArray :: (Compare a) => Compare (Array a) where
+  compare x y = jsCompareArray LessThan EqualTo GreaterThan compare x y
+
+instance compareBoolean :: Compare Boolean where
+  compare x y = if x == y
+    then EqualTo
+    else case x of
+      true -> GreaterThan
+      false -> LessThan
+
+foreign import jsCompareChar :: Ordering -> Ordering -> Ordering -> Char -> Char -> Ordering
+instance compareChar :: Compare Char where
+  compare x y = jsCompareChar LessThan EqualTo GreaterThan x y
+
+foreign import jsCompareInt :: Ordering -> Ordering -> Ordering -> Int -> Int -> Ordering
+instance compareInt :: Compare Int where
+  compare x y = jsCompareInt LessThan EqualTo GreaterThan x y
+
+foreign import jsCompareNumber :: Ordering -> Ordering -> Ordering -> Number -> Number -> Ordering
+instance compareNumber :: Compare Number where
+  compare x y = jsCompareNumber LessThan EqualTo GreaterThan x y
+
+instance compareOrdering :: Compare Ordering where
+  compare x y = case x of
+    LessThan -> case y of
+      LessThan -> EqualTo
+      _ -> LessThan
+    EqualTo -> case y of
+      LessThan -> GreaterThan
+      EqualTo -> EqualTo
+      GreaterThan -> LessThan
+    GreaterThan -> case y of
+      GreaterThan -> EqualTo
+      _ -> GreaterThan
+
+foreign import jsCompareString :: Ordering -> Ordering -> Ordering -> String -> String -> Ordering
+instance compareString :: Compare String where
+  compare x y = jsCompareString LessThan EqualTo GreaterThan x y
+
+(<) :: forall a. (Compare a) => a -> a -> Boolean
+(<) x y = case compare x y of
+  LessThan -> true
+  _ -> false
+infixl 4 <
+
+(<=) :: forall a. (Compare a) => a -> a -> Boolean
+(<=) x y = case compare x y of
+  GreaterThan -> false
+  _ -> true
+infixl 4 <=
+
+(>=) :: forall a. (Compare a) => a -> a -> Boolean
+(>=) x y = case compare x y of
+  LessThan -> false
+  _ -> true
+infixl 4 >=
+
+(>) :: forall a. (Compare a) => a -> a -> Boolean
+(>) x y = case compare x y of
+  GreaterThan -> true
+  _ -> false
+infixl 4 >
