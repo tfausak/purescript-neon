@@ -65,3 +65,26 @@ instance oneInt :: One Int where
 
 instance oneNumber :: One Number where
   one = 1.0
+
+class (Multiply a) <= Divide a where
+  divide :: a -> a -> a
+  modulo :: a -> a -> a
+
+foreign import jsDivideInt :: Int -> Int -> Int
+foreign import jsModuloInt :: Int -> Int -> Int
+instance divideInt :: Divide Int where
+  divide x y = jsDivideInt x y
+  modulo x y = jsModuloInt x y
+
+foreign import jsDivideNumber :: Number -> Number -> Number
+instance divideNumber :: Divide Number where
+  divide x y = jsDivideNumber x y
+  modulo _ _ = 0.0
+
+(/) :: forall a. (Divide a) => a -> a -> a
+(/) x y = divide x y
+infixl 7 /
+
+(%) :: forall a. (Divide a) => a -> a -> a
+(%) x y = modulo x y
+infixl 7 %

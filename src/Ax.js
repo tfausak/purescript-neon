@@ -13,6 +13,21 @@ module.exports = {
       return x + y;
     };
   },
+  jsDivideInt: function (x) {
+    return function (y) {
+      return (x / y) | 0;
+    };
+  },
+  jsDivideNumber: function (x) {
+    return function (y) {
+      return x / y;
+    };
+  },
+  jsModuloInt: function (x) {
+    return function (y) {
+      return x % y;
+    };
+  },
   jsMultiplyInt: function (x) {
     return function (y) {
       return x * y;
