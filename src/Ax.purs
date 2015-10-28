@@ -3,6 +3,10 @@ module Ax where
 class Add a where
   add :: a -> a -> a
 
+foreign import jsAddArray :: forall a. Array a -> Array a -> Array a
+instance addArray :: Add (Array a) where
+  add x y = jsAddArray x y
+
 foreign import jsAddInt :: Int -> Int -> Int
 instance addInt :: Add Int where
   add x y = jsAddInt x y
@@ -11,6 +15,10 @@ foreign import jsAddNumber :: Number -> Number -> Number
 instance addNumber :: Add Number where
   add x y = jsAddNumber x y
 
+foreign import jsAddString :: String -> String -> String
+instance addString :: Add String where
+  add x y = jsAddString x y
+
 (+) :: forall a. (Add a) => a -> a -> a
 (+) x y = add x y
 infixl 6 +
@@ -18,11 +26,17 @@ infixl 6 +
 class (Add a) <= Zero a where
   zero :: a
 
+instance zeroArray :: Zero (Array a) where
+  zero = []
+
 instance zeroInt :: Zero Int where
   zero = 0
 
 instance zeroNumber :: Zero Number where
   zero = 0.0
+
+instance zeroString :: Zero String where
+  zero = ""
 
 class (Zero a) <= Subtract a where
   subtract :: a -> a -> a
