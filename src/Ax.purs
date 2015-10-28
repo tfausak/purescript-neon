@@ -176,7 +176,7 @@ notEqual x y = not (equal x y)
 (!=) x y = notEqual x y
 infix 4 !=
 
-class BooleanAlgebra a where
+class (Bounded a) <= BooleanAlgebra a where
   and :: a -> a -> a
   or :: a -> a -> a
   not :: a -> a
@@ -191,6 +191,11 @@ instance booleanAlgebraBoolean :: BooleanAlgebra Boolean where
   not x = case x of
     true -> false
     false -> true
+
+instance booleanAlgebraFunction :: (BooleanAlgebra b) => BooleanAlgebra (a -> b) where
+  and f g = \ x -> f x && g x
+  or f g = \ x -> f x || g x
+  not f = \ x -> not (f x)
 
 (&&) :: forall a. (BooleanAlgebra a) => a -> a -> a
 (&&) x y = and x y
@@ -289,6 +294,10 @@ instance boundedChar :: Bounded Char where
 instance boundedInt :: Bounded Int where
   bottom = -2147483648
   top = 2147483647
+
+instance boundedFunction :: (Bounded b) => Bounded (a -> b) where
+  bottom = \ _ -> bottom
+  top = \ _ -> top
 
 instance boundedOrdering :: Bounded Ordering where
   bottom = LessThan
