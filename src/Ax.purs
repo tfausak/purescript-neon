@@ -14,3 +14,12 @@ instance addNumber' :: Add Number where
 (+) :: forall a. (Add a) => a -> a -> a
 (+) x y = add x y
 infixl 6 +
+
+class (Add a) <= Zero a where
+  zero :: a
+
+instance zeroInt :: Zero Int where
+  zero = 0
+
+instance zeroNumber :: Zero Number where
+  zero = 0.0
