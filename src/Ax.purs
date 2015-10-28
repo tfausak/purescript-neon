@@ -56,3 +56,12 @@ instance multiplyNumber :: Multiply Number where
 (*) :: forall a. (Multiply a) => a -> a -> a
 (*) x y = multiply x y
 infixl 7 *
+
+class (Multiply a) <= One a where
+  one :: a
+
+instance oneInt :: One Int where
+  one = 1
+
+instance oneNumber :: One Number where
+  one = 1.0
