@@ -202,5 +202,7 @@ module.exports = {
     return function (y) {
       return x - y;
     };
-  }
+  },
+  jsBottomChar: String.fromCharCode(0),
+  jstopChar: String.fromCharCode(65535)
 };
