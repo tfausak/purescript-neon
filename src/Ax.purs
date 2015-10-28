@@ -13,6 +13,12 @@ infixr 9 >>
 (<<) :: forall f a b c. (Compose f) => f b c -> f a b -> f a c
 (<<) g f = compose f g
 
+class (Compose f) <= Identity f where
+  identity :: forall a. f a a
+
+instance identityFunction :: Identity Function where
+  identity = \ x -> x
+
 class Add a where
   add :: a -> a -> a
 
