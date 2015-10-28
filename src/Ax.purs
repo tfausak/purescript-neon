@@ -121,3 +121,38 @@ infixl 7 /
 (%) :: forall a. (Divide a) => a -> a -> a
 (%) x y = modulo x y
 infixl 7 %
+
+class Equal a where
+  equal :: a -> a -> Boolean
+
+foreign import jsEqualArray :: forall a. (Equal a) => Array a -> Array a -> Boolean
+instance equalArray :: (Equal a) => Equal (Array a) where
+  equal x y = jsEqualArray x y
+
+foreign import jsEqualBoolean :: Boolean -> Boolean -> Boolean
+instance equalBoolean :: Equal Boolean where
+  equal x y = jsEqualBoolean x y
+
+foreign import jsEqualChar :: Char -> Char -> Boolean
+instance equalChar :: Equal Char where
+  equal x y = jsEqualChar x y
+
+foreign import jsEqualInt :: Int -> Int -> Boolean
+instance equalInt :: Equal Int where
+  equal x y = jsEqualInt x y
+
+foreign import jsEqualNumber :: Number -> Number -> Boolean
+instance equalNumber :: Equal Number where
+  equal x y = jsEqualNumber x y
+
+foreign import jsEqualObject :: forall o. Object (| o) -> Object (| o) -> Boolean
+instance equalObject :: Equal (Object (| o)) where
+  equal x y = jsEqualObject x y
+
+foreign import jsEqualString :: String -> String -> Boolean
+instance equalString :: Equal String where
+  equal x y = jsEqualString x y
+
+(==) :: forall a. (Equal a) => a -> a -> Boolean
+(==) x y = equal x y
+infix 4 ==

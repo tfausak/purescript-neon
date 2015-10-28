@@ -33,6 +33,51 @@ module.exports = {
       return x / y;
     };
   },
+  jsEqualArray: function (x) {
+    return function (y) {
+      var i;
+      if (xs.length === ys.length) {
+        for (i = 0; i < xs.length; ++i) {
+          if (xs[i] !== ys[i]) {
+            return false;
+          }
+        }
+        return true;
+      } else {
+        return false;
+      }
+    };
+  },
+  jsEqualBoolean: function (x) {
+    return function (y) {
+      return x === y;
+    };
+  },
+  jsEqualChar: function (x) {
+    return function (y) {
+      return x === y;
+    };
+  },
+  jsEqualInt: function (x) {
+    return function (y) {
+      return x === y;
+    };
+  },
+  jsEqualNumber: function (x) {
+    return function (y) {
+      return x === y;
+    };
+  },
+  jsEqualObject: function (x) {
+    return function (y) {
+      return x === y;
+    };
+  },
+  jsEqualString: function (x) {
+    return function (y) {
+      return x === y;
+    };
+  },
   jsModuloInt: function (x) {
     return function (y) {
       return x % y;
