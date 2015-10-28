@@ -13,6 +13,16 @@ module.exports = {
       return x + y;
     };
   },
+  multiplyInt: function (x) {
+    return function (y) {
+      return x * y;
+    };
+  },
+  multiplyNumber: function (x) {
+    return function (y) {
+      return x * y;
+    };
+  },
   subtractInt: function (x) {
     return function (y) {
       return x - y;

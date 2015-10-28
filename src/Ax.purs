@@ -41,3 +41,18 @@ infixl 6 -
 
 negate :: forall a. (Subtract a) => a -> a
 negate x = zero - x
+
+class (Add a) <= Multiply a where
+  multiply :: a -> a -> a
+
+foreign import multiplyInt :: Int -> Int -> Int
+instance multiplyInt' :: Multiply Int where
+  multiply x y = multiplyInt x y
+
+foreign import multiplyNumber :: Number -> Number -> Number
+instance multiplyNumber' :: Multiply Number where
+  multiply x y = multiplyNumber x y
+
+(*) :: forall a. (Multiply a) => a -> a -> a
+(*) x y = multiply x y
+infixl 7 *
