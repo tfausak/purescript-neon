@@ -13,6 +13,7 @@ module Ax
   , module Ax.Multiply
   , module Ax.One
   , module Ax.Ordering
+  , module Ax.Pure
   , module Ax.Show
   , module Ax.Subtract
   , module Ax.Zero
@@ -31,6 +32,7 @@ import Ax.Map
 import Ax.Multiply
 import Ax.One
 import Ax.Ordering
+import Ax.Pure
 import Ax.Show
 import Ax.Subtract
 import Ax.Zero
