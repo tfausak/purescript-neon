@@ -3,26 +3,34 @@
 // module Ax
 
 module.exports = {
+  // Add
+
   jsAddArray: function (x) {
     return function (y) {
       return x.concat(y);
     };
   },
+
   jsAddInt: function (x) {
     return function (y) {
       return x + y;
     };
   },
+
   jsAddNumber: function (x) {
     return function (y) {
       return x + y;
     };
   },
+
   jsAddString: function (x) {
     return function (y) {
       return x + y;
     };
   },
+
+  // Compare
+
   jsCompareArray: function (_) {
     return function (lessThan) {
       return function (equalTo) {
@@ -55,6 +63,7 @@ module.exports = {
       };
     };
   },
+
   jsCompareChar: function (lessThan) {
     return function (equalTo) {
       return function (greaterThan) {
@@ -72,6 +81,7 @@ module.exports = {
       };
     };
   },
+
   jsCompareInt: function (lessThan) {
     return function (equalTo) {
       return function (greaterThan) {
@@ -89,6 +99,7 @@ module.exports = {
       };
     };
   },
+
   jsCompareNumber: function (lessThan) {
     return function (equalTo) {
       return function (greaterThan) {
@@ -106,6 +117,7 @@ module.exports = {
       };
     };
   },
+
   jsCompareString: function (lessThan) {
     return function (equalTo) {
       return function (greaterThan) {
@@ -123,16 +135,23 @@ module.exports = {
       };
     };
   },
+
+  // Divide
+
   jsDivideInt: function (x) {
     return function (y) {
       return (x / y) | 0;
     };
   },
+
   jsDivideNumber: function (x) {
     return function (y) {
       return x / y;
     };
   },
+
+  // Equal
+
   jsEqualArray: function (x) {
     return function (y) {
       var i;
@@ -148,51 +167,64 @@ module.exports = {
       }
     };
   },
+
   jsEqualBoolean: function (x) {
     return function (y) {
       return x === y;
     };
   },
+
   jsEqualChar: function (x) {
     return function (y) {
       return x === y;
     };
   },
+
   jsEqualInt: function (x) {
     return function (y) {
       return x === y;
     };
   },
+
   jsEqualNumber: function (x) {
     return function (y) {
       return x === y;
     };
   },
+
   jsEqualObject: function (x) {
     return function (y) {
       return x === y;
     };
   },
+
   jsEqualString: function (x) {
     return function (y) {
       return x === y;
     };
   },
+
   jsModuloInt: function (x) {
     return function (y) {
       return x % y;
     };
   },
+
+  // Multiply
+
   jsMultiplyInt: function (x) {
     return function (y) {
       return x * y;
     };
   },
+
   jsMultiplyNumber: function (x) {
     return function (y) {
       return x * y;
     };
   },
+
+  // Show
   jsShowArray: function (_) {
     return function (show) {
       return function (xs) {
@@ -203,6 +235,7 @@ module.exports = {
       };
     };
   },
+
   jsShowChar: function (x) {
     if (x === "'") {
       return "'\\''";
@@ -210,9 +243,11 @@ module.exports = {
       return "'" + x + "'";
     }
   },
+
   jsShowInt: function (x) {
     return x.toString();
   },
+
   jsShowNumber: function (x) {
     if (x === (x | 0)) {
       return x.toString() + '.0';
@@ -220,20 +255,28 @@ module.exports = {
       return x.toString();
     }
   },
+
   jsShowString: function (x) {
     // TODO: PureScript doesn't support JSON escape codes.
     return JSON.stringify(x);
   },
+
+  // Subtract
+
   jsSubtractInt: function (x) {
     return function (y) {
       return x - y;
     };
   },
+
   jsSubtractNumber: function (x) {
     return function (y) {
       return x - y;
     };
   },
+
+  // Bounded
+
   jsBottomChar: String.fromCharCode(0),
   jstopChar: String.fromCharCode(65535)
 };
