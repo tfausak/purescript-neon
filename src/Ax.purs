@@ -2,6 +2,7 @@ module Ax
   ( module Ax
   , module Ax.Add
   , module Ax.Apply
+  , module Ax.Bind
   , module Ax.BooleanAlgebra
   , module Ax.Bounded
   , module Ax.Compare
@@ -21,6 +22,7 @@ module Ax
 
 import Ax.Add
 import Ax.Apply
+import Ax.Bind
 import Ax.BooleanAlgebra
 import Ax.Bounded
 import Ax.Compare
