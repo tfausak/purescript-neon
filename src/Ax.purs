@@ -8,6 +8,7 @@ module Ax
   , module Ax.Divide
   , module Ax.Equal
   , module Ax.Identity
+  , module Ax.Map
   , module Ax.Multiply
   , module Ax.One
   , module Ax.Ordering
@@ -24,6 +25,7 @@ import Ax.Compose
 import Ax.Divide
 import Ax.Equal
 import Ax.Identity
+import Ax.Map
 import Ax.Multiply
 import Ax.One
 import Ax.Ordering
