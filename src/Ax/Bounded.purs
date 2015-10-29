@@ -5,7 +5,9 @@ module Ax.Bounded
   ) where
 
 foreign import jsBottomChar :: Char
+foreign import jsBottomInt :: Int
 foreign import jsTopChar :: Char
+foreign import jsTopInt :: Int
 
 class Bounded a where
   bottom :: a
@@ -20,8 +22,8 @@ instance boundedChar :: Bounded Char where
   top = jsTopChar
 
 instance boundedInt :: Bounded Int where
-  bottom = -2147483648
-  top = 2147483647
+  bottom = jsBottomInt
+  top = jsTopInt
 
 instance boundedFunction :: (Bounded b) => Bounded (a -> b) where
   bottom = \ _ -> bottom
