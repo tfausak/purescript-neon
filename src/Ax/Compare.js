@@ -2,7 +2,7 @@
 
 // module Ax.Compare
 
-var compare = function (lessThan) {
+var compareGeneric = function (lessThan) {
   return function (equalTo) {
     return function (greaterThan) {
       return function (x) {
@@ -37,7 +37,7 @@ module.exports = {
                   case greaterThan: return greaterThan;
                   }
                 }
-                compare(lessThan)(equalTo)(greaterThan)(xl)(yl);
+                compareGeneric(lessThan)(equalTo)(greaterThan)(xl)(yl);
               };
             };
           };
@@ -46,11 +46,11 @@ module.exports = {
     };
   },
 
-  jsCompareChar: compare,
+  jsCompareChar: compareGeneric,
 
-  jsCompareInt: compare,
+  jsCompareInt: compareGeneric,
 
-  jsCompareNumber: compare,
+  jsCompareNumber: compareGeneric,
 
-  jsCompareString: compare
+  jsCompareString: compareGeneric
 };
