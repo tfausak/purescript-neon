@@ -1,6 +1,10 @@
 module Ax.Compare
   ( Compare
   , compare
+  , greaterThan
+  , greaterThanOrEqualTo
+  , lessThan
+  , lessThanOrEqualTo
   , (<)
   , (<=)
   , (>)
@@ -54,26 +58,38 @@ instance compareOrdering :: Compare Ordering where
 instance compareString :: Compare String where
   compare x y = jsCompareString LessThan EqualTo GreaterThan x y
 
-(<) :: forall a. (Compare a) => a -> a -> Boolean
-(<) x y = case compare x y of
+greaterThan :: forall a. (Compare a) => a -> a -> Boolean
+greaterThan x y = case compare x y of
+  GreaterThan -> true
+  _ -> false
+
+greaterThanOrEqualTo :: forall a. (Compare a) => a -> a -> Boolean
+greaterThanOrEqualTo x y = case compare x y of
+  LessThan -> false
+  _ -> true
+
+lessThan :: forall a. (Compare a) => a -> a -> Boolean
+lessThan x y = case compare x y of
   LessThan -> true
   _ -> false
+
+lessThanOrEqualTo :: forall a. (Compare a) => a -> a -> Boolean
+lessThanOrEqualTo x y = case compare x y of
+  GreaterThan -> false
+  _ -> true
+
+(<) :: forall a. (Compare a) => a -> a -> Boolean
+(<) x y = lessThan x y
 infixl 4 <
 
 (<=) :: forall a. (Compare a) => a -> a -> Boolean
-(<=) x y = case compare x y of
-  GreaterThan -> false
-  _ -> true
+(<=) x y = lessThanOrEqualTo x y
 infixl 4 <=
 
 (>) :: forall a. (Compare a) => a -> a -> Boolean
-(>) x y = case compare x y of
-  GreaterThan -> true
-  _ -> false
+(>) x y = greaterThan x y
 infixl 4 >
 
 (>=) :: forall a. (Compare a) => a -> a -> Boolean
-(>=) x y = case compare x y of
-  LessThan -> false
-  _ -> true
+(>=) x y = greaterThanOrEqualTo x y
 infixl 4 >=
