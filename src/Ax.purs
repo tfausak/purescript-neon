@@ -17,6 +17,7 @@ module Ax
   , module Ax.Pure
   , module Ax.Show
   , module Ax.Subtract
+  , module Ax.Unit
   , module Ax.Zero
   ) where
 
@@ -37,4 +38,5 @@ import Ax.Ordering
 import Ax.Pure
 import Ax.Show
 import Ax.Subtract
+import Ax.Unit
 import Ax.Zero
