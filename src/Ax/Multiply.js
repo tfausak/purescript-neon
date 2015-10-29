@@ -2,16 +2,14 @@
 
 // module Ax.Multiply
 
-module.exports = {
-  jsMultiplyInt: function (x) {
-    return function (y) {
-      return x * y;
-    };
-  },
+var multiplyGeneric = function (x) {
+  return function (y) {
+    return x * y;
+  };
+};
 
-  jsMultiplyNumber: function (x) {
-    return function (y) {
-      return x * y;
-    };
-  }
+module.exports = {
+  jsMultiplyInt: multiplyGeneric,
+
+  jsMultiplyNumber: multiplyGeneric
 };

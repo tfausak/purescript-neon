@@ -2,16 +2,14 @@
 
 // module Ax.Subtract
 
-module.exports = {
-  jsSubtractInt: function (x) {
-    return function (y) {
-      return x - y;
-    };
-  },
+var subtractGeneric = function (x) {
+  return function (y) {
+    return x - y;
+  };
+};
 
-  jsSubtractNumber: function (x) {
-    return function (y) {
-      return x - y;
-    };
-  }
+module.exports = {
+  jsSubtractInt: subtractGeneric,
+
+  jsSubtractNumber: subtractGeneric
 };

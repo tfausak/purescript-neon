@@ -2,6 +2,12 @@
 
 // module Ax.Add
 
+var addGeneric = function (x) {
+  return function (y) {
+    return x + y;
+  };
+};
+
 module.exports = {
   jsAddArray: function (x) {
     return function (y) {
@@ -9,21 +15,9 @@ module.exports = {
     };
   },
 
-  jsAddInt: function (x) {
-    return function (y) {
-      return x + y;
-    };
-  },
+  jsAddInt: addGeneric,
 
-  jsAddNumber: function (x) {
-    return function (y) {
-      return x + y;
-    };
-  },
+  jsAddNumber: addGeneric,
 
-  jsAddString: function (x) {
-    return function (y) {
-      return x + y;
-    };
-  }
+  jsAddString: addGeneric
 };
