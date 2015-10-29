@@ -1,6 +1,7 @@
 module Ax
   ( module Ax
   , module Ax.Add
+  , module Ax.Apply
   , module Ax.BooleanAlgebra
   , module Ax.Bounded
   , module Ax.Compare
@@ -18,6 +19,7 @@ module Ax
   ) where
 
 import Ax.Add
+import Ax.Apply
 import Ax.BooleanAlgebra
 import Ax.Bounded
 import Ax.Compare
