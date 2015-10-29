@@ -2,6 +2,12 @@
 
 // module Ax.Equal
 
+var equalGeneric = function (x) {
+  return function (y) {
+    return x === y
+  };
+};
+
 module.exports = {
   jsEqualArray: function (x) {
     return function (y) {
@@ -21,39 +27,15 @@ module.exports = {
     };
   },
 
-  jsEqualBoolean: function (x) {
-    return function (y) {
-      return x === y;
-    };
-  },
+  jsEqualBoolean: equalGeneric,
 
-  jsEqualChar: function (x) {
-    return function (y) {
-      return x === y;
-    };
-  },
+  jsEqualChar: equalGeneric,
 
-  jsEqualInt: function (x) {
-    return function (y) {
-      return x === y;
-    };
-  },
+  jsEqualInt: equalGeneric,
 
-  jsEqualNumber: function (x) {
-    return function (y) {
-      return x === y;
-    };
-  },
+  jsEqualNumber: equalGeneric,
 
-  jsEqualObject: function (x) {
-    return function (y) {
-      return x === y;
-    };
-  },
+  jsEqualObject: equalGeneric,
 
-  jsEqualString: function (x) {
-    return function (y) {
-      return x === y;
-    };
-  }
+  jsEqualString: equalGeneric
 };
