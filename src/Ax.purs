@@ -11,6 +11,7 @@ module Ax
   , module Ax.Divide
   , module Ax.Effect
   , module Ax.Equal
+  , module Ax.Exception
   , module Ax.Identity
   , module Ax.Map
   , module Ax.Multiply
@@ -37,6 +38,7 @@ import Ax.Compose
 import Ax.Divide
 import Ax.Effect
 import Ax.Equal
+import Ax.Exception
 import Ax.Identity
 import Ax.Map
 import Ax.Multiply

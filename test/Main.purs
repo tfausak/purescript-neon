@@ -61,6 +61,9 @@ main = do
   { k: "a" } == { k: "z" } ==> false
   "ax" == "ax" ==> true
 
+  -- Exception
+  runPure (catch (throw (exception "a")) (\ _ -> pure "b")) ==> "b"
+
   -- Identity
   identity unit ==> unit
 

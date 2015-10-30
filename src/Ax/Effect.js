@@ -31,5 +31,9 @@ module.exports = {
     return function () {
       return x;
     };
+  },
+
+  jsRunPure: function (x) {
+    return x();
   }
 };

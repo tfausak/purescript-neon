@@ -1,5 +1,6 @@
 module Ax.Effect
   ( Effect()
+  , runPure
   ) where
 
 import Ax.Apply (Apply)
@@ -12,6 +13,7 @@ foreign import jsApplyEffect :: forall e a b. Effect e (a -> b) -> Effect e a ->
 foreign import jsBindEffect :: forall e a b. Effect e a -> (a -> Effect e b) -> Effect e b
 foreign import jsMapEffect :: forall e a b. (a -> b) -> Effect e a -> Effect e b
 foreign import jsPureEffect :: forall e a. a -> Effect e a
+foreign import jsRunPure :: forall a. Effect () a -> a
 
 instance applyEffect :: Apply (Effect e) where
   apply f x = jsApplyEffect f x
@@ -24,3 +26,6 @@ instance mapEffect :: Map (Effect e) where
 
 instance pureEffect :: Pure (Effect e) where
   pure x = jsPureEffect x
+
+runPure :: forall a. Effect () a -> a
+runPure x = jsRunPure x
