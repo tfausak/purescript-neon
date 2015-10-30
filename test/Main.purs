@@ -1,6 +1,6 @@
 module Test.Main where
 
-import Ax
+import Neon
 
 main :: Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 main = do
@@ -37,7 +37,7 @@ main = do
   compare 1 1 ==> EqualTo
   compare 0.1 2.3 ==> LessThan
   compare EqualTo LessThan ==> GreaterThan
-  compare "ax" "ax" ==> EqualTo
+  compare "neon" "neon" ==> EqualTo
 
   -- Compose
   ((+ 2) >> (* 2)) 3 ==> 10
@@ -57,7 +57,7 @@ main = do
   1 == 2 ==> false
   1.0 == 1.0 ==> true
   { k: "a" } == { k: "z" } ==> false
-  "ax" == "ax" ==> true
+  "neon" == "neon" ==> true
 
   -- Exception
   runPure (catch (throw (exception "a")) (\ _ -> pure "b")) ==> "b"
@@ -103,7 +103,7 @@ main = do
   show 'a' ==> "'a'"
   show 0 ==> "0"
   show 1.2 ==> "1.2"
-  show "ax" ==> "\"ax\""
+  show "neon" ==> "\"neon\""
 
   -- Subtract
   2 - 3 ==> negate 1

@@ -22,9 +22,9 @@
   ],
   "license": "MIT",
   "main": [
-    "src/Ax.purs"
+    "src/Neon.purs"
   ],
-  "name": "purescript-ax",
+  "name": "purescript-neon",
   "repository": {
     "type": "git",
     "url": "git://github.com/tfausak/purescript-TODO.git"
