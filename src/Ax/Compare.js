@@ -37,7 +37,7 @@ module.exports = {
                   case greaterThan: return greaterThan;
                   }
                 }
-                compareGeneric(lessThan)(equalTo)(greaterThan)(xl)(yl);
+                return compareGeneric(lessThan)(equalTo)(greaterThan)(xl)(yl);
               };
             };
           };

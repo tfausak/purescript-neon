@@ -10,6 +10,7 @@
   "private": true,
   "scripts": {
     "postinstall": "pulp dep install",
-    "pulp": "pulp"
+    "pulp": "pulp",
+    "test": "pulp test"
   }
 }

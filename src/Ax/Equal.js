@@ -9,21 +9,23 @@ var equalGeneric = function (x) {
 };
 
 module.exports = {
-  jsEqualArray: function (x) {
-    return function (y) {
-      var i;
-      var xl = x.length;
-      var yl = y.length;
-      if (xl === yl) {
-        for (i = 0; i < xl; ++i) {
-          if (x[i] !== y[i]) {
-            return false;
+  jsEqualArray: function (_) {
+    return function (x) {
+      return function (y) {
+        var i;
+        var xl = x.length;
+        var yl = y.length;
+        if (xl === yl) {
+          for (i = 0; i < xl; ++i) {
+            if (x[i] !== y[i]) {
+              return false;
+            }
           }
+          return true;
+        } else {
+          return false;
         }
-        return true;
-      } else {
-        return false;
-      }
+      };
     };
   },
 
