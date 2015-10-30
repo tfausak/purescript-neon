@@ -17,6 +17,7 @@ module Ax
   , module Ax.One
   , module Ax.Or
   , module Ax.Ordering
+  , module Ax.Output
   , module Ax.Pure
   , module Ax.Show
   , module Ax.Subtract
@@ -41,6 +42,7 @@ import Ax.Not
 import Ax.One
 import Ax.Or
 import Ax.Ordering
+import Ax.Output
 import Ax.Pure
 import Ax.Show
 import Ax.Subtract
