@@ -6,8 +6,8 @@
       "name": "Taylor Fausak"
     }
   ],
-  "description": "TODO",
-  "homepage": "https://github.com/tfausak/TODO",
+  "description": "An experimental PureScript prelude.",
+  "homepage": "https://github.com/tfausak/purescript-neon",
   "ignore": [
     "/.psci",
     "/.psci_modules/",
@@ -18,6 +18,8 @@
     "/output/"
   ],
   "keywords": [
+    "neon",
+    "prelude",
     "purescript"
   ],
   "license": "MIT",
@@ -27,6 +29,6 @@
   "name": "purescript-neon",
   "repository": {
     "type": "git",
-    "url": "git://github.com/tfausak/purescript-TODO.git"
+    "url": "git://github.com/tfausak/purescript-neon.git"
   }
 }
