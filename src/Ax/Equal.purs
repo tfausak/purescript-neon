@@ -6,7 +6,7 @@ module Ax.Equal
   , (==)
   ) where
 
-import Ax.BooleanAlgebra (not)
+import Ax.Not (not)
 
 foreign import jsEqualArray :: forall a. (Equal a) => Array a -> Array a -> Boolean
 foreign import jsEqualBoolean :: Boolean -> Boolean -> Boolean
