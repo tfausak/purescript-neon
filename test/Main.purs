@@ -2,7 +2,7 @@ module Test.Main where
 
 import Ax
 
-main :: Effect (assert :: ASSERT) Unit
+main :: Effect (assert :: ASSERT, output :: OUTPUT) Unit
 main = do
   -- Add
   [1] + [2] ==> [1, 2]
@@ -132,9 +132,14 @@ main = do
 
   pure unit
 
-shouldBe :: forall a. (Equal a) => a -> a -> Effect (assert :: ASSERT) Unit
-shouldBe x y = assert (x == y)
+shouldBe :: forall a. (Equal a, Show a) => a -> a -> Effect (assert :: ASSERT, output :: OUTPUT) Unit
+shouldBe x y = if x == y
+  then do
+    print ("✔︎ " + show x + " = " + show y)
+  else do
+    print ("✘ " + show x + " ≠ " + show y)
+    assert false
 
-(==>) :: forall a. (Equal a) => a -> a -> Effect (assert :: ASSERT) Unit
+(==>) :: forall a. (Equal a, Show a) => a -> a -> Effect (assert :: ASSERT, output :: OUTPUT) Unit
 (==>) x y = shouldBe x y
 infix 0 ==>
