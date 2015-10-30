@@ -9,6 +9,7 @@ foreign import jsShowInt :: Int -> String
 foreign import jsShowNumber :: Number -> String
 foreign import jsShowString :: String -> String
 
+-- TODO: Lawless!
 class Show a where
   show :: a -> String
 

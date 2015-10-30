@@ -5,6 +5,8 @@ module Neon.One
 
 import Neon.Multiply (Multiply)
 
+-- | Laws:
+-- | - Identity: `one * x = x * one = x`
 class (Multiply a) <= One a where
   one :: a
 

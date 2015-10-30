@@ -9,6 +9,7 @@ foreign import jsBottomInt :: Int
 foreign import jsTopChar :: Char
 foreign import jsTopInt :: Int
 
+-- TODO: Lawless!
 class Bounded a where
   bottom :: a
   top :: a

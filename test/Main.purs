@@ -26,7 +26,7 @@ main = do
   bottom ==> false
   top ==> true
   -- TODO: Test character instance.
-  bottom ==> negate 2147483648
+  bottom ==> 0 - 2147483648
   top ==> 2147483647
   -- TODO: Test function instance.
 
@@ -106,7 +106,7 @@ main = do
   show "neon" ==> "\"neon\""
 
   -- Subtract
-  2 - 3 ==> negate 1
+  2 - 3 ==> 0 - 1
   3.0 - 2.0 ==> 1.0
 
   -- Unit

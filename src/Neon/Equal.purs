@@ -1,21 +1,21 @@
 module Neon.Equal
   ( Equal
   , equal
-  , notEqual
-  , (!=)
   , (==)
   ) where
-
-import Neon.Not (not)
 
 foreign import jsEqualArray :: forall a. (Equal a) => Array a -> Array a -> Boolean
 foreign import jsEqualBoolean :: Boolean -> Boolean -> Boolean
 foreign import jsEqualChar :: Char -> Char -> Boolean
 foreign import jsEqualInt :: Int -> Int -> Boolean
 foreign import jsEqualNumber :: Number -> Number -> Boolean
-foreign import jsEqualObject :: forall o. Object (| o) -> Object (| o) -> Boolean
+foreign import jsEqualObject :: forall o. Object o -> Object o -> Boolean
 foreign import jsEqualString :: String -> String -> Boolean
 
+-- | Laws:
+-- | - Reflexivity: `x == x = true`
+-- | - Symmetry: `x == y = y == x`
+-- | - Transitivity: `x == y` and `y == z` implies `x == z`
 class Equal a where
   equal :: a -> a -> Boolean
 
@@ -34,19 +34,13 @@ instance equalInt :: Equal Int where
 instance equalNumber :: Equal Number where
   equal x y = jsEqualNumber x y
 
-instance equalObject :: Equal (Object (| o)) where
+instance equalObject :: Equal (Object o) where
   equal x y = jsEqualObject x y
 
 instance equalString :: Equal String where
   equal x y = jsEqualString x y
 
-notEqual :: forall a. (Equal a) => a -> a -> Boolean
-notEqual x y = not (equal x y)
-
-(!=) :: forall a. (Equal a) => a -> a -> Boolean
-(!=) x y = notEqual x y
-infix 4 !=
-
+-- | Alias for `equal`.
 (==) :: forall a. (Equal a) => a -> a -> Boolean
 (==) x y = equal x y
 infix 4 ==

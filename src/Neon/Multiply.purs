@@ -4,12 +4,16 @@ module Neon.Multiply
   , (*)
   ) where
 
-import Neon.Add (Add)
+import Neon.Zero (Zero)
 
 foreign import jsMultiplyInt :: Int -> Int -> Int
 foreign import jsMultiplyNumber :: Number -> Number -> Number
 
-class (Add a) <= Multiply a where
+-- | Laws:
+-- | - Associativity: `x * (y * z) = (x * y) * z`
+-- | - Distributivity: `x * (y + z) = (x * y) + (x * z)`
+-- | - Annihilation: `x * zero = zero * x = zero`
+class (Zero a) <= Multiply a where
   multiply :: a -> a -> a
 
 instance multiplyInt :: Multiply Int where
@@ -18,6 +22,7 @@ instance multiplyInt :: Multiply Int where
 instance multiplyNumber :: Multiply Number where
   multiply x y = jsMultiplyNumber x y
 
+-- | Alias for `multiply`.
 (*) :: forall a. (Multiply a) => a -> a -> a
 (*) x y = multiply x y
 infixl 7 *

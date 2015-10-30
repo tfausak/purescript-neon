@@ -9,6 +9,8 @@ foreign import jsAddInt :: Int -> Int -> Int
 foreign import jsAddNumber :: Number -> Number -> Number
 foreign import jsAddString :: String -> String -> String
 
+-- | Laws:
+-- | - Associativity: `x + (y + z) = (x + y) + z`
 class Add a where
   add :: a -> a -> a
 
@@ -24,6 +26,7 @@ instance addNumber :: Add Number where
 instance addString :: Add String where
   add x y = jsAddString x y
 
+-- | Alias for `add`.
 (+) :: forall a. (Add a) => a -> a -> a
 (+) x y = add x y
 infixl 6 +

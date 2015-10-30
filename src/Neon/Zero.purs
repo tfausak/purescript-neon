@@ -5,6 +5,8 @@ module Neon.Zero
 
 import Neon.Add (Add)
 
+-- | Laws:
+-- | - Identity: `zero + x = x + zero = x`
 class (Add a) <= Zero a where
   zero :: a
 

@@ -5,6 +5,9 @@ module Neon.Not
 
 import Neon.Bounded (Bounded)
 
+-- | Laws:
+-- | - `not top = bottom`
+-- | - `not bottom = top`
 class (Bounded a) <= Not a where
   not :: a -> a
 

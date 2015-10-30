@@ -5,6 +5,8 @@ module Neon.Identity
 
 import Neon.Compose (Compose)
 
+-- | Laws:
+-- | - Identity: `f >> identity = identity >> f = f`
 class (Compose f) <= Identity f where
   identity :: forall a. f a a
 

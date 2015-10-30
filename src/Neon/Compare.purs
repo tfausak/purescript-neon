@@ -20,6 +20,10 @@ foreign import jsCompareInt :: Ordering -> Ordering -> Ordering -> Int -> Int ->
 foreign import jsCompareNumber :: Ordering -> Ordering -> Ordering -> Number -> Number -> Ordering
 foreign import jsCompareString :: Ordering -> Ordering -> Ordering -> String -> String -> Ordering
 
+-- | Laws:
+-- | - Reflexivity: `a <= a`
+-- | - Antisymmetry: if `a <= b` and `b <= a` then `a = b`
+-- | - Transitivity: if `a <= b` and `b <= c` then `a <= c`
 class (Equal a) <= Compare a where
   compare :: a -> a -> Ordering
 
@@ -78,18 +82,22 @@ lessThanOrEqualTo x y = case compare x y of
   GreaterThan -> false
   _ -> true
 
+-- | Alias for `lessThan`.
 (<) :: forall a. (Compare a) => a -> a -> Boolean
 (<) x y = lessThan x y
 infixl 4 <
 
+-- | Alias for `lessThanOrEqualTo`.
 (<=) :: forall a. (Compare a) => a -> a -> Boolean
 (<=) x y = lessThanOrEqualTo x y
 infixl 4 <=
 
+-- | Alias for `greaterThan`.
 (>) :: forall a. (Compare a) => a -> a -> Boolean
 (>) x y = greaterThan x y
 infixl 4 >
 
+-- | Alias for `greaterThanOrEqualTo`.
 (>=) :: forall a. (Compare a) => a -> a -> Boolean
 (>=) x y = greaterThanOrEqualTo x y
 infixl 4 >=
