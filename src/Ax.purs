@@ -3,7 +3,6 @@ module Ax
   , module Ax.Add
   , module Ax.And
   , module Ax.Apply
-  , module Ax.Assert
   , module Ax.Bind
   , module Ax.Bounded
   , module Ax.Compare
@@ -30,7 +29,6 @@ module Ax
 import Ax.Add
 import Ax.And
 import Ax.Apply
-import Ax.Assert
 import Ax.Bind
 import Ax.Bounded
 import Ax.Compare
