@@ -10,6 +10,9 @@ main = do
   1.0 + 2.0 ==> 3.0
   "1" + "2" ==> "12"
 
+  -- Alternative
+  [1] <|> [2] ==> [1, 2]
+
   -- And
   true && true ==> true
   ((\ _ -> true) && (\ _ -> true)) unit ==> true
@@ -49,6 +52,9 @@ main = do
   5.0 % 2.0 ==> 0.0
 
   -- TODO: Effect
+
+  -- Empty
+  empty ==> [] :: Array Unit
 
   -- Equal
   [1] == [1] ==> true
@@ -126,7 +132,7 @@ main = do
   zero ==> unit
 
   -- Zero
-  zero ==> [] :: Array Boolean
+  zero ==> [] :: Array Unit
   zero ==> 0
   zero ==> 0.0
   zero ==> ""

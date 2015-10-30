@@ -1,6 +1,7 @@
 module Neon
   ( module Neon
   , module Neon.Add
+  , module Neon.Alternative
   , module Neon.And
   , module Neon.Apply
   , module Neon.Bind
@@ -9,6 +10,7 @@ module Neon
   , module Neon.Compose
   , module Neon.Divide
   , module Neon.Effect
+  , module Neon.Empty
   , module Neon.Equal
   , module Neon.Exception
   , module Neon.Identity
@@ -27,6 +29,7 @@ module Neon
   ) where
 
 import Neon.Add
+import Neon.Alternative
 import Neon.And
 import Neon.Apply
 import Neon.Bind
@@ -35,6 +38,7 @@ import Neon.Compare
 import Neon.Compose
 import Neon.Divide
 import Neon.Effect
+import Neon.Empty
 import Neon.Equal
 import Neon.Exception
 import Neon.Identity
