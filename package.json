@@ -5,8 +5,8 @@
     "purescript": "0.7.5-rc.3"
   },
   "engines": {
-    "node": "4.2.1",
-    "npm": "2.14.7"
+    "node": "5.0.0",
+    "npm": "3.3.9"
   },
   "private": true,
   "scripts": {
