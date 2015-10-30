@@ -15,6 +15,7 @@ module Neon
   , module Neon.Exception
   , module Neon.Identity
   , module Neon.Map
+  , module Neon.Maybe
   , module Neon.Multiply
   , module Neon.Not
   , module Neon.One
@@ -43,6 +44,7 @@ import Neon.Equal
 import Neon.Exception
 import Neon.Identity
 import Neon.Map
+import Neon.Maybe
 import Neon.Multiply
 import Neon.Not
 import Neon.One
