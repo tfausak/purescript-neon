@@ -6,8 +6,8 @@ module Neon.Multiply
 
 import Neon.Zero (Zero)
 
-foreign import jsMultiplyInt :: Int -> Int -> Int
-foreign import jsMultiplyNumber :: Number -> Number -> Number
+foreign import nativeMultiplyInt :: Int -> Int -> Int
+foreign import nativeMultiplyNumber :: Number -> Number -> Number
 
 -- | Laws:
 -- | - Associativity: `x * (y * z) = (x * y) * z`
@@ -17,10 +17,10 @@ class (Zero a) <= Multiply a where
   multiply :: a -> a -> a
 
 instance multiplyInt :: Multiply Int where
-  multiply x y = jsMultiplyInt x y
+  multiply x y = nativeMultiplyInt x y
 
 instance multiplyNumber :: Multiply Number where
-  multiply x y = jsMultiplyNumber x y
+  multiply x y = nativeMultiplyNumber x y
 
 -- | Alias for `multiply`.
 (*) :: forall a. (Multiply a) => a -> a -> a

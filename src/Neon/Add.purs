@@ -4,10 +4,10 @@ module Neon.Add
   , (+)
   ) where
 
-foreign import jsAddArray :: forall a. Array a -> Array a -> Array a
-foreign import jsAddInt :: Int -> Int -> Int
-foreign import jsAddNumber :: Number -> Number -> Number
-foreign import jsAddString :: String -> String -> String
+foreign import nativeAddArray :: forall a. Array a -> Array a -> Array a
+foreign import nativeAddInt :: Int -> Int -> Int
+foreign import nativeAddNumber :: Number -> Number -> Number
+foreign import nativeAddString :: String -> String -> String
 
 -- | Laws:
 -- | - Associativity: `x + (y + z) = (x + y) + z`
@@ -15,16 +15,16 @@ class Add a where
   add :: a -> a -> a
 
 instance addArray :: Add (Array a) where
-  add x y = jsAddArray x y
+  add x y = nativeAddArray x y
 
 instance addInt :: Add Int where
-  add x y = jsAddInt x y
+  add x y = nativeAddInt x y
 
 instance addNumber :: Add Number where
-  add x y = jsAddNumber x y
+  add x y = nativeAddNumber x y
 
 instance addString :: Add String where
-  add x y = jsAddString x y
+  add x y = nativeAddString x y
 
 -- | Alias for `add`.
 (+) :: forall a. (Add a) => a -> a -> a

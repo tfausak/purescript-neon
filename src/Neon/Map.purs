@@ -7,7 +7,7 @@ module Neon.Map
 import Neon.Compose ((>>))
 import Neon.Unit (Unit(), unit)
 
-foreign import jsMapArray :: forall a b. (a -> b) -> Array a -> Array b
+foreign import nativeMapArray :: forall a b. (a -> b) -> Array a -> Array b
 
 -- | Laws:
 -- | - Identity: `map identity = identity`
@@ -16,7 +16,7 @@ class Map f where
   map :: forall a b. (a -> b) -> f a -> f b
 
 instance mapArray :: Map Array where
-  map f x = jsMapArray f x
+  map f x = nativeMapArray f x
 
 instance mapFunction :: Map (Function a) where
   map f g = g >> f

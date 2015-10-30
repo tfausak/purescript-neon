@@ -3,7 +3,7 @@
 // module Neon.Show
 
 module.exports = {
-  jsShowArray: function (_types) {
+  nativeShowArray: function (_types) {
     return function (show) {
       return function (xs) {
         var s = xs.map(function (x) {
@@ -14,7 +14,7 @@ module.exports = {
     };
   },
 
-  jsShowChar: function (x) {
+  nativeShowChar: function (x) {
     if (x === '\'') {
       return '\\\'';
     } else {
@@ -22,11 +22,11 @@ module.exports = {
     }
   },
 
-  jsShowInt: function (x) {
+  nativeShowInt: function (x) {
     return x.toString();
   },
 
-  jsShowNumber: function (x) {
+  nativeShowNumber: function (x) {
     if (x === (x | 0)) {
       return x.toString() + '.0';
     } else {
@@ -34,7 +34,7 @@ module.exports = {
     }
   },
 
-  jsShowString: function (x) {
+  nativeShowString: function (x) {
     // TODO: PureScript doesn't support JSON escape codes.
     return JSON.stringify(x);
   }

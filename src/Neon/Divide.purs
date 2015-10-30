@@ -8,9 +8,9 @@ module Neon.Divide
 
 import Neon.One (One)
 
-foreign import jsDivideInt :: Int -> Int -> Int
-foreign import jsModuloInt :: Int -> Int -> Int
-foreign import jsDivideNumber :: Number -> Number -> Number
+foreign import nativeDivideInt :: Int -> Int -> Int
+foreign import nativeModuloInt :: Int -> Int -> Int
+foreign import nativeDivideNumber :: Number -> Number -> Number
 
 -- | Laws:
 -- | - Remainder: `(x / y) * y + (x % y) = x`
@@ -20,11 +20,11 @@ class (One a) <= Divide a where
   modulo :: a -> a -> a
 
 instance divideInt :: Divide Int where
-  divide x y = jsDivideInt x y
-  modulo x y = jsModuloInt x y
+  divide x y = nativeDivideInt x y
+  modulo x y = nativeModuloInt x y
 
 instance divideNumber :: Divide Number where
-  divide x y = jsDivideNumber x y
+  divide x y = nativeDivideNumber x y
   modulo _ _ = 0.0
 
 -- | Alias for `divide`.

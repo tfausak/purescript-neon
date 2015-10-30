@@ -3,30 +3,30 @@ module Neon.Show
   , show
   ) where
 
-foreign import jsShowArray :: forall a. (Show a) => (a -> String) -> Array a -> String
-foreign import jsShowChar :: Char -> String
-foreign import jsShowInt :: Int -> String
-foreign import jsShowNumber :: Number -> String
-foreign import jsShowString :: String -> String
+foreign import nativeShowArray :: forall a. (Show a) => (a -> String) -> Array a -> String
+foreign import nativeShowChar :: Char -> String
+foreign import nativeShowInt :: Int -> String
+foreign import nativeShowNumber :: Number -> String
+foreign import nativeShowString :: String -> String
 
 -- TODO: Lawless!
 class Show a where
   show :: a -> String
 
 instance showArray :: (Show a) => Show (Array a) where
-  show x = jsShowArray show x
+  show x = nativeShowArray show x
 
 instance showBoolean :: Show Boolean where
   show x = if x then "true" else "false"
 
 instance showChar :: Show Char where
-  show x = jsShowChar x
+  show x = nativeShowChar x
 
 instance showInt :: Show Int where
-  show x = jsShowInt x
+  show x = nativeShowInt x
 
 instance showNumber :: Show Number where
-  show x = jsShowNumber x
+  show x = nativeShowNumber x
 
 instance showString :: Show String where
-  show x = jsShowString x
+  show x = nativeShowString x

@@ -3,19 +3,19 @@
 // module Neon.Divide
 
 module.exports = {
-  jsDivideInt: function (x) {
+  nativeDivideInt: function (x) {
     return function (y) {
       return (x / y) | 0;
     };
   },
 
-  jsDivideNumber: function (x) {
+  nativeDivideNumber: function (x) {
     return function (y) {
       return x / y;
     };
   },
 
-  jsModuloInt: function (x) {
+  nativeModuloInt: function (x) {
     return function (y) {
       return x % y;
     };

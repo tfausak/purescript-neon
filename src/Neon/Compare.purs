@@ -14,11 +14,11 @@ module Neon.Compare
 import Neon.Equal (Equal, (==))
 import Neon.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
-foreign import jsCompareArray :: forall a. (Compare a) => Ordering -> Ordering -> Ordering -> (a -> a -> Ordering) -> Array a -> Array a -> Ordering
-foreign import jsCompareChar :: Ordering -> Ordering -> Ordering -> Char -> Char -> Ordering
-foreign import jsCompareInt :: Ordering -> Ordering -> Ordering -> Int -> Int -> Ordering
-foreign import jsCompareNumber :: Ordering -> Ordering -> Ordering -> Number -> Number -> Ordering
-foreign import jsCompareString :: Ordering -> Ordering -> Ordering -> String -> String -> Ordering
+foreign import nativeCompareArray :: forall a. (Compare a) => Ordering -> Ordering -> Ordering -> (a -> a -> Ordering) -> Array a -> Array a -> Ordering
+foreign import nativeCompareChar :: Ordering -> Ordering -> Ordering -> Char -> Char -> Ordering
+foreign import nativeCompareInt :: Ordering -> Ordering -> Ordering -> Int -> Int -> Ordering
+foreign import nativeCompareNumber :: Ordering -> Ordering -> Ordering -> Number -> Number -> Ordering
+foreign import nativeCompareString :: Ordering -> Ordering -> Ordering -> String -> String -> Ordering
 
 -- | Laws:
 -- | - Reflexivity: `a <= a`
@@ -28,7 +28,7 @@ class (Equal a) <= Compare a where
   compare :: a -> a -> Ordering
 
 instance compareArray :: (Compare a) => Compare (Array a) where
-  compare x y = jsCompareArray LessThan EqualTo GreaterThan compare x y
+  compare x y = nativeCompareArray LessThan EqualTo GreaterThan compare x y
 
 instance compareBoolean :: Compare Boolean where
   compare x y = if x == y
@@ -38,13 +38,13 @@ instance compareBoolean :: Compare Boolean where
       false -> LessThan
 
 instance compareChar :: Compare Char where
-  compare x y = jsCompareChar LessThan EqualTo GreaterThan x y
+  compare x y = nativeCompareChar LessThan EqualTo GreaterThan x y
 
 instance compareInt :: Compare Int where
-  compare x y = jsCompareInt LessThan EqualTo GreaterThan x y
+  compare x y = nativeCompareInt LessThan EqualTo GreaterThan x y
 
 instance compareNumber :: Compare Number where
-  compare x y = jsCompareNumber LessThan EqualTo GreaterThan x y
+  compare x y = nativeCompareNumber LessThan EqualTo GreaterThan x y
 
 instance compareOrdering :: Compare Ordering where
   compare x y = case x of
@@ -60,7 +60,7 @@ instance compareOrdering :: Compare Ordering where
       _ -> GreaterThan
 
 instance compareString :: Compare String where
-  compare x y = jsCompareString LessThan EqualTo GreaterThan x y
+  compare x y = nativeCompareString LessThan EqualTo GreaterThan x y
 
 greaterThan :: forall a. (Compare a) => a -> a -> Boolean
 greaterThan x y = case compare x y of

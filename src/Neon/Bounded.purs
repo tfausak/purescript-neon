@@ -4,10 +4,10 @@ module Neon.Bounded
   , top
   ) where
 
-foreign import jsBottomChar :: Char
-foreign import jsBottomInt :: Int
-foreign import jsTopChar :: Char
-foreign import jsTopInt :: Int
+foreign import nativeBottomChar :: Char
+foreign import nativeBottomInt :: Int
+foreign import nativeTopChar :: Char
+foreign import nativeTopInt :: Int
 
 -- TODO: Lawless!
 class Bounded a where
@@ -19,12 +19,12 @@ instance boundedBoolean :: Bounded Boolean where
   top = true
 
 instance boundedChar :: Bounded Char where
-  bottom = jsBottomChar
-  top = jsTopChar
+  bottom = nativeBottomChar
+  top = nativeTopChar
 
 instance boundedInt :: Bounded Int where
-  bottom = jsBottomInt
-  top = jsTopInt
+  bottom = nativeBottomInt
+  top = nativeTopInt
 
 instance boundedFunction :: (Bounded b) => Bounded (a -> b) where
   bottom = \ _ -> bottom

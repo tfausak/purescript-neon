@@ -9,23 +9,23 @@ import Neon.Map (Map)
 import Neon.Pure (Pure)
 
 foreign import data Effect :: # ! -> * -> *
-foreign import jsApplyEffect :: forall e a b. Effect e (a -> b) -> Effect e a -> Effect e b
-foreign import jsBindEffect :: forall e a b. Effect e a -> (a -> Effect e b) -> Effect e b
-foreign import jsMapEffect :: forall e a b. (a -> b) -> Effect e a -> Effect e b
-foreign import jsPureEffect :: forall e a. a -> Effect e a
-foreign import jsRunPure :: forall a. Effect () a -> a
+foreign import nativeApplyEffect :: forall e a b. Effect e (a -> b) -> Effect e a -> Effect e b
+foreign import nativeBindEffect :: forall e a b. Effect e a -> (a -> Effect e b) -> Effect e b
+foreign import nativeMapEffect :: forall e a b. (a -> b) -> Effect e a -> Effect e b
+foreign import nativePureEffect :: forall e a. a -> Effect e a
+foreign import nativeRunPure :: forall a. Effect () a -> a
 
 instance applyEffect :: Apply (Effect e) where
-  apply f x = jsApplyEffect f x
+  apply f x = nativeApplyEffect f x
 
 instance bindEffect :: Bind (Effect e) where
-  bind x f = jsBindEffect x f
+  bind x f = nativeBindEffect x f
 
 instance mapEffect :: Map (Effect e) where
-  map f x = jsMapEffect f x
+  map f x = nativeMapEffect f x
 
 instance pureEffect :: Pure (Effect e) where
-  pure x = jsPureEffect x
+  pure x = nativePureEffect x
 
 runPure :: forall a. Effect () a -> a
-runPure x = jsRunPure x
+runPure x = nativeRunPure x

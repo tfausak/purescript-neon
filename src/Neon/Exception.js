@@ -23,7 +23,7 @@ module.exports = {
     return new Error(x);
   },
 
-  jsShowException: function (x) {
+  nativeShowException: function (x) {
     return x.toString();
   },
 

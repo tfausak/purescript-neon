@@ -9,7 +9,7 @@ var multiplyGeneric = function (x) {
 };
 
 module.exports = {
-  jsMultiplyInt: multiplyGeneric,
+  nativeMultiplyInt: multiplyGeneric,
 
-  jsMultiplyNumber: multiplyGeneric
+  nativeMultiplyNumber: multiplyGeneric
 };

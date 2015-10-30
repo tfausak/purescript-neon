@@ -9,7 +9,7 @@ var subtractGeneric = function (x) {
 };
 
 module.exports = {
-  jsSubtractInt: subtractGeneric,
+  nativeSubtractInt: subtractGeneric,
 
-  jsSubtractNumber: subtractGeneric
+  nativeSubtractNumber: subtractGeneric
 };

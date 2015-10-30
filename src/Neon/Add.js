@@ -9,15 +9,15 @@ var addGeneric = function (x) {
 };
 
 module.exports = {
-  jsAddArray: function (x) {
+  nativeAddArray: function (x) {
     return function (y) {
       return x.concat(y);
     };
   },
 
-  jsAddInt: addGeneric,
+  nativeAddInt: addGeneric,
 
-  jsAddNumber: addGeneric,
+  nativeAddNumber: addGeneric,
 
-  jsAddString: addGeneric
+  nativeAddString: addGeneric
 };

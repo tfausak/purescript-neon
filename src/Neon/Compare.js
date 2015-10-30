@@ -21,7 +21,7 @@ var compareGeneric = function (lessThan) {
 };
 
 module.exports = {
-  jsCompareArray: function (_types) {
+  nativeCompareArray: function (_types) {
     return function (lessThan) {
       return function (equalTo) {
         return function (greaterThan) {
@@ -46,11 +46,11 @@ module.exports = {
     };
   },
 
-  jsCompareChar: compareGeneric,
+  nativeCompareChar: compareGeneric,
 
-  jsCompareInt: compareGeneric,
+  nativeCompareInt: compareGeneric,
 
-  jsCompareNumber: compareGeneric,
+  nativeCompareNumber: compareGeneric,
 
-  jsCompareString: compareGeneric
+  nativeCompareString: compareGeneric
 };

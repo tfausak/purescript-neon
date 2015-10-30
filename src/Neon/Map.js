@@ -3,7 +3,7 @@
 // module Neon.Map
 
 module.exports = {
-  jsMapArray: function (f) {
+  nativeMapArray: function (f) {
     return function (x) {
       return x.map(f);
     };

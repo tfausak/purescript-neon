@@ -3,7 +3,7 @@
 // module Neon.Effect
 
 module.exports = {
-  jsApplyEffect: function (f) {
+  nativeApplyEffect: function (f) {
     return function (x) {
       return function () {
         return f()(x());
@@ -11,7 +11,7 @@ module.exports = {
     };
   },
 
-  jsBindEffect: function (x) {
+  nativeBindEffect: function (x) {
     return function (f) {
       return function () {
         return f(x())();
@@ -19,7 +19,7 @@ module.exports = {
     };
   },
 
-  jsMapEffect: function (f) {
+  nativeMapEffect: function (f) {
     return function (x) {
       return function () {
         return f(x());
@@ -27,13 +27,13 @@ module.exports = {
     };
   },
 
-  jsPureEffect: function (x) {
+  nativePureEffect: function (x) {
     return function () {
       return x;
     };
   },
 
-  jsRunPure: function (x) {
+  nativeRunPure: function (x) {
     return x();
   }
 };

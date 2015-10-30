@@ -9,7 +9,7 @@ var equalGeneric = function (x) {
 };
 
 module.exports = {
-  jsEqualArray: function (_types) {
+  nativeEqualArray: function (_types) {
     return function (x) {
       return function (y) {
         var i;
@@ -29,15 +29,15 @@ module.exports = {
     };
   },
 
-  jsEqualBoolean: equalGeneric,
+  nativeEqualBoolean: equalGeneric,
 
-  jsEqualChar: equalGeneric,
+  nativeEqualChar: equalGeneric,
 
-  jsEqualInt: equalGeneric,
+  nativeEqualInt: equalGeneric,
 
-  jsEqualNumber: equalGeneric,
+  nativeEqualNumber: equalGeneric,
 
-  jsEqualObject: equalGeneric,
+  nativeEqualObject: equalGeneric,
 
-  jsEqualString: equalGeneric
+  nativeEqualString: equalGeneric
 };
