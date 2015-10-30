@@ -21,7 +21,7 @@ var compareGeneric = function (lessThan) {
 };
 
 module.exports = {
-  jsCompareArray: function (_) {
+  jsCompareArray: function (_types) {
     return function (lessThan) {
       return function (equalTo) {
         return function (greaterThan) {

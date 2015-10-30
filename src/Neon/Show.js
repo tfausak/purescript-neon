@@ -3,7 +3,7 @@
 // module Neon.Show
 
 module.exports = {
-  jsShowArray: function (_) {
+  jsShowArray: function (_types) {
     return function (show) {
       return function (xs) {
         var s = xs.map(function (x) {

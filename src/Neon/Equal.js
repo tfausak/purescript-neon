@@ -4,12 +4,12 @@
 
 var equalGeneric = function (x) {
   return function (y) {
-    return x === y
+    return x === y;
   };
 };
 
 module.exports = {
-  jsEqualArray: function (_) {
+  jsEqualArray: function (_types) {
     return function (x) {
       return function (y) {
         var i;

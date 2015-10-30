@@ -9,10 +9,11 @@ module.exports = {
         try {
           return x();
         } catch (e) {
-          if (!(e instanceof Error)) {
-            e = new Error(e.toString());
+          if (e instanceof Error) {
+            return f(x)();
+          } else {
+            return f(new Error(e.toString()))();
           }
-          return f(e)();
         }
       };
     };
