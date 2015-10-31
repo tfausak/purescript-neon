@@ -5,7 +5,7 @@ module Neon.Types.Map
   ) where
 
 import Neon.Types.Compose ((>>))
-import Neon.Unit (Unit(), unit)
+import Neon.Values.Unit (Unit(), unit)
 
 foreign import nativeMapArray :: forall a b. (a -> b) -> Array a -> Array b
 

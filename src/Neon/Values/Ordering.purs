@@ -1,4 +1,4 @@
-module Neon.Ordering
+module Neon.Values.Ordering
   ( Ordering(LessThan, EqualTo, GreaterThan)
   ) where
 

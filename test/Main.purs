@@ -1,6 +1,7 @@
 module Test.Main where
 
 import Neon
+import Neon.Values -- TODO: purescript/purescript#1594
 
 main :: Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 main = do

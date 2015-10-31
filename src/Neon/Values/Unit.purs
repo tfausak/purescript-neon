@@ -1,4 +1,4 @@
-module Neon.Unit
+module Neon.Values.Unit
   ( Unit()
   , unit
   ) where
@@ -13,7 +13,7 @@ import Neon.Types.Multiply (Multiply)
 import Neon.Types.Not (Not)
 import Neon.Types.One (One)
 import Neon.Types.Or (Or)
-import Neon.Ordering (Ordering(EqualTo))
+import Neon.Values.Ordering (Ordering(EqualTo))
 import Neon.Types.Show (Show)
 import Neon.Types.Subtract (Subtract)
 import Neon.Types.Zero (Zero)

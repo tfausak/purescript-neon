@@ -12,7 +12,7 @@ module Neon.Types.Compare
   ) where
 
 import Neon.Types.Equal (Equal, (==))
-import Neon.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
+import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 foreign import nativeCompareArray :: forall a. (Compare a) => Ordering -> Ordering -> Ordering -> (a -> a -> Ordering) -> Array a -> Array a -> Ordering
 foreign import nativeCompareChar :: Ordering -> Ordering -> Ordering -> Char -> Char -> Ordering

@@ -1,4 +1,4 @@
-module Neon.Either
+module Neon.Values.Either
   ( Either(Left, Right)
   ) where
 
@@ -12,7 +12,7 @@ import Neon.Types.Compare (Compare, compare)
 import Neon.Types.Divide (Divide, divide, modulo)
 import Neon.Types.Empty (Empty)
 import Neon.Types.Equal (Equal, (==))
-import Neon.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
+import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 import Neon.Types.Map (Map, (<$>))
 import Neon.Types.Multiply (Multiply, multiply)
 import Neon.Types.Not (Not, not)
