@@ -3,20 +3,20 @@ module Neon.Unit
   , unit
   ) where
 
-import Neon.Add (Add)
-import Neon.And (And)
-import Neon.Bounded (Bounded)
-import Neon.Compare (Compare)
-import Neon.Divide (Divide)
-import Neon.Equal (Equal)
-import Neon.Multiply (Multiply)
-import Neon.Not (Not)
-import Neon.One (One)
-import Neon.Or (Or)
+import Neon.Types.Add (Add)
+import Neon.Types.And (And)
+import Neon.Types.Bounded (Bounded)
+import Neon.Types.Compare (Compare)
+import Neon.Types.Divide (Divide)
+import Neon.Types.Equal (Equal)
+import Neon.Types.Multiply (Multiply)
+import Neon.Types.Not (Not)
+import Neon.Types.One (One)
+import Neon.Types.Or (Or)
 import Neon.Ordering (Ordering(EqualTo))
-import Neon.Show (Show)
-import Neon.Subtract (Subtract)
-import Neon.Zero (Zero)
+import Neon.Types.Show (Show)
+import Neon.Types.Subtract (Subtract)
+import Neon.Types.Zero (Zero)
 
 newtype Unit = Unit {}
 

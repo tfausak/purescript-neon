@@ -3,10 +3,10 @@ module Neon.Effect
   , runPure
   ) where
 
-import Neon.Apply (Apply)
-import Neon.Bind (Bind)
-import Neon.Map (Map)
-import Neon.Pure (Pure)
+import Neon.Types.Apply (Apply)
+import Neon.Types.Bind (Bind)
+import Neon.Types.Map (Map)
+import Neon.Types.Pure (Pure)
 
 foreign import data Effect :: # ! -> * -> *
 foreign import nativeApplyEffect :: forall e a b. Effect e (a -> b) -> Effect e a -> Effect e b

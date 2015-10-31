@@ -7,7 +7,7 @@ module Neon.Exception
   ) where
 
 import Neon.Effect (Effect())
-import Neon.Show (Show)
+import Neon.Types.Show (Show)
 
 foreign import data EXCEPTION :: !
 foreign import data Exception :: *
