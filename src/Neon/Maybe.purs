@@ -38,7 +38,7 @@ instance andMaybe :: (And a) => And (Maybe a) where
   and x y = and <$> x <*> y
 
 instance applyMaybe :: Apply Maybe where
-  apply (Just f) (Just x) = Just (f x)
+  apply (Just f) x = f <$> x
   apply _ _ = Nothing
 
 instance bindMaybe :: Bind Maybe where

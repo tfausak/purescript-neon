@@ -53,6 +53,25 @@ main = do
 
   -- TODO: Effect
 
+  -- Either
+  Left 1 + Right 2.0 ==> Left 1
+  Left 1 <|> Right '2' ==> Right '2'
+  Left false && Right true ==> Left false
+  Right (+ 1) <*> Right 1 ==> Right 2 :: Either Unit Int
+  (Right 1 >>= \ x -> Right (x + 1)) ==> Right 2 :: Either Unit Int
+  top ==> Right true :: Either Unit Boolean
+  Left 1 < Right 2 ==> true
+  Left 1 == Right '2' ==> false
+  (+ 1) <$> Right 1 ==> Right 2 :: Either Unit Int
+  Right 2 * Right 3 ==> Right 6 :: Either Unit Int
+  not (Right false) ==> Right true :: Either Unit Boolean
+  one ==> Right 1 :: Either Unit Int
+  Right false || Right true ==> Right true :: Either Unit Boolean
+  pure 1 ==> Right 1 :: Either Unit Int
+  show (Right unit :: Either Boolean Unit) ==> "Right (unit)"
+  Right 3 - Right 2 ==> Right 1 :: Either Unit Int
+  zero ==> Right 0 :: Either Unit Int
+
   -- Empty
   empty ==> [] :: Array Unit
 

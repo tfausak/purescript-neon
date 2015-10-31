@@ -10,6 +10,7 @@ module Neon
   , module Neon.Compose
   , module Neon.Divide
   , module Neon.Effect
+  , module Neon.Either
   , module Neon.Empty
   , module Neon.Equal
   , module Neon.Exception
@@ -39,6 +40,7 @@ import Neon.Compare
 import Neon.Compose
 import Neon.Divide
 import Neon.Effect
+import Neon.Either
 import Neon.Empty
 import Neon.Equal
 import Neon.Exception
