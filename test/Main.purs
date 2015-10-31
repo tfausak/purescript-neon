@@ -141,6 +141,27 @@ main = do
 
   -- TODO: Output
 
+  -- Pair
+  pair 1 2 + pair 3 4 ==> pair 4 6
+  pair false true && pair true true ==> pair false true
+  pair 1 (+ 3) <*> pair 3 4 ==> pair 4 7
+  pair 1 2 >>= (\ x -> pair x x) ==> pair 3 2
+  top ==> pair true true
+  pair 1 2 < pair 1 3 ==> true
+  pair 1 2 >> pair 3 4 ==> pair 1 4
+  pair 9 8 / pair 4 2 ==> pair 2 4
+  pair 9 8 % pair 4 2 ==> pair 1 0
+  pair 1 2 == pair 1 2 ==> true
+  (+ 1) <$> pair 1 2 ==> pair 1 3
+  pair 2 3 * pair 4 5 ==> pair 8 15
+  not (pair false true) ==> pair true false
+  one ==> pair 1 1
+  pair false false || pair false true ==> pair false true
+  pure 3 ==> pair 0 3
+  show (pair 1 2) ==> "Pair { first: 1, second: 2 }"
+  pair 9 8 - pair 2 3 ==> pair 7 5
+  zero ==> pair 0 0
+
   -- Pure
   pure 1 ==> [1]
   -- TODO: Test function instance.

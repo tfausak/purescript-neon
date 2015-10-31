@@ -10,6 +10,7 @@ module Neon.Values
   , module Neon.Values.Number
   , module Neon.Values.Object
   , module Neon.Values.Ordering
+  , module Neon.Values.Pair
   , module Neon.Values.String
   , module Neon.Values.Unit
   ) where
@@ -24,5 +25,6 @@ import Neon.Values.Maybe
 import Neon.Values.Number
 import Neon.Values.Object
 import Neon.Values.Ordering
+import Neon.Values.Pair
 import Neon.Values.String
 import Neon.Values.Unit
