@@ -1,6 +1,6 @@
 'use strict';
 
-// module Neon.Effect
+// module Neon.Effects.Effect
 
 module.exports = {
   nativeApplyEffect: function (f) {

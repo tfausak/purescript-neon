@@ -1,6 +1,6 @@
 'use strict';
 
-// module Neon.Exception
+// module Neon.Effects.Exception
 
 module.exports = {
   catch: function (x) {

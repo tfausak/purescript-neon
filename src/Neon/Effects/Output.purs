@@ -1,10 +1,10 @@
-module Neon.Output
+module Neon.Effects.Output
   ( OUTPUT()
   , print
   , warn
   ) where
 
-import Neon.Effect (Effect())
+import Neon.Effects.Effect (Effect())
 import Neon.Unit (Unit())
 
 foreign import data OUTPUT :: !

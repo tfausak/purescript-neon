@@ -1,6 +1,6 @@
 'use strict';
 
-// module Neon.Output
+// module Neon.Effects.Output
 
 module.exports = {
   print: function (x) {

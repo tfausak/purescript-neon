@@ -1,4 +1,4 @@
-module Neon.Effect
+module Neon.Effects.Effect
   ( Effect()
   , runPure
   ) where

@@ -1,4 +1,4 @@
-module Neon.Exception
+module Neon.Effects.Exception
   ( EXCEPTION()
   , Exception()
   , catch
@@ -6,7 +6,7 @@ module Neon.Exception
   , throw
   ) where
 
-import Neon.Effect (Effect())
+import Neon.Effects.Effect (Effect())
 import Neon.Types.Show (Show)
 
 foreign import data EXCEPTION :: !
