@@ -19,6 +19,10 @@ class (One a) <= Divide a where
   divide :: a -> a -> a
   modulo :: a -> a -> a
 
+instance divideFunction :: (Divide b) => Divide (a -> b) where
+  divide f g = \ x -> f x / g x
+  modulo f g = \ x -> f x % g x
+
 instance divideInt :: Divide Int where
   divide x y = nativeDivideInt x y
   modulo x y = nativeModuloInt x y

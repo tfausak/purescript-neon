@@ -7,6 +7,8 @@ main :: Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 main = do
   -- Add
   [1] + [2] ==> [1, 2]
+  true + true ==> true
+  ((+ "!") + (+ "?")) "Eh" ==> "Eh!Eh?"
   1 + 2 ==> 3
   1.0 + 2.0 ==> 3.0
   "1" + "2" ==> "12"
@@ -47,6 +49,8 @@ main = do
   ((+ 2) >> (* 2)) 3 ==> 10
 
   -- Divide
+  ((+ 2) / (\ x -> x - 3)) 8 ==> 2
+  ((+ 2) % (\ x -> x - 3)) 8 ==> 0
   5 / 2 ==> 2
   5 % 2 ==> 1
   5.0 / 2.0 ==> 2.5
@@ -118,6 +122,8 @@ main = do
   zero ==> Just unit
 
   -- Multiply
+  false * true ==> false
+  ((+ 2) * (+ 3)) 3 ==> 30
   2 * 3 ==> 6
   2.0 * 3.0 ==> 6.0
 
@@ -126,6 +132,8 @@ main = do
   (not \ _ -> false) unit ==> true
 
   -- One
+  one ==> true
+  one unit ==> 1
   one ==> 1
   one ==> 1.0
 
@@ -198,6 +206,8 @@ main = do
 
   -- Zero
   zero ==> [] :: Array Unit
+  zero ==> false
+  zero unit ==> 0
   zero ==> 0
   zero ==> 0.0
   zero ==> ""

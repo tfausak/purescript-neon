@@ -9,6 +9,16 @@ var multiplyGeneric = function (x) {
 };
 
 module.exports = {
+  nativeMultiplyBoolean: function (x) {
+    return function (y) {
+      if (x) {
+        return y;
+      } else {
+        return x;
+      }
+    };
+  },
+
   nativeMultiplyInt: multiplyGeneric,
 
   nativeMultiplyNumber: multiplyGeneric

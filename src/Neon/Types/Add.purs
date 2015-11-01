@@ -5,6 +5,7 @@ module Neon.Types.Add
   ) where
 
 foreign import nativeAddArray :: forall a. Array a -> Array a -> Array a
+foreign import nativeAddBoolean :: Boolean -> Boolean -> Boolean
 foreign import nativeAddInt :: Int -> Int -> Int
 foreign import nativeAddNumber :: Number -> Number -> Number
 foreign import nativeAddString :: String -> String -> String
@@ -16,6 +17,12 @@ class Add a where
 
 instance addArray :: Add (Array a) where
   add x y = nativeAddArray x y
+
+instance addBoolean :: Add Boolean where
+  add x y = nativeAddBoolean x y
+
+instance addFunction :: (Add b) => Add (a -> b) where
+  add f g = \ x -> f x + g x
 
 instance addInt :: Add Int where
   add x y = nativeAddInt x y

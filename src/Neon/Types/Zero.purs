@@ -13,6 +13,12 @@ class (Add a) <= Zero a where
 instance zeroArray :: Zero (Array a) where
   zero = []
 
+instance zeroBoolean :: Zero Boolean where
+  zero = false
+
+instance zeroFunction :: (Zero b) => Zero (a -> b) where
+  zero = \ _ -> zero
+
 instance zeroInt :: Zero Int where
   zero = 0
 
