@@ -2,7 +2,7 @@
   "dependencies": {
     "bower": "1.6.5",
     "pulp": "bodil/pulp#ff70a542cc732c4572b4ff0c5ced709078aecdd6",
-    "purescript": "0.7.5-rc.3"
+    "purescript": "0.7.5-rc.4"
   },
   "devDependencies": {
     "eslint": "1.8.0"
