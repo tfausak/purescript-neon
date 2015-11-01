@@ -166,6 +166,8 @@ main = do
   pure 1 ==> [1]
   -- TODO: Test function instance.
 
+  -- TODO: Random
+
   -- Show
   show [1, 2] ==> "[1, 2]"
   show true ==> "true"
