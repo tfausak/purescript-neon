@@ -12,7 +12,7 @@ import Neon.Types.Compare (Compare, compare)
 import Neon.Types.Divide (Divide, divide, modulo)
 import Neon.Types.Empty (Empty)
 import Neon.Types.Equal (Equal, (==))
-import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
+import Neon.Types.Fold (Fold)
 import Neon.Types.Map (Map, (<$>))
 import Neon.Types.Multiply (Multiply, multiply)
 import Neon.Types.Not (Not, not)
@@ -22,6 +22,7 @@ import Neon.Types.Pure (Pure)
 import Neon.Types.Show (Show, show)
 import Neon.Types.Subtract (Subtract, subtract)
 import Neon.Types.Zero (Zero, zero)
+import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Either a b
   = Left a
@@ -63,6 +64,14 @@ instance equalEither :: (Equal a, Equal b) => Equal (Either a b) where
   equal (Left x) (Left y) = x == y
   equal (Right x) (Right y) = x == y
   equal _ _ = false
+
+instance foldEither :: Fold (Either a) where
+  foldl f y x = case x of
+    Right r -> f y r
+    Left _ -> y
+  foldr f y x = case x of
+    Right r -> f r y
+    Left _ -> y
 
 instance mapEither :: Map (Either a) where
   map f (Right x) = Right (f x)

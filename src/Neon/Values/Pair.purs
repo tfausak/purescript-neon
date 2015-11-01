@@ -10,6 +10,7 @@ import Neon.Values.Ordering
 import Neon.Types.Apply
 import Neon.Types.Bind
 import Neon.Types.Compose
+import Neon.Types.Fold
 import Neon.Types.Map
 import Neon.Types.Pure
 
@@ -47,6 +48,10 @@ instance dividePair :: (Divide a, Divide b) => Divide (Pair a b) where
 
 instance equalPair :: (Equal a, Equal b) => Equal (Pair a b) where
   equal (Pair x) (Pair y) = x.first == y.first && x.second == y.second
+
+instance foldPair :: Fold (Pair x) where
+  foldl f y (Pair x) = f y x.second
+  foldr f y (Pair x) = f x.second y
 
 instance mapPair :: Map (Pair a) where
   map f (Pair x) = pair x.first (f x.second)

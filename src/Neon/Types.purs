@@ -11,6 +11,7 @@ module Neon.Types
   , module Neon.Types.Divide
   , module Neon.Types.Empty
   , module Neon.Types.Equal
+  , module Neon.Types.Fold
   , module Neon.Types.Identity
   , module Neon.Types.Map
   , module Neon.Types.Multiply
@@ -34,6 +35,7 @@ import Neon.Types.Compose
 import Neon.Types.Divide
 import Neon.Types.Empty
 import Neon.Types.Equal
+import Neon.Types.Fold
 import Neon.Types.Identity
 import Neon.Types.Map
 import Neon.Types.Multiply

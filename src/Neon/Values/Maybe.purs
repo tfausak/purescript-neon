@@ -12,7 +12,7 @@ import Neon.Types.Compare (Compare, compare)
 import Neon.Types.Divide (Divide, divide, modulo)
 import Neon.Types.Empty (Empty)
 import Neon.Types.Equal (Equal, (==))
-import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
+import Neon.Types.Fold (Fold)
 import Neon.Types.Map (Map, (<$>))
 import Neon.Types.Multiply (Multiply, multiply)
 import Neon.Types.Not (Not, not)
@@ -22,6 +22,7 @@ import Neon.Types.Pure (Pure)
 import Neon.Types.Show (Show, show)
 import Neon.Types.Subtract (Subtract, subtract)
 import Neon.Types.Zero (Zero, zero)
+import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Maybe a
   = Nothing
@@ -66,6 +67,14 @@ instance equalMaybe :: (Equal a) => Equal (Maybe a) where
   equal Nothing Nothing = true
   equal (Just x) (Just y) = x == y
   equal _ _ = false
+
+instance foldMaybe :: Fold Maybe where
+  foldl f y x = case x of
+    Just j -> f y j
+    Nothing -> y
+  foldr f y x = case x of
+    Just j -> f j y
+    Nothing -> y
 
 instance mapMaybe :: Map Maybe where
   map _ Nothing = Nothing

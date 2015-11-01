@@ -67,6 +67,8 @@ main = do
   top ==> Right true :: Either Unit Boolean
   Left 1 < Right 2 ==> true
   Left 1 == Right '2' ==> false
+  foldl (+) 1 (Right 2) ==> 3
+  foldr (+) 1 (Left 2) ==> 1
   (+ 1) <$> Right 1 ==> Right 2 :: Either Unit Int
   Right 2 * Right 3 ==> Right 6 :: Either Unit Int
   not (Right false) ==> Right true :: Either Unit Boolean
@@ -92,6 +94,10 @@ main = do
   -- Exception
   runPure (catch (throw (exception "a")) (\ _ -> pure "b")) ==> "b"
 
+  -- Fold
+  foldl (+) "a" ["b", "c"] ==> "abc"
+  foldr (+) "a" ["b", "c"] ==> "bca"
+
   -- Identity
   identity unit ==> unit
 
@@ -111,6 +117,8 @@ main = do
   Just 5 % Just 2 ==> Just 1
   empty ==> Nothing :: Maybe Unit
   Just 1 == Just 1 ==> true
+  foldl (+) 1 (Just 2) ==> 3
+  foldr (+) 1 Nothing ==> 1
   map (+ 1) (Just 1) ==> Just 2
   Just 2 * Just 3 ==> Just 6
   not (Just true) ==> Just false
@@ -160,6 +168,8 @@ main = do
   pair 9 8 / pair 4 2 ==> pair 2 4
   pair 9 8 % pair 4 2 ==> pair 1 0
   pair 1 2 == pair 1 2 ==> true
+  foldl (+) 1 (pair 2 3) ==> 4
+  foldr (+) 1 (pair 2 3) ==> 4
   (+ 1) <$> pair 1 2 ==> pair 1 3
   pair 2 3 * pair 4 5 ==> pair 8 15
   not (pair false true) ==> pair true false
