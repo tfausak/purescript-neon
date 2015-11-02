@@ -38,6 +38,10 @@ main = do
   bottom unit ==> false
   top unit ==> true
 
+  -- Char
+  toLower 'A' ==> 'a'
+  toUpper 'a' ==> 'A'
+
   -- Compare
   compare [1] [1] ==> EqualTo
   compare false true ==> LessThan
@@ -201,6 +205,13 @@ main = do
   -- Subtract
   2 - 3 ==> 0 - 1
   3.0 - 2.0 ==> 1.0
+
+  -- Text
+  fromText (toText "ah" + toText "ab") ==> "ahab"
+  fromText (toText "moby") ==> "moby"
+  fromText (toUpper <$> toText "boat") ==> "BOAT"
+  show (toText "ishmael") ==> "\"ishmael\""
+  toText "whale" == toText "whale" ==> true
 
   -- Unit
   unit + unit ==> unit
