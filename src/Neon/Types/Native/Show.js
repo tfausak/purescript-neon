@@ -37,7 +37,10 @@ module.exports = {
   },
 
   nativeShowString: function (x) {
-    // TODO: PureScript doesn't support JSON escape codes.
-    return JSON.stringify(x);
+    return x
+      .replace(/^|$/g, '"')
+      .replace(/[^ -~]/g, function (c) {
+        return '\\' + c.charCodeAt(0);
+      })
   }
 };
