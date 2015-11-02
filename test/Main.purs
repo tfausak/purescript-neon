@@ -35,7 +35,8 @@ main = do
   top ==> '\65535'
   bottom ==> 0 - 2147483648
   top ==> 2147483647
-  -- TODO: Test function instance.
+  bottom unit ==> false
+  top unit ==> true
 
   -- Compare
   compare [1] [1] ==> EqualTo
@@ -183,7 +184,7 @@ main = do
 
   -- Pure
   pure 1 ==> [1]
-  -- TODO: Test function instance.
+  (pure 1 :: Unit -> Int) unit ==> 1
 
   -- TODO: Random
 
