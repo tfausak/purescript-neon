@@ -31,7 +31,8 @@ main = do
   -- Bounded
   bottom ==> false
   top ==> true
-  -- TODO: Test character instance.
+  -- bottom ==> '\0' -- TODO: purescript/purescript#1602
+  top ==> '\65535'
   bottom ==> 0 - 2147483648
   top ==> 2147483647
   -- TODO: Test function instance.

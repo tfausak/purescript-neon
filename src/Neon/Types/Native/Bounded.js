@@ -7,7 +7,7 @@ module.exports = {
 
   nativeBottomInt: -2147483648,
 
-  jstopChar: String.fromCharCode(65535),
+  nativeTopChar: String.fromCharCode(65535),
 
   nativeTopInt: 2147483647
 };
