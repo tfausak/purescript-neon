@@ -17,8 +17,10 @@ module.exports = {
   nativeShowChar: function (x) {
     if (x === '\'') {
       return '\\\'';
-    } else {
+    } else if (x.match(/[ -~]/)) {
       return '\'' + x + '\'';
+    } else {
+      return '\'\\' + x.charCodeAt(0) + '\'';
     }
   },
 
