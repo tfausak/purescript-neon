@@ -13,7 +13,7 @@ foreign import nativeApplyEffect :: forall e a b. Effect e (a -> b) -> Effect e 
 foreign import nativeBindEffect :: forall e a b. Effect e a -> (a -> Effect e b) -> Effect e b
 foreign import nativeMapEffect :: forall e a b. (a -> b) -> Effect e a -> Effect e b
 foreign import nativePureEffect :: forall e a. a -> Effect e a
-foreign import nativeRunPure :: forall a. Effect () a -> a
+foreign import runPure :: forall a. Effect () a -> a
 
 instance applyEffect :: Apply (Effect e) where
   apply f x = nativeApplyEffect f x
@@ -26,6 +26,3 @@ instance mapEffect :: Map (Effect e) where
 
 instance pureEffect :: Pure (Effect e) where
   pure x = nativePureEffect x
-
-runPure :: forall a. Effect () a -> a
-runPure x = nativeRunPure x

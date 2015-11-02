@@ -9,7 +9,8 @@ foreign import nativeShowInt :: Int -> String
 foreign import nativeShowNumber :: Number -> String
 foreign import nativeShowString :: String -> String
 
--- TODO: Lawless!
+-- This class is lawless. It could have laws if there was a corresponding
+-- `Read` class, but there isn't.
 class Show a where
   show :: a -> String
 

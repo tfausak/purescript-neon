@@ -4,15 +4,15 @@ module Neon.Values.Pair
   ) where
 
 import Neon.Types
-import Neon.Values.Ordering
+import Neon.Values.Ordering (Ordering(EqualTo))
 
 -- TODO: purescript/purescript#1595
-import Neon.Types.Apply
-import Neon.Types.Bind
-import Neon.Types.Compose
-import Neon.Types.Fold
-import Neon.Types.Map
-import Neon.Types.Pure
+import Neon.Types.Apply (Apply)
+import Neon.Types.Bind (Bind)
+import Neon.Types.Compose (Compose)
+import Neon.Types.Fold (Fold)
+import Neon.Types.Map (Map)
+import Neon.Types.Pure (Pure)
 
 newtype Pair a b = Pair { first :: a, second :: b }
 
@@ -25,8 +25,7 @@ instance andPair :: (And a, And b) => And (Pair a b) where
 instance applyPair :: (Add a) => Apply (Pair a) where
   apply (Pair x) (Pair y) = pair (x.first + y.first) (x.second y.second)
 
--- TODO: Why is this zero instance necessary?
-instance bindPair :: (Add a, Zero a) => Bind (Pair a) where
+instance bindPair :: (Zero a) => Bind (Pair a) where
   bind (Pair x) f = case f x.second of
     Pair y -> pair (x.first + y.first) y.second
 

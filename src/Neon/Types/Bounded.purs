@@ -9,7 +9,8 @@ foreign import nativeBottomInt :: Int
 foreign import nativeTopChar :: Char
 foreign import nativeTopInt :: Int
 
--- TODO: Lawless!
+-- This class is lawless. It could have laws if it implied `Compare`, but it
+-- doesn't.
 class Bounded a where
   bottom :: a
   top :: a

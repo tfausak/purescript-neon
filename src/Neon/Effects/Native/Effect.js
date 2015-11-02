@@ -33,7 +33,7 @@ module.exports = {
     };
   },
 
-  nativeRunPure: function (x) {
+  runPure: function (x) {
     return x();
   }
 };
