@@ -41,6 +41,6 @@ module.exports = {
       .replace(/^|$/g, '"')
       .replace(/[^ -~]/g, function (c) {
         return '\\' + c.charCodeAt(0);
-      })
+      });
   }
 };
