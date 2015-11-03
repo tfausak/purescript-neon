@@ -6,6 +6,35 @@ module Neon.Values.Pair
   ) where
 
 import Neon.Types
+  ( Add
+  , And
+  , Bounded
+  , Compare
+  , Divide
+  , Equal
+  , Multiply
+  , Not
+  , One
+  , Or
+  , Show
+  , Subtract
+  , Zero
+  , bottom
+  , compare
+  , not
+  , one
+  , show
+  , top
+  , zero
+  , (-)
+  , (*)
+  , (/)
+  , (&&)
+  , (%)
+  , (+)
+  , (==)
+  , (||)
+  )
 import Neon.Values.Ordering (Ordering(EqualTo))
 
 -- TODO: purescript/purescript#1595
