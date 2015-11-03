@@ -5,45 +5,26 @@ module Neon.Values.Pair
   , uncurry
   ) where
 
-import Neon.Types
-  ( HasAdd
-  , HasAnd
-  , IsBounded
-  , HasCompare
-  , HasDivide
-  , HasEqual
-  , HasMultiply
-  , HasNot
-  , HasOne
-  , HasOr
-  , HasShow
-  , HasSubtract
-  , HasZero
-  , bottom
-  , compare
-  , not
-  , one
-  , show
-  , top
-  , zero
-  , (-)
-  , (*)
-  , (/)
-  , (&&)
-  , (%)
-  , (+)
-  , (==)
-  , (||)
-  )
-import Neon.Values.Ordering (Ordering(EqualTo))
-
--- TODO: purescript/purescript#1595
+import Neon.Types.HasAdd (HasAdd, (+))
+import Neon.Types.HasAnd (HasAnd, (&&))
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasBind (HasBind)
+import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasCompose (HasCompose)
+import Neon.Types.HasDivide (HasDivide, (/), (%))
+import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
 import Neon.Types.HasMap (HasMap)
+import Neon.Types.HasMultiply (HasMultiply, (*))
+import Neon.Types.HasNot (HasNot, not)
+import Neon.Types.HasOne (HasOne, one)
+import Neon.Types.HasOr (HasOr, (||))
 import Neon.Types.HasPure (HasPure)
+import Neon.Types.HasShow (HasShow, show)
+import Neon.Types.HasSubtract (HasSubtract, (-))
+import Neon.Types.HasZero (HasZero, zero)
+import Neon.Types.IsBounded (IsBounded, bottom, top)
+import Neon.Values.Ordering (Ordering(EqualTo))
 
 newtype Pair a b = Pair { first :: a, second :: b }
 
