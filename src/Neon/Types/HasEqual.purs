@@ -19,25 +19,25 @@ foreign import nativeEqualString :: String -> String -> Boolean
 class HasEqual a where
   equal :: a -> a -> Boolean
 
-instance equalArray :: (HasEqual a) => HasEqual (Array a) where
+instance arrayHasEqual :: (HasEqual a) => HasEqual (Array a) where
   equal x y = nativeEqualArray x y
 
-instance equalBoolean :: HasEqual Boolean where
+instance booleanHasEqual :: HasEqual Boolean where
   equal x y = nativeEqualBoolean x y
 
-instance equalChar :: HasEqual Char where
+instance charHasEqual :: HasEqual Char where
   equal x y = nativeEqualChar x y
 
-instance equalInt :: HasEqual Int where
+instance intHasEqual :: HasEqual Int where
   equal x y = nativeEqualInt x y
 
-instance equalNumber :: HasEqual Number where
+instance numberHasEqual :: HasEqual Number where
   equal x y = nativeEqualNumber x y
 
-instance equalObject :: HasEqual (Object o) where
+instance objectHasEqual :: HasEqual (Object o) where
   equal x y = nativeEqualObject x y
 
-instance equalString :: HasEqual String where
+instance stringHasEqual :: HasEqual String where
   equal x y = nativeEqualString x y
 
 -- | Alias for `equal`.

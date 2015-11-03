@@ -17,18 +17,18 @@ class IsBounded a where
   bottom :: a
   top :: a
 
-instance boundedBoolean :: IsBounded Boolean where
+instance booleanIsBounded :: IsBounded Boolean where
   bottom = false
   top = true
 
-instance boundedChar :: IsBounded Char where
+instance charIsBounded :: IsBounded Char where
   bottom = nativeBottomChar
   top = nativeTopChar
 
-instance boundedInt :: IsBounded Int where
+instance intIsBounded :: IsBounded Int where
   bottom = nativeBottomInt
   top = nativeTopInt
 
-instance boundedFunction :: (IsBounded b) => IsBounded (a -> b) where
+instance functionIsBounded :: (IsBounded b) => IsBounded (a -> b) where
   bottom = constant bottom
   top = constant top

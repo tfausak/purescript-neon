@@ -14,8 +14,8 @@ import Neon.Types.HasApply (HasApply)
 class (HasApply f) <= HasPure f where
   pure :: forall a. a -> f a
 
-instance pureArray :: HasPure Array where
+instance arrayHasPure :: HasPure Array where
   pure x = [x]
 
-instance pureFunction :: HasPure (Function a) where
+instance functionHasPure :: HasPure (Function a) where
   pure x = constant x

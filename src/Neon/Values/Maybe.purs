@@ -28,47 +28,43 @@ data Maybe a
   = Nothing
   | Just a
 
-instance addMaybe :: (HasAdd a) => HasAdd (Maybe a) where
+instance maybeHasAdd :: (HasAdd a) => HasAdd (Maybe a) where
   add x y = add <$> x <*> y
 
-instance alternativeMaybe :: HasAlternative Maybe where
+instance maybeHasAlternative :: HasAlternative Maybe where
   alternative Nothing y = y
   alternative x _ = x
 
-instance andMaybe :: (HasAnd a) => HasAnd (Maybe a) where
+instance maybeHasAnd :: (HasAnd a) => HasAnd (Maybe a) where
   and x y = and <$> x <*> y
 
-instance applyMaybe :: HasApply Maybe where
+instance maybeHasApply :: HasApply Maybe where
   apply (Just f) x = f <$> x
   apply _ _ = Nothing
 
-instance bindMaybe :: HasBind Maybe where
+instance maybeHasBind :: HasBind Maybe where
   bind Nothing _ = Nothing
   bind (Just x) f = f x
 
-instance boundedMaybe :: (IsBounded a) => IsBounded (Maybe a) where
-  bottom = Nothing
-  top = Just top
-
-instance compareMaybe :: (HasCompare a) => HasCompare (Maybe a) where
+instance maybeHasCompare :: (HasCompare a) => HasCompare (Maybe a) where
   compare (Just x) (Just y) = compare x y
   compare Nothing Nothing = EqualTo
   compare Nothing _ = LessThan
   compare _ Nothing = GreaterThan
 
-instance divideMaybe :: (HasDivide a) => HasDivide (Maybe a) where
+instance maybeHasDivide :: (HasDivide a) => HasDivide (Maybe a) where
   divide x y = divide <$> x <*> y
   modulo x y = modulo <$> x <*> y
 
-instance emptyMaybe :: HasEmpty Maybe where
+instance maybeHasEmpty :: HasEmpty Maybe where
   empty = Nothing
 
-instance equalMaybe :: (HasEqual a) => HasEqual (Maybe a) where
+instance maybeHasEqual :: (HasEqual a) => HasEqual (Maybe a) where
   equal Nothing Nothing = true
   equal (Just x) (Just y) = x == y
   equal _ _ = false
 
-instance foldMaybe :: HasFold Maybe where
+instance maybeHasFold :: HasFold Maybe where
   foldl f y x = case x of
     Just j -> f y j
     Nothing -> y
@@ -76,31 +72,35 @@ instance foldMaybe :: HasFold Maybe where
     Just j -> f j y
     Nothing -> y
 
-instance mapMaybe :: HasMap Maybe where
+instance maybeHasMap :: HasMap Maybe where
   map _ Nothing = Nothing
   map f (Just x) = Just (f x)
 
-instance multiplyMaybe :: (HasMultiply a) => HasMultiply (Maybe a) where
+instance maybeHasMultiply :: (HasMultiply a) => HasMultiply (Maybe a) where
   multiply x y = multiply <$> x <*> y
 
-instance notMaybe :: (HasNot a) => HasNot (Maybe a) where
+instance maybeHasNot :: (HasNot a) => HasNot (Maybe a) where
   not x = not <$> x
 
-instance oneMaybe :: (HasOne a) => HasOne (Maybe a) where
+instance maybeHasOne :: (HasOne a) => HasOne (Maybe a) where
   one = Just one
 
-instance orMaybe :: (HasOr a) => HasOr (Maybe a) where
+instance maybeHasOr :: (HasOr a) => HasOr (Maybe a) where
   or x y = or <$> x <*> y
 
-instance pureMaybe :: HasPure Maybe where
+instance maybeHasPure :: HasPure Maybe where
   pure x = Just x
 
-instance showMaybe :: (HasShow a) => HasShow (Maybe a) where
+instance maybeHasShow :: (HasShow a) => HasShow (Maybe a) where
   show Nothing = "Nothing"
   show (Just x) = "Just (" + show x + ")"
 
-instance subtractMaybe :: (HasSubtract a) => HasSubtract (Maybe a) where
+instance maybeHasSubtract :: (HasSubtract a) => HasSubtract (Maybe a) where
   subtract x y = subtract <$> x <*> y
 
-instance zeroMaybe :: (HasZero a) => HasZero (Maybe a) where
+instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
   zero = Just zero
+
+instance maybeIsBounded :: (IsBounded a) => IsBounded (Maybe a) where
+  bottom = Nothing
+  top = Just top

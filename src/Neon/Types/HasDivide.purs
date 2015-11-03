@@ -19,15 +19,15 @@ class (HasOne a) <= HasDivide a where
   divide :: a -> a -> a
   modulo :: a -> a -> a
 
-instance divideFunction :: (HasDivide b) => HasDivide (a -> b) where
+instance functionHasDivide :: (HasDivide b) => HasDivide (a -> b) where
   divide f g = \ x -> f x / g x
   modulo f g = \ x -> f x % g x
 
-instance divideInt :: HasDivide Int where
+instance intHasDivide :: HasDivide Int where
   divide x y = nativeDivideInt x y
   modulo x y = nativeModuloInt x y
 
-instance divideNumber :: HasDivide Number where
+instance numberHasDivide :: HasDivide Number where
   divide x y = nativeDivideNumber x y
   modulo _ _ = 0.0
 

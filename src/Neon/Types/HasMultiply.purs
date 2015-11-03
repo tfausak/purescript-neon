@@ -17,16 +17,16 @@ foreign import nativeMultiplyNumber :: Number -> Number -> Number
 class (HasZero a) <= HasMultiply a where
   multiply :: a -> a -> a
 
-instance multiplyBoolean :: HasMultiply Boolean where
+instance booleanHasMultiply :: HasMultiply Boolean where
   multiply x y = nativeMultiplyBoolean x y
 
-instance multiplyFunction :: (HasMultiply b) => HasMultiply (a -> b) where
+instance functionHasMultiply :: (HasMultiply b) => HasMultiply (a -> b) where
   multiply f g = \ x -> f x * g x
 
-instance multiplyInt :: HasMultiply Int where
+instance intHasMultiply :: HasMultiply Int where
   multiply x y = nativeMultiplyInt x y
 
-instance multiplyNumber :: HasMultiply Number where
+instance numberHasMultiply :: HasMultiply Number where
   multiply x y = nativeMultiplyNumber x y
 
 -- | Alias for `multiply`.

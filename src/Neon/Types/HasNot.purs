@@ -11,8 +11,8 @@ import Neon.Types.IsBounded (IsBounded)
 class (IsBounded a) <= HasNot a where
   not :: a -> a
 
-instance notBoolean :: HasNot Boolean where
+instance booleanHasNot :: HasNot Boolean where
   not x = if x then false else true
 
-instance notFunction :: (HasNot b) => HasNot (a -> b) where
+instance functionHasNot :: (HasNot b) => HasNot (a -> b) where
   not f = \ x -> not (f x)

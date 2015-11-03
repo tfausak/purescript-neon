@@ -16,10 +16,10 @@ foreign import nativeFlattenArray :: forall a. Array (Array a) -> Array a
 class (HasPure f) <= HasBind f where
   bind :: forall a b. f a -> (a -> f b) -> f b
 
-instance bindArray :: HasBind Array where
+instance arrayHasBind :: HasBind Array where
   bind xs f = nativeFlattenArray (map f xs)
 
-instance bindFunction :: HasBind (Function a) where
+instance functionHasbind :: HasBind (Function a) where
   bind g f = \ x -> f (g x) x
 
 -- | Alias for `bind`.

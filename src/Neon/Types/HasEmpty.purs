@@ -12,5 +12,5 @@ import Neon.Types.HasAlternative (HasAlternative)
 class (HasAlternative f) <= HasEmpty f where
   empty :: forall a. f a
 
-instance emptyArray :: HasEmpty Array where
+instance arrayHasEmpty :: HasEmpty Array where
   empty = []

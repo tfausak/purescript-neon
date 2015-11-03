@@ -15,22 +15,22 @@ foreign import nativeAddString :: String -> String -> String
 class HasAdd a where
   add :: a -> a -> a
 
-instance addArray :: HasAdd (Array a) where
+instance arrayHasAdd :: HasAdd (Array a) where
   add x y = nativeAddArray x y
 
-instance addBoolean :: HasAdd Boolean where
+instance booleanHasAdd :: HasAdd Boolean where
   add x y = nativeAddBoolean x y
 
-instance addFunction :: (HasAdd b) => HasAdd (a -> b) where
+instance functionHasAdd :: (HasAdd b) => HasAdd (a -> b) where
   add f g = \ x -> f x + g x
 
-instance addInt :: HasAdd Int where
+instance intHasAdd :: HasAdd Int where
   add x y = nativeAddInt x y
 
-instance addNumber :: HasAdd Number where
+instance numberHasAdd :: HasAdd Number where
   add x y = nativeAddNumber x y
 
-instance addString :: HasAdd String where
+instance stringHasAdd :: HasAdd String where
   add x y = nativeAddString x y
 
 -- | Alias for `add`.

@@ -11,20 +11,20 @@ import Neon.Types.HasAdd (HasAdd)
 class (HasAdd a) <= HasZero a where
   zero :: a
 
-instance zeroArray :: HasZero (Array a) where
+instance arrayHasZero :: HasZero (Array a) where
   zero = []
 
-instance zeroBoolean :: HasZero Boolean where
+instance booleanHasZero :: HasZero Boolean where
   zero = false
 
-instance zeroFunction :: (HasZero b) => HasZero (a -> b) where
+instance functionHasZero :: (HasZero b) => HasZero (a -> b) where
   zero = constant zero
 
-instance zeroInt :: HasZero Int where
+instance intHasZero :: HasZero Int where
   zero = 0
 
-instance zeroNumber :: HasZero Number where
+instance numberHasZero :: HasZero Number where
   zero = 0.0
 
-instance zeroString :: HasZero String where
+instance stringHasZero :: HasZero String where
   zero = ""

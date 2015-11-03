@@ -10,7 +10,7 @@ module Neon.Types.HasCompose
 class HasCompose f where
   compose :: forall a b c. f a b -> f b c -> f a c
 
-instance composeFunction :: HasCompose Function where
+instance functionHasCompose :: HasCompose Function where
   compose f g = \ x -> g (f x)
 
 -- | Alias for `compose`.

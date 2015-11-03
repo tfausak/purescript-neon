@@ -27,26 +27,26 @@ foreign import nativeCompareString :: Ordering -> Ordering -> Ordering -> String
 class (HasEqual a) <= HasCompare a where
   compare :: a -> a -> Ordering
 
-instance compareArray :: (HasCompare a) => HasCompare (Array a) where
+instance arrayHasCompare :: (HasCompare a) => HasCompare (Array a) where
   compare x y = nativeCompareArray LessThan EqualTo GreaterThan compare x y
 
-instance compareBoolean :: HasCompare Boolean where
+instance booleanHasCompare :: HasCompare Boolean where
   compare x y = if x == y
     then EqualTo
     else case x of
       true -> GreaterThan
       false -> LessThan
 
-instance compareChar :: HasCompare Char where
+instance charHasCompare :: HasCompare Char where
   compare x y = nativeCompareChar LessThan EqualTo GreaterThan x y
 
-instance compareInt :: HasCompare Int where
+instance intHasCompare :: HasCompare Int where
   compare x y = nativeCompareInt LessThan EqualTo GreaterThan x y
 
-instance compareNumber :: HasCompare Number where
+instance numberHasCompare :: HasCompare Number where
   compare x y = nativeCompareNumber LessThan EqualTo GreaterThan x y
 
-instance compareOrdering :: HasCompare Ordering where
+instance orderingHasCompare :: HasCompare Ordering where
   compare x y = case x of
     LessThan -> case y of
       LessThan -> EqualTo
@@ -59,7 +59,7 @@ instance compareOrdering :: HasCompare Ordering where
       GreaterThan -> EqualTo
       _ -> GreaterThan
 
-instance compareString :: HasCompare String where
+instance stringHasCompare :: HasCompare String where
   compare x y = nativeCompareString LessThan EqualTo GreaterThan x y
 
 greaterThan :: forall a. (HasCompare a) => a -> a -> Boolean

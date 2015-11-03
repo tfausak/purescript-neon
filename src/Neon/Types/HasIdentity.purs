@@ -10,5 +10,5 @@ import Neon.Types.HasCompose (HasCompose)
 class (HasCompose f) <= HasIdentity f where
   identity :: forall a. f a a
 
-instance identityFunction :: HasIdentity Function where
+instance functionHasIdentity :: HasIdentity Function where
   identity = \ x -> x

@@ -15,10 +15,10 @@ import Neon.Types.IsBounded (IsBounded)
 class (IsBounded a) <= HasAnd a where
   and :: a -> a -> a
 
-instance andBoolean :: HasAnd Boolean where
+instance booleanHasAnd :: HasAnd Boolean where
   and x y = if x then y else false
 
-instance andFunction :: (HasAnd b) => HasAnd (a -> b) where
+instance functionHasAnd :: (HasAnd b) => HasAnd (a -> b) where
   and f g = \ x -> f x && g x
 
 -- | Alias for `and`.

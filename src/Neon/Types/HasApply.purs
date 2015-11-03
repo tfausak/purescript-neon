@@ -14,10 +14,10 @@ foreign import nativeFlattenArray :: forall a. Array (Array a) -> Array a
 class (HasMap f) <= HasApply f where
   apply :: forall a b. f (a -> b) -> f a -> f b
 
-instance applyArray :: HasApply Array where
+instance arrayHasApply :: HasApply Array where
   apply fs xs = fs |> map (flip map xs) |> nativeFlattenArray
 
-instance applyFunction :: HasApply (Function a) where
+instance functionHasApply :: HasApply (Function a) where
   apply f g = \ x -> f x (g x)
 
 -- | Alias for `apply`.

@@ -15,10 +15,10 @@ import Neon.Types.IsBounded (IsBounded)
 class (IsBounded a) <= HasOr a where
   or :: a -> a -> a
 
-instance orBoolean :: HasOr Boolean where
+instance booleanHasOr :: HasOr Boolean where
   or x y = if x then true else y
 
-instance orFunction :: (HasOr b) => HasOr (a -> b) where
+instance functionHasOr :: (HasOr b) => HasOr (a -> b) where
   or f g = \ x -> f x || g x
 
 -- | Alias for `or`.

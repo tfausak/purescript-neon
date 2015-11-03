@@ -15,10 +15,10 @@ foreign import nativeMapArray :: forall a b. (a -> b) -> Array a -> Array b
 class HasMap f where
   map :: forall a b. (a -> b) -> f a -> f b
 
-instance mapArray :: HasMap Array where
+instance arrayHasMap :: HasMap Array where
   map f x = nativeMapArray f x
 
-instance mapFunction :: HasMap (Function a) where
+instance functionHasMap :: HasMap (Function a) where
   map f g = g >> f
 
 -- | Alias for `map`.

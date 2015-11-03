@@ -11,11 +11,7 @@ data Ordering
   | EqualTo
   | GreaterThan
 
-instance boundedOrdering :: IsBounded Ordering where
-  bottom = LessThan
-  top = GreaterThan
-
-instance equalOrdering :: HasEqual Ordering where
+instance orderingHasEqual :: HasEqual Ordering where
   equal x y = case x of
     LessThan -> case y of
       LessThan -> true
@@ -27,8 +23,12 @@ instance equalOrdering :: HasEqual Ordering where
       GreaterThan -> true
       _ -> false
 
-instance showOrdering :: HasShow Ordering where
+instance orderingHasShow :: HasShow Ordering where
   show x = case x of
     LessThan -> "LessThan"
     EqualTo -> "EqualTo"
     GreaterThan -> "GreaterThan"
+
+instance orderingIsBounded :: IsBounded Ordering where
+  bottom = LessThan
+  top = GreaterThan

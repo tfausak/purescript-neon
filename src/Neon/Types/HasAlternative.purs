@@ -13,7 +13,7 @@ import Neon.Types.HasMap (HasMap)
 class (HasMap f) <= HasAlternative f where
   alternative :: forall a. f a -> f a -> f a
 
-instance alternativeArray :: HasAlternative Array where
+instance alternativeHasArray :: HasAlternative Array where
   alternative xs ys = xs + ys
 
 -- | Alias for `alternative`.

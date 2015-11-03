@@ -20,46 +20,46 @@ import Neon.Types.HasZero (HasZero)
 
 newtype Unit = Unit {}
 
-instance addUnit :: HasAdd Unit where
+instance unitHasAdd :: HasAdd Unit where
   add _ _ = unit
 
-instance andUnit :: HasAnd Unit where
+instance unitHasAnd :: HasAnd Unit where
   and _ _ = unit
 
-instance boundedUnit :: IsBounded Unit where
-  bottom = unit
-  top = unit
-
-instance compareUnit :: HasCompare Unit where
+instance unitHasCompare :: HasCompare Unit where
   compare _ _ = EqualTo
 
-instance divideUnit :: HasDivide Unit where
+instance unitHasDivide :: HasDivide Unit where
   divide _ _ = unit
   modulo _ _ = unit
 
-instance equalUnit :: HasEqual Unit where
+instance unitHasEqual :: HasEqual Unit where
   equal _ _ = true
 
-instance multiplyUnit :: HasMultiply Unit where
+instance unitHasMultiply :: HasMultiply Unit where
   multiply _ _ = unit
 
-instance notUnit :: HasNot Unit where
+instance unitHasNot :: HasNot Unit where
   not _ = unit
 
-instance oneUnit :: HasOne Unit where
+instance unitHasOne :: HasOne Unit where
   one = unit
 
-instance orUnit :: HasOr Unit where
+instance unitHasOr :: HasOr Unit where
   or _ _ = unit
 
-instance showUnit :: HasShow Unit where
+instance unitHasShow :: HasShow Unit where
   show _ = "unit"
 
-instance subtractUnit :: HasSubtract Unit where
+instance unitHasSubtract :: HasSubtract Unit where
   subtract _ _ = unit
 
-instance zeroUnit :: HasZero Unit where
+instance unitHasZero :: HasZero Unit where
   zero = unit
+
+instance unitIsBounded :: IsBounded Unit where
+  bottom = unit
+  top = unit
 
 unit :: Unit
 unit = Unit {}

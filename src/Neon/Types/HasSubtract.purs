@@ -14,10 +14,10 @@ foreign import nativeSubtractNumber :: Number -> Number -> Number
 class (HasZero a) <= HasSubtract a where
   subtract :: a -> a -> a
 
-instance subtractInt :: HasSubtract Int where
+instance intHasSubtract :: HasSubtract Int where
   subtract x y = nativeSubtractInt x y
 
-instance subtractNumber :: HasSubtract Number where
+instance numberHasSubtract :: HasSubtract Number where
   subtract x y = nativeSubtractNumber x y
 
 -- | Alias for `subtract`.

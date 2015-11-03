@@ -11,14 +11,14 @@ import Neon.Types.HasMultiply (HasMultiply)
 class (HasMultiply a) <= HasOne a where
   one :: a
 
-instance oneBoolean :: HasOne Boolean where
+instance booleanHasOne :: HasOne Boolean where
   one = true
 
-instance oneFunction :: (HasOne b) => HasOne (a -> b) where
+instance functionHasOne :: (HasOne b) => HasOne (a -> b) where
   one = constant one
 
-instance oneInt :: HasOne Int where
+instance intHasOne :: HasOne Int where
   one = 1
 
-instance oneNumber :: HasOne Number where
+instance numberHasOne :: HasOne Number where
   one = 1.0

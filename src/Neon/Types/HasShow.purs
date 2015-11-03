@@ -14,20 +14,20 @@ foreign import nativeShowString :: String -> String
 class HasShow a where
   show :: a -> String
 
-instance showArray :: (HasShow a) => HasShow (Array a) where
+instance arrayHasShow :: (HasShow a) => HasShow (Array a) where
   show x = nativeShowArray show x
 
-instance showBoolean :: HasShow Boolean where
+instance booleanHasShow :: HasShow Boolean where
   show x = if x then "true" else "false"
 
-instance showChar :: HasShow Char where
+instance charHasShow :: HasShow Char where
   show x = nativeShowChar x
 
-instance showInt :: HasShow Int where
+instance intHasShow :: HasShow Int where
   show x = nativeShowInt x
 
-instance showNumber :: HasShow Number where
+instance numberHasShow :: HasShow Number where
   show x = nativeShowNumber x
 
-instance showString :: HasShow String where
+instance stringHasShow :: HasShow String where
   show x = nativeShowString x
