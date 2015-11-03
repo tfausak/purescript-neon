@@ -1,6 +1,8 @@
 module Neon.Values.Pair
   ( Pair(Pair)
+  , curry
   , pair
+  , uncurry
   ) where
 
 import Neon.Types
@@ -83,5 +85,11 @@ instance subtractPair :: (Subtract a, Subtract b) => Subtract (Pair a b) where
 instance zeroPair :: (Zero a, Zero b) => Zero (Pair a b) where
   zero = pair zero zero
 
+curry :: forall a b c. (Pair a b -> c) -> (a -> b -> c)
+curry f = \ x y -> f (pair x y)
+
 pair :: forall a b. a -> b -> Pair a b
 pair x y = Pair { first: x, second: y }
+
+uncurry :: forall a b c. (a -> b -> c) -> (Pair a b -> c)
+uncurry f = \ (Pair x) -> f x.first x.second

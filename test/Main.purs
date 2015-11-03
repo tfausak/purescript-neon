@@ -190,6 +190,8 @@ main = do
   show (pair 1 2) ==> "Pair { first: 1, second: 2 }"
   pair 9 8 - pair 2 3 ==> pair 7 5
   zero ==> pair 0 0
+  curry (\ (Pair x) -> x.first + x.second) 2 3 ==> 5
+  uncurry (\ x y -> x + y) (pair 2 3) ==> 5
 
   -- Pure
   pure 1 ==> [1]
