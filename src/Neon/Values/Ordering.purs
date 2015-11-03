@@ -3,8 +3,8 @@ module Neon.Values.Ordering
   ) where
 
 import Neon.Types.Bounded (Bounded, bottom, top)
-import Neon.Types.Equal (Equal, equal)
-import Neon.Types.Show (Show, show)
+import Neon.Types.HasEqual (HasEqual, equal)
+import Neon.Types.HasShow (HasShow, show)
 
 data Ordering
   = LessThan
@@ -15,7 +15,7 @@ instance boundedOrdering :: Bounded Ordering where
   bottom = LessThan
   top = GreaterThan
 
-instance equalOrdering :: Equal Ordering where
+instance equalOrdering :: HasEqual Ordering where
   equal x y = case x of
     LessThan -> case y of
       LessThan -> true
@@ -27,7 +27,7 @@ instance equalOrdering :: Equal Ordering where
       GreaterThan -> true
       _ -> false
 
-instance showOrdering :: Show Ordering where
+instance showOrdering :: HasShow Ordering where
   show x = case x of
     LessThan -> "LessThan"
     EqualTo -> "EqualTo"

@@ -6,7 +6,7 @@
 :zap: An experimental PureScript prelude.
 
 I often have delusions of grandeur about creating my own programming language.
-Realistically, I would never finish such a project. And my language would end
+Realistically, I would never finish such a project. HasAnd my language would end
 up being an ML a lot like Haskell and PureScript. So instead of creating my own
 language, I decided to see how hard it would be to create my own core library
 on top of an existing language.

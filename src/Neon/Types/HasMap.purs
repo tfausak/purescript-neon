@@ -1,0 +1,27 @@
+module Neon.Types.HasMap
+  ( HasMap
+  , map
+  , (<$>)
+  ) where
+
+import Neon.Types.HasCompose ((>>))
+import Neon.Values.Unit (Unit(), unit)
+
+foreign import nativeMapArray :: forall a b. (a -> b) -> Array a -> Array b
+
+-- | Laws:
+-- | - HasIdentity: `map identity = identity`
+-- | - Composition: `map (f >> g) = map f >> map g`
+class HasMap f where
+  map :: forall a b. (a -> b) -> f a -> f b
+
+instance mapArray :: HasMap Array where
+  map f x = nativeMapArray f x
+
+instance mapFunction :: HasMap (Function a) where
+  map f g = g >> f
+
+-- | Alias for `map`.
+(<$>) :: forall f a b. (HasMap f) => (a -> b) -> f a -> f b
+(<$>) f x = map f x
+infixl 4 <$>

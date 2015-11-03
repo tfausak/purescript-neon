@@ -11,7 +11,7 @@ foreign import nativeBottomInt :: Int
 foreign import nativeTopChar :: Char
 foreign import nativeTopInt :: Int
 
--- This class is lawless. It could have laws if it implied `Compare`, but it
+-- This class is lawless. It could have laws if it implied `HasCompare`, but it
 -- doesn't.
 class Bounded a where
   bottom :: a
