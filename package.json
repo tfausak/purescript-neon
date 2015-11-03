@@ -11,12 +11,19 @@
     "node": "5.0.0",
     "npm": "3.3.9"
   },
+  "license": "MIT",
+  "name": "purescript-neon",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tfausak/purescript-neon.git"
+  },
   "scripts": {
     "eslint": "eslint",
     "postinstall": "pulp dep install",
     "pulp": "pulp",
     "psc-publish": "psc-publish",
     "test": "pulp test && psc-publish --dry-run && eslint src"
-  }
+  },
+  "version": "0.0.0-private"
 }
