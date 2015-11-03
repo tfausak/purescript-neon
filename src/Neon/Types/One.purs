@@ -3,6 +3,7 @@ module Neon.Types.One
   , one
   ) where
 
+import Neon.Primitives.Function (constant)
 import Neon.Types.Multiply (Multiply)
 
 -- | Laws:
@@ -14,7 +15,7 @@ instance oneBoolean :: One Boolean where
   one = true
 
 instance oneFunction :: (One b) => One (a -> b) where
-  one = \ _ -> one
+  one = constant one
 
 instance oneInt :: One Int where
   one = 1

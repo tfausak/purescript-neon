@@ -3,6 +3,7 @@ module Neon.Types.Zero
   , zero
   ) where
 
+import Neon.Primitives.Function (constant)
 import Neon.Types.Add (Add)
 
 -- | Laws:
@@ -17,7 +18,7 @@ instance zeroBoolean :: Zero Boolean where
   zero = false
 
 instance zeroFunction :: (Zero b) => Zero (a -> b) where
-  zero = \ _ -> zero
+  zero = constant zero
 
 instance zeroInt :: Zero Int where
   zero = 0

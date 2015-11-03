@@ -4,6 +4,7 @@ module Neon.Types.Apply
   , (<*>)
   ) where
 
+import Neon.Primitives.Function (flip, (|>))
 import Neon.Types.Map (Map, map)
 
 foreign import nativeFlattenArray :: forall a. Array (Array a) -> Array a
@@ -14,7 +15,7 @@ class (Map f) <= Apply f where
   apply :: forall a b. f (a -> b) -> f a -> f b
 
 instance applyArray :: Apply Array where
-  apply fs xs = nativeFlattenArray (map (\ f -> map (\ x -> f x) xs) fs)
+  apply fs xs = fs |> map (flip map xs) |> nativeFlattenArray
 
 instance applyFunction :: Apply (Function a) where
   apply f g = \ x -> f x (g x)

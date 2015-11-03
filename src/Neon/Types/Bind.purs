@@ -17,7 +17,7 @@ class (Pure f) <= Bind f where
   bind :: forall a b. f a -> (a -> f b) -> f b
 
 instance bindArray :: Bind Array where
-  bind xs f = nativeFlattenArray (map (\ x -> f x) xs)
+  bind xs f = nativeFlattenArray (map f xs)
 
 instance bindFunction :: Bind (Function a) where
   bind g f = \ x -> f (g x) x

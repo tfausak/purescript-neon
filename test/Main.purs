@@ -18,7 +18,7 @@ main = do
 
   -- And
   true && true ==> true
-  ((\ _ -> true) && (\ _ -> true)) unit ==> true
+  ((constant true) && (constant true)) unit ==> true
 
   -- Apply
   apply [(+ 1), (+ 2)] [1, 2] ==> [2, 3, 3, 4]
@@ -98,11 +98,16 @@ main = do
   "neon" == "neon" ==> true
 
   -- Exception
-  runPure (catch (throw (exception "a")) (\ _ -> pure "b")) ==> "b"
+  runPure (catch (throw (exception "a")) (constant (pure "b"))) ==> "b"
 
   -- Fold
   foldl (+) "a" ["b", "c"] ==> "abc"
   foldr (+) "a" ["b", "c"] ==> "bca"
+
+  -- Function
+  constant 3 unit ==> 3
+  (3 |> (+ 1)) ==> 4
+  ((+ 1) <| 3) ==> 4
 
   -- Identity
   identity unit ==> unit
@@ -143,7 +148,7 @@ main = do
 
   -- Not
   not true ==> false
-  (not \ _ -> false) unit ==> true
+  (not constant false) unit ==> true
 
   -- One
   one ==> true
@@ -153,7 +158,7 @@ main = do
 
   -- Or
   false || true ==> true
-  ((\ _ -> true) || (\ _ -> false)) unit ==> true
+  ((constant true) || (constant false)) unit ==> true
 
   -- Ordering
   bottom ==> LessThan

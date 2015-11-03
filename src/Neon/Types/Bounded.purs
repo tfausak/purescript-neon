@@ -4,6 +4,8 @@ module Neon.Types.Bounded
   , top
   ) where
 
+import Neon.Primitives.Function (constant)
+
 foreign import nativeBottomChar :: Char
 foreign import nativeBottomInt :: Int
 foreign import nativeTopChar :: Char
@@ -28,5 +30,5 @@ instance boundedInt :: Bounded Int where
   top = nativeTopInt
 
 instance boundedFunction :: (Bounded b) => Bounded (a -> b) where
-  bottom = \ _ -> bottom
-  top = \ _ -> top
+  bottom = constant bottom
+  top = constant top

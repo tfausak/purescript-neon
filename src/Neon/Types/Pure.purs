@@ -3,6 +3,7 @@ module Neon.Types.Pure
   , pure
   ) where
 
+import Neon.Primitives.Function (constant)
 import Neon.Types.Apply (Apply)
 
 -- | Laws:
@@ -17,4 +18,4 @@ instance pureArray :: Pure Array where
   pure x = [x]
 
 instance pureFunction :: Pure (Function a) where
-  pure x = \ _ -> x
+  pure x = constant x
