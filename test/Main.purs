@@ -38,6 +38,10 @@ main = do
   bottom unit ==> false
   top unit ==> true
 
+  -- Char
+  toLower 'A' ==> 'a'
+  toUpper 'a' ==> 'A'
+
   -- Compare
   compare [1] [1] ==> EqualTo
   compare false true ==> LessThan
@@ -197,6 +201,10 @@ main = do
   show 1.2 ==> "1.2"
   show "neon" ==> "\"neon\""
   show " ~\8\65535" ==> "\" ~\\8\\65535\""
+
+  -- String
+  fromCharArray ['a', 'b', 'c'] ==> "abc"
+  toCharArray "abc" ==> ['a', 'b', 'c']
 
   -- Subtract
   2 - 3 ==> 0 - 1
