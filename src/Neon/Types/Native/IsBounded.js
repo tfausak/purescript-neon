@@ -1,6 +1,6 @@
 'use strict';
 
-// module Neon.Types.Bounded
+// module Neon.Types.IsBounded
 
 module.exports = {
   nativeBottomChar: String.fromCharCode(0),

@@ -2,7 +2,7 @@ module Neon.Values.Ordering
   ( Ordering(LessThan, EqualTo, GreaterThan)
   ) where
 
-import Neon.Types.Bounded (Bounded, bottom, top)
+import Neon.Types.IsBounded (IsBounded, bottom, top)
 import Neon.Types.HasEqual (HasEqual, equal)
 import Neon.Types.HasShow (HasShow, show)
 
@@ -11,7 +11,7 @@ data Ordering
   | EqualTo
   | GreaterThan
 
-instance boundedOrdering :: Bounded Ordering where
+instance boundedOrdering :: IsBounded Ordering where
   bottom = LessThan
   top = GreaterThan
 

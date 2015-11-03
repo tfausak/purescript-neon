@@ -1,5 +1,5 @@
-module Neon.Types.Bounded
-  ( Bounded
+module Neon.Types.IsBounded
+  ( IsBounded
   , bottom
   , top
   ) where
@@ -13,22 +13,22 @@ foreign import nativeTopInt :: Int
 
 -- This class is lawless. It could have laws if it implied `HasCompare`, but it
 -- doesn't.
-class Bounded a where
+class IsBounded a where
   bottom :: a
   top :: a
 
-instance boundedBoolean :: Bounded Boolean where
+instance boundedBoolean :: IsBounded Boolean where
   bottom = false
   top = true
 
-instance boundedChar :: Bounded Char where
+instance boundedChar :: IsBounded Char where
   bottom = nativeBottomChar
   top = nativeTopChar
 
-instance boundedInt :: Bounded Int where
+instance boundedInt :: IsBounded Int where
   bottom = nativeBottomInt
   top = nativeTopInt
 
-instance boundedFunction :: (Bounded b) => Bounded (a -> b) where
+instance boundedFunction :: (IsBounded b) => IsBounded (a -> b) where
   bottom = constant bottom
   top = constant top

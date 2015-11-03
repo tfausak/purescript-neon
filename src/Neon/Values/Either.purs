@@ -7,7 +7,7 @@ import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
 import Neon.Types.HasApply (HasApply, (<*>))
 import Neon.Types.HasBind (HasBind, bind)
-import Neon.Types.Bounded (Bounded, bottom, top)
+import Neon.Types.IsBounded (IsBounded, bottom, top)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty)
@@ -35,7 +35,7 @@ instance alternativeEither :: HasAlternative (Either a) where
   alternative (Left _) y = y
   alternative x _ = x
 
-instance andEither :: (Bounded a, HasAnd b) => HasAnd (Either a b) where
+instance andEither :: (IsBounded a, HasAnd b) => HasAnd (Either a b) where
   and x y = and <$> x <*> y
 
 instance applyEither :: HasApply (Either a) where
@@ -46,7 +46,7 @@ instance bindEither :: HasBind (Either a) where
   bind (Left x) _ = Left x
   bind (Right x) f = f x
 
-instance boundedEither :: (Bounded a, Bounded b) => Bounded (Either a b) where
+instance boundedEither :: (IsBounded a, IsBounded b) => IsBounded (Either a b) where
   bottom = Left bottom
   top = Right top
 
@@ -80,13 +80,13 @@ instance mapEither :: HasMap (Either a) where
 instance multiplyEither :: (HasMultiply b) => HasMultiply (Either a b) where
   multiply x y = multiply <$> x <*> y
 
-instance notEither :: (Bounded a, HasNot b) => HasNot (Either a b) where
+instance notEither :: (IsBounded a, HasNot b) => HasNot (Either a b) where
   not x = not <$> x
 
 instance oneEither :: (HasOne b) => HasOne (Either a b) where
   one = Right one
 
-instance orEither :: (Bounded a, HasOr b) => HasOr (Either a b) where
+instance orEither :: (IsBounded a, HasOr b) => HasOr (Either a b) where
   or x y = or <$> x <*> y
 
 instance pureEither :: HasPure (Either a) where

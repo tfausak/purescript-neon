@@ -5,7 +5,7 @@ module Neon.Values.Unit
 
 import Neon.Types.HasAdd (HasAdd)
 import Neon.Types.HasAnd (HasAnd)
-import Neon.Types.Bounded (Bounded)
+import Neon.Types.IsBounded (IsBounded)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Types.HasDivide (HasDivide)
 import Neon.Types.HasEqual (HasEqual)
@@ -26,7 +26,7 @@ instance addUnit :: HasAdd Unit where
 instance andUnit :: HasAnd Unit where
   and _ _ = unit
 
-instance boundedUnit :: Bounded Unit where
+instance boundedUnit :: IsBounded Unit where
   bottom = unit
   top = unit
 

@@ -8,7 +8,7 @@ module Neon.Values.Pair
 import Neon.Types
   ( HasAdd
   , HasAnd
-  , Bounded
+  , IsBounded
   , HasCompare
   , HasDivide
   , HasEqual
@@ -60,7 +60,7 @@ instance bindPair :: (HasZero a) => HasBind (Pair a) where
   bind (Pair x) f = case f x.second of
     Pair y -> pair (x.first + y.first) y.second
 
-instance boundedPair :: (Bounded a, Bounded b) => Bounded (Pair a b) where
+instance boundedPair :: (IsBounded a, IsBounded b) => IsBounded (Pair a b) where
   bottom = pair bottom bottom
   top = pair top top
 

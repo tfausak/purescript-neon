@@ -7,7 +7,7 @@ import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
 import Neon.Types.HasApply (HasApply, (<*>))
 import Neon.Types.HasBind (HasBind, bind)
-import Neon.Types.Bounded (Bounded, top)
+import Neon.Types.IsBounded (IsBounded, top)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty)
@@ -46,7 +46,7 @@ instance bindMaybe :: HasBind Maybe where
   bind Nothing _ = Nothing
   bind (Just x) f = f x
 
-instance boundedMaybe :: (Bounded a) => Bounded (Maybe a) where
+instance boundedMaybe :: (IsBounded a) => IsBounded (Maybe a) where
   bottom = Nothing
   top = Just top
 

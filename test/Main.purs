@@ -28,7 +28,7 @@ main = do
   bind [1, 2] (\ x -> [x, x + 1]) ==> [1, 2, 2, 3]
   (bind (+ 2) (+)) 1 ==> 4
 
-  -- Bounded
+  -- IsBounded
   bottom ==> false
   top ==> true
   -- bottom ==> '\0' -- TODO: purescript/purescript#1602
