@@ -2,47 +2,47 @@ module Neon.Values.Either
   ( Either(Left, Right)
   ) where
 
-import Neon.Types.Add (Add, add, (+))
-import Neon.Types.Alternative (Alternative)
-import Neon.Types.And (And, and)
-import Neon.Types.Apply (Apply, (<*>))
-import Neon.Types.Bind (Bind, bind)
+import Neon.Types.HasAdd (HasAdd, add, (+))
+import Neon.Types.HasAlternative (HasAlternative)
+import Neon.Types.HasAnd (HasAnd, and)
+import Neon.Types.HasApply (HasApply, (<*>))
+import Neon.Types.HasBind (HasBind, bind)
 import Neon.Types.Bounded (Bounded, bottom, top)
-import Neon.Types.Compare (Compare, compare)
-import Neon.Types.Divide (Divide, divide, modulo)
-import Neon.Types.Empty (Empty)
-import Neon.Types.Equal (Equal, (==))
-import Neon.Types.Fold (Fold)
-import Neon.Types.Map (Map, (<$>))
-import Neon.Types.Multiply (Multiply, multiply)
-import Neon.Types.Not (Not, not)
-import Neon.Types.One (One, one)
-import Neon.Types.Or (Or, or)
-import Neon.Types.Pure (Pure)
-import Neon.Types.Show (Show, show)
-import Neon.Types.Subtract (Subtract, subtract)
-import Neon.Types.Zero (Zero, zero)
+import Neon.Types.HasCompare (HasCompare, compare)
+import Neon.Types.HasDivide (HasDivide, divide, modulo)
+import Neon.Types.HasEmpty (HasEmpty)
+import Neon.Types.HasEqual (HasEqual, (==))
+import Neon.Types.HasFold (HasFold)
+import Neon.Types.HasMap (HasMap, (<$>))
+import Neon.Types.HasMultiply (HasMultiply, multiply)
+import Neon.Types.HasNot (HasNot, not)
+import Neon.Types.HasOne (HasOne, one)
+import Neon.Types.HasOr (HasOr, or)
+import Neon.Types.HasPure (HasPure)
+import Neon.Types.HasShow (HasShow, show)
+import Neon.Types.HasSubtract (HasSubtract, subtract)
+import Neon.Types.HasZero (HasZero, zero)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Either a b
   = Left a
   | Right b
 
-instance addEither :: (Add b) => Add (Either a b) where
+instance addEither :: (HasAdd b) => HasAdd (Either a b) where
   add x y = add <$> x <*> y
 
-instance alternativeEither :: Alternative (Either a) where
+instance alternativeEither :: HasAlternative (Either a) where
   alternative (Left _) y = y
   alternative x _ = x
 
-instance andEither :: (Bounded a, And b) => And (Either a b) where
+instance andEither :: (Bounded a, HasAnd b) => HasAnd (Either a b) where
   and x y = and <$> x <*> y
 
-instance applyEither :: Apply (Either a) where
+instance applyEither :: HasApply (Either a) where
   apply (Right f) x = f <$> x
   apply (Left x) _ = Left x
 
-instance bindEither :: Bind (Either a) where
+instance bindEither :: HasBind (Either a) where
   bind (Left x) _ = Left x
   bind (Right x) f = f x
 
@@ -50,22 +50,22 @@ instance boundedEither :: (Bounded a, Bounded b) => Bounded (Either a b) where
   bottom = Left bottom
   top = Right top
 
-instance compareEither :: (Compare a, Compare b) => Compare (Either a b) where
+instance compareEither :: (HasCompare a, HasCompare b) => HasCompare (Either a b) where
   compare (Left x) (Left y) = compare x y
   compare (Right x) (Right y) = compare x y
   compare (Left _) _ = LessThan
   compare _ (Left _) = GreaterThan
 
-instance divideEither :: (Divide b) => Divide (Either a b) where
+instance divideEither :: (HasDivide b) => HasDivide (Either a b) where
   divide x y = divide <$> x <*> y
   modulo x y = modulo <$> x <*> y
 
-instance equalEither :: (Equal a, Equal b) => Equal (Either a b) where
+instance equalEither :: (HasEqual a, HasEqual b) => HasEqual (Either a b) where
   equal (Left x) (Left y) = x == y
   equal (Right x) (Right y) = x == y
   equal _ _ = false
 
-instance foldEither :: Fold (Either a) where
+instance foldEither :: HasFold (Either a) where
   foldl f y x = case x of
     Right r -> f y r
     Left _ -> y
@@ -73,31 +73,31 @@ instance foldEither :: Fold (Either a) where
     Right r -> f r y
     Left _ -> y
 
-instance mapEither :: Map (Either a) where
+instance mapEither :: HasMap (Either a) where
   map f (Right x) = Right (f x)
   map _ (Left x) = Left x
 
-instance multiplyEither :: (Multiply b) => Multiply (Either a b) where
+instance multiplyEither :: (HasMultiply b) => HasMultiply (Either a b) where
   multiply x y = multiply <$> x <*> y
 
-instance notEither :: (Bounded a, Not b) => Not (Either a b) where
+instance notEither :: (Bounded a, HasNot b) => HasNot (Either a b) where
   not x = not <$> x
 
-instance oneEither :: (One b) => One (Either a b) where
+instance oneEither :: (HasOne b) => HasOne (Either a b) where
   one = Right one
 
-instance orEither :: (Bounded a, Or b) => Or (Either a b) where
+instance orEither :: (Bounded a, HasOr b) => HasOr (Either a b) where
   or x y = or <$> x <*> y
 
-instance pureEither :: Pure (Either a) where
+instance pureEither :: HasPure (Either a) where
   pure x = Right x
 
-instance showEither :: (Show a, Show b) => Show (Either a b) where
+instance showEither :: (HasShow a, HasShow b) => HasShow (Either a b) where
   show (Left x) = "Left (" + show x + ")"
   show (Right x) = "Right (" + show x + ")"
 
-instance subtractEither :: (Subtract b) => Subtract (Either a b) where
+instance subtractEither :: (HasSubtract b) => HasSubtract (Either a b) where
   subtract x y = subtract <$> x <*> y
 
-instance zeroEither :: (Zero b) => Zero (Either a b) where
+instance zeroEither :: (HasZero b) => HasZero (Either a b) where
   zero = Right zero

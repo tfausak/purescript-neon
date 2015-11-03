@@ -5,7 +5,7 @@ import Neon.Values -- TODO: purescript/purescript#1594
 
 main :: Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 main = do
-  -- Add
+  -- HasAdd
   [1] + [2] ==> [1, 2]
   true + true ==> true
   ((+ "!") + (+ "?")) "Eh" ==> "Eh!Eh?"
@@ -13,18 +13,18 @@ main = do
   1.0 + 2.0 ==> 3.0
   "1" + "2" ==> "12"
 
-  -- Alternative
+  -- HasAlternative
   [1] <|> [2] ==> [1, 2]
 
-  -- And
+  -- HasAnd
   true && true ==> true
   ((constant true) && (constant true)) unit ==> true
 
-  -- Apply
+  -- HasApply
   apply [(+ 1), (+ 2)] [1, 2] ==> [2, 3, 3, 4]
   (apply (+) (+ 2)) 1 ==> 4
 
-  -- Bind
+  -- HasBind
   bind [1, 2] (\ x -> [x, x + 1]) ==> [1, 2, 2, 3]
   (bind (+ 2) (+)) 1 ==> 4
 
@@ -42,7 +42,7 @@ main = do
   toLower 'A' ==> 'a'
   toUpper 'a' ==> 'A'
 
-  -- Compare
+  -- HasCompare
   compare [1] [1] ==> EqualTo
   compare false true ==> LessThan
   compare 'b' 'a' ==> GreaterThan
@@ -51,10 +51,10 @@ main = do
   compare EqualTo LessThan ==> GreaterThan
   compare "neon" "neon" ==> EqualTo
 
-  -- Compose
+  -- HasCompose
   ((+ 2) >> (* 2)) 3 ==> 10
 
-  -- Divide
+  -- HasDivide
   ((+ 2) / (\ x -> x - 3)) 8 ==> 2
   ((+ 2) % (\ x -> x - 3)) 8 ==> 0
   5 / 2 ==> 2
@@ -85,10 +85,10 @@ main = do
   Right 3 - Right 2 ==> Right 1 :: Either Unit Int
   zero ==> Right 0 :: Either Unit Int
 
-  -- Empty
+  -- HasEmpty
   empty ==> [] :: Array Unit
 
-  -- Equal
+  -- HasEqual
   [1] == [1] ==> true
   true == false ==> false
   'a' == 'a' ==> true
@@ -100,7 +100,7 @@ main = do
   -- Exception
   runPure (catch (throw (exception "a")) (constant (pure "b"))) ==> "b"
 
-  -- Fold
+  -- HasFold
   foldl (+) "a" ["b", "c"] ==> "abc"
   foldr (+) "a" ["b", "c"] ==> "bca"
 
@@ -109,10 +109,10 @@ main = do
   (3 |> (+ 1)) ==> 4
   ((+ 1) <| 3) ==> 4
 
-  -- Identity
+  -- HasIdentity
   identity unit ==> unit
 
-  -- Map
+  -- HasMap
   map (+ 1) [1, 2] ==> [2, 3]
   (map (+ 2) (* 2)) 3 ==> 8
 
@@ -140,23 +140,23 @@ main = do
   Just 2 - Just 1 ==> Just 1
   zero ==> Just unit
 
-  -- Multiply
+  -- HasMultiply
   false * true ==> false
   ((+ 2) * (+ 3)) 3 ==> 30
   2 * 3 ==> 6
   2.0 * 3.0 ==> 6.0
 
-  -- Not
+  -- HasNot
   not true ==> false
   (not constant false) unit ==> true
 
-  -- One
+  -- HasOne
   one ==> true
   one unit ==> 1
   one ==> 1
   one ==> 1.0
 
-  -- Or
+  -- HasOr
   false || true ==> true
   ((constant true) || (constant false)) unit ==> true
 
@@ -193,13 +193,13 @@ main = do
   curry (\ (Pair x) -> x.first + x.second) 2 3 ==> 5
   uncurry (\ x y -> x + y) (pair 2 3) ==> 5
 
-  -- Pure
+  -- HasPure
   pure 1 ==> [1]
   (pure 1 :: Unit -> Int) unit ==> 1
 
   -- TODO: Random
 
-  -- Show
+  -- HasShow
   show [1, 2] ==> "[1, 2]"
   show true ==> "true"
   show 'a' ==> "'a'"
@@ -213,7 +213,7 @@ main = do
   fromCharArray ['a', 'b', 'c'] ==> "abc"
   toCharArray "abc" ==> ['a', 'b', 'c']
 
-  -- Subtract
+  -- HasSubtract
   2 - 3 ==> 0 - 1
   3.0 - 2.0 ==> 1.0
 
@@ -233,7 +233,7 @@ main = do
   unit - unit ==> unit
   zero ==> unit
 
-  -- Zero
+  -- HasZero
   zero ==> [] :: Array Unit
   zero ==> false
   zero unit ==> 0
@@ -243,11 +243,11 @@ main = do
 
   print "✔︎ Tests passed."
 
-shouldBe :: forall a. (Equal a, Show a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+shouldBe :: forall a. (HasEqual a, HasShow a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 shouldBe x y = if x == y then pure unit else do
   print ("✘ " + show x + " ≠ " + show y)
   throw (exception "test failed")
 
-(==>) :: forall a. (Equal a, Show a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+(==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 (==>) x y = shouldBe x y
 infix 0 ==>

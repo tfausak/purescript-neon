@@ -3,62 +3,62 @@ module Neon.Values.Unit
   , unit
   ) where
 
-import Neon.Types.Add (Add)
-import Neon.Types.And (And)
+import Neon.Types.HasAdd (HasAdd)
+import Neon.Types.HasAnd (HasAnd)
 import Neon.Types.Bounded (Bounded)
-import Neon.Types.Compare (Compare)
-import Neon.Types.Divide (Divide)
-import Neon.Types.Equal (Equal)
-import Neon.Types.Multiply (Multiply)
-import Neon.Types.Not (Not)
-import Neon.Types.One (One)
-import Neon.Types.Or (Or)
+import Neon.Types.HasCompare (HasCompare)
+import Neon.Types.HasDivide (HasDivide)
+import Neon.Types.HasEqual (HasEqual)
+import Neon.Types.HasMultiply (HasMultiply)
+import Neon.Types.HasNot (HasNot)
+import Neon.Types.HasOne (HasOne)
+import Neon.Types.HasOr (HasOr)
 import Neon.Values.Ordering (Ordering(EqualTo))
-import Neon.Types.Show (Show)
-import Neon.Types.Subtract (Subtract)
-import Neon.Types.Zero (Zero)
+import Neon.Types.HasShow (HasShow)
+import Neon.Types.HasSubtract (HasSubtract)
+import Neon.Types.HasZero (HasZero)
 
 newtype Unit = Unit {}
 
-instance addUnit :: Add Unit where
+instance addUnit :: HasAdd Unit where
   add _ _ = unit
 
-instance andUnit :: And Unit where
+instance andUnit :: HasAnd Unit where
   and _ _ = unit
 
 instance boundedUnit :: Bounded Unit where
   bottom = unit
   top = unit
 
-instance compareUnit :: Compare Unit where
+instance compareUnit :: HasCompare Unit where
   compare _ _ = EqualTo
 
-instance divideUnit :: Divide Unit where
+instance divideUnit :: HasDivide Unit where
   divide _ _ = unit
   modulo _ _ = unit
 
-instance equalUnit :: Equal Unit where
+instance equalUnit :: HasEqual Unit where
   equal _ _ = true
 
-instance multiplyUnit :: Multiply Unit where
+instance multiplyUnit :: HasMultiply Unit where
   multiply _ _ = unit
 
-instance notUnit :: Not Unit where
+instance notUnit :: HasNot Unit where
   not _ = unit
 
-instance oneUnit :: One Unit where
+instance oneUnit :: HasOne Unit where
   one = unit
 
-instance orUnit :: Or Unit where
+instance orUnit :: HasOr Unit where
   or _ _ = unit
 
-instance showUnit :: Show Unit where
+instance showUnit :: HasShow Unit where
   show _ = "unit"
 
-instance subtractUnit :: Subtract Unit where
+instance subtractUnit :: HasSubtract Unit where
   subtract _ _ = unit
 
-instance zeroUnit :: Zero Unit where
+instance zeroUnit :: HasZero Unit where
   zero = unit
 
 unit :: Unit
