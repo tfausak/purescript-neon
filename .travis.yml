@@ -3,6 +3,7 @@ node_js:
 - 4.1
 after_success:
 - >-
+  test $TRAVIS_TAG &&
   npm run psc-publish \
     | tail -n 1 \
     > output/purescript-neon-${TRAVIS_TAG}.json &&
