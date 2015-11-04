@@ -244,9 +244,12 @@ main = do
   print "✔︎ Tests passed."
 
 shouldBe :: forall a. (HasEqual a, HasShow a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
-shouldBe x y = if x == y then pure unit else do
-  print ("✘ " + show x + " ≠ " + show y)
-  throw (exception "test failed")
+shouldBe x y = if x == y
+  then do
+    print ("✔︎ " + show x + " = " + show y)
+  else do
+    print ("✘ " + show x + " ≠ " + show y)
+    throw (exception "test failed")
 
 (==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 (==>) x y = shouldBe x y
