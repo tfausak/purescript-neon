@@ -2,7 +2,9 @@ language: node_js
 node_js:
 - 4.1
 after_success:
+- echo $TRAVIS_TAG
 - git status
+- git status --porcelain
 - npm run psc-publish | tail -n 1 > purescript-neon-${TRAVIS_TAG}.json
 - >-
   test $TRAVIS_TAG &&
