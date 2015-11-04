@@ -1,5 +1,6 @@
 module Neon.Values.Maybe
   ( Maybe(Nothing, Just)
+  , maybe
   ) where
 
 import Neon.Types.HasAdd (HasAdd, add, (+))
@@ -104,3 +105,8 @@ instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
 instance maybeIsBounded :: (IsBounded a) => IsBounded (Maybe a) where
   bottom = Nothing
   top = Just top
+
+maybe :: forall a b. b -> (a -> b) -> Maybe a -> b
+maybe y f m = case m of
+  Just x -> f x
+  Nothing -> y
