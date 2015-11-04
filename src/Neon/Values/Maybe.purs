@@ -1,18 +1,23 @@
 module Neon.Values.Maybe
   ( Maybe(Nothing, Just)
+  , maybe
+  , isJust
+  , isNothing
+  , fromMaybe
   ) where
 
+import Neon.Primitives.Function (constant)
 import Neon.Types.HasAdd (HasAdd, add, (+))
 import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
 import Neon.Types.HasApply (HasApply, (<*>))
 import Neon.Types.HasBind (HasBind, bind)
-import Neon.Types.IsBounded (IsBounded, top)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty)
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
+import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasMap (HasMap, (<$>))
 import Neon.Types.HasMultiply (HasMultiply, multiply)
 import Neon.Types.HasNot (HasNot, not)
@@ -22,6 +27,7 @@ import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasZero (HasZero, zero)
+import Neon.Types.IsBounded (IsBounded, top)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Maybe a
@@ -104,3 +110,17 @@ instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
 instance maybeIsBounded :: (IsBounded a) => IsBounded (Maybe a) where
   bottom = Nothing
   top = Just top
+
+maybe :: forall a b. b -> (a -> b) -> Maybe a -> b
+maybe y f m = case m of
+  Just x -> f x
+  Nothing -> y
+
+isJust :: forall a. Maybe a -> Boolean
+isJust m = maybe false (constant true) m
+
+isNothing :: forall a. Maybe a -> Boolean
+isNothing m = not (isJust m)
+
+fromMaybe :: forall a. a -> Maybe a -> a
+fromMaybe y m = maybe y identity m

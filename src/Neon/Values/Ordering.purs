@@ -2,9 +2,9 @@ module Neon.Values.Ordering
   ( Ordering(LessThan, EqualTo, GreaterThan)
   ) where
 
-import Neon.Types.IsBounded (IsBounded, bottom, top)
 import Neon.Types.HasEqual (HasEqual, equal)
 import Neon.Types.HasShow (HasShow, show)
+import Neon.Types.IsBounded (IsBounded, bottom, top)
 
 data Ordering
   = LessThan

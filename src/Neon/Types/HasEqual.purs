@@ -1,8 +1,12 @@
 module Neon.Types.HasEqual
   ( HasEqual
   , equal
+  , notEqual
   , (==)
+  , (!=)
   ) where
+
+import Neon.Types.HasNot (not)
 
 foreign import nativeEqualArray :: forall a. (HasEqual a) => Array a -> Array a -> Boolean
 foreign import nativeEqualBoolean :: Boolean -> Boolean -> Boolean
@@ -44,3 +48,11 @@ instance stringHasEqual :: HasEqual String where
 (==) :: forall a. (HasEqual a) => a -> a -> Boolean
 (==) x y = equal x y
 infix 4 ==
+
+notEqual :: forall a. (HasEqual a) => a -> a -> Boolean
+notEqual x y = not (equal x y)
+
+-- | Alias for `notEqual`.
+(!=) :: forall a. (HasEqual a) => a -> a -> Boolean
+(!=) x y = notEqual x y
+infix 4 !=

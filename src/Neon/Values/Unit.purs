@@ -5,7 +5,6 @@ module Neon.Values.Unit
 
 import Neon.Types.HasAdd (HasAdd)
 import Neon.Types.HasAnd (HasAnd)
-import Neon.Types.IsBounded (IsBounded)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Types.HasDivide (HasDivide)
 import Neon.Types.HasEqual (HasEqual)
@@ -13,10 +12,11 @@ import Neon.Types.HasMultiply (HasMultiply)
 import Neon.Types.HasNot (HasNot)
 import Neon.Types.HasOne (HasOne)
 import Neon.Types.HasOr (HasOr)
-import Neon.Values.Ordering (Ordering(EqualTo))
 import Neon.Types.HasShow (HasShow)
 import Neon.Types.HasSubtract (HasSubtract)
 import Neon.Types.HasZero (HasZero)
+import Neon.Types.IsBounded (IsBounded)
+import Neon.Values.Ordering (Ordering(EqualTo))
 
 newtype Unit = Unit {}
 

@@ -1,6 +1,7 @@
 module Neon.Types.HasSubtract
   ( HasSubtract
   , subtract
+  , negate
   , (-)
   ) where
 
@@ -24,3 +25,6 @@ instance numberHasSubtract :: HasSubtract Number where
 (-) :: forall a. (HasSubtract a) => a -> a -> a
 (-) x y = subtract x y
 infixl 6 -
+
+negate :: forall a. (HasSubtract a) => a -> a
+negate x = zero - x
