@@ -109,6 +109,29 @@ main = do
   (3 |> (+ 1)) ==> 4
   ((+ 1) <| 3) ==> 4
 
+  -- Identity
+  Identity 1 + Identity 2 ==> Identity 3
+  Identity true && Identity true ==> Identity true
+  Identity (+ 1) <*> Identity 2 ==> Identity 3
+  Identity 1 >>= ((+ 1) >> pure) ==> Identity 2
+  Identity 1 < Identity 2 ==> true
+  Identity 5 / Identity 2 ==> Identity 2
+  Identity 5 % Identity 2 ==> Identity 1
+  Identity 2 == Identity 2 ==> true
+  foldl (+) "a" (Identity "b") ==> "ab"
+  foldr (+) "a" (Identity "b") ==> "ba"
+  (+ 1) <$> Identity 1 ==> Identity 2
+  Identity 2 * Identity 3 ==> Identity 6
+  not (Identity false) ==> Identity true
+  one ==> Identity 1
+  Identity false || Identity true ==> Identity true
+  pure unit ==> Identity unit
+  show (Identity unit) ==> "Identity (unit)"
+  Identity 3 - Identity 2 ==> Identity 1
+  zero ==> Identity 0
+  bottom ==> Identity false
+  top ==> Identity true
+
   -- HasIdentity
   identity unit ==> unit
 
