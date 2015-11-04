@@ -2,6 +2,7 @@
 
 [![Build status](https://img.shields.io/travis/tfausak/purescript-neon/master.svg)](https://travis-ci.org/tfausak/purescript-neon)
 [![Package version](https://img.shields.io/bower/v/purescript-neon.svg)](https://github.com/tfausak/purescript-neon/releases)
+[![Documentation](https://img.shields.io/badge/docs-pursuit-lightgrey.svg)](http://pursuit.purescript.org/packages/purescript-neon)
 
 :zap: An experimental PureScript prelude.
 
