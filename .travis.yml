@@ -2,13 +2,12 @@ language: node_js
 node_js:
 - 4.1
 after_success:
-- echo $TRAVIS_TAG
-- git status
-- git status --porcelain
-- npm run psc-publish | tail -n 1 > output/purescript-neon-${TRAVIS_TAG}.json
 - >-
   test $TRAVIS_TAG &&
-    curl -X POST http://pursuit.purescript.org/packages \
-      -d @output/purescript-neon-${TRAVIS_TAG}.json \
-      -H 'Accept: application/json' \
-      -H "Authorization: token ${GITHUB_TOKEN}"
+  npm run psc-publish \
+    | tail -n 1 \
+    > output/purescript-neon-${TRAVIS_TAG}.json &&
+  curl -X POST http://pursuit.purescript.org/packages \
+    -d @output/purescript-neon-${TRAVIS_TAG}.json \
+    -H 'Accept: application/json' \
+    -H "Authorization: token ${GITHUB_TOKEN}"
