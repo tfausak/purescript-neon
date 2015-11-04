@@ -10,7 +10,7 @@ import Neon.Values.Unit (Unit(), unit)
 foreign import nativeMapArray :: forall a b. (a -> b) -> Array a -> Array b
 
 -- | Laws:
--- | - HasIdentity: `map identity = identity`
+-- | - Identity: `map identity = identity`
 -- | - Composition: `map (f >> g) = map f >> map g`
 class HasMap f where
   map :: forall a b. (a -> b) -> f a -> f b

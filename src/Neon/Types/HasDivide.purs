@@ -14,7 +14,7 @@ foreign import nativeDivideNumber :: Number -> Number -> Number
 
 -- | Laws:
 -- | - Remainder: `(x / y) * y + (x % y) = x`
--- | - HasIdentity: `x / one = x`
+-- | - Identity: `x / one = x`
 class (HasOne a) <= HasDivide a where
   divide :: a -> a -> a
   modulo :: a -> a -> a

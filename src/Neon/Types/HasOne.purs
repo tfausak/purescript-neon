@@ -7,7 +7,7 @@ import Neon.Primitives.Function (constant)
 import Neon.Types.HasMultiply (HasMultiply)
 
 -- | Laws:
--- | - HasIdentity: `one * x = x * one = x`
+-- | - Identity: `one * x = x * one = x`
 class (HasMultiply a) <= HasOne a where
   one :: a
 

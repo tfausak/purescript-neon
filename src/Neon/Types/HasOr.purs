@@ -9,7 +9,7 @@ import Neon.Types.IsBounded (IsBounded)
 -- | Laws:
 -- | - Associativity: `x || (y || z) = (x || y) || z`
 -- | - Commutativity: `x || y = y || x`
--- | - HasIdentity: `x || bottom = x`
+-- | - Identity: `x || bottom = x`
 -- | - Annihiliation: `x || top = top`
 -- | - Idempotence: `x || x = x`
 class (IsBounded a) <= HasOr a where

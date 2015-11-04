@@ -7,7 +7,7 @@ import Neon.Primitives.Function (constant)
 import Neon.Types.HasAdd (HasAdd)
 
 -- | Laws:
--- | - HasIdentity: `zero + x = x + zero = x`
+-- | - Identity: `zero + x = x + zero = x`
 class (HasAdd a) <= HasZero a where
   zero :: a
 
