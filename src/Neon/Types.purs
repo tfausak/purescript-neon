@@ -13,6 +13,7 @@ module Neon.Types
   , module Neon.Types.HasEqual
   , module Neon.Types.HasFold
   , module Neon.Types.HasIdentity
+  , module Neon.Types.HasLift
   , module Neon.Types.HasMap
   , module Neon.Types.HasMultiply
   , module Neon.Types.HasNot
@@ -37,6 +38,7 @@ import Neon.Types.HasEmpty
 import Neon.Types.HasEqual
 import Neon.Types.HasFold
 import Neon.Types.HasIdentity
+import Neon.Types.HasLift
 import Neon.Types.HasMap
 import Neon.Types.HasMultiply
 import Neon.Types.HasNot
