@@ -2,9 +2,10 @@ language: node_js
 node_js:
 - 4.1
 after_success:
+- git status
 - npm run psc-publish | tail -n 1 > purescript-neon-${TRAVIS_TAG}.json
 - >-
-  test $TRAVIS_TAG && 
+  test $TRAVIS_TAG &&
     curl -X POST http://pursuit.purescript.org/packages \
       -d @purescript-neon-${TRAVIS_TAG}.json \
       -H 'Accept: application/json' \
