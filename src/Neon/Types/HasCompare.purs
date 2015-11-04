@@ -5,6 +5,8 @@ module Neon.Types.HasCompare
   , greaterThanOrEqualTo
   , lessThan
   , lessThanOrEqualTo
+  , min
+  , max
   , (<)
   , (<=)
   , (>)
@@ -81,6 +83,12 @@ lessThanOrEqualTo :: forall a. (HasCompare a) => a -> a -> Boolean
 lessThanOrEqualTo x y = case compare x y of
   GreaterThan -> false
   _ -> true
+
+min :: forall a. (HasCompare a) => a -> a -> a
+min x y = if x < y then x else y
+
+max :: forall a. (HasCompare a) => a -> a -> a
+max x y = if x > y then x else y
 
 -- | Alias for `lessThan`.
 (<) :: forall a. (HasCompare a) => a -> a -> Boolean

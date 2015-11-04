@@ -1,5 +1,6 @@
 module Neon.Values.Either
   ( Either(Left, Right)
+  , either
   ) where
 
 import Neon.Types.HasAdd (HasAdd, add, (+))
@@ -7,7 +8,6 @@ import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
 import Neon.Types.HasApply (HasApply, (<*>))
 import Neon.Types.HasBind (HasBind, bind)
-import Neon.Types.IsBounded (IsBounded, bottom, top)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty)
@@ -22,6 +22,7 @@ import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasZero (HasZero, zero)
+import Neon.Types.IsBounded (IsBounded, bottom, top)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Either a b
@@ -101,3 +102,8 @@ instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
 instance eitherIsBounded :: (IsBounded a, IsBounded b) => IsBounded (Either a b) where
   bottom = Left bottom
   top = Right top
+
+either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
+either f g e = case e of
+  Left l -> f l
+  Right r -> g r

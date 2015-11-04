@@ -2,10 +2,13 @@ module Neon.Types.HasApply
   ( HasApply
   , apply
   , (<*>)
+  , (*>)
+  , (<*)
   ) where
 
-import Neon.Primitives.Function (flip, (|>))
-import Neon.Types.HasMap (HasMap, map)
+import Neon.Primitives.Function (constant, flip, (|>))
+import Neon.Types.HasIdentity (identity)
+import Neon.Types.HasMap (HasMap, map, (<$>))
 
 foreign import nativeFlattenArray :: forall a. Array (Array a) -> Array a
 
@@ -24,3 +27,11 @@ instance functionHasApply :: HasApply (Function a) where
 (<*>) :: forall f a b. (HasApply f) => f (a -> b) -> f a -> f b
 (<*>) f x = apply f x
 infixl 4 <*>
+
+(*>) :: forall f a b. (HasApply f) => f a -> f b -> f b
+(*>) x y = (constant identity <$> x) <*> y
+infixl 4 *>
+
+(<*) :: forall f a b. (HasApply f) => f a -> f b -> f a
+(<*) x y = (constant <$> x) <*> y
+infixl 4 <*

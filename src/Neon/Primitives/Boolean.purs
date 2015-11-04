@@ -1,1 +1,6 @@
-module Neon.Primitives.Boolean where
+module Neon.Primitives.Boolean
+  ( otherwise
+  ) where
+
+otherwise :: Boolean
+otherwise = true
