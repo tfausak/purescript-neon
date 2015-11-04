@@ -2,6 +2,8 @@ language: node_js
 node_js:
 - 4.1
 after_success:
+- env
+- echo $TRAVIS_TAG
 - >-
   test $TRAVIS_TAG &&
   npm run psc-publish \
