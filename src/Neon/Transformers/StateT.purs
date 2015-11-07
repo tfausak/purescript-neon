@@ -1,4 +1,4 @@
-module Neon.Transformers.State
+module Neon.Transformers.StateT
   ( StateT(StateT)
   , runStateT
   ) where

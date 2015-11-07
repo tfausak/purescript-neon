@@ -1,8 +1,8 @@
 module Neon.Transformers
   ( module Neon.Transformers
-  , module Neon.Transformers.Maybe
-  , module Neon.Transformers.State
+  , module Neon.Transformers.MaybeT
+  , module Neon.Transformers.StateT
   ) where
 
-import Neon.Transformers.Maybe
-import Neon.Transformers.State
+import Neon.Transformers.MaybeT
+import Neon.Transformers.StateT

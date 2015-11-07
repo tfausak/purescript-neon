@@ -1,4 +1,4 @@
-module Neon.Transformers.Maybe
+module Neon.Transformers.MaybeT
   ( MaybeT(MaybeT)
   , runMaybeT
   ) where
