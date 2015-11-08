@@ -7,6 +7,7 @@ module Neon.Types.HasCompare
   , lessThanOrEqualTo
   , min
   , max
+  , clamp
   , (<)
   , (<=)
   , (>)
@@ -89,6 +90,12 @@ min x y = if x < y then x else y
 
 max :: forall a. (HasCompare a) => a -> a -> a
 max x y = if x > y then x else y
+
+clamp :: forall a. (HasCompare a) => a -> a -> a -> a
+clamp l h x = if l > h then clamp h l x
+  else if x < l then l
+  else if x > h then h
+  else x
 
 -- | Alias for `lessThan`.
 (<) :: forall a. (HasCompare a) => a -> a -> Boolean
