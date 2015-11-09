@@ -9,124 +9,8 @@ main :: Test
 main = do
   testEffects
   testPrimitives
+  testTypes
   testValues
-
-  -- HasAdd
-  [1] + [2] ==> [1, 2]
-  true + true ==> true
-  ((+ "!") + (+ "?")) "Eh" ==> "Eh!Eh?"
-  1 + 2 ==> 3
-  1.0 + 2.0 ==> 3.0
-  "1" + "2" ==> "12"
-
-  -- HasAlternative
-  [1] <|> [2] ==> [1, 2]
-
-  -- HasAnd
-  true && true ==> true
-
-  -- HasApply
-  apply [(+ 1), (+ 2)] [1, 2] ==> [2, 3, 3, 4]
-  (apply (+) (+ 2)) 1 ==> 4
-
-  -- HasBind
-  bind [1, 2] (\ x -> [x, x + 1]) ==> [1, 2, 2, 3]
-  (bind (+ 2) (+)) 1 ==> 4
-
-  -- HasBottom & HasTop
-  bottom ==> false
-  top ==> true
-  -- bottom ==> '\0' -- TODO: purescript/purescript#1602
-  top ==> '\65535'
-  bottom ==> 0 - 2147483648
-  top ==> 2147483647
-
-  -- HasCompare
-  compare [1] [1] ==> EqualTo
-  compare false true ==> LessThan
-  compare 'b' 'a' ==> GreaterThan
-  compare 1 1 ==> EqualTo
-  compare 0.1 2.3 ==> LessThan
-  compare EqualTo LessThan ==> GreaterThan
-  compare "neon" "neon" ==> EqualTo
-
-  -- HasCompose
-  ((+ 2) >> (* 2)) 3 ==> 10
-
-  -- HasDivide
-  ((+ 2) / (\ x -> x - 3)) 8 ==> 2
-  ((+ 2) % (\ x -> x - 3)) 8 ==> 0
-  5 / 2 ==> 2
-  5 % 2 ==> 1
-  5.0 / 2.0 ==> 2.5
-  5.0 % 2.0 ==> 0.0
-
-  -- HasEmpty
-  empty ==> [] :: Array Unit
-
-  -- HasEqual
-  [1] == [1] ==> true
-  true == false ==> false
-  'a' == 'a' ==> true
-  1 == 2 ==> false
-  1.0 == 1.0 ==> true
-  { k: "a" } == { k: "z" } ==> false
-  "neon" == "neon" ==> true
-
-  -- HasFold
-  foldl (+) "a" ["b", "c"] ==> "abc"
-  foldr (+) "a" ["b", "c"] ==> "bca"
-
-  -- HasIdentity
-  identity unit ==> unit
-
-  -- HasMap
-  map (+ 1) [1, 2] ==> [2, 3]
-  (map (+ 2) (* 2)) 3 ==> 8
-
-  -- HasMultiply
-  false * true ==> false
-  ((+ 2) * (+ 3)) 3 ==> 30
-  2 * 3 ==> 6
-  2.0 * 3.0 ==> 6.0
-
-  -- HasNot
-  not true ==> false
-
-  -- HasOne
-  one ==> true
-  one unit ==> 1
-  one ==> 1
-  one ==> 1.0
-
-  -- HasOr
-  false || true ==> true
-
-  -- HasPure
-  pure 1 ==> [1]
-  (pure 1 :: Unit -> Int) unit ==> 1
-
-  -- HasShow
-  show [1, 2] ==> "[1, 2]"
-  show true ==> "true"
-  show 'a' ==> "'a'"
-  show '\65535' ==> "'\\65535'"
-  show 0 ==> "0"
-  show 1.2 ==> "1.2"
-  show "neon" ==> "\"neon\""
-  show " ~\8\65535" ==> "\" ~\\8\\65535\""
-
-  -- HasSubtract
-  2 - 3 ==> 0 - 1
-  3.0 - 2.0 ==> 1.0
-
-  -- HasZero
-  zero ==> [] :: Array Unit
-  zero ==> false
-  zero unit ==> 0
-  zero ==> 0
-  zero ==> 0.0
-  zero ==> ""
 
   print "✔︎ Tests passed."
 
@@ -204,6 +88,208 @@ testString :: Test
 testString = do
   fromCharArray ['a', 'b'] ==> "ab"
   toCharArray "ab" ==> ['a', 'b']
+
+-- Types
+
+testTypes :: Test
+testTypes = do
+  testHasAdd
+  testHasAlternative
+  testHasAnd
+  testHasApply
+  testHasBind
+  testHasBottom
+  testHasCompare
+  testHasCompose
+  testHasDivide
+  testHasEmpty
+  testHasEqual
+  testHasFold
+  testHasIdentity
+  testHasLift
+  testHasMap
+  testHasMultiply
+  testHasNot
+  testHasOne
+  testHasOr
+  testHasPure
+  testHasShow
+  testHasState
+  testHasSubtract
+  testHasTop
+  testHasZero
+
+testHasAdd :: Test
+testHasAdd = do
+  [1] + [2] ==> [1, 2]
+  add true true ==> true
+  ((+ "!") + (+ "?")) "Eh" ==> "Eh!Eh?"
+  1 + 2 ==> 3
+  1.0 + 2.0 ==> 3.0
+  "1" + "2" ==> "12"
+
+testHasAlternative :: Test
+testHasAlternative = do
+  alternative [1] [2] ==> [1, 2]
+  [1] <|> [2] ==> [1, 2]
+
+testHasAnd :: Test
+testHasAnd = do
+  and true true ==> true
+  true && true ==> true
+
+testHasApply :: Test
+testHasApply = do
+  apply [(+ 1), (+ 2)] [1, 2] ==> [2, 3, 3, 4]
+  ((+) <*> (+ 2)) 1 ==> 4
+  [1] *> [2] ==> [2]
+  [1] <* [2] ==> [1]
+
+testHasBind :: Test
+testHasBind = do
+  bind [1, 2] (\ x -> [x, x + 1]) ==> [1, 2, 2, 3]
+  [1, 2] >>= (\ x -> [x, x + 1]) ==> [1, 2, 2, 3]
+  ((+) =<< (+ 2)) 1 ==> 4
+
+testHasBottom :: Test
+testHasBottom = do
+  bottom ==> false
+  -- bottom ==> '\0' -- TODO: purescript/purescript#1602
+  bottom ==> 0 - 2147483648
+  bottom ==> LessThan
+
+testHasCompare :: Test
+testHasCompare = do
+  compare [1] [1] ==> EqualTo
+  lessThan false true ==> true
+  greaterThan 'b' 'a' ==> true
+  compare 1 1 ==> EqualTo
+  lessThanOrEqualTo 0.1 2.3 ==> true
+  greaterThanOrEqualTo EqualTo LessThan ==> true
+  compare "neon" "neon" ==> EqualTo
+  1 < 2 ==> true
+  2 <= 2 ==> true
+  2 >= 2 ==> true
+  3 > 2 ==> true
+  min 1 2 ==> 1
+  max 1 2 ==> 2
+  clamp 2 4 1 ==> 2
+
+testHasCompose :: Test
+testHasCompose = do
+  compose (+ 2) (* 2) 3 ==> 10
+  ((+ 2) >> (* 2)) 3 ==> 10
+  ((+ 2) << (* 2)) 3 ==> 8
+
+testHasDivide :: Test
+testHasDivide = do
+  ((+ 2) / (\ x -> x - 3)) 8 ==> 2
+  ((+ 2) % (\ x -> x - 3)) 8 ==> 0
+  divide 5 2 ==> 2
+  modulo 5 2 ==> 1
+  5.0 / 2.0 ==> 2.5
+  5.0 % 2.0 ==> 0.0
+
+testHasEmpty :: Test
+testHasEmpty = do
+  empty ==> [] :: Array Unit
+
+testHasEqual :: Test
+testHasEqual = do
+  [1] == [1] ==> true
+  equal true false ==> false
+  'a' == 'a' ==> true
+  1 == 2 ==> false
+  1.0 == 1.0 ==> true
+  { k: "a" } == { k: "z" } ==> false
+  "neon" == "neon" ==> true
+
+testHasFold :: Test
+testHasFold = do
+  foldl (+) "a" ["b", "c"] ==> "abc"
+  foldr (+) "a" ["b", "c"] ==> "bca"
+
+testHasIdentity :: Test
+testHasIdentity = do
+  identity unit ==> unit
+
+testHasLift :: Test
+testHasLift = do
+  print "? HasLift" -- TODO
+
+testHasMap :: Test
+testHasMap = do
+  (+ 1) <$> [1, 2] ==> [2, 3]
+  (map (+ 2) (* 2)) 3 ==> 8
+  [1, 3] $> 2 ==> [2, 2]
+  2 <$ [1, 3] ==> [2, 2]
+
+testHasMultiply :: Test
+testHasMultiply = do
+  multiply false true ==> false
+  ((+ 2) * (+ 3)) 3 ==> 30
+  2 * 3 ==> 6
+  2.0 * 3.0 ==> 6.0
+
+testHasNot :: Test
+testHasNot = do
+  not true ==> false
+  notEqual 1 2 ==> true
+  1 != 2 ==> true
+
+testHasOne :: Test
+testHasOne = do
+  one ==> true
+  one unit ==> 1
+  one ==> 1
+  one ==> 1.0
+
+testHasOr :: Test
+testHasOr = do
+  or false true ==> true
+  false || true ==> true
+
+testHasPure :: Test
+testHasPure = do
+  pure 1 ==> [1]
+  (pure 1 :: Unit -> Int) unit ==> 1
+
+testHasShow :: Test
+testHasShow = do
+  show [1, 2] ==> "[1, 2]"
+  show true ==> "true"
+  show 'a' ==> "'a'"
+  show '\65535' ==> "'\\65535'"
+  show 0 ==> "0"
+  show 1.2 ==> "1.2"
+  show "neon" ==> "\"neon\""
+  show " ~\8\65535" ==> "\" ~\\8\\65535\""
+
+testHasState :: Test
+testHasState = do
+  print "? HasState" -- TODO
+
+testHasSubtract :: Test
+testHasSubtract = do
+  subtract 3 2 ==> 1
+  3.0 - 2.0 ==> 1.0
+  negate 1 ==> 0 - 1 -- TODO: purescript/purescript#1591
+
+testHasTop :: Test
+testHasTop = do
+  top ==> true
+  top ==> '\65535'
+  top ==> 2147483647
+  top ==> GreaterThan
+
+testHasZero :: Test
+testHasZero = do
+  zero ==> [] :: Array Unit
+  zero ==> false
+  zero unit ==> 0
+  zero ==> 0
+  zero ==> 0.0
+  zero ==> ""
 
 -- Values
 
@@ -303,11 +389,9 @@ testMaybe = do
 
 testOrdering :: Test
 testOrdering = do
-  bottom ==> LessThan
   compare LessThan GreaterThan ==> LessThan
   LessThan == GreaterThan ==> false
   show EqualTo ==> "EqualTo"
-  top ==> GreaterThan
 
 testPair :: Test
 testPair = do
