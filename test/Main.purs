@@ -137,6 +137,7 @@ testHasAnd :: Test
 testHasAnd = do
   and true true ==> true
   true && true ==> true
+  (identity && not) true ==> false
 
 testHasApply :: Test
 testHasApply = do
@@ -241,6 +242,7 @@ testHasMultiply = do
 testHasNot :: Test
 testHasNot = do
   not true ==> false
+  not (constant false) unit ==> true
   notEqual 1 2 ==> true
   1 != 2 ==> true
 
@@ -255,6 +257,7 @@ testHasOr :: Test
 testHasOr = do
   or false true ==> true
   false || true ==> true
+  (identity || not) false ==> true
 
 testHasPure :: Test
 testHasPure = do

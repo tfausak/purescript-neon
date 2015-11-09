@@ -18,6 +18,9 @@ class (HasBottom a, HasTop a) <= HasNot a where
 instance booleanHasNot :: HasNot Boolean where
   not x = if x then false else true
 
+instance functionHasNot :: (HasNot b) => HasNot (a -> b) where
+  not f = \ x -> not (f x)
+
 notEqual :: forall a. (HasEqual a) => a -> a -> Boolean
 notEqual x y = not (equal x y)
 
