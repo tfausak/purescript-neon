@@ -4,7 +4,6 @@ module Neon.Values.Ordering
 
 import Neon.Types.HasEqual (HasEqual, equal)
 import Neon.Types.HasShow (HasShow, show)
-import Neon.Types.IsBounded (IsBounded, bottom, top)
 
 data Ordering
   = LessThan
@@ -28,7 +27,3 @@ instance orderingHasShow :: HasShow Ordering where
     LessThan -> "LessThan"
     EqualTo -> "EqualTo"
     GreaterThan -> "GreaterThan"
-
-instance orderingIsBounded :: IsBounded Ordering where
-  bottom = LessThan
-  top = GreaterThan

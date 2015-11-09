@@ -18,9 +18,6 @@ class (IsBounded a) <= HasOr a where
 instance booleanHasOr :: HasOr Boolean where
   or x y = if x then true else y
 
-instance functionHasOr :: (HasOr b) => HasOr (a -> b) where
-  or f g = \ x -> f x || g x
-
 -- | Alias for `or`.
 (||) :: forall a. (HasOr a) => a -> a -> a
 (||) x y = or x y

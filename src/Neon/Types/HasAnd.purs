@@ -18,9 +18,6 @@ class (IsBounded a) <= HasAnd a where
 instance booleanHasAnd :: HasAnd Boolean where
   and x y = if x then y else false
 
-instance functionHasAnd :: (HasAnd b) => HasAnd (a -> b) where
-  and f g = \ x -> f x && g x
-
 -- | Alias for `and`.
 (&&) :: forall a. (HasAnd a) => a -> a -> a
 (&&) x y = and x y

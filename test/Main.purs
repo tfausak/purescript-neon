@@ -18,7 +18,6 @@ main = do
 
   -- HasAnd
   true && true ==> true
-  ((constant true) && (constant true)) unit ==> true
 
   -- HasApply
   apply [(+ 1), (+ 2)] [1, 2] ==> [2, 3, 3, 4]
@@ -35,8 +34,6 @@ main = do
   top ==> '\65535'
   bottom ==> 0 - 2147483648
   top ==> 2147483647
-  bottom unit ==> false
-  top unit ==> true
 
   -- Char
   toLower 'A' ==> 'a'
@@ -171,7 +168,6 @@ main = do
 
   -- HasNot
   not true ==> false
-  (not constant false) unit ==> true
 
   -- HasOne
   one ==> true
@@ -181,7 +177,6 @@ main = do
 
   -- HasOr
   false || true ==> true
-  ((constant true) || (constant false)) unit ==> true
 
   -- Ordering
   bottom ==> LessThan
