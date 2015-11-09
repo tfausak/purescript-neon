@@ -141,19 +141,19 @@ testEffects = do
 
 testEffect :: Test
 testEffect = do
-  pure unit -- TODO
+  print "? Effect" -- TODO
 
 testException :: Test
 testException = do
-  pure unit -- TODO
+  print "? Exception" -- TODO
 
 testOutput :: Test
 testOutput = do
-  pure unit -- TODO
+  print "? Output" -- TODO
 
 testRandom :: Test
 testRandom = do
-  pure unit -- TODO
+  print "? Random" -- TODO
 
 -- Primitives
 
@@ -170,7 +170,7 @@ testPrimitives = do
 
 testArray :: Test
 testArray = do
-  pure unit -- TODO
+  print "? Array" -- TODO
 
 testBoolean :: Test
 testBoolean = do
@@ -190,15 +190,15 @@ testFunction = do
 
 testInt :: Test
 testInt = do
-  pure unit -- TODO
+  print "? Int" -- TODO
 
 testNumber :: Test
 testNumber = do
-  pure unit -- TODO
+  print "? Number" -- TODO
 
 testObject :: Test
 testObject = do
-  pure unit -- TODO
+  print "? Object" -- TODO
 
 testString :: Test
 testString = do
