@@ -5,10 +5,14 @@ import Test.Core (Test())
 
 testEffects :: Test
 testEffects = do
+  testConsole
   testEffect
   testException
-  testOutput
   testRandom
+
+testConsole :: Test
+testConsole = do
+  warn "? Console" -- TODO
 
 testEffect :: Test
 testEffect = do
@@ -17,10 +21,6 @@ testEffect = do
 testException :: Test
 testException = do
   warn "? Exception" -- TODO
-
-testOutput :: Test
-testOutput = do
-  warn "? Console" -- TODO
 
 testRandom :: Test
 testRandom = do

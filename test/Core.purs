@@ -2,7 +2,7 @@ module Test.Core where
 
 import Neon
 
-type Test = Effect (exception :: EXCEPTION, output :: CONSOLE) Unit
+type Test = Effect (exception :: EXCEPTION, console :: CONSOLE) Unit
 
 (==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Test
 (==>) x y = if x == y
