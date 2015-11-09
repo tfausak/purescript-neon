@@ -2,6 +2,10 @@ module Test.Neon.Effects where
 
 import Neon
 import Test.Core (Test())
+import Test.Neon.Effects.Console (testConsole)
+import Test.Neon.Effects.Effect (testEffect)
+import Test.Neon.Effects.Exception (testException)
+import Test.Neon.Effects.Random (testRandom)
 
 testEffects :: Test
 testEffects = do
@@ -9,19 +13,3 @@ testEffects = do
   testEffect
   testException
   testRandom
-
-testConsole :: Test
-testConsole = do
-  warn "? Console" -- TODO
-
-testEffect :: Test
-testEffect = do
-  warn "? Effect" -- TODO
-
-testException :: Test
-testException = do
-  warn "? Exception" -- TODO
-
-testRandom :: Test
-testRandom = do
-  warn "? Random" -- TODO
