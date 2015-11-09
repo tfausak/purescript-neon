@@ -273,6 +273,10 @@ testRandom = do
 
 -- Primitives
 
+testArray :: Test
+testArray = do
+  pure unit -- TODO
+
 testBoolean :: Test
 testBoolean = do
   otherwise ==> true
@@ -288,6 +292,18 @@ testFunction = do
   flip (+) "a" "b" ==> "ba"
   (false |> not) ==> true
   (not <| true) ==> false
+
+testInt :: Test
+testInt = do
+  pure unit -- TODO
+
+testNumber :: Test
+testNumber = do
+  pure unit -- TODO
+
+testObject :: Test
+testObject = do
+  pure unit -- TODO
 
 testString :: Test
 testString = do
