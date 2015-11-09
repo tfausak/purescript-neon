@@ -17,7 +17,6 @@ import Neon.Types.HasShow (HasShow)
 import Neon.Types.HasSubtract (HasSubtract)
 import Neon.Types.HasTop (HasTop)
 import Neon.Types.HasZero (HasZero)
-import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(EqualTo))
 
 newtype Unit = Unit {}
@@ -64,8 +63,6 @@ instance unitHasZero :: HasZero Unit where
 
 instance unitHastop :: HasTop Unit where
   top = unit
-
-instance unitIsBounded :: IsBounded Unit
 
 unit :: Unit
 unit = Unit {}

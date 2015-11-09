@@ -5,13 +5,14 @@ module Neon.Types.HasNot
   , (!=)
   ) where
 
-import Neon.Types.IsBounded (IsBounded)
+import Neon.Types.HasBottom (HasBottom)
+import Neon.Types.HasTop (HasTop)
 import Neon.Types.HasEqual (HasEqual, equal)
 
 -- | Laws:
 -- | - `not top = bottom`
 -- | - `not bottom = top`
-class (IsBounded a) <= HasNot a where
+class (HasBottom a, HasTop a) <= HasNot a where
   not :: a -> a
 
 instance booleanHasNot :: HasNot Boolean where

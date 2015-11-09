@@ -4,7 +4,8 @@ module Neon.Types.HasOr
   , (||)
   ) where
 
-import Neon.Types.IsBounded (IsBounded)
+import Neon.Types.HasBottom (HasBottom)
+import Neon.Types.HasTop (HasTop)
 
 -- | Laws:
 -- | - Associativity: `x || (y || z) = (x || y) || z`
@@ -12,7 +13,7 @@ import Neon.Types.IsBounded (IsBounded)
 -- | - Identity: `x || bottom = x`
 -- | - Annihiliation: `x || top = top`
 -- | - Idempotence: `x || x = x`
-class (IsBounded a) <= HasOr a where
+class (HasBottom a, HasTop a) <= HasOr a where
   or :: a -> a -> a
 
 instance booleanHasOr :: HasOr Boolean where

@@ -24,7 +24,6 @@ import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Either a b
@@ -38,7 +37,7 @@ instance eitherHasAlternative :: HasAlternative (Either a) where
   alternative (Left _) y = y
   alternative x _ = x
 
-instance eitherHasAnd :: (IsBounded a, HasAnd b) => HasAnd (Either a b) where
+instance eitherHasAnd :: (HasBottom a, HasTop a, HasAnd b) => HasAnd (Either a b) where
   and x y = and <$> x <*> y
 
 instance eitherHasApply :: HasApply (Either a) where
@@ -82,13 +81,13 @@ instance eitherHasMap :: HasMap (Either a) where
 instance eitherHasMultiply :: (HasMultiply b) => HasMultiply (Either a b) where
   multiply x y = multiply <$> x <*> y
 
-instance eitherHasNot :: (IsBounded a, HasNot b) => HasNot (Either a b) where
+instance eitherHasNot :: (HasBottom a, HasTop a, HasNot b) => HasNot (Either a b) where
   not x = not <$> x
 
 instance eitherHasOne :: (HasOne b) => HasOne (Either a b) where
   one = Right one
 
-instance eitherHasOr :: (IsBounded a, HasOr b) => HasOr (Either a b) where
+instance eitherHasOr :: (HasBottom a, HasTop a, HasOr b) => HasOr (Either a b) where
   or x y = or <$> x <*> y
 
 instance eitherHasPure :: HasPure (Either a) where
@@ -106,8 +105,6 @@ instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
 
 instance eitherHasTop :: (HasTop a, HasTop b) => HasTop (Either a b) where
   top = Right top
-
-instance eitherIsBounded :: (IsBounded a, IsBounded b) => IsBounded (Either a b)
 
 either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
 either f g e = case e of

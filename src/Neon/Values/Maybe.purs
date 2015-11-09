@@ -29,7 +29,6 @@ import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Maybe a
@@ -114,8 +113,6 @@ instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
 
 instance maybeHasTop :: (HasTop a) => HasTop (Maybe a) where
   top = Just top
-
-instance maybeIsBounded :: (IsBounded a) => IsBounded (Maybe a)
 
 maybe :: forall a b. b -> (a -> b) -> Maybe a -> b
 maybe y f m = case m of

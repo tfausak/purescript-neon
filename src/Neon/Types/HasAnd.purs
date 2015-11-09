@@ -4,7 +4,8 @@ module Neon.Types.HasAnd
   , (&&)
   ) where
 
-import Neon.Types.IsBounded (IsBounded)
+import Neon.Types.HasBottom (HasBottom)
+import Neon.Types.HasTop (HasTop)
 
 -- | Laws:
 -- | - Associativity: `x && (y && z) = (x && y) && z`
@@ -12,7 +13,7 @@ import Neon.Types.IsBounded (IsBounded)
 -- | - Identity: `x && top = x`
 -- | - Annihiliation: `x && bottom = bottom`
 -- | - Idempotence: `x && x = x`
-class (IsBounded a) <= HasAnd a where
+class (HasBottom a, HasTop a) <= HasAnd a where
   and :: a -> a -> a
 
 instance booleanHasAnd :: HasAnd Boolean where

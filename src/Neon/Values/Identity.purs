@@ -22,7 +22,6 @@ import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, (-))
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded)
 
 newtype Identity a = Identity a
 
@@ -84,8 +83,6 @@ instance identityHasZero :: (HasZero a) => HasZero (Identity a) where
 
 instance identityHasTop :: (HasTop a) => HasTop (Identity a) where
   top = Identity top
-
-instance identityIsBounded :: (IsBounded a) => IsBounded (Identity a)
 
 runIdentity :: forall a. Identity a -> a
 runIdentity (Identity x) = x
