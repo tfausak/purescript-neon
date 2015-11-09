@@ -3,8 +3,16 @@ module Test.Main where
 import Neon
 import Neon.Values -- TODO: purescript/purescript#1594
 
-main :: Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+type Test = Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+
+main :: Test
 main = do
+  -- Primitives
+  testBoolean
+  testChar
+  testFunction
+  testString
+
   -- HasAdd
   [1] + [2] ==> [1, 2]
   true + true ==> true
@@ -34,10 +42,6 @@ main = do
   top ==> '\65535'
   bottom ==> 0 - 2147483648
   top ==> 2147483647
-
-  -- Char
-  toLower 'A' ==> 'a'
-  toUpper 'a' ==> 'A'
 
   -- HasCompare
   compare [1] [1] ==> EqualTo
@@ -100,11 +104,6 @@ main = do
   -- HasFold
   foldl (+) "a" ["b", "c"] ==> "abc"
   foldr (+) "a" ["b", "c"] ==> "bca"
-
-  -- Function
-  constant 3 unit ==> 3
-  (3 |> (+ 1)) ==> 4
-  ((+ 1) <| 3) ==> 4
 
   -- Identity
   Identity 1 + Identity 2 ==> Identity 3
@@ -227,10 +226,6 @@ main = do
   show "neon" ==> "\"neon\""
   show " ~\8\65535" ==> "\" ~\\8\\65535\""
 
-  -- String
-  fromCharArray ['a', 'b', 'c'] ==> "abc"
-  toCharArray "abc" ==> ['a', 'b', 'c']
-
   -- HasSubtract
   2 - 3 ==> 0 - 1
   3.0 - 2.0 ==> 1.0
@@ -261,7 +256,32 @@ main = do
 
   print "✔︎ Tests passed."
 
-shouldBe :: forall a. (HasEqual a, HasShow a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+-- Primitives
+
+testBoolean :: Test
+testBoolean = do
+  otherwise ==> true
+
+testChar :: Test
+testChar = do
+  toLower 'A' ==> 'a'
+  toUpper 'a' ==> 'A'
+
+testFunction :: Test
+testFunction = do
+  constant true unit ==> true
+  flip (+) "a" "b" ==> "ba"
+  (false |> not) ==> true
+  (not <| true) ==> false
+
+testString :: Test
+testString = do
+  fromCharArray ['a', 'b'] ==> "ab"
+  toCharArray "ab" ==> ['a', 'b']
+
+-- Helpers
+
+shouldBe :: forall a. (HasEqual a, HasShow a) => a -> a -> Test
 shouldBe x y = if x == y
   then do
     print ("✔︎ " + show x + " = " + show y)
@@ -269,6 +289,6 @@ shouldBe x y = if x == y
     print ("✘ " + show x + " ≠ " + show y)
     throw (exception "test failed")
 
-(==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+(==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Test
 (==>) x y = shouldBe x y
 infix 0 ==>
