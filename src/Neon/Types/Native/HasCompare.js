@@ -48,6 +48,8 @@ module.exports = {
 
   nativeCompareChar: compareGeneric,
 
+  nativeCompareFunction: compareGeneric,
+
   nativeCompareInt: compareGeneric,
 
   nativeCompareNumber: compareGeneric,

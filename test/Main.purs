@@ -163,6 +163,9 @@ testHasCompare = do
   compare [1] [1] ==> EqualTo
   lessThan false true ==> true
   greaterThan 'b' 'a' ==> true
+  compare (+ 1) (+ 1) ==> LessThan
+  let f = (+ 1)
+  compare f f ==> EqualTo
   compare 1 1 ==> EqualTo
   lessThanOrEqualTo 0.1 2.3 ==> true
   greaterThanOrEqualTo EqualTo LessThan ==> true
