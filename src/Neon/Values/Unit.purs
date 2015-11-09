@@ -58,11 +58,11 @@ instance unitHasShow :: HasShow Unit where
 instance unitHasSubtract :: HasSubtract Unit where
   subtract _ _ = unit
 
+instance unitHasTop :: HasTop Unit where
+  top = unit
+
 instance unitHasZero :: HasZero Unit where
   zero = unit
-
-instance unitHastop :: HasTop Unit where
-  top = unit
 
 unit :: Unit
 unit = Unit {}

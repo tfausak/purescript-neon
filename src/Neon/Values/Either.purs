@@ -100,11 +100,11 @@ instance eitherHasShow :: (HasShow a, HasShow b) => HasShow (Either a b) where
 instance eitherHasSubtract :: (HasSubtract b) => HasSubtract (Either a b) where
   subtract x y = subtract <$> x <*> y
 
-instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
-  zero = Right zero
-
 instance eitherHasTop :: (HasTop a, HasTop b) => HasTop (Either a b) where
   top = Right top
+
+instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
+  zero = Right zero
 
 either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
 either f g e = case e of

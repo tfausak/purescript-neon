@@ -108,11 +108,11 @@ instance maybeHasShow :: (HasShow a) => HasShow (Maybe a) where
 instance maybeHasSubtract :: (HasSubtract a) => HasSubtract (Maybe a) where
   subtract x y = subtract <$> x <*> y
 
-instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
-  zero = Just zero
-
 instance maybeHasTop :: (HasTop a) => HasTop (Maybe a) where
   top = Just top
+
+instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
+  zero = Just zero
 
 maybe :: forall a b. b -> (a -> b) -> Maybe a -> b
 maybe y f m = case m of

@@ -78,11 +78,11 @@ instance identityHasShow :: (HasShow a) => HasShow (Identity a) where
 instance identityHasSubtract :: (HasSubtract a) => HasSubtract (Identity a) where
   subtract (Identity x) (Identity y) = Identity (x - y)
 
-instance identityHasZero :: (HasZero a) => HasZero (Identity a) where
-  zero = Identity zero
-
 instance identityHasTop :: (HasTop a) => HasTop (Identity a) where
   top = Identity top
+
+instance identityHasZero :: (HasZero a) => HasZero (Identity a) where
+  zero = Identity zero
 
 runIdentity :: forall a. Identity a -> a
 runIdentity (Identity x) = x

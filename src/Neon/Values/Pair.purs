@@ -1,7 +1,7 @@
 module Neon.Values.Pair
   ( Pair(Pair)
-  , curry
   , pair
+  , curry
   , uncurry
   ) where
 
@@ -92,17 +92,17 @@ instance pairHasShow :: (HasShow a, HasShow b) => HasShow (Pair a b) where
 instance pairHasSubtract :: (HasSubtract a, HasSubtract b) => HasSubtract (Pair a b) where
   subtract (Pair x) (Pair y) = pair (x.first - y.first) (x.second - y.second)
 
-instance pairHasZero :: (HasZero a, HasZero b) => HasZero (Pair a b) where
-  zero = pair zero zero
-
 instance pairHasTop :: (HasTop a, HasTop b) => HasTop (Pair a b) where
   top = pair top top
 
-curry :: forall a b c. (Pair a b -> c) -> (a -> b -> c)
-curry f = \ x y -> f (pair x y)
+instance pairHasZero :: (HasZero a, HasZero b) => HasZero (Pair a b) where
+  zero = pair zero zero
 
 pair :: forall a b. a -> b -> Pair a b
 pair x y = Pair { first: x, second: y }
+
+curry :: forall a b c. (Pair a b -> c) -> (a -> b -> c)
+curry f = \ x y -> f (pair x y)
 
 uncurry :: forall a b c. (a -> b -> c) -> (Pair a b -> c)
 uncurry f = \ (Pair x) -> f x.first x.second
