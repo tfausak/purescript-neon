@@ -1,7 +1,7 @@
 module Test.Neon.Primitives where
 
 import Neon
-import Test.Core
+import Test.Core (Test(), (==>))
 
 testPrimitives :: Test
 testPrimitives = do

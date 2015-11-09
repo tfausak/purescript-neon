@@ -2,7 +2,7 @@ module Test.Neon.Values where
 
 import Neon
 import Neon.Values -- NOTE: purescript/purescript#1594
-import Test.Core
+import Test.Core (Test(), (==>))
 
 testValues :: Test
 testValues = do

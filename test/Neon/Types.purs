@@ -2,7 +2,7 @@ module Test.Neon.Types where
 
 import Neon
 import Neon.Values -- NOTE: purescript/purescript#1594
-import Test.Core
+import Test.Core (Test(), (==>))
 
 testTypes :: Test
 testTypes = do

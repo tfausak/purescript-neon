@@ -1,7 +1,7 @@
 module Test.Neon.Effects where
 
 import Neon
-import Test.Core
+import Test.Core (Test())
 
 testEffects :: Test
 testEffects = do

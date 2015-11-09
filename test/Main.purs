@@ -1,17 +1,10 @@
 module Test.Main where
 
 import Neon
-import Test.Core
-import Test.Neon.Effects
-import Test.Neon.Primitives
-import Test.Neon.Types
-import Test.Neon.Values
+import Test.Core (Test())
+import Test.Neon (testNeon)
 
 main :: Test
 main = do
-  testEffects
-  testPrimitives
-  testTypes
-  testValues
-
+  testNeon
   info "✔︎ Tests passed."
