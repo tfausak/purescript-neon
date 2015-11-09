@@ -7,6 +7,7 @@ module Neon.Types.HasEqual
 foreign import nativeEqualArray :: forall a. (HasEqual a) => Array a -> Array a -> Boolean
 foreign import nativeEqualBoolean :: Boolean -> Boolean -> Boolean
 foreign import nativeEqualChar :: Char -> Char -> Boolean
+foreign import nativeEqualFunction :: forall a b. (a -> b) -> (a -> b) -> Boolean
 foreign import nativeEqualInt :: Int -> Int -> Boolean
 foreign import nativeEqualNumber :: Number -> Number -> Boolean
 foreign import nativeEqualObject :: forall o. Object o -> Object o -> Boolean
@@ -27,6 +28,9 @@ instance booleanHasEqual :: HasEqual Boolean where
 
 instance charHasEqual :: HasEqual Char where
   equal x y = nativeEqualChar x y
+
+instance functionHasEqual :: HasEqual (a -> b) where
+  equal f g = nativeEqualFunction f g
 
 instance intHasEqual :: HasEqual Int where
   equal x y = nativeEqualInt x y

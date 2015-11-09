@@ -33,6 +33,8 @@ module.exports = {
 
   nativeEqualChar: equalGeneric,
 
+  nativeEqualFunction: equalGeneric,
+
   nativeEqualInt: equalGeneric,
 
   nativeEqualNumber: equalGeneric,
