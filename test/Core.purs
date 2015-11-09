@@ -1,7 +1,4 @@
-module Test.Core
-  ( Test()
-  , (==>)
-  ) where
+module Test.Core where
 
 import Neon
 
