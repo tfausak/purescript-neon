@@ -3,7 +3,7 @@ module Test.Main where
 import Neon
 import Neon.Values -- NOTE: purescript/purescript#1594
 
-type Test = Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
+type Test = Effect (exception :: EXCEPTION, output :: CONSOLE) Unit
 
 main :: Test
 main = do
@@ -33,7 +33,7 @@ testException = do
 
 testOutput :: Test
 testOutput = do
-  print "? Output" -- TODO
+  print "? Console" -- TODO
 
 testRandom :: Test
 testRandom = do
