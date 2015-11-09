@@ -15,6 +15,9 @@ foreign import nativeSubtractNumber :: Number -> Number -> Number
 class (HasZero a) <= HasSubtract a where
   subtract :: a -> a -> a
 
+instance functionHasSubtract :: (HasSubtract b) => HasSubtract (a -> b) where
+  subtract f g = \ x -> f x - g x
+
 instance intHasSubtract :: HasSubtract Int where
   subtract x y = nativeSubtractInt x y
 
