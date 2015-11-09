@@ -155,6 +155,7 @@ testHasBottom :: Test
 testHasBottom = do
   bottom ==> false
   -- bottom ==> '\0' -- TODO: purescript/purescript#1602
+  bottom unit ==> false
   bottom ==> 0 - 2147483648
   bottom ==> LessThan
 
@@ -286,6 +287,7 @@ testHasTop :: Test
 testHasTop = do
   top ==> true
   top ==> '\65535'
+  top unit ==> true
   top ==> 2147483647
   top ==> GreaterThan
 

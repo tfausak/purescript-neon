@@ -3,6 +3,7 @@ module Neon.Types.HasTop
   , top
   ) where
 
+import Neon.Primitives.Function (constant)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Values.Ordering (Ordering(GreaterThan))
 
@@ -19,6 +20,9 @@ instance booleanHasTop :: HasTop Boolean where
 
 instance charHasTop :: HasTop Char where
   top = nativeTopChar
+
+instance functionHasTop :: (HasTop b) => HasTop (a -> b) where
+  top = constant top
 
 instance intHasTop :: HasTop Int where
   top = nativeTopInt

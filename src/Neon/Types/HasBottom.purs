@@ -3,6 +3,7 @@ module Neon.Types.HasBottom
   , bottom
   ) where
 
+import Neon.Primitives.Function (constant)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Values.Ordering (Ordering(LessThan))
 
@@ -19,6 +20,9 @@ instance booleanHasBottom :: HasBottom Boolean where
 
 instance charHasBottom :: HasBottom Char where
   bottom = nativeBottomChar
+
+instance functionHasBottom :: (HasBottom b) => HasBottom (a -> b) where
+  bottom = constant bottom
 
 instance intHasBottom :: HasBottom Int where
   bottom = nativeBottomInt
