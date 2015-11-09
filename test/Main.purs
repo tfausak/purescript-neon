@@ -7,17 +7,8 @@ type Test = Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 
 main :: Test
 main = do
-  -- Effects
-  testEffect
-  testException
-  testOutput
-  testRandom
-
-  -- Primitives
-  testBoolean
-  testChar
-  testFunction
-  testString
+  testEffects
+  testPrimitives
 
   -- HasAdd
   [1] + [2] ==> [1, 2]
@@ -255,6 +246,13 @@ main = do
 
 -- Effects
 
+testEffects :: Test
+testEffects = do
+  testEffect
+  testException
+  testOutput
+  testRandom
+
 testEffect :: Test
 testEffect = do
   pure unit -- TODO
@@ -272,6 +270,17 @@ testRandom = do
   pure unit -- TODO
 
 -- Primitives
+
+testPrimitives :: Test
+testPrimitives = do
+  testArray
+  testBoolean
+  testChar
+  testFunction
+  testInt
+  testNumber
+  testObject
+  testString
 
 testArray :: Test
 testArray = do
