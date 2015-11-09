@@ -3,7 +3,14 @@
 // module Neon.Effects.Console
 
 module.exports = {
-  print: function (x) {
+  info: function (x) {
+    return function () {
+      console.info(x);
+      return {};
+    };
+  },
+
+  log: function (x) {
     return function () {
       console.log(x);
       return {};
@@ -13,6 +20,13 @@ module.exports = {
   warn: function (x) {
     return function () {
       console.warn(x);
+      return {};
+    };
+  },
+
+  error: function (x) {
+    return function () {
+      console.error(x);
       return {};
     };
   }

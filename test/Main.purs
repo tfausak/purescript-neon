@@ -12,7 +12,7 @@ main = do
   testTypes
   testValues
 
-  print "✔︎ Tests passed."
+  info "✔︎ Tests passed."
 
 -- Effects
 
@@ -25,19 +25,19 @@ testEffects = do
 
 testEffect :: Test
 testEffect = do
-  print "? Effect" -- TODO
+  warn "? Effect" -- TODO
 
 testException :: Test
 testException = do
-  print "? Exception" -- TODO
+  warn "? Exception" -- TODO
 
 testOutput :: Test
 testOutput = do
-  print "? Console" -- TODO
+  warn "? Console" -- TODO
 
 testRandom :: Test
 testRandom = do
-  print "? Random" -- TODO
+  warn "? Random" -- TODO
 
 -- Primitives
 
@@ -462,9 +462,9 @@ testUnit = do
 shouldBe :: forall a. (HasEqual a, HasShow a) => a -> a -> Test
 shouldBe x y = if x == y
   then do
-    print ("✔︎ " + show x + " = " + show y)
+    info ("✔︎ " + show x + " = " + show y)
   else do
-    print ("✘ " + show x + " ≠ " + show y)
+    error ("✘ " + show x + " ≠ " + show y)
     throw (exception "test failed")
 
 (==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Test

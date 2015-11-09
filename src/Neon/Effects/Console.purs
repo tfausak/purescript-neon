@@ -1,12 +1,17 @@
 module Neon.Effects.Console
   ( CONSOLE()
-  , print
+  , info
+  , log
   , warn
+  , error
   ) where
 
 import Neon.Effects.Effect (Effect())
 import Neon.Values.Unit (Unit())
 
 foreign import data CONSOLE :: !
-foreign import print :: forall e. String -> Effect (output :: CONSOLE | e) Unit
+
+foreign import info :: forall e. String -> Effect (output :: CONSOLE | e) Unit
+foreign import log :: forall e. String -> Effect (output :: CONSOLE | e) Unit
 foreign import warn :: forall e. String -> Effect (output :: CONSOLE | e) Unit
+foreign import error :: forall e. String -> Effect (output :: CONSOLE | e) Unit
