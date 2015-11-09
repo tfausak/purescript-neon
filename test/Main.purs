@@ -7,6 +7,12 @@ type Test = Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 
 main :: Test
 main = do
+  -- Effects
+  testEffect
+  testException
+  testOutput
+  testRandom
+
   -- Primitives
   testBoolean
   testChar
@@ -63,8 +69,6 @@ main = do
   5.0 / 2.0 ==> 2.5
   5.0 % 2.0 ==> 0.0
 
-  -- TODO: Effect
-
   -- Either
   Left 1 + Right 2.0 ==> Left 1
   Left 1 <|> Right '2' ==> Right '2'
@@ -97,9 +101,6 @@ main = do
   1.0 == 1.0 ==> true
   { k: "a" } == { k: "z" } ==> false
   "neon" == "neon" ==> true
-
-  -- Exception
-  runPure (catch (throw (exception "a")) (constant (pure "b"))) ==> "b"
 
   -- HasFold
   foldl (+) "a" ["b", "c"] ==> "abc"
@@ -183,8 +184,6 @@ main = do
   EqualTo == EqualTo ==> true
   show LessThan ==> "LessThan"
 
-  -- TODO: Output
-
   -- Pair
   pair 1 2 + pair 3 4 ==> pair 4 6
   pair false true && pair true true ==> pair false true
@@ -213,8 +212,6 @@ main = do
   -- HasPure
   pure 1 ==> [1]
   (pure 1 :: Unit -> Int) unit ==> 1
-
-  -- TODO: Random
 
   -- HasShow
   show [1, 2] ==> "[1, 2]"
@@ -255,6 +252,24 @@ main = do
   zero ==> ""
 
   print "✔︎ Tests passed."
+
+-- Effects
+
+testEffect :: Test
+testEffect = do
+  pure unit -- TODO
+
+testException :: Test
+testException = do
+  pure unit -- TODO
+
+testOutput :: Test
+testOutput = do
+  pure unit -- TODO
+
+testRandom :: Test
+testRandom = do
+  pure unit -- TODO
 
 -- Primitives
 
