@@ -2,8 +2,7 @@ module Test.Main where
 
 import Neon
 import Neon.Values -- NOTE: purescript/purescript#1594
-
-type Test = Effect (exception :: EXCEPTION, output :: CONSOLE) Unit
+import Test.Core
 
 main :: Test
 main = do
@@ -456,17 +455,3 @@ testUnit = do
   unit - unit ==> unit
   top ==> unit
   zero ==> unit
-
--- Helpers
-
-shouldBe :: forall a. (HasEqual a, HasShow a) => a -> a -> Test
-shouldBe x y = if x == y
-  then do
-    info ("✔︎ " + show x + " = " + show y)
-  else do
-    error ("✘ " + show x + " ≠ " + show y)
-    throw (exception "test failed")
-
-(==>) :: forall a. (HasEqual a, HasShow a) => a -> a -> Test
-(==>) x y = shouldBe x y
-infix 0 ==>
