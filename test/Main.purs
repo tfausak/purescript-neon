@@ -1,7 +1,7 @@
 module Test.Main where
 
 import Neon
-import Neon.Values -- TODO: purescript/purescript#1594
+import Neon.Values -- NOTE: purescript/purescript#1594
 
 type Test = Effect (exception :: EXCEPTION, output :: OUTPUT) Unit
 
@@ -54,7 +54,8 @@ testPrimitives = do
 
 testArray :: Test
 testArray = do
-  print "? Array" -- TODO
+  -- This module does not export anything.
+  pure unit
 
 testBoolean :: Test
 testBoolean = do
@@ -74,15 +75,18 @@ testFunction = do
 
 testInt :: Test
 testInt = do
-  print "? Int" -- TODO
+  -- This module does not export anything.
+  pure unit
 
 testNumber :: Test
 testNumber = do
-  print "? Number" -- TODO
+  -- This module does not export anything.
+  pure unit
 
 testObject :: Test
 testObject = do
-  print "? Object" -- TODO
+  -- This module does not export anything.
+  pure unit
 
 testString :: Test
 testString = do
@@ -157,7 +161,7 @@ testHasBottom = do
   bottom ==> false
   -- bottom ==> '\0' -- TODO: purescript/purescript#1602
   bottom unit ==> false
-  bottom ==> 0 - 2147483648
+  bottom ==> 0 - 2147483648 -- NOTE: purescript/purescript#1591
   bottom ==> LessThan
 
 testHasCompare :: Test
@@ -223,7 +227,8 @@ testHasIdentity = do
 
 testHasLift :: Test
 testHasLift = do
-  print "? HasLift" -- TODO
+  -- This module does not define any instances.
+  pure unit
 
 testHasMap :: Test
 testHasMap = do
@@ -277,14 +282,15 @@ testHasShow = do
 
 testHasState :: Test
 testHasState = do
-  print "? HasState" -- TODO
+  -- This module does not define any instances.
+  pure unit
 
 testHasSubtract :: Test
 testHasSubtract = do
   ((+ 2) - (+ 1)) 3 ==> 1
   subtract 3 2 ==> 1
   3.0 - 2.0 ==> 1.0
-  negate 1 ==> 0 - 1 -- TODO: purescript/purescript#1591
+  negate 1 ==> 0 - 1 -- NOTE: purescript/purescript#1591
 
 testHasTop :: Test
 testHasTop = do
