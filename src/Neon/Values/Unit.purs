@@ -5,6 +5,7 @@ module Neon.Values.Unit
 
 import Neon.Types.HasAdd (HasAdd)
 import Neon.Types.HasAnd (HasAnd)
+import Neon.Types.HasBottom (HasBottom)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Types.HasDivide (HasDivide)
 import Neon.Types.HasEqual (HasEqual)
@@ -14,6 +15,7 @@ import Neon.Types.HasOne (HasOne)
 import Neon.Types.HasOr (HasOr)
 import Neon.Types.HasShow (HasShow)
 import Neon.Types.HasSubtract (HasSubtract)
+import Neon.Types.HasTop (HasTop)
 import Neon.Types.HasZero (HasZero)
 import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(EqualTo))
@@ -25,6 +27,9 @@ instance unitHasAdd :: HasAdd Unit where
 
 instance unitHasAnd :: HasAnd Unit where
   and _ _ = unit
+
+instance unitHasBottom :: HasBottom Unit where
+  bottom = unit
 
 instance unitHasCompare :: HasCompare Unit where
   compare _ _ = EqualTo
@@ -57,9 +62,10 @@ instance unitHasSubtract :: HasSubtract Unit where
 instance unitHasZero :: HasZero Unit where
   zero = unit
 
-instance unitIsBounded :: IsBounded Unit where
-  bottom = unit
+instance unitHastop :: HasTop Unit where
   top = unit
+
+instance unitIsBounded :: IsBounded Unit
 
 unit :: Unit
 unit = Unit {}

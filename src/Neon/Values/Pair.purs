@@ -9,6 +9,7 @@ import Neon.Types.HasAdd (HasAdd, (+))
 import Neon.Types.HasAnd (HasAnd, (&&))
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasBind (HasBind)
+import Neon.Types.HasBottom (HasBottom, bottom)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasCompose (HasCompose)
 import Neon.Types.HasDivide (HasDivide, (/), (%))
@@ -22,8 +23,9 @@ import Neon.Types.HasOr (HasOr, (||))
 import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, (-))
+import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded, bottom, top)
+import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(EqualTo))
 
 newtype Pair a b = Pair { first :: a, second :: b }
@@ -40,6 +42,9 @@ instance pairHasApply :: (HasAdd a) => HasApply (Pair a) where
 instance pairHasBind :: (HasZero a) => HasBind (Pair a) where
   bind (Pair x) f = case f x.second of
     Pair y -> pair (x.first + y.first) y.second
+
+instance pairHasBottom :: (HasBottom a, HasBottom b) => HasBottom (Pair a b) where
+  bottom = pair bottom bottom
 
 instance pairHasCompare :: (HasCompare a, HasCompare b) => HasCompare (Pair a b) where
   compare (Pair x) (Pair y) = case compare x.first y.first of
@@ -91,9 +96,10 @@ instance pairHasSubtract :: (HasSubtract a, HasSubtract b) => HasSubtract (Pair 
 instance pairHasZero :: (HasZero a, HasZero b) => HasZero (Pair a b) where
   zero = pair zero zero
 
-instance pairIsBounded :: (IsBounded a, IsBounded b) => IsBounded (Pair a b) where
-  bottom = pair bottom bottom
+instance pairHasTop :: (HasTop a, HasTop b) => HasTop (Pair a b) where
   top = pair top top
+
+instance pairIsBounded :: (IsBounded a, IsBounded b) => IsBounded (Pair a b)
 
 curry :: forall a b c. (Pair a b -> c) -> (a -> b -> c)
 curry f = \ x y -> f (pair x y)

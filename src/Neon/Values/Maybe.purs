@@ -12,6 +12,7 @@ import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
 import Neon.Types.HasApply (HasApply, (<*>))
 import Neon.Types.HasBind (HasBind, bind)
+import Neon.Types.HasBottom (HasBottom)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty)
@@ -26,8 +27,9 @@ import Neon.Types.HasOr (HasOr, or)
 import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
+import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded, top)
+import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Maybe a
@@ -51,6 +53,9 @@ instance maybeHasApply :: HasApply Maybe where
 instance maybeHasBind :: HasBind Maybe where
   bind Nothing _ = Nothing
   bind (Just x) f = f x
+
+instance maybeHasBottom :: (HasBottom a) => HasBottom (Maybe a) where
+  bottom = Nothing
 
 instance maybeHasCompare :: (HasCompare a) => HasCompare (Maybe a) where
   compare (Just x) (Just y) = compare x y
@@ -107,9 +112,10 @@ instance maybeHasSubtract :: (HasSubtract a) => HasSubtract (Maybe a) where
 instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
   zero = Just zero
 
-instance maybeIsBounded :: (IsBounded a) => IsBounded (Maybe a) where
-  bottom = Nothing
+instance maybeHasTop :: (HasTop a) => HasTop (Maybe a) where
   top = Just top
+
+instance maybeIsBounded :: (IsBounded a) => IsBounded (Maybe a)
 
 maybe :: forall a b. b -> (a -> b) -> Maybe a -> b
 maybe y f m = case m of

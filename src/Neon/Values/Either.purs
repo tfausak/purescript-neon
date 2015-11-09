@@ -8,6 +8,7 @@ import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
 import Neon.Types.HasApply (HasApply, (<*>))
 import Neon.Types.HasBind (HasBind, bind)
+import Neon.Types.HasBottom (HasBottom, bottom)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty)
@@ -21,8 +22,9 @@ import Neon.Types.HasOr (HasOr, or)
 import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
+import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded, bottom, top)
+import Neon.Types.IsBounded (IsBounded)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 data Either a b
@@ -46,6 +48,9 @@ instance eitherHasApply :: HasApply (Either a) where
 instance eitherHasBind :: HasBind (Either a) where
   bind (Left x) _ = Left x
   bind (Right x) f = f x
+
+instance eitherHasBottom :: (HasBottom a, HasBottom b) => HasBottom (Either a b) where
+  bottom = Left bottom
 
 instance eitherHasCompare :: (HasCompare a, HasCompare b) => HasCompare (Either a b) where
   compare (Left x) (Left y) = compare x y
@@ -99,9 +104,10 @@ instance eitherHasSubtract :: (HasSubtract b) => HasSubtract (Either a b) where
 instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
   zero = Right zero
 
-instance eitherIsBounded :: (IsBounded a, IsBounded b) => IsBounded (Either a b) where
-  bottom = Left bottom
+instance eitherHasTop :: (HasTop a, HasTop b) => HasTop (Either a b) where
   top = Right top
+
+instance eitherIsBounded :: (IsBounded a, IsBounded b) => IsBounded (Either a b)
 
 either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
 either f g e = case e of

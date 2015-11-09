@@ -7,6 +7,7 @@ import Neon.Types.HasAdd (HasAdd, (+))
 import Neon.Types.HasAnd (HasAnd, (&&))
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasBind (HasBind)
+import Neon.Types.HasBottom (HasBottom, bottom)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, (/), (%))
 import Neon.Types.HasEqual (HasEqual, (==))
@@ -19,8 +20,9 @@ import Neon.Types.HasOr (HasOr, (||))
 import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, (-))
+import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsBounded (IsBounded, bottom, top)
+import Neon.Types.IsBounded (IsBounded)
 
 newtype Identity a = Identity a
 
@@ -35,6 +37,9 @@ instance identityHasApply :: HasApply Identity where
 
 instance identityHasBind :: HasBind Identity where
   bind (Identity x) f = f x
+
+instance identityHasBottom :: (HasBottom a) => HasBottom (Identity a) where
+  bottom = Identity bottom
 
 instance identityHasCompare :: (HasCompare a) => HasCompare (Identity a) where
   compare (Identity x) (Identity y) = compare x y
@@ -77,9 +82,10 @@ instance identityHasSubtract :: (HasSubtract a) => HasSubtract (Identity a) wher
 instance identityHasZero :: (HasZero a) => HasZero (Identity a) where
   zero = Identity zero
 
-instance identityIsBounded :: (IsBounded a) => IsBounded (Identity a) where
-  bottom = Identity bottom
+instance identityHasTop :: (HasTop a) => HasTop (Identity a) where
   top = Identity top
+
+instance identityIsBounded :: (IsBounded a) => IsBounded (Identity a)
 
 runIdentity :: forall a. Identity a -> a
 runIdentity (Identity x) = x
