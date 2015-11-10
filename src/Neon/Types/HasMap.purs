@@ -1,6 +1,8 @@
 module Neon.Types.HasMap
   ( HasMap
+  , for
   , map
+  , void
   , (<$>)
   , ($>)
   , (<$)
@@ -36,3 +38,9 @@ infixl 4 $>
 (<$) :: forall f a b. (HasMap f) => a -> f b -> f a
 (<$) x f = constant x <$> f
 infixl 4 <$
+
+void :: forall f a. (HasMap f) => f a -> f Unit
+void f = f $> unit
+
+for :: forall f a b. (HasMap f) => f a -> (a -> b) -> f b
+for x f = map f x
