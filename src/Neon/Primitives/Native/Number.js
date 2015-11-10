@@ -17,5 +17,25 @@ module.exports = {
     return isNaN(x);
   },
 
-  nan: NaN
+  nan: NaN,
+
+  round: function (x) {
+    return Math.round(x);
+  },
+
+  ceiling: function (x) {
+    return Math.ceil(x);
+  },
+
+  floor: function (x) {
+    return Math.floor(x);
+  },
+
+  truncate: function (x) {
+    if (x > 0) {
+      return Math.floor(x);
+    } else {
+      return Math.ceil(x);
+    }
+  }
 };
