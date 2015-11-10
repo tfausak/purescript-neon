@@ -22,6 +22,7 @@ import Test.Neon.Types.HasMultiply (testHasMultiply)
 import Test.Neon.Types.HasNot (testHasNot)
 import Test.Neon.Types.HasOne (testHasOne)
 import Test.Neon.Types.HasOr (testHasOr)
+import Test.Neon.Types.HasPower (testHasPower)
 import Test.Neon.Types.HasPure (testHasPure)
 import Test.Neon.Types.HasShow (testHasShow)
 import Test.Neon.Types.HasState (testHasState)
@@ -51,6 +52,7 @@ testTypes = do
   testHasNot
   testHasOne
   testHasOr
+  testHasPower
   testHasPure
   testHasShow
   testHasState
