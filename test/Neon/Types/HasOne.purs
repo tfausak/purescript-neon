@@ -10,3 +10,6 @@ testHasOne = do
   one unit ==> 1
   one ==> 1
   one ==> 1.0
+  sign 2 ==> 1
+  sign 0 ==> 0
+  sign (negate 2) ==> negate 1

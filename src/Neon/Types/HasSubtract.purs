@@ -2,9 +2,11 @@ module Neon.Types.HasSubtract
   ( HasSubtract
   , subtract
   , negate
+  , abs
   , (-)
   ) where
 
+import Neon.Types.HasCompare (HasCompare, (<))
 import Neon.Types.HasZero (HasZero, zero)
 
 foreign import nativeSubtractInt :: Int -> Int -> Int
@@ -31,3 +33,6 @@ infixl 6 -
 
 negate :: forall a. (HasSubtract a) => a -> a
 negate x = zero - x
+
+abs :: forall a. (HasCompare a, HasSubtract a) => a -> a
+abs x = if x < zero then negate x else x
