@@ -12,3 +12,5 @@ testHasDivide = do
   modulo 5 2 ==> 1
   5.0 / 2.0 ==> 2.5
   5.0 % 2.0 ==> 0.0
+  reciprocal 2 ==> 0
+  reciprocal 2.0 ==> 0.5

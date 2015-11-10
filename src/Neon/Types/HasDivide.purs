@@ -2,11 +2,12 @@ module Neon.Types.HasDivide
   ( HasDivide
   , divide
   , modulo
+  , reciprocal
   , (/)
   , (%)
   ) where
 
-import Neon.Types.HasOne (HasOne)
+import Neon.Types.HasOne (HasOne, one)
 
 foreign import nativeDivideInt :: Int -> Int -> Int
 foreign import nativeModuloInt :: Int -> Int -> Int
@@ -40,3 +41,6 @@ infixl 7 /
 (%) :: forall a. (HasDivide a) => a -> a -> a
 (%) x y = modulo x y
 infixl 7 %
+
+reciprocal :: forall a. (HasDivide a) => a -> a
+reciprocal x = one / x
