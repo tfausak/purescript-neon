@@ -1,11 +1,15 @@
 module Neon.Types.HasBind
   ( HasBind
   , bind
+  , join
+  , (<=<)
   , (=<<)
+  , (>=>)
   , (>>=)
   ) where
 
 import Neon.Types.HasApply (apply)
+import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasMap (map)
 import Neon.Types.HasPure (HasPure)
 
@@ -31,3 +35,14 @@ infixr 1 =<<
 (>>=) :: forall f a b. (HasBind f) => f a -> (a -> f b) -> f b
 (>>=) x f = bind x f
 infixl 1 >>=
+
+(>=>) :: forall f a b c. (HasBind f) => (a -> f b) -> (b -> f c) -> (a -> f c)
+(>=>) f g = \ x -> f x >>= g
+infixl 1 >=>
+
+(<=<) :: forall f a b c. (HasBind f) => (b -> f c) -> (a -> f b) -> (a -> f c)
+(<=<) f g = \ x -> f =<< g x
+infixr 1 <=<
+
+join :: forall f a. (HasBind f) => f (f a) -> f a
+join x = x >>= identity
