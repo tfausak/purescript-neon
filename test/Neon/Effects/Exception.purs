@@ -1,8 +1,9 @@
 module Test.Neon.Effects.Exception where
 
 import Neon
-import Test.Core (Test())
+import Test.Core (Test(), (==>))
 
 testException :: Test
 testException = do
-  warn "? Exception" -- TODO
+  show (exception "message") ==> "Error: message"
+  runPure (catch (throw (exception "")) (constant (pure unit))) ==> unit

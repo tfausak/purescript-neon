@@ -7,7 +7,7 @@ import Neon.Types.HasAlternative (HasAlternative, (<|>))
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasBind (HasBind, bind, (>>=))
 import Neon.Types.HasEmpty (HasEmpty, empty)
-import Neon.Types.HasLift
+import Neon.Types.HasLift (HasLift)
 import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasPure (HasPure, pure)
 import Neon.Values.Pair (Pair(Pair), pair)
@@ -29,15 +29,15 @@ instance stateTHasBind :: (HasBind m) => HasBind (StateT s m) where
     Pair p <- x y
     runStateT (f p.first) p.second
 
-instance stateTHasMap :: (HasMap m) => HasMap (StateT s m) where
-  map g (StateT f) = StateT \ x ->
-    map (\ (Pair p) -> pair (g p.first) p.second) (f x)
-
 instance stateTHasEmpty :: (HasBind m, HasEmpty m) => HasEmpty (StateT s m) where
   empty = StateT \ _ -> empty
 
 instance stateTHasLift :: HasLift (StateT s) where
   lift m = StateT \ x -> m >>= \ y -> pure (pair y x)
+
+instance stateTHasMap :: (HasMap m) => HasMap (StateT s m) where
+  map g (StateT f) = StateT \ x ->
+    map (\ (Pair p) -> pair (g p.first) p.second) (f x)
 
 -- TODO: Only use "HasPure" if "stateTHasApply" only uses "HasApply".
 instance stateTHasPure :: (HasBind m) => HasPure (StateT s m) where

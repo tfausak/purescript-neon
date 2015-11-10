@@ -1,8 +1,8 @@
 module Test.Neon.Effects.Random where
 
 import Neon
-import Test.Core (Test())
+import Test.Core (Test(), (==>))
 
 testRandom :: Test
 testRandom = do
-  warn "? Random" -- TODO
+  ((>= 0.0) && (< 1.0)) (unsafeRunEffect randomNumber) ==> true
