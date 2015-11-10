@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testHasTop :: Test
 testHasTop = do
+  info "Neon.Types.HasTop"
   top ==> true
   top ==> '\65535'
   top unit ==> true

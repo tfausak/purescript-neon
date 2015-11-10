@@ -5,6 +5,7 @@ import Test.Core (Test(), (==>))
 
 testHasShow :: Test
 testHasShow = do
+  info "Neon.Types.HasShow"
   show [1, 2] ==> "[1, 2]"
   show true ==> "true"
   show 'a' ==> "'a'"

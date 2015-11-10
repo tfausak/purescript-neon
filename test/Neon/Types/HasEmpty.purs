@@ -5,4 +5,5 @@ import Test.Core (Test(), (==>))
 
 testHasEmpty :: Test
 testHasEmpty = do
+  info "Neon.Types.HasEmpty"
   empty ==> [] :: Array Unit

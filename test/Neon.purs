@@ -10,6 +10,7 @@ import Test.Neon.Values (testValues)
 
 testNeon :: Test
 testNeon = do
+  info "Neon"
   testEffects
   testPrimitives
   testTransformers

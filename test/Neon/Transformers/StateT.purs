@@ -7,6 +7,7 @@ import Test.Core (Test(), (==>))
 
 testStateT :: Test
 testStateT = do
+  info "Neon.Transformers.StateT"
   let x = StateT (\ x -> Identity (pair unit x))
   -- TODO
   runStateT x 1 ==> Identity (pair unit 1)

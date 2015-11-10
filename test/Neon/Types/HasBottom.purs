@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testHasBottom :: Test
 testHasBottom = do
+  info "Neon.Types.HasBottom"
   bottom ==> false
   -- bottom ==> '\0' -- NOTE: purescript/purescript#1602
   bottom unit ==> false

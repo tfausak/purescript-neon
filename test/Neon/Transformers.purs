@@ -7,5 +7,6 @@ import Test.Neon.Transformers.StateT (testStateT)
 
 testTransformers :: Test
 testTransformers = do
+  info "Neon.Transformers"
   testMaybeT
   testStateT

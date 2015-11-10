@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testHasCompare :: Test
 testHasCompare = do
+  info "Neon.Types.HasCompare"
   compare [1] [1] ==> EqualTo
   lessThan false true ==> true
   greaterThan 'b' 'a' ==> true

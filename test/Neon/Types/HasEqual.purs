@@ -5,6 +5,7 @@ import Test.Core (Test(), (==>))
 
 testHasEqual :: Test
 testHasEqual = do
+  info "Neon.Types.HasEqual"
   [1] == [1] ==> true
   equal true false ==> false
   'a' == 'a' ==> true

@@ -31,6 +31,7 @@ import Test.Neon.Types.HasZero (testHasZero)
 
 testTypes :: Test
 testTypes = do
+  info "Neon.Types"
   testHasAdd
   testHasAlternative
   testHasAnd

@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testPair :: Test
 testPair = do
+  info "Neon.Values.Pair"
   pair 1 2 + pair 3 4 ==> pair 4 6
   pair false true && pair true true ==> pair false true
   pair 1 (+ 3) <*> pair 3 4 ==> pair 4 7

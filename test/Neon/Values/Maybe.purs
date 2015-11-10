@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testMaybe :: Test
 testMaybe = do
+  info "Neon.Values.Maybe"
   Just 1 + Just 2 ==> Just 3
   Nothing <|> Just 1 ==> Just 1
   Just true && Just true ==> Just true

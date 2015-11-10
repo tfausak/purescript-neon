@@ -9,6 +9,7 @@ import Test.Neon.Effects.Random (testRandom)
 
 testEffects :: Test
 testEffects = do
+  info "Neon.Effects"
   testConsole
   testEffect
   testException

@@ -7,6 +7,7 @@ import Test.Core (Test(), (==>))
 
 testMaybeT :: Test
 testMaybeT = do
+  info "Neon.Transformers.MaybeT"
   let x = MaybeT (Identity (Just 1))
   runMaybeT (MaybeT (Identity Nothing) <|> x) ==> Identity (Just 1)
   runMaybeT (MaybeT (Identity (Just (+ 1))) <*> x) ==> Identity (Just 2)

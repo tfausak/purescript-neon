@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testUnit :: Test
 testUnit = do
+  info "Neon.Values.Unit"
   unit + unit ==> unit
   unit && unit ==> unit
   bottom ==> unit

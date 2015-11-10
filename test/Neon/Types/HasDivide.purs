@@ -5,6 +5,7 @@ import Test.Core (Test(), (==>))
 
 testHasDivide :: Test
 testHasDivide = do
+  info "Neon.Types.HasDivide"
   ((+ 2) / (\ x -> x - 3)) 8 ==> 2
   ((+ 2) % (\ x -> x - 3)) 8 ==> 0
   divide 5 2 ==> 2

@@ -13,6 +13,7 @@ import Test.Neon.Primitives.String (testString)
 
 testPrimitives :: Test
 testPrimitives = do
+  info "Neon.Primitives"
   testArray
   testBoolean
   testChar

@@ -6,6 +6,7 @@ import Test.Core (Test(), (==>))
 
 testEither :: Test
 testEither = do
+  info "Neon.Values.Either"
   Left 1 + Right 2.0 ==> Left 1
   Left 1 <|> Right '2' ==> Right '2'
   Left false && Right true ==> Left false

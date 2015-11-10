@@ -11,6 +11,7 @@ import Test.Neon.Values.Unit (testUnit)
 
 testValues :: Test
 testValues = do
+  info "Neon.Values"
   testEither
   testIdentity
   testMaybe

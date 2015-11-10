@@ -5,6 +5,7 @@ import Test.Core (Test(), (==>))
 
 testHasAdd :: Test
 testHasAdd = do
+  info "Neon.Types.HasAdd"
   [1] + [2] ==> [1, 2]
   add true true ==> true
   ((+ "!") + (+ "?")) "Eh" ==> "Eh!Eh?"

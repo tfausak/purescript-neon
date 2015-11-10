@@ -5,6 +5,7 @@ import Test.Core (Test(), (==>))
 
 testHasMultiply :: Test
 testHasMultiply = do
+  info "Neon.Types.HasMultiply"
   multiply false true ==> false
   ((+ 2) * (+ 3)) 3 ==> 30
   2 * 3 ==> 6
