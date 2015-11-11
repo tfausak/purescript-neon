@@ -9,7 +9,7 @@ var equalGeneric = function (x) {
 };
 
 module.exports = {
-  nativeEqualArray: function (_types) {
+  nativeEqualArray: function (types) {
     return function (x) {
       return function (y) {
         var i;
@@ -17,7 +17,7 @@ module.exports = {
         var yl = y.length;
         if (xl === yl) {
           for (i = 0; i < xl; ++i) {
-            if (x[i] !== y[i]) {
+            if (!types.equal(x[i])(y[i])) {
               return false;
             }
           }
