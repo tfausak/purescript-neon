@@ -39,7 +39,5 @@ module.exports = {
 
   nativeEqualNumber: equalGeneric,
 
-  nativeEqualObject: equalGeneric,
-
   nativeEqualString: equalGeneric
 };

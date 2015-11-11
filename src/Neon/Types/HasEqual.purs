@@ -10,7 +10,6 @@ foreign import nativeEqualChar :: Char -> Char -> Boolean
 foreign import nativeEqualFunction :: forall a b. (a -> b) -> (a -> b) -> Boolean
 foreign import nativeEqualInt :: Int -> Int -> Boolean
 foreign import nativeEqualNumber :: Number -> Number -> Boolean
-foreign import nativeEqualObject :: forall o. Object o -> Object o -> Boolean
 foreign import nativeEqualString :: String -> String -> Boolean
 
 -- | Laws:
@@ -37,9 +36,6 @@ instance intHasEqual :: HasEqual Int where
 
 instance numberHasEqual :: HasEqual Number where
   equal x y = nativeEqualNumber x y
-
-instance objectHasEqual :: HasEqual (Object o) where
-  equal x y = nativeEqualObject x y
 
 instance stringHasEqual :: HasEqual String where
   equal x y = nativeEqualString x y
