@@ -7,4 +7,3 @@ import Test.Neon (testNeon)
 main :: Test
 main = do
   testNeon
-  info "✔︎ Tests passed."
