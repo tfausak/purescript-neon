@@ -16,3 +16,4 @@ testHasEqual = do
   1.0 == 1.0 ==> true
   { k: "a" } == { k: "z" } ==> false
   "neon" == "neon" ==> true
+  [pair unit true] == [pair unit true] ==> true
