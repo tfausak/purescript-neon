@@ -12,7 +12,7 @@ import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, (/), (%))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
-import Neon.Types.HasMap (HasMap)
+import Neon.Types.HasMap (HasMap, (<$>))
 import Neon.Types.HasMultiply (HasMultiply, (*))
 import Neon.Types.HasNot (HasNot, not)
 import Neon.Types.HasOne (HasOne, one)
@@ -22,6 +22,8 @@ import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, (-))
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
+import Neon.Types.IsEnumerable
+import Neon.Values.Maybe
 
 newtype Identity a = Identity a
 
@@ -83,6 +85,12 @@ instance identityHasTop :: (HasTop a) => HasTop (Identity a) where
 
 instance identityHasZero :: (HasZero a) => HasZero (Identity a) where
   zero = Identity zero
+
+instance identityIsEnumerable :: (IsEnumerable a) => IsEnumerable (Identity a) where
+  fromEnum (Identity x) = fromEnum x
+  toEnum x = Identity <$> toEnum x
+  succ (Identity x) = Identity <$> succ x
+  pred (Identity x) = Identity <$> pred x
 
 runIdentity :: forall a. Identity a -> a
 runIdentity (Identity x) = x
