@@ -6,9 +6,16 @@ module Neon.Types.IsEnumerable
   , pred
   ) where
 
-import Neon.Types.HasBottom (HasBottom)
-import Neon.Types.HasTop (HasTop)
+import Neon.Types.HasAdd ((+))
+import Neon.Types.HasBottom (HasBottom, bottom)
+import Neon.Types.HasCompare ((<), (>))
+import Neon.Types.HasOr ((||))
+import Neon.Types.HasSubtract ((-))
+import Neon.Types.HasTop (HasTop, top)
 import Neon.Values.Maybe (Maybe(Nothing, Just))
+
+foreign import nativeFromEnumChar :: Char -> Int
+foreign import nativeToEnumChar :: Int -> Char
 
 -- | Laws:
 -- | - `pred bottom = Nothing`
@@ -35,3 +42,11 @@ instance booleanIsEnumerable :: IsEnumerable Boolean where
   pred x = case x of
     false -> Nothing
     true -> Just true
+
+instance charIsEnumerable :: IsEnumerable Char where
+  fromEnum x = nativeFromEnumChar x
+  toEnum x = if x < fromEnum (bottom :: Char) || x > fromEnum (top :: Char)
+    then Nothing
+    else Just (nativeToEnumChar x)
+  succ x = toEnum (fromEnum x + 1)
+  pred x = toEnum (fromEnum x - 1)
