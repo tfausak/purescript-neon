@@ -60,23 +60,19 @@ instance intIsEnumerable :: IsEnumerable Int where
   pred x = if x == bottom then Nothing else Just (x - 1)
 
 instance maybeIsEnumerable :: (IsEnumerable a) => IsEnumerable (Maybe a) where
-  -- fromEnum :: Maybe a -> Int
   fromEnum x = case x of
     Nothing -> 0
     Just j -> 1 + fromEnum j
-  -- toEnum :: Int -> Maybe (Maybe a)
   toEnum x = case x of
     0 -> Just Nothing
     _ -> case toEnum (x - 1) of
       Nothing -> Nothing
       Just j -> Just (Just j)
-  -- succ :: Maybe a -> Maybe (Maybe a)
   succ x = case x of
     Nothing -> Just bottom
     Just j -> case succ j of
       Nothing -> Nothing
       Just k -> Just (Just k)
-  -- pred :: Maybe a -> Maybe (Maybe a)
   pred x = case x of
     Nothing -> Nothing
     Just j -> Just (pred j)
