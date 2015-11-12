@@ -11,7 +11,3 @@ testIsEnumerable = do
   toEnum 1 ==> Just true
   succ false ==> Just true
   pred false ==> Nothing
-  fromEnum unit ==> 0
-  toEnum 0 ==> Just unit
-  succ unit ==> Nothing
-  pred unit ==> Nothing
