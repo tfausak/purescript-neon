@@ -7,4 +7,5 @@ testHasEmpty :: Test
 testHasEmpty = do
   info "Neon.Types.HasEmpty"
   empty ==> [] :: Array Unit
-  -- TODO
+  guard false ==> [] :: Array Unit
+  guard true ==> [unit]
