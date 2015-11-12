@@ -22,8 +22,8 @@ import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, (-))
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
-import Neon.Types.IsEnumerable
-import Neon.Values.Maybe
+import Neon.Types.IsEnumerable (IsEnumerable, fromEnum, toEnum, succ, pred)
+import Neon.Values.Maybe (Maybe(Nothing, Just))
 
 newtype Identity a = Identity a
 
