@@ -4,7 +4,9 @@ module Neon.Types.HasBottom
   ) where
 
 import Neon.Primitives.Function (constant)
+import Neon.Primitives.Number (infinity)
 import Neon.Types.HasCompare (HasCompare)
+import Neon.Types.HasSubtract (negate)
 import Neon.Values.Ordering (Ordering(LessThan))
 
 foreign import nativeBottomChar :: Char
@@ -26,6 +28,9 @@ instance functionHasBottom :: (HasBottom b) => HasBottom (a -> b) where
 
 instance intHasBottom :: HasBottom Int where
   bottom = nativeBottomInt
+
+instance numberHasBottom :: HasBottom Number where
+  bottom = negate infinity
 
 instance orderingHasBottom :: HasBottom Ordering where
   bottom = LessThan
