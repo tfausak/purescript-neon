@@ -14,6 +14,7 @@ import Neon.Types.HasOr ((||))
 import Neon.Types.HasSubtract ((-))
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Values.Maybe (Maybe(Nothing, Just))
+import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 import Neon.Values.Unit (Unit(), unit)
 
 foreign import nativeFromEnumChar :: Char -> Int
@@ -76,6 +77,25 @@ instance maybeIsEnumerable :: (IsEnumerable a) => IsEnumerable (Maybe a) where
   pred x = case x of
     Nothing -> Nothing
     Just j -> Just (pred j)
+
+instance orderingIsEnumerable :: IsEnumerable Ordering where
+  fromEnum x = case x of
+    LessThan -> 0
+    EqualTo -> 1
+    GreaterThan -> 2
+  toEnum x = case x of
+    0 -> Just LessThan
+    1 -> Just EqualTo
+    2 -> Just GreaterThan
+    _ -> Nothing
+  succ x = case x of
+    LessThan -> Just EqualTo
+    EqualTo -> Just GreaterThan
+    _ -> Nothing
+  pred x = case x of
+    EqualTo -> Just LessThan
+    GreaterThan -> Just EqualTo
+    _ -> Nothing
 
 instance unitIsEnumerable :: IsEnumerable Unit where
   fromEnum _ = 0

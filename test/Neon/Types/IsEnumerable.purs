@@ -35,6 +35,11 @@ testIsEnumerable = do
   pred (Just false) ==> Just Nothing
   pred (Just true) ==> Just (Just false)
 
+  fromEnum LessThan ==> 0
+  toEnum 1 ==> Just EqualTo
+  succ GreaterThan ==> Nothing
+  pred GreaterThan ==> Just EqualTo
+
   fromEnum unit ==> 0
   toEnum 0 ==> Just unit
   succ unit ==> Nothing
