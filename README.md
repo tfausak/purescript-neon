@@ -1,7 +1,7 @@
 # [Neon][]
 
 [![Package version](https://img.shields.io/bower/v/purescript-neon.svg)](https://github.com/tfausak/purescript-neon/releases)
-[![Package license](https://img.shields.io/bower/l/purescript-neon.svg?label=version)](https://github.com/tfausak/purescript-neon/blob/master/LICENSE.md)
+[![Package license](https://img.shields.io/bower/l/purescript-neon.svg?label=license)](https://github.com/tfausak/purescript-neon/blob/master/LICENSE.md)
 [![Documentation](https://img.shields.io/badge/docs-pursuit-blue.svg)](http://pursuit.purescript.org/packages/purescript-neon)
 [![Build status](https://img.shields.io/travis/tfausak/purescript-neon/master.svg)](https://travis-ci.org/tfausak/purescript-neon)
 
