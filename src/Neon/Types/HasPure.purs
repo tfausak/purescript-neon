@@ -7,6 +7,7 @@ module Neon.Types.HasPure
 
 import Neon.Primitives.Function (constant)
 import Neon.Types.HasApply (HasApply)
+import Neon.Types.HasNot (not)
 import Neon.Values.Unit (Unit(), unit)
 
 -- | Laws:
@@ -27,4 +28,4 @@ when :: forall f. (HasPure f) => Boolean -> f Unit -> f Unit
 when p x = if p then x else pure unit
 
 unless :: forall f. (HasPure f) => Boolean -> f Unit -> f Unit
-unless p x = if p then pure unit else x
+unless p x = when (not p) x
