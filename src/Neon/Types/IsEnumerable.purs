@@ -7,8 +7,10 @@ module Neon.Types.IsEnumerable
   ) where
 
 import Neon.Types.HasBottom (HasBottom)
+import Neon.Types.HasEqual ((==))
 import Neon.Types.HasTop (HasTop)
 import Neon.Values.Maybe (Maybe(Nothing, Just))
+import Neon.Values.Unit (Unit(), unit)
 
 -- | Laws:
 -- | - `pred bottom = Nothing`
@@ -35,3 +37,9 @@ instance booleanIsEnumerable :: IsEnumerable Boolean where
   pred x = case x of
     false -> Nothing
     true -> Just true
+
+instance unitIsEnumerable :: IsEnumerable Unit where
+  fromEnum _ = 0
+  toEnum x = if x == 0 then Just unit else Nothing
+  succ _ = Nothing
+  pred _ = Nothing
