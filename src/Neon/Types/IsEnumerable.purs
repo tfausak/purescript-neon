@@ -14,6 +14,7 @@ import Neon.Types.HasOr ((||))
 import Neon.Types.HasSubtract ((-))
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Values.Maybe (Maybe(Nothing, Just))
+import Neon.Values.Unit (Unit(), unit)
 
 foreign import nativeFromEnumChar :: Char -> Int
 foreign import nativeToEnumChar :: Int -> Char
@@ -57,3 +58,9 @@ instance intIsEnumerable :: IsEnumerable Int where
   toEnum x = Just x
   succ x = if x == top then Nothing else Just (x + 1)
   pred x = if x == bottom then Nothing else Just (x - 1)
+
+instance unitIsEnumerable :: IsEnumerable Unit where
+  fromEnum _ = 0
+  toEnum x = if x == 0 then Just unit else Nothing
+  succ _ = Nothing
+  pred _ = Nothing

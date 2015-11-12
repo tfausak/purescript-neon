@@ -20,3 +20,7 @@ testIsEnumerable = do
   toEnum 2 ==> Just 2
   succ 2 ==> Just 3
   pred 2 ==> Just 1
+  fromEnum unit ==> 0
+  toEnum 0 ==> Just unit
+  succ unit ==> Nothing
+  pred unit ==> Nothing
