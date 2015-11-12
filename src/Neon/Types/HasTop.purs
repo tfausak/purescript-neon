@@ -4,6 +4,7 @@ module Neon.Types.HasTop
   ) where
 
 import Neon.Primitives.Function (constant)
+import Neon.Primitives.Number (infinity)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Values.Ordering (Ordering(GreaterThan))
 
@@ -26,6 +27,9 @@ instance functionHasTop :: (HasTop b) => HasTop (a -> b) where
 
 instance intHasTop :: HasTop Int where
   top = nativeTopInt
+
+instance numberHasTop :: HasTop Number where
+  top = infinity
 
 instance orderingHasTop :: HasTop Ordering where
   top = GreaterThan

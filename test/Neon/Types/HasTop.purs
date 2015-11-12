@@ -11,4 +11,5 @@ testHasTop = do
   top ==> '\65535'
   top unit ==> true
   top ==> 2147483647
+  top ==> infinity
   top ==> GreaterThan
