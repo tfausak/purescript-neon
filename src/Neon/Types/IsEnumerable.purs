@@ -9,6 +9,7 @@ module Neon.Types.IsEnumerable
 import Neon.Types.HasAdd ((+))
 import Neon.Types.HasBottom (HasBottom, bottom)
 import Neon.Types.HasCompare ((<), (>))
+import Neon.Types.HasEqual ((==))
 import Neon.Types.HasOr ((||))
 import Neon.Types.HasSubtract ((-))
 import Neon.Types.HasTop (HasTop, top)
@@ -50,3 +51,9 @@ instance charIsEnumerable :: IsEnumerable Char where
     else Just (nativeToEnumChar x)
   succ x = toEnum (fromEnum x + 1)
   pred x = toEnum (fromEnum x - 1)
+
+instance intIsEnumerable :: IsEnumerable Int where
+  fromEnum x = x
+  toEnum x = Just x
+  succ x = if x == top then Nothing else Just (x + 1)
+  pred x = if x == bottom then Nothing else Just (x - 1)

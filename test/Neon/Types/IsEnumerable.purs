@@ -16,3 +16,7 @@ testIsEnumerable = do
   toEnum 999999999 ==> Nothing :: Maybe Char
   succ 'A' ==> Just 'B'
   pred 'B' ==> Just 'A'
+  fromEnum 2 ==> 2
+  toEnum 2 ==> Just 2
+  succ 2 ==> Just 3
+  pred 2 ==> Just 1
