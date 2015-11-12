@@ -28,3 +28,7 @@ testIdentity = do
   Identity 3 - Identity 2 ==> Identity 1
   top ==> Identity true
   zero ==> Identity 0
+  fromEnum (Identity false) ==> 0
+  toEnum 0 ==> Just (Identity false)
+  succ (Identity false) ==> Just (Identity true)
+  pred (Identity true) ==> Just (Identity false)
