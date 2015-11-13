@@ -3,7 +3,7 @@
 // module Neon.Values.Dictionary
 
 module.exports = {
-  nativeAddDictioanry: function (x) {
+  nativeAddDictionary: function (x) {
     return function (y) {
       var z = {};
       var p;
@@ -43,7 +43,7 @@ module.exports = {
         for (p in x) {
           if (x.hasOwnProperty(p)) {
             if (y.hasOwnProperty(p)) {
-              if (!HasEqual.equal(x)(y)) {
+              if (!HasEqual.equal(x[p])(y[p])) {
                 return false;
               }
             } else {
@@ -106,5 +106,26 @@ module.exports = {
     };
   },
 
-  nativeZeroDictionary: {}
+  nativeShowDictionary: function (HasShow) {
+    return function (x) {
+      var xs = [];
+      for (var p in x) {
+        if (x.hasOwnProperty(p)) {
+          xs.push('pair (' + JSON.stringify(p) + ') (' + HasShow.show(x[p]) + ')');
+        }
+      }
+
+      return 'fromArray ([' + xs.join(', ') + '])';
+    };
+  },
+
+  nativeZeroDictionary: {},
+
+  nativeFromArray: function (x) {
+    var y = {};
+    for (var i = 0; i < x.length; ++i) {
+      y[x[i].first] = x[i].second;
+    }
+    return y;
+  }
 };
