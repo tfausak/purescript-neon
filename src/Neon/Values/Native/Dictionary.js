@@ -13,7 +13,7 @@ module.exports = {
         }
       }
       for (p in y) {
-        if (x.hasOwnProperty(p)) {
+        if (y.hasOwnProperty(p)) {
           z[p] = y[p];
         }
       }
