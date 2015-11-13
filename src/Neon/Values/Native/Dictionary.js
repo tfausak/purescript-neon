@@ -28,7 +28,7 @@ module.exports = {
       for (p in f) {
         if (f.hasOwnProperty(p)) {
           if (x.hasOwnProperty(p)) {
-            z[p] = f[p](x[p]);
+            y[p] = f[p](x[p]);
           }
         }
       }
