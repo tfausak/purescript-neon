@@ -28,6 +28,7 @@ import Test.Neon.Types.HasShow (testHasShow)
 import Test.Neon.Types.HasState (testHasState)
 import Test.Neon.Types.HasSubtract (testHasSubtract)
 import Test.Neon.Types.HasTop (testHasTop)
+import Test.Neon.Types.HasTraverse (testHasTraverse)
 import Test.Neon.Types.HasZero (testHasZero)
 import Test.Neon.Types.IsEnumerable (testIsEnumerable)
 
@@ -59,5 +60,6 @@ testTypes = do
   testHasState
   testHasSubtract
   testHasTop
+  testHasTraverse
   testHasZero
   testIsEnumerable
