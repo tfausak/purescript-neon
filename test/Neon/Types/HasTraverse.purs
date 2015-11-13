@@ -7,4 +7,6 @@ import Test.Core (Test(), (==>))
 testHasTraverse :: Test
 testHasTraverse = do
   info "Neon.Types.HasTraverse"
+  traverse pure [] ==> Just ([] :: Array Unit)
+  -- TODO
   traverse pure (Just 1) ==> [Just 1]
