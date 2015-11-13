@@ -3,47 +3,44 @@
 // module Neon.Values.Dictionary
 
 module.exports = {
-  nativeAddDictionary: function (x) {
-    return function (y) {
-      var z = {};
-      var p;
-      for (p in x) {
-        if (x.hasOwnProperty(p)) {
-          z[p] = x[p];
+  nativeAddDictionary: function (xs) {
+    return function (ys) {
+      var result = {};
+      for (var property in xs) {
+        if (xs.hasOwnProperty(property)) {
+          result[property] = xs[property];
         }
       }
-      for (p in y) {
-        if (y.hasOwnProperty(p)) {
-          z[p] = y[p];
+      for (property in ys) {
+        if (ys.hasOwnProperty(property)) {
+          result[property] = ys[property];
         }
       }
-      return z;
+      return result;
     };
   },
 
-  nativeApplyDictionary: function (f) {
-    return function (x) {
-      var y = {};
-      var p;
-      for (p in f) {
-        if (f.hasOwnProperty(p)) {
-          if (x.hasOwnProperty(p)) {
-            y[p] = f[p](x[p]);
+  nativeApplyDictionary: function (fs) {
+    return function (xs) {
+      var result = {};
+      for (var property in fs) {
+        if (fs.hasOwnProperty(property)) {
+          if (xs.hasOwnProperty(property)) {
+            result[property] = fs[property](xs[property]);
           }
         }
       }
-      return y;
+      return result;
     };
   },
 
   nativeEqualDictionary: function (HasEqual) {
-    return function (x) {
-      return function (y) {
-        var p;
-        for (p in x) {
-          if (x.hasOwnProperty(p)) {
-            if (y.hasOwnProperty(p)) {
-              if (!HasEqual.equal(x[p])(y[p])) {
+    return function (xs) {
+      return function (ys) {
+        for (var property in xs) {
+          if (xs.hasOwnProperty(property)) {
+            if (ys.hasOwnProperty(property)) {
+              if (!HasEqual.equal(xs[property])(ys[property])) {
                 return false;
               }
             } else {
@@ -51,9 +48,9 @@ module.exports = {
             }
           }
         }
-        for (p in y) {
-          if (y.hasOwnProperty(p)) {
-            if (!x.hasOwnProperty(p)) {
+        for (property in ys) {
+          if (ys.hasOwnProperty(property)) {
+            if (!xs.hasOwnProperty(property)) {
               return false;
             }
           }
@@ -64,68 +61,69 @@ module.exports = {
   },
 
   nativeFoldlDictionary: function (f) {
-    return function (y) {
-      return function (x) {
-        for (var p in x) {
-          if (x.hasOwnProperty(p)) {
-            y = f(y)(x[p]);
+    return function (result) {
+      return function (xs) {
+        for (var property in xs) {
+          if (xs.hasOwnProperty(property)) {
+            result = f(result)(xs[property]);
           }
         }
-        return y;
+        return result;
       };
     };
   },
 
   nativeFoldrDictionary: function (f) {
-    return function (y) {
-      return function (x) {
-        var vs = [];
-        for (var p in x) {
-          if (x.hasOwnProperty(p)) {
-            vs.push(x[p]);
+    return function (result) {
+      return function (xs) {
+        var values = [];
+        for (var property in xs) {
+          if (xs.hasOwnProperty(property)) {
+            values.push(xs[property]);
           }
         }
-        for (var i = vs.length - 1; i >= 0; --i) {
-          y = f(vs[i])(y);
+        for (var i = values.length - 1; i >= 0; --i) {
+          result = f(values[i])(result);
         }
-        return y;
+        return result;
       };
     };
   },
 
   nativeMapDictionary: function (f) {
-    return function (x) {
-      var y = {};
-      var p;
-      for (p in x) {
-        if (x.hasOwnProperty(p)) {
-          y[p] = f(x[p]);
+    return function (xs) {
+      var result = {};
+      for (var property in xs) {
+        if (xs.hasOwnProperty(property)) {
+          result[property] = f(xs[property]);
         }
       }
-      return y;
+      return result;
     };
   },
 
   nativeShowDictionary: function (HasShow) {
-    return function (x) {
-      var xs = [];
-      for (var p in x) {
-        if (x.hasOwnProperty(p)) {
-          xs.push('pair (' + JSON.stringify(p) + ') (' + HasShow.show(x[p]) + ')');
+    return function (xs) {
+      var strings = [];
+      for (var property in xs) {
+        if (xs.hasOwnProperty(property)) {
+          var first = JSON.stringify(property);
+          var second = HasShow.show(xs[property]);
+          strings.push('pair (' + first + ') (' + second + ')');
         }
       }
-
-      return 'fromArray ([' + xs.join(', ') + '])';
+      return 'fromArray ([' + strings.join(', ') + '])';
     };
   },
 
   nativeZeroDictionary: {},
 
-  nativeFromArray: function (x) {
-    var y = {};
-    for (var i = 0; i < x.length; ++i) {
-      y[x[i].first] = x[i].second;
+  nativeFromArray: function (pairs) {
+    var result = {};
+    for (var i = 0; i < pairs.length; ++i) {
+      var pair = pairs[i];
+      result[pair.first] = pair.second;
     }
-    return y;
+    return result;
   }
 };
