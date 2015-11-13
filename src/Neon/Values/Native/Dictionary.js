@@ -63,6 +63,36 @@ module.exports = {
     };
   },
 
+  nativeFoldlDictionary: function (f) {
+    return function (y) {
+      return function (x) {
+        for (var p in x) {
+          if (x.hasOwnProperty(p)) {
+            y = f(y)(x[p]);
+          }
+        }
+        return y;
+      };
+    };
+  },
+
+  nativeFoldrDictionary: function (f) {
+    return function (y) {
+      return function (x) {
+        var vs = [];
+        for (var p in x) {
+          if (x.hasOwnProperty(p)) {
+            vs.push(x[p]);
+          }
+        }
+        for (var i = vs.length - 1; i >= 0; --i) {
+          y = f(vs[i])(y);
+        }
+        return y;
+      };
+    };
+  },
+
   nativeMapDictionary: function (f) {
     return function (x) {
       var y = {};
