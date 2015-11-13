@@ -4,6 +4,7 @@ module Neon.Values.Dictionary
 
 import Neon.Types.HasAdd (HasAdd, (+))
 import Neon.Types.HasAlternative (HasAlternative)
+import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasEmpty (HasEmpty)
 import Neon.Types.HasEqual (HasEqual)
 import Neon.Types.HasMap (HasMap)
@@ -12,6 +13,7 @@ import Neon.Types.HasZero (HasZero, zero)
 foreign import data Dictionary :: * -> *
 
 foreign import nativeAddDictionary :: forall a. Dictionary a -> Dictionary a -> Dictionary a
+foreign import nativeApplyDictionary :: forall a b. Dictionary (a -> b) -> Dictionary a -> Dictionary b
 foreign import nativeEqualDictionary :: forall a. (HasEqual a) => Dictionary a -> Dictionary a -> Boolean
 foreign import nativeMapDictionary :: forall a b. (a -> b) -> Dictionary a -> Dictionary b
 foreign import nativeZeroDictionary :: forall a. Dictionary a
@@ -21,6 +23,9 @@ instance dictionaryHasAdd :: HasAdd (Dictionary a) where
 
 instance dictionaryHasAlternative :: HasAlternative Dictionary where
   alternative x y = x + y
+
+instance dictionaryHasApply :: HasApply Dictionary where
+  apply f x = nativeApplyDictionary f x
 
 instance dictionaryHasEmpty :: HasEmpty Dictionary where
   empty = zero

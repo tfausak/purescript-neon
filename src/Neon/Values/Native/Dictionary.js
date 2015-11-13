@@ -21,6 +21,21 @@ module.exports = {
     };
   },
 
+  nativeApplyDictionary: function (f) {
+    return function (x) {
+      var y = {};
+      var p;
+      for (p in f) {
+        if (f.hasOwnProperty(p)) {
+          if (x.hasOwnProperty(p)) {
+            z[p] = f[p](x[p]);
+          }
+        }
+      }
+      return y;
+    };
+  },
+
   nativeEqualDictionary: function (HasEqual) {
     return function (x) {
       return function (y) {
