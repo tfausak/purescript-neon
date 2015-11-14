@@ -12,6 +12,8 @@ import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasPure (HasPure, pure)
 import Neon.Values.Pair (Pair(Pair), pair)
 
+-- | The "state" monad transformer. Extends any monad with state via the `Pair`
+-- | type.
 newtype StateT s m a = StateT (s -> m (Pair a s))
 
 instance stateTHasAlternative :: (HasAlternative m, HasBind m) => HasAlternative (StateT s m) where
@@ -43,5 +45,13 @@ instance stateTHasMap :: (HasMap m) => HasMap (StateT s m) where
 instance stateTHasPure :: (HasBind m) => HasPure (StateT s m) where
   pure x = StateT \ y -> pure (pair x y)
 
+-- | Runs a "state" monad transformer, returning the stateful value and the
+-- | result in the wrapped monad.
+-- |
+-- | ``` purescript
+-- | flip runStateT "world"" do
+-- |   pure "hello"
+-- | -- Identity (pair "hello" "world")
+-- | ```
 runStateT :: forall s m a. StateT s m a -> s -> m (Pair a s)
 runStateT (StateT f) x = f x

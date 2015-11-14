@@ -13,6 +13,8 @@ import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasPure (HasPure, pure)
 import Neon.Values.Maybe (Maybe(Just, Nothing), maybe)
 
+-- | The "maybe" monad transformer. Extends any monad with failure via the
+-- | `Maybe` type.
 newtype MaybeT m a = MaybeT (m (Maybe a))
 
 instance maybeTHasAlternative :: (HasBind m) => HasAlternative (MaybeT m) where
@@ -45,5 +47,15 @@ instance maybeTHasMap :: (HasMap m) => HasMap (MaybeT m) where
 instance maybeTHasPure :: (HasBind m) => HasPure (MaybeT m) where
   pure x = MaybeT (pure (pure x))
 
+-- | Runs a "maybe" monad transformer, returning the `Maybe` value in the
+-- | wrapped monad.
+-- |
+-- | ``` purescript
+-- | runMaybeT do
+-- |   Just 1
+-- |   Nothing
+-- |   Just 1
+-- | -- Identity Nothing
+-- | ```
 runMaybeT :: forall m a. MaybeT m a -> m (Maybe a)
 runMaybeT (MaybeT x) = x
