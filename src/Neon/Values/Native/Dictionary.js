@@ -3,7 +3,7 @@
 // module Neon.Values.Dictionary
 
 module.exports = {
-  nativeAddDictionary: function (xs) {
+  nativeAdd: function (xs) {
     return function (ys) {
       var result = {};
       for (var property in xs) {
@@ -20,7 +20,7 @@ module.exports = {
     };
   },
 
-  nativeApplyDictionary: function (fs) {
+  nativeApply: function (fs) {
     return function (xs) {
       var result = {};
       for (var property in fs) {
@@ -34,7 +34,7 @@ module.exports = {
     };
   },
 
-  nativeEqualDictionary: function (HasEqual) {
+  nativeEqual: function (HasEqual) {
     return function (xs) {
       return function (ys) {
         for (var property in xs) {
@@ -60,7 +60,7 @@ module.exports = {
     };
   },
 
-  nativeFoldlDictionary: function (f) {
+  nativeFoldl: function (f) {
     return function (result) {
       return function (xs) {
         for (var property in xs) {
@@ -73,7 +73,7 @@ module.exports = {
     };
   },
 
-  nativeFoldrDictionary: function (f) {
+  nativeFoldr: function (f) {
     return function (result) {
       return function (xs) {
         var values = [];
@@ -90,7 +90,7 @@ module.exports = {
     };
   },
 
-  nativeMapDictionary: function (f) {
+  nativeMap: function (f) {
     return function (xs) {
       var result = {};
       for (var property in xs) {
@@ -102,7 +102,7 @@ module.exports = {
     };
   },
 
-  nativeShowDictionary: function (HasShow) {
+  nativeShow: function (HasShow) {
     return function (xs) {
       var strings = [];
       for (var property in xs) {
@@ -116,7 +116,7 @@ module.exports = {
     };
   },
 
-  nativeZeroDictionary: {},
+  nativeZero: {},
 
   nativeFromArray: function (pairs) {
     var result = {};
