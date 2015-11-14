@@ -10,6 +10,6 @@ testHasBottom = do
   bottom ==> false
   -- bottom ==> '\0' -- NOTE: purescript/purescript#1602
   bottom unit ==> false
-  bottom ==> 0 - 2147483648 -- NOTE: purescript/purescript#1591
+  bottom ==> 0 - 2147483648
   bottom ==> negate infinity
   bottom ==> LessThan
