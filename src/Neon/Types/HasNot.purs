@@ -1,10 +1,12 @@
 module Neon.Types.HasNot
   ( HasNot
+  , isInfinite
   , not
   , notEqual
   , (!=)
   ) where
 
+import Neon.Primitives.Number (isFinite)
 import Neon.Types.HasBottom (HasBottom)
 import Neon.Types.HasTop (HasTop)
 import Neon.Types.HasEqual (HasEqual, equal)
@@ -20,6 +22,17 @@ instance booleanHasNot :: HasNot Boolean where
 
 instance functionHasNot :: (HasNot b) => HasNot (a -> b) where
   not f = \ x -> not (f x)
+
+-- | Tests whether a number is finite or not.
+-- |
+-- | ``` purescript
+-- | isInfinite infinity
+-- | -- true
+-- | isInfinite 1.0
+-- | -- false
+-- | ```
+isInfinite :: Number -> Boolean
+isInfinite x = not (isFinite x)
 
 notEqual :: forall a. (HasEqual a) => a -> a -> Boolean
 notEqual x y = not (equal x y)
