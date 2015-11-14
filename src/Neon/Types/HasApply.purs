@@ -8,9 +8,8 @@ module Neon.Types.HasApply
 
 import Neon.Primitives.Function (always, flip, (|>))
 import Neon.Types.HasIdentity (identity)
+import Neon.Types.HasFold (sum)
 import Neon.Types.HasMap (HasMap, map, (<$>))
-
-foreign import nativeFlattenArray :: forall a. Array (Array a) -> Array a
 
 -- | Laws:
 -- | - Associative composition: `(<<) <$> f <*> g <*> h = f <*> (g <*> h)`
@@ -18,7 +17,7 @@ class (HasMap f) <= HasApply f where
   apply :: forall a b. f (a -> b) -> f a -> f b
 
 instance arrayHasApply :: HasApply Array where
-  apply fs xs = fs |> map (flip map xs) |> nativeFlattenArray
+  apply fs xs = fs |> map (flip map xs) |> sum
 
 instance functionHasApply :: HasApply (Function a) where
   apply f g = \ x -> f x (g x)

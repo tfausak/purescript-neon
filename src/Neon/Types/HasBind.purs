@@ -10,10 +10,9 @@ module Neon.Types.HasBind
 
 import Neon.Types.HasApply (apply)
 import Neon.Types.HasIdentity (identity)
+import Neon.Types.HasFold (sum)
 import Neon.Types.HasMap (map)
 import Neon.Types.HasPure (HasPure)
-
-foreign import nativeFlattenArray :: forall a. Array (Array a) -> Array a
 
 -- | Laws:
 -- | - Associativity: `(x >>= f) >>= g = x >>= (\ k => f k >>= g)`
@@ -21,7 +20,7 @@ class (HasPure f) <= HasBind f where
   bind :: forall a b. f a -> (a -> f b) -> f b
 
 instance arrayHasBind :: HasBind Array where
-  bind xs f = nativeFlattenArray (map f xs)
+  bind xs f = sum (map f xs)
 
 instance functionHasbind :: HasBind (Function a) where
   bind g f = \ x -> f (g x) x

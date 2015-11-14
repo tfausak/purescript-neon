@@ -17,7 +17,7 @@ module Neon.Types.HasCompare
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
-foreign import nativeCompareArray :: forall a. (HasCompare a) => Ordering -> Ordering -> Ordering -> (a -> a -> Ordering) -> Array a -> Array a -> Ordering
+foreign import nativeCompareArray :: forall a. (HasCompare a) => Ordering -> Ordering -> Ordering -> Array a -> Array a -> Ordering
 foreign import nativeCompareChar :: Ordering -> Ordering -> Ordering -> Char -> Char -> Ordering
 foreign import nativeCompareFunction :: forall a b. Ordering -> Ordering -> Ordering -> (a -> b) -> (a -> b) -> Ordering
 foreign import nativeCompareInt :: Ordering -> Ordering -> Ordering -> Int -> Int -> Ordering
@@ -32,7 +32,7 @@ class (HasEqual a) <= HasCompare a where
   compare :: a -> a -> Ordering
 
 instance arrayHasCompare :: (HasCompare a) => HasCompare (Array a) where
-  compare x y = nativeCompareArray LessThan EqualTo GreaterThan compare x y
+  compare x y = nativeCompareArray LessThan EqualTo GreaterThan x y
 
 instance booleanHasCompare :: HasCompare Boolean where
   compare x y = if x == y
