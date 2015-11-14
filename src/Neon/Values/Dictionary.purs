@@ -54,6 +54,6 @@ instance dictionaryHasShow :: (HasShow a) => HasShow (Dictionary a) where
 instance dictionaryHasZero :: HasZero (Dictionary a) where
   zero = nativeZero
 
--- TODO: I don't like this being specific to dictionaries.
+-- TODO: #42
 fromArray :: forall a. Array (Pair String a) -> Dictionary a
 fromArray x = nativeFromArray x

@@ -18,7 +18,7 @@ foreign import data CONSOLE :: !
 -- |
 -- | ``` purescript
 -- | info "Starting..."
--- | -- prints "Starting..." to STDOUT
+-- | -- prints "Starting..." to standard out
 -- | ```
 foreign import info :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 
@@ -26,7 +26,7 @@ foreign import info :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 -- |
 -- | ``` purescript
 -- | log "Listening.."
--- | -- prints "Listening..." to STDOUT
+-- | -- prints "Listening..." to standard out
 -- | ```
 foreign import log :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 
@@ -34,7 +34,7 @@ foreign import log :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 -- |
 -- | ``` purescript
 -- | warn "Stopping..."
--- | -- prints "Stopping..." to STDERR
+-- | -- prints "Stopping..." to standard error
 -- | ```
 foreign import warn :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 
@@ -42,7 +42,7 @@ foreign import warn :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 -- |
 -- | ``` purescript
 -- | error "Exploded!"
--- | -- prints "Exploded!" to STDERR
+-- | -- prints "Exploded!" to standard error
 -- | ```
 foreign import error :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 
@@ -51,7 +51,7 @@ foreign import error :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 -- |
 -- | ``` purescript
 -- | print 1
--- | -- print "1" to STDOUT
+-- | -- print "1" to standard out
 -- | ```
 print :: forall a e. (HasShow a) => a -> Effect (console :: CONSOLE | e) Unit
 print x = log (show x)

@@ -17,7 +17,7 @@ newtype StateT s m a = StateT (s -> m (Pair a s))
 instance stateTHasAlternative :: (HasAlternative m, HasBind m) => HasAlternative (StateT s m) where
   alternative (StateT f) (StateT g) = StateT \ x -> f x <|> g x
 
--- TODO: Possible to write with only "HasApply" constraint?
+-- TODO: #15
 instance stateTHasApply :: (HasBind m) => HasApply (StateT s m) where
   apply (StateT f) (StateT x) = StateT \ y -> do
     Pair g <- f y
@@ -39,7 +39,7 @@ instance stateTHasMap :: (HasMap m) => HasMap (StateT s m) where
   map g (StateT f) = StateT \ x ->
     map (\ (Pair p) -> pair (g p.first) p.second) (f x)
 
--- TODO: Only use "HasPure" if "stateTHasApply" only uses "HasApply".
+-- TODO: #15
 instance stateTHasPure :: (HasBind m) => HasPure (StateT s m) where
   pure x = StateT \ y -> pure (pair x y)
 

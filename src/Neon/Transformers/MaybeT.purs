@@ -18,8 +18,7 @@ newtype MaybeT m a = MaybeT (m (Maybe a))
 instance maybeTHasAlternative :: (HasBind m) => HasAlternative (MaybeT m) where
   alternative (MaybeT x) (MaybeT y) = MaybeT (x >>= maybe y (pure >> pure))
 
--- TODO: There has to be a better way to write this. Is it possible to write
---   with only a "HasApply" constraint?
+-- TODO: #15
 instance maybeTHasApply :: (HasBind m) => HasApply (MaybeT m) where
   apply (MaybeT f) (MaybeT x) = MaybeT do
     g <- f
@@ -42,8 +41,7 @@ instance maybeTHasLift :: HasLift MaybeT where
 instance maybeTHasMap :: (HasMap m) => HasMap (MaybeT m) where
   map f (MaybeT x) = MaybeT (map (map f) x)
 
--- TODO: If the "HasApply" instance only uses "HasApply", this only needs
---   "HasPure".
+-- TODO: #15
 instance maybeTHasPure :: (HasBind m) => HasPure (MaybeT m) where
   pure x = MaybeT (pure (pure x))
 

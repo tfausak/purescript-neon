@@ -16,7 +16,7 @@ foreign import nativePowerNumber :: Number -> Number -> Number
 class (HasOne a) <= HasPower a where
   power :: a -> a -> a
 
--- NOTE: Due to negative integers, this instance is not law-abiding.
+-- NOTE: Negative integers make this instance not law-abiding.
 instance intHasPower :: HasPower Int where
   power b n = nativePowerInt b n
 
