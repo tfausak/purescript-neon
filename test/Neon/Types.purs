@@ -1,7 +1,7 @@
 module Test.Neon.Types where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 import Test.Neon.Types.HasAdd (testHasAdd)
 import Test.Neon.Types.HasAlternative (testHasAlternative)

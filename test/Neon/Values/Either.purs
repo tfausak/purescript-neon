@@ -1,7 +1,7 @@
 module Test.Neon.Values.Either where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
 testEither :: Test
