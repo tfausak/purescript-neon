@@ -5,7 +5,7 @@ module Neon.Types.HasState
   , setState
   ) where
 
-import Neon.Primitives.Function (constant, (|>))
+import Neon.Primitives.Function (always, (|>))
 import Neon.Types.HasBind (HasBind)
 import Neon.Values.Pair (Pair(), pair)
 import Neon.Values.Unit (Unit(), unit)
@@ -22,4 +22,4 @@ getState :: forall m s. (HasState s m) => m s
 getState = state \ x -> pair x x
 
 setState :: forall m s. (HasState s m) => s -> m Unit
-setState x = x |> pair unit |> constant |> state
+setState x = x |> pair unit |> always |> state

@@ -6,7 +6,7 @@ module Neon.Values.Maybe
   , fromMaybe
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasAdd (HasAdd, add, (+))
 import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
@@ -120,7 +120,7 @@ maybe y f m = case m of
   Nothing -> y
 
 isJust :: forall a. Maybe a -> Boolean
-isJust m = maybe false (constant true) m
+isJust m = maybe false (always true) m
 
 isNothing :: forall a. Maybe a -> Boolean
 isNothing m = not (isJust m)

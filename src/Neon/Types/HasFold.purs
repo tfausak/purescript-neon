@@ -11,7 +11,7 @@ module Neon.Types.HasFold
   , product
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasAdd ((+))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasMultiply ((*))
@@ -34,10 +34,10 @@ foldMap :: forall f a m. (HasFold f, HasZero m) => (a -> m) -> f a -> m
 foldMap f xs = foldl (\ a e -> a + f e) zero xs
 
 length :: forall f a. (HasFold f) => f a -> Int
-length xs = foldMap (constant 1) xs
+length xs = foldMap (always 1) xs
 
 isPresent :: forall f a. (HasFold f) => f a -> Boolean
-isPresent xs = foldMap (constant true) xs
+isPresent xs = foldMap (always true) xs
 
 isBlank :: forall f a. (HasFold f) => f a -> Boolean
 isBlank xs = not (isPresent xs)

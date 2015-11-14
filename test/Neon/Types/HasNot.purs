@@ -7,6 +7,6 @@ testHasNot :: Test
 testHasNot = do
   info "Neon.Types.HasNot"
   not true ==> false
-  not (constant false) unit ==> true
+  not (always false) unit ==> true
   notEqual 1 2 ==> true
   1 != 2 ==> true

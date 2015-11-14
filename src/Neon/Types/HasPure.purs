@@ -5,7 +5,7 @@ module Neon.Types.HasPure
   , unless
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasNot (not)
 import Neon.Values.Unit (Unit(), unit)
@@ -22,7 +22,7 @@ instance arrayHasPure :: HasPure Array where
   pure x = [x]
 
 instance functionHasPure :: HasPure (Function a) where
-  pure x = constant x
+  pure x = always x
 
 when :: forall f. (HasPure f) => Boolean -> f Unit -> f Unit
 when p x = if p then x else pure unit

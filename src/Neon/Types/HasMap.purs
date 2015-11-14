@@ -8,7 +8,7 @@ module Neon.Types.HasMap
   , (<$)
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasCompose ((>>))
 import Neon.Values.Unit (Unit(), unit)
 
@@ -32,11 +32,11 @@ instance functionHasMap :: HasMap (Function a) where
 infixl 4 <$>
 
 ($>) :: forall f a b. (HasMap f) => f a -> b -> f b
-($>) f x = constant x <$> f
+($>) f x = always x <$> f
 infixl 4 $>
 
 (<$) :: forall f a b. (HasMap f) => a -> f b -> f a
-(<$) x f = constant x <$> f
+(<$) x f = always x <$> f
 infixl 4 <$
 
 void :: forall f a. (HasMap f) => f a -> f Unit

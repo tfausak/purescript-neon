@@ -6,7 +6,7 @@ module Neon.Types.HasApply
   , (<*)
   ) where
 
-import Neon.Primitives.Function (constant, flip, (|>))
+import Neon.Primitives.Function (always, flip, (|>))
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasMap (HasMap, map, (<$>))
 
@@ -29,9 +29,9 @@ instance functionHasApply :: HasApply (Function a) where
 infixl 4 <*>
 
 (*>) :: forall f a b. (HasApply f) => f a -> f b -> f b
-(*>) x y = (constant identity <$> x) <*> y
+(*>) x y = (always identity <$> x) <*> y
 infixl 4 *>
 
 (<*) :: forall f a b. (HasApply f) => f a -> f b -> f a
-(<*) x y = (constant <$> x) <*> y
+(<*) x y = (always <$> x) <*> y
 infixl 4 <*

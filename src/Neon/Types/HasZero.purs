@@ -3,7 +3,7 @@ module Neon.Types.HasZero
   , zero
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasAdd (HasAdd)
 
 -- | Laws:
@@ -18,7 +18,7 @@ instance booleanHasZero :: HasZero Boolean where
   zero = false
 
 instance functionHasZero :: (HasZero b) => HasZero (a -> b) where
-  zero = constant zero
+  zero = always zero
 
 instance intHasZero :: HasZero Int where
   zero = 0

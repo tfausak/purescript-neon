@@ -4,7 +4,7 @@ module Neon.Types.HasOne
   , sign
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasMultiply (HasMultiply)
 import Neon.Types.HasSubtract (HasSubtract, negate)
@@ -20,7 +20,7 @@ instance booleanHasOne :: HasOne Boolean where
   one = true
 
 instance functionHasOne :: (HasOne b) => HasOne (a -> b) where
-  one = constant one
+  one = always one
 
 instance intHasOne :: HasOne Int where
   one = 1

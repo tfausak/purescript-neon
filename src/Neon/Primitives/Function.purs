@@ -1,5 +1,5 @@
 module Neon.Primitives.Function
-  ( constant
+  ( always
   , flip
   , (|>)
   , (<|)
@@ -8,16 +8,16 @@ module Neon.Primitives.Function
 -- | The constant function. Always returns the first argument.
 -- |
 -- | ``` purescript
--- | constant 1 2
+-- | always 1 2
 -- | -- 1
 -- | ```
-constant :: forall a b. a -> (b -> a)
-constant x = \ _ -> x
+always :: forall a b. a -> (b -> a)
+always x = \ _ -> x
 
 -- | Flips the order of the first two arguments.
 -- |
 -- | ``` purescript
--- | flip constant 1 2
+-- | flip always 1 2
 -- | -- 2
 -- | ```
 flip :: forall a b c. (a -> b -> c) -> (b -> a -> c)
