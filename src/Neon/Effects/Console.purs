@@ -3,10 +3,12 @@ module Neon.Effects.Console
   , error
   , info
   , log
+  , print
   , warn
   ) where
 
 import Neon.Effects.Effect (Effect())
+import Neon.Types.HasShow (HasShow, show)
 import Neon.Values.Unit (Unit())
 
 -- | Represents effects that can write to the console.
@@ -43,3 +45,13 @@ foreign import warn :: forall e. String -> Effect (console :: CONSOLE | e) Unit
 -- | -- prints "Exploded!" to STDERR
 -- | ```
 foreign import error :: forall e. String -> Effect (console :: CONSOLE | e) Unit
+
+-- | Converts a value to a string and writes a log-level message to the
+-- | console.
+-- |
+-- | ``` purescript
+-- | print 1
+-- | -- print "1" to STDOUT
+-- | ```
+print :: forall a e. (HasShow a) => a -> Effect (console :: CONSOLE | e) Unit
+print x = log (show x)
