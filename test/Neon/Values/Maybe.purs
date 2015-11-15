@@ -36,5 +36,5 @@ testMaybe = do
   isJust (Just unit :: Maybe Unit) ==> true
   isNothing (Nothing :: Maybe Unit) ==> true
   isNothing (Just unit :: Maybe Unit) ==> false
-  fromMaybe 1 Nothing ==> 1
-  fromMaybe 1 (Just 2) ==> 2
+  withDefault 1 Nothing ==> 1
+  withDefault 1 (Just 2) ==> 2
