@@ -13,7 +13,7 @@ module.exports = {
         if (x.length === 0) {
           return HasPure.pure([]);
         } else {
-          // TODO
+          console.log(f); // TODO
           return undefined;
         }
       };
