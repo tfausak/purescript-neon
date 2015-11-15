@@ -26,6 +26,9 @@ import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
+-- | Represents a choice between two values. `Either` is conventially used for
+-- | error handling where `Left` represents failure and `Right` represents
+-- | success.
 data Either a b
   = Left a
   | Right b
@@ -106,6 +109,15 @@ instance eitherHasTop :: (HasTop a, HasTop b) => HasTop (Either a b) where
 instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
   zero = Right zero
 
+-- | Applies the first function to `Left` values and the second function to
+-- | `Right` values.
+-- |
+-- | ``` purescript
+-- | either (+ 2) (* 2) (Left 3)
+-- | -- Left 5
+-- | either (+ 2) (* 2) (Right 3)
+-- | -- Right 6
+-- | ```
 either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
 either f g e = case e of
   Left l -> f l

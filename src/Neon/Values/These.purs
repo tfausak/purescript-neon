@@ -13,6 +13,9 @@ import Neon.Types.HasMap (HasMap)
 import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 
+-- | Represents either one value or another, or both. This is different than
+-- | `Either`, which only represents one or the other. And `Pair` only
+-- | represents both values.
 data These a b
   = This a
   | That b
@@ -78,6 +81,17 @@ instance theseHasShow :: (HasShow a, HasShow b) => HasShow (These a b) where
     That b -> "That (" + show b + ")"
     Both a b -> "Both (" + show a + ") (" + show b + ")"
 
+-- | Applies the first function to `This` values, the second function to `That`
+-- | values, and the third function to `Both` values.
+-- |
+-- | ``` purescript
+-- | these (+ 2) (* 2) (+) (This 3)
+-- | -- 5
+-- | these (+ 2) (* 2) (+) (That 3)
+-- | -- 6
+-- | these (+ 2) (* 2) (+) (Both 3 4)
+-- | -- 7
+-- | ```
 these :: forall a b c. (a -> c) -> (b -> c) -> (a -> b -> c) -> These a b -> c
 these f g h x = case x of
   This a -> f a

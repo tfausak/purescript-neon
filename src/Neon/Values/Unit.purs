@@ -19,6 +19,8 @@ import Neon.Types.HasTop (HasTop)
 import Neon.Types.HasZero (HasZero)
 import Neon.Values.Ordering (Ordering(EqualTo))
 
+-- | Represents nothing. The unit type is often used to show that only the
+-- | effects of a given function are important.
 newtype Unit = Unit {}
 
 instance unitHasAdd :: HasAdd Unit where
@@ -64,5 +66,6 @@ instance unitHasTop :: HasTop Unit where
 instance unitHasZero :: HasZero Unit where
   zero = unit
 
+-- | The only inhabitant of the `Unit` type.
 unit :: Unit
 unit = Unit {}

@@ -14,6 +14,7 @@ import Neon.Types.HasShow (HasShow)
 import Neon.Types.HasZero (HasZero, zero)
 import Neon.Values.Pair (Pair())
 
+-- | Represents a mapping between strings and values.
 foreign import data Dictionary :: * -> *
 
 foreign import nativeAdd :: forall a. Dictionary a -> Dictionary a -> Dictionary a
@@ -55,5 +56,12 @@ instance dictionaryHasZero :: HasZero (Dictionary a) where
   zero = nativeZero
 
 -- TODO: #42
+-- | Creates a dictionary from an array of pairs. Each pair has the string key
+-- | and the value.
+-- |
+-- | ``` purescript
+-- | fromArray [pair "x" 1] + fromArray [pair "y" 2]
+-- | -- fromArray [pair "x" 1, pair "y" 2]
+-- | ```
 fromArray :: forall a. Array (Pair String a) -> Dictionary a
 fromArray x = nativeFromArray x
