@@ -2,23 +2,23 @@ module Test.Neon.Primitives where
 
 import Neon
 import Test.Core (Test())
-import Test.Neon.Primitives.Array (testArray)
-import Test.Neon.Primitives.Boolean (testBoolean)
-import Test.Neon.Primitives.Char (testChar)
-import Test.Neon.Primitives.Function (testFunction)
-import Test.Neon.Primitives.Int (testInt)
-import Test.Neon.Primitives.Number (testNumber)
-import Test.Neon.Primitives.Object (testObject)
-import Test.Neon.Primitives.String (testString)
+import qualified Test.Neon.Primitives.Array as Array
+import qualified Test.Neon.Primitives.Boolean as Boolean
+import qualified Test.Neon.Primitives.Char as Char
+import qualified Test.Neon.Primitives.Function as Function
+import qualified Test.Neon.Primitives.Int as Int
+import qualified Test.Neon.Primitives.Number as Number
+import qualified Test.Neon.Primitives.Object as Object
+import qualified Test.Neon.Primitives.String as String
 
-testPrimitives :: Test
-testPrimitives = do
+main :: Test
+main = do
   info "Neon.Primitives"
-  testArray
-  testBoolean
-  testChar
-  testFunction
-  testInt
-  testNumber
-  testObject
-  testString
+  Array.main
+  Boolean.main
+  Char.main
+  Function.main
+  Int.main
+  Number.main
+  Object.main
+  String.main

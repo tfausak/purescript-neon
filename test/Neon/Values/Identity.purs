@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testIdentity :: Test
-testIdentity = do
+main :: Test
+main = do
   info "Neon.Values.Identity"
   Identity 1 + Identity 2 ==> Identity 3
   Identity true && Identity true ==> Identity true

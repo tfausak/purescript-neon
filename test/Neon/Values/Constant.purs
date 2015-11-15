@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testConstant :: Test
-testConstant = do
+main :: Test
+main = do
   info "Neon.Values.Constant"
   Constant "a" + Constant "b" ==> Constant "ab"
   Constant "a" <|> Constant "b" ==> Constant "ab"

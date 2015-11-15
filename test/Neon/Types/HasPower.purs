@@ -1,12 +1,10 @@
-module Test.Neon.Types.HasPower
-  ( testHasPower
-  ) where
+module Test.Neon.Types.HasPower where
 
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasPower :: Test
-testHasPower = do
+main :: Test
+main = do
   info "Neon.Types.HasPower"
   power 2 3 ==> 8
   2 ^ (0 - 1) ==> 0

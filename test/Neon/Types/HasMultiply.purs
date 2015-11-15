@@ -3,8 +3,8 @@ module Test.Neon.Types.HasMultiply where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasMultiply :: Test
-testHasMultiply = do
+main :: Test
+main = do
   info "Neon.Types.HasMultiply"
   multiply false true ==> false
   ((+ 2) * (+ 3)) 3 ==> 30

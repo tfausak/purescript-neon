@@ -3,8 +3,8 @@ module Test.Neon.Types.HasOne where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasOne :: Test
-testHasOne = do
+main :: Test
+main = do
   info "Neon.Types.HasOne"
   one ==> true
   one unit ==> 1

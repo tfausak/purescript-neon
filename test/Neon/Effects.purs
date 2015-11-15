@@ -2,15 +2,15 @@ module Test.Neon.Effects where
 
 import Neon
 import Test.Core (Test())
-import Test.Neon.Effects.Console (testConsole)
-import Test.Neon.Effects.Effect (testEffect)
-import Test.Neon.Effects.Exception (testException)
-import Test.Neon.Effects.Random (testRandom)
+import qualified Test.Neon.Effects.Console as Console
+import qualified Test.Neon.Effects.Effect as Effect
+import qualified Test.Neon.Effects.Exception as Exception
+import qualified Test.Neon.Effects.Random as Random
 
-testEffects :: Test
-testEffects = do
+main :: Test
+main = do
   info "Neon.Effects"
-  testConsole
-  testEffect
-  testException
-  testRandom
+  Console.main
+  Effect.main
+  Exception.main
+  Random.main

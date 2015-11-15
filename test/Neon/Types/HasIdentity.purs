@@ -3,7 +3,7 @@ module Test.Neon.Types.HasIdentity where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasIdentity :: Test
-testHasIdentity = do
+main :: Test
+main = do
   info "Neon.Types.HasIdentity"
   identity unit ==> unit

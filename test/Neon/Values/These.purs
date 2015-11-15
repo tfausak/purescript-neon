@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testThese :: Test
-testThese = do
+main :: Test
+main = do
   info "Neon.Values.These"
   This 1 + That 2 ==> Both 1 2
   Both "a" (+ 1) <*> Both "b" 1 ==> Both "ab" 2
