@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testEither :: Test
-testEither = do
+main :: Test
+main = do
   info "Neon.Values.Either"
   Left 1 + Right 2.0 ==> Left 1
   Left 1 <|> Right '2' ==> Right '2'

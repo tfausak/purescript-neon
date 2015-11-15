@@ -3,8 +3,8 @@ module Test.Neon.Values.Dictionary where
 import Neon
 import Test.Core (Test(), (==>))
 
-testDictionary :: Test
-testDictionary = do
+main :: Test
+main = do
   info "Neon.Values.Dictionary"
   fromArray [pair "a" 1] + fromArray [pair "b" 2] ==> fromArray [pair "a" 1, pair "b" 2]
   fromArray [pair "a" 1] <|> fromArray [pair "b" 2] ==> fromArray [pair "a" 1, pair "b" 2]

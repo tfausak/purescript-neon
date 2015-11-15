@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testHasBottom :: Test
-testHasBottom = do
+main :: Test
+main = do
   info "Neon.Types.HasBottom"
   bottom ==> false
   bottom unit ==> false

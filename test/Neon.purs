@@ -2,17 +2,17 @@ module Test.Neon where
 
 import Neon
 import Test.Core (Test())
-import Test.Neon.Effects (testEffects)
-import Test.Neon.Primitives (testPrimitives)
-import Test.Neon.Transformers (testTransformers)
-import Test.Neon.Types (testTypes)
-import Test.Neon.Values (testValues)
+import qualified Test.Neon.Effects as Effects
+import qualified Test.Neon.Primitives as Primitives
+import qualified Test.Neon.Transformers as Transformers
+import qualified Test.Neon.Types as Types
+import qualified Test.Neon.Values as Values
 
-testNeon :: Test
-testNeon = do
+main :: Test
+main = do
   info "Neon"
-  testEffects
-  testPrimitives
-  testTransformers
-  testTypes
-  testValues
+  Effects.main
+  Primitives.main
+  Transformers.main
+  Types.main
+  Values.main

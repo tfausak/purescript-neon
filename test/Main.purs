@@ -2,8 +2,8 @@ module Test.Main where
 
 import Neon
 import Test.Core (Test())
-import Test.Neon (testNeon)
+import qualified Test.Neon as Neon
 
 main :: Test
 main = do
-  testNeon
+  Neon.main

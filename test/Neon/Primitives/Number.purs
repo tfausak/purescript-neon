@@ -3,8 +3,8 @@ module Test.Neon.Primitives.Number where
 import Neon
 import Test.Core (Test(), (==>))
 
-testNumber :: Test
-testNumber = do
+main :: Test
+main = do
   info "Neon.Primitives.Number"
   isFinite infinity ==> false
   isFinite 1.0 ==> true

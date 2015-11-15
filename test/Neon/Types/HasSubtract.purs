@@ -3,8 +3,8 @@ module Test.Neon.Types.HasSubtract where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasSubtract :: Test
-testHasSubtract = do
+main :: Test
+main = do
   info "Neon.Types.HasSubtract"
   ((+ 2) - (+ 1)) 3 ==> 1
   subtract 3 2 ==> 1

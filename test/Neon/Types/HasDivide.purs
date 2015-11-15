@@ -3,8 +3,8 @@ module Test.Neon.Types.HasDivide where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasDivide :: Test
-testHasDivide = do
+main :: Test
+main = do
   info "Neon.Types.HasDivide"
   ((+ 2) / (\ x -> x - 3)) 8 ==> 2
   ((+ 2) % (\ x -> x - 3)) 8 ==> 0

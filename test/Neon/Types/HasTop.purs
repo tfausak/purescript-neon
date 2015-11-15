@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testHasTop :: Test
-testHasTop = do
+main :: Test
+main = do
   info "Neon.Types.HasTop"
   top ==> true
   top ==> '\65535'

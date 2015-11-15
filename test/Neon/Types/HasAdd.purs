@@ -3,8 +3,8 @@ module Test.Neon.Types.HasAdd where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasAdd :: Test
-testHasAdd = do
+main :: Test
+main = do
   info "Neon.Types.HasAdd"
   [1] + [2] ==> [1, 2]
   add true true ==> true

@@ -4,8 +4,8 @@ import Neon
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testMaybe :: Test
-testMaybe = do
+main :: Test
+main = do
   info "Neon.Values.Maybe"
   Just 1 + Just 2 ==> Just 3
   Nothing <|> Just 1 ==> Just 1

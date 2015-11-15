@@ -3,8 +3,8 @@ module Test.Neon.Primitives.Function where
 import Neon
 import Test.Core (Test(), (==>))
 
-testFunction :: Test
-testFunction = do
+main :: Test
+main = do
   info "Neon.Primitives.Function"
   always true unit ==> true
   flip (+) "a" "b" ==> "ba"

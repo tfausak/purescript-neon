@@ -5,8 +5,8 @@ import Neon.Transformers -- TODO: #45
 import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testStateT :: Test
-testStateT = do
+main :: Test
+main = do
   info "Neon.Transformers.StateT"
   let x = StateT (\ x -> pure (pair 0 x))
   runStateT (StateT (always []) <|> StateT (\ y -> pure (pair 0 y))) 2 ==> [pair 0 2]

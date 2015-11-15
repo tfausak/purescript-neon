@@ -3,8 +3,8 @@ module Test.Neon.Types.HasEqual where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasEqual :: Test
-testHasEqual = do
+main :: Test
+main = do
   info "Neon.Types.HasEqual"
   [1] == [1] ==> true
   equal true false ==> false
