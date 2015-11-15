@@ -35,3 +35,7 @@ testEither = do
   isLeft (Right unit) ==> false
   isRight (Left unit) ==> false
   isRight (Right unit) ==> true
+  fromEither (Left unit :: Either Unit Boolean) ==> Nothing
+  fromEither (Right unit :: Either Boolean Unit) ==> Just unit
+  toEither unit (Nothing :: Maybe Boolean) ==> Left unit
+  toEither unit (Just true) ==> Right true

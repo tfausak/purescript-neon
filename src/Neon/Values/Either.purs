@@ -1,10 +1,13 @@
 module Neon.Values.Either
   ( Either(Left, Right)
   , either
+  , fromEither
   , isLeft
   , isRight
+  , toEither
   ) where
 
+import Neon.Primitives.Function (always)
 import Neon.Types.HasAdd (HasAdd, add, (+))
 import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
@@ -26,6 +29,7 @@ import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
+import Neon.Values.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
 -- | Represents a choice between two values. `Either` is conventially used for
@@ -150,3 +154,25 @@ isLeft e = case e of
 -- | ```
 isRight :: forall a b. Either a b -> Boolean
 isRight e = not (isLeft e)
+
+-- | Converts an `Either` into a `Maybe`.
+-- |
+-- | ``` purescript
+-- | fromEither (Left unit)
+-- | -- Nothing
+-- | fromEither (Right unit)
+-- | -- Just unit
+-- | ```
+fromEither :: forall a b. Either a b -> Maybe b
+fromEither e = either (always Nothing) Just e
+
+-- | Converts a `Maybe` into an `Either`.
+-- |
+-- | ``` purescript
+-- | toEither unit Nothing
+-- | -- Left unit
+-- | toEither unit (Just true)
+-- | -- Right true
+-- | ```
+toEither :: forall a b. a -> Maybe b -> Either a b
+toEither x m = maybe (Left x) Right m
