@@ -1,5 +1,8 @@
 module Neon.Values.These
   ( These(This, That, Both)
+  , isBoth
+  , isThat
+  , isThis
   , these
   ) where
 
@@ -97,3 +100,39 @@ these f g h x = case x of
   This a -> f a
   That b -> g b
   Both a b -> h a b
+
+-- | Returns `true` if the `These` is a `This` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isThis (This unit)
+-- | -- true
+-- | ```
+isThis :: forall a b. These a b -> Boolean
+isThis x = case x of
+  This _ -> true
+  _ -> false
+
+-- | Returns `true` if the `These` is a `That` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isThat (That unit)
+-- | -- true
+-- | ```
+isThat :: forall a b. These a b -> Boolean
+isThat x = case x of
+  That _ -> true
+  _ -> false
+
+-- | Returns `true` if the `These` is a `Both` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isBith (Both unit unit)
+-- | -- true
+-- | ```
+isBoth :: forall a b. These a b -> Boolean
+isBoth x = case x of
+  Both _ _ -> true
+  _ -> false
