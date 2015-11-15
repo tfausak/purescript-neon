@@ -1,6 +1,8 @@
 module Neon.Values.Either
   ( Either(Left, Right)
   , either
+  , isLeft
+  , isRight
   ) where
 
 import Neon.Types.HasAdd (HasAdd, add, (+))
@@ -122,3 +124,29 @@ either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
 either f g e = case e of
   Left l -> f l
   Right r -> g r
+
+-- | Returns `true` if the `Either` is a `Left` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isLeft (Left unit)
+-- | -- true
+-- | isLeft (Right unit)
+-- | -- false
+-- | ```
+isLeft :: forall a b. Either a b -> Boolean
+isLeft e = case e of
+  Left _ -> true
+  _ -> false
+
+-- | Returns `true` if the `Either` is a `Right` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isRight (Right unit)
+-- | -- true
+-- | isRight (Left unit)
+-- | -- false
+-- | ```
+isRight :: forall a b. Either a b -> Boolean
+isRight e = not (isLeft e)
