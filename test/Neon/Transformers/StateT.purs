@@ -17,3 +17,6 @@ main = do
   runStateT ((+ 1) <$> x) 2 ==> Identity (pair 1 2)
   runStateT (pure 1) 2 ==> Identity (pair 1 2)
   runStateT x 2 ==> Identity (pair 0 2)
+  runStateT (state \ x -> pair (x - 1) (x + 1)) 2 ==> Identity (pair 1 3)
+  runStateT getState 1 ==> Identity (pair 1 1)
+  runStateT (setState 2) 1 ==> Identity (pair unit 2)

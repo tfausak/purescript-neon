@@ -10,9 +10,18 @@ foreign import nativeAddInt :: Int -> Int -> Int
 foreign import nativeAddNumber :: Number -> Number -> Number
 foreign import nativeAddString :: String -> String -> String
 
+-- | Represents types that can be added together. This is also known as a
+-- | [semigroup](https://en.wikipedia.org/wiki/Semigroup).
+-- |
 -- | Laws:
 -- | - Associativity: `x + (y + z) = (x + y) + z`
 class HasAdd a where
+  -- | Adds two values together.
+  -- |
+  -- | ``` purescript
+  -- | add "a" "b"
+  -- | -- "ab"
+  -- | ```
   add :: a -> a -> a
 
 instance arrayHasAdd :: HasAdd (Array a) where
@@ -34,6 +43,11 @@ instance stringHasAdd :: HasAdd String where
   add x y = nativeAddString x y
 
 -- | Alias for `add`.
+-- |
+-- | ``` purescript
+-- | "a" + "b"
+-- | -- "ab"
+-- | ```
 (+) :: forall a. (HasAdd a) => a -> a -> a
 (+) x y = add x y
 infixl 6 +

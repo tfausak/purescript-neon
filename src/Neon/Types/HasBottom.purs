@@ -12,9 +12,17 @@ import Neon.Values.Ordering (Ordering(LessThan))
 foreign import nativeBottomChar :: Char
 foreign import nativeBottomInt :: Int
 
+-- | Represents types that have a lower bound.
+-- |
 -- | Laws:
 -- | - `bottom <= x`
 class (HasCompare a) <= HasBottom a where
+  -- | Returns the lower bound value.
+  -- |
+  -- | ``` purescript
+  -- | bottom
+  -- | -- false
+  -- | ```
   bottom :: a
 
 instance booleanHasBottom :: HasBottom Boolean where

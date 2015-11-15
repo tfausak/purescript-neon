@@ -11,9 +11,17 @@ import Neon.Values.Ordering (Ordering(GreaterThan))
 foreign import nativeTopChar :: Char
 foreign import nativeTopInt :: Int
 
+-- | Represents types that have an upper bound.
+-- |
 -- | Laws:
 -- | - `top >= x`
 class (HasCompare a) <= HasTop a where
+  -- | Returns the upper bound value.
+  -- |
+  -- | ``` purescript
+  -- | top
+  -- | -- true
+  -- | ```
   top :: a
 
 instance booleanHasTop :: HasTop Boolean where

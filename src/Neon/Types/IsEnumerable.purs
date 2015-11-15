@@ -1,9 +1,9 @@
 module Neon.Types.IsEnumerable
   ( IsEnumerable
   , fromEnum
-  , toEnum
-  , succ
   , pred
+  , succ
+  , toEnum
   ) where
 
 import Neon.Types.HasAdd ((+))
@@ -20,15 +20,52 @@ import Neon.Values.Unit (Unit(), unit)
 foreign import nativeFromEnumChar :: Char -> Int
 foreign import nativeToEnumChar :: Int -> Char
 
+-- | Represents types that can be converted to and from integers.
+-- |
 -- | Laws:
 -- | - `pred bottom = Nothing`
 -- | - `succ top = Nothing`
 -- | - `toEnum (fromEnum x) = Just x`
 -- | - `compare x y = compare (fromEnum x) (fromEnum y)`
 class (HasBottom a, HasTop a) <= IsEnumerable a where
+  -- | Converts a value into an integer.
+  -- |
+  -- | ``` purescript
+  -- | fromEnum 1
+  -- | -- true
+  -- | ```
   fromEnum :: a -> Int
+
+  -- | Converts an integer into a value. If the integer can't be converted,
+  -- | returns `Nothing`.
+  -- |
+  -- | ``` purescript
+  -- | toEnum 1
+  -- | -- Just true
+  -- | toEnum 2
+  -- | -- Nothing
+  -- | ```
   toEnum :: Int -> Maybe a
+
+  -- | Returns the next value. If there is no next value, returns `Nothing`.
+  -- |
+  -- | ``` purescript
+  -- | succ false
+  -- | -- Just true
+  -- | succ true
+  -- | -- Nothing
+  -- | ```
   succ :: a -> Maybe a
+
+  -- | Returns the previous value. If there is no previous value, returns
+  -- | `Nothing`.
+  -- |
+  -- | ``` purescript
+  -- | pred true
+  -- | -- Just false
+  -- | pred false
+  -- | -- Nothing
+  -- | ```
   pred :: a -> Maybe a
 
 instance booleanIsEnumerable :: IsEnumerable Boolean where

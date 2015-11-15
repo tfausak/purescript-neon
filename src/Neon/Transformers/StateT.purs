@@ -6,10 +6,12 @@ module Neon.Transformers.StateT
 import Neon.Types.HasAlternative (HasAlternative, (<|>))
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasBind (HasBind, bind, (>>=))
+import Neon.Types.HasCompose ((>>))
 import Neon.Types.HasEmpty (HasEmpty, empty)
 import Neon.Types.HasLift (HasLift)
 import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasPure (HasPure, pure)
+import Neon.Types.HasState (HasState)
 import Neon.Values.Pair (Pair(Pair), pair)
 
 -- | The "state" monad transformer. Extends any monad with state via the `Pair`
@@ -44,6 +46,9 @@ instance stateTHasMap :: (HasMap m) => HasMap (StateT s m) where
 -- TODO: #15
 instance stateTHasPure :: (HasBind m) => HasPure (StateT s m) where
   pure x = StateT \ y -> pure (pair x y)
+
+instance stateTHasState :: (HasBind m) => HasState s (StateT s m) where
+  state f = StateT (f >> pure)
 
 -- | Runs a "state" monad transformer, returning the stateful value and the
 -- | result in the wrapped monad.
