@@ -21,6 +21,7 @@ module Neon.Types
   , module Neon.Types.HasOr
   , module Neon.Types.HasPower
   , module Neon.Types.HasPure
+  , module Neon.Types.HasRoot
   , module Neon.Types.HasShow
   , module Neon.Types.HasState
   , module Neon.Types.HasSubtract
@@ -51,6 +52,7 @@ import Neon.Types.HasOne
 import Neon.Types.HasOr
 import Neon.Types.HasPower
 import Neon.Types.HasPure
+import Neon.Types.HasRoot
 import Neon.Types.HasShow
 import Neon.Types.HasState
 import Neon.Types.HasSubtract
