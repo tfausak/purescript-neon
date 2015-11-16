@@ -6,13 +6,11 @@ module Neon.Values.List
 
 import Neon.Types.HasAdd ((+))
 import Neon.Types.HasAnd ((&&))
-import Neon.Types.HasApply ((<*>))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold, foldl, foldr, foldMap)
 import Neon.Types.HasMap (HasMap, (<$>))
 import Neon.Types.HasPure (pure)
 import Neon.Types.HasShow (HasShow, show)
-import Neon.Types.HasTraverse (HasTraverse, traverse)
 
 -- | Represents a linked list of values.
 data List a
@@ -41,11 +39,6 @@ instance listHasShow :: (HasShow a) => HasShow (List a) where
   show xs = case xs of
     Nil -> "Nil"
     Cons x l -> "Cons (" + show x + ") (" + show l + ")"
-
-instance listHasTraverse :: HasTraverse List where
-  traverse f xs = case xs of
-    Nil -> pure Nil
-    Cons x l -> Cons <$> f x <*> traverse f l
 
 -- | Converts a foldable container into a list.
 -- |
