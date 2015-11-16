@@ -16,7 +16,7 @@ import Neon.Types.HasBind (HasBind, bind)
 import Neon.Types.HasBottom (HasBottom, bottom)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
-import Neon.Types.HasEmpty (HasEmpty)
+import Neon.Types.HasEmpty (HasEmpty, empty)
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
 import Neon.Types.HasMap (HasMap, (<$>))
@@ -24,7 +24,7 @@ import Neon.Types.HasMultiply (HasMultiply, multiply)
 import Neon.Types.HasNot (HasNot, not)
 import Neon.Types.HasOne (HasOne, one)
 import Neon.Types.HasOr (HasOr, or)
-import Neon.Types.HasPure (HasPure)
+import Neon.Types.HasPure (HasPure, pure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasTop (HasTop, top)
@@ -163,8 +163,8 @@ isRight e = not (isLeft e)
 -- | fromEither (Right unit)
 -- | -- Just unit
 -- | ```
-fromEither :: forall a b. Either a b -> Maybe b
-fromEither e = either (always Nothing) Just e
+fromEither :: forall a b m. (HasEmpty m, HasPure m) => Either a b -> m b
+fromEither e = either (always empty) pure e
 
 -- | Converts a `Maybe` into an `Either`.
 -- |
