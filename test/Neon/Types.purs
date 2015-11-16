@@ -25,6 +25,7 @@ import qualified Test.Neon.Types.HasOne as HasOne
 import qualified Test.Neon.Types.HasOr as HasOr
 import qualified Test.Neon.Types.HasPower as HasPower
 import qualified Test.Neon.Types.HasPure as HasPure
+import qualified Test.Neon.Types.HasRoot as HasRoot
 import qualified Test.Neon.Types.HasShow as HasShow
 import qualified Test.Neon.Types.HasState as HasState
 import qualified Test.Neon.Types.HasSubtract as HasSubtract
@@ -58,6 +59,7 @@ main = do
   HasOr.main
   HasPower.main
   HasPure.main
+  HasRoot.main
   HasShow.main
   HasState.main
   HasSubtract.main
