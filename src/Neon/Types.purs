@@ -25,6 +25,7 @@ module Neon.Types
   , module Neon.Types.HasState
   , module Neon.Types.HasSubtract
   , module Neon.Types.HasTop
+  , module Neon.Types.HasTraverse
   , module Neon.Types.HasZero
   , module Neon.Types.IsEnumerable
   ) where
@@ -54,5 +55,6 @@ import Neon.Types.HasShow
 import Neon.Types.HasState
 import Neon.Types.HasSubtract
 import Neon.Types.HasTop
+import Neon.Types.HasTraverse
 import Neon.Types.HasZero
 import Neon.Types.IsEnumerable
