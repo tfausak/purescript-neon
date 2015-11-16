@@ -6,6 +6,7 @@ import qualified Test.Neon.Values.Constant as Constant
 import qualified Test.Neon.Values.Dictionary as Dictionary
 import qualified Test.Neon.Values.Either as Either
 import qualified Test.Neon.Values.Identity as Identity
+import qualified Test.Neon.Values.List as List
 import qualified Test.Neon.Values.Maybe as Maybe
 import qualified Test.Neon.Values.Ordering as Ordering
 import qualified Test.Neon.Values.Pair as Pair
@@ -19,6 +20,7 @@ main = do
   Dictionary.main
   Either.main
   Identity.main
+  List.main
   Maybe.main
   Ordering.main
   Pair.main
