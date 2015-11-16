@@ -6,9 +6,13 @@ module Neon.Values.List
 
 import Neon.Types.HasAdd ((+))
 import Neon.Types.HasAnd ((&&))
+import Neon.Types.HasApply ((<*>))
 import Neon.Types.HasEqual (HasEqual, (==))
-import Neon.Types.HasFold (HasFold, foldr)
+import Neon.Types.HasFold (HasFold, foldl, foldr, foldMap)
+import Neon.Types.HasMap (HasMap, (<$>))
+import Neon.Types.HasPure (pure)
 import Neon.Types.HasShow (HasShow, show)
+import Neon.Types.HasTraverse (HasTraverse, traverse)
 
 -- | Represents a linked list of values.
 data List a
@@ -17,13 +21,31 @@ data List a
 
 instance listHasEqual :: (HasEqual a) => HasEqual (List a) where
   equal Nil Nil = true
-  equal (Cons h1 l1) (Cons h2 l2) = h1 == h2 && l1 == l2
+  equal (Cons x1 l1) (Cons x2 l2) = x1 == x2 && l1 == l2
   equal _ _ = false
 
+instance listHasFold :: HasFold List where
+  foldl f y xs = case xs of
+    Nil -> y
+    Cons x l -> foldl f (f y x) l
+  foldr f y xs = case xs of
+    Nil -> y
+    Cons x l -> f x (foldr f y l)
+
+instance listHasMap :: HasMap List where
+  map f xs = case xs of
+    Nil -> Nil
+    Cons x l -> Cons (f x) (f <$> l)
+
 instance listHasShow :: (HasShow a) => HasShow (List a) where
-  show x = case x of
+  show xs = case xs of
     Nil -> "Nil"
-    Cons e l -> "Cons (" + show e + ") (" + show l + ")"
+    Cons x l -> "Cons (" + show x + ") (" + show l + ")"
+
+instance listHasTraverse :: HasTraverse List where
+  traverse f xs = case xs of
+    Nil -> pure Nil
+    Cons x l -> Cons <$> f x <*> traverse f l
 
 -- | Converts a foldable container into a list.
 -- |
@@ -41,6 +63,4 @@ toList xs = foldr Cons Nil xs
 -- | -- [1, 2]
 -- | ```
 fromList :: forall a. List a -> Array a
-fromList x = case x of
-  Nil -> []
-  Cons e l -> [e] + fromList l
+fromList xs = foldMap (\ x -> [x]) xs
