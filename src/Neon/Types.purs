@@ -11,6 +11,7 @@ module Neon.Types
   , module Neon.Types.HasDivide
   , module Neon.Types.HasEmpty
   , module Neon.Types.HasEqual
+  , module Neon.Types.HasExtend
   , module Neon.Types.HasFold
   , module Neon.Types.HasIdentity
   , module Neon.Types.HasLift
@@ -40,6 +41,7 @@ import Neon.Types.HasCompose
 import Neon.Types.HasDivide
 import Neon.Types.HasEmpty
 import Neon.Types.HasEqual
+import Neon.Types.HasExtend
 import Neon.Types.HasFold
 import Neon.Types.HasIdentity
 import Neon.Types.HasLift
