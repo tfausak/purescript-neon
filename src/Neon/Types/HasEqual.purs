@@ -12,11 +12,19 @@ foreign import nativeEqualInt :: Int -> Int -> Boolean
 foreign import nativeEqualNumber :: Number -> Number -> Boolean
 foreign import nativeEqualString :: String -> String -> Boolean
 
+-- | Represents types that can be equal to each other.
+-- |
 -- | Laws:
 -- | - Reflexivity: `x == x = true`
 -- | - Symmetry: `x == y = y == x`
 -- | - Transitivity: `x == y` and `y == z` implies `x == z`
 class HasEqual a where
+  -- | Returns `true` if two values are equal, `false` otherwise.
+  -- |
+  -- | ``` purescript
+  -- | equal "a" "a"
+  -- | -- true
+  -- | ```
   equal :: a -> a -> Boolean
 
 instance arrayHasEqual :: (HasEqual a) => HasEqual (Array a) where
@@ -41,6 +49,11 @@ instance stringHasEqual :: HasEqual String where
   equal x y = nativeEqualString x y
 
 -- | Alias for `equal`.
+-- |
+-- | ``` purescript
+-- | "a" == "a"
+-- | -- true
+-- | ```
 (==) :: forall a. (HasEqual a) => a -> a -> Boolean
 (==) x y = equal x y
 infix 4 ==

@@ -18,3 +18,9 @@ main = do
   these identity (+ 1) (+) (This 1) ==> 1
   these identity (+ 1) (+) (That 1) ==> 2
   these identity (+ 1) (+) (Both 1 2) ==> 3
+  isThis (This unit) ==> true
+  isThis (That unit) ==> false
+  isThat (That unit) ==> true
+  isThat (This unit) ==> false
+  isBoth (Both unit unit) ==> true
+  isBoth (This unit) ==> false
