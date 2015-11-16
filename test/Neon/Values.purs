@@ -10,6 +10,7 @@ import qualified Test.Neon.Values.List as List
 import qualified Test.Neon.Values.Maybe as Maybe
 import qualified Test.Neon.Values.Ordering as Ordering
 import qualified Test.Neon.Values.Pair as Pair
+import qualified Test.Neon.Values.Table as Table
 import qualified Test.Neon.Values.These as These
 import qualified Test.Neon.Values.Unit as Unit
 
@@ -24,5 +25,6 @@ main = do
   Maybe.main
   Ordering.main
   Pair.main
+  Table.main
   These.main
   Unit.main
