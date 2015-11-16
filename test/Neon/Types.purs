@@ -17,7 +17,7 @@ import qualified Test.Neon.Types.HasEqual as HasEqual
 import qualified Test.Neon.Types.HasFold as HasFold
 import qualified Test.Neon.Types.HasIdentity as HasIdentity
 import qualified Test.Neon.Types.HasLift as HasLift
-import qualified Test.Neon.Types.HasLogBase as HasLogBase
+import qualified Test.Neon.Types.HasLogarithm as HasLogarithm
 import qualified Test.Neon.Types.HasMap as HasMap
 import qualified Test.Neon.Types.HasMultiply as HasMultiply
 import qualified Test.Neon.Types.HasNot as HasNot
@@ -51,7 +51,7 @@ main = do
   HasFold.main
   HasIdentity.main
   HasLift.main
-  HasLogBase.main
+  HasLogarithm.main
   HasMap.main
   HasMultiply.main
   HasNot.main
