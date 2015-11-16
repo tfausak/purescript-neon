@@ -2,8 +2,10 @@ module Neon.Types.IsEnumerable
   ( IsEnumerable
   , fromEnum
   , pred
+  , range
   , succ
   , toEnum
+  , (...)
   ) where
 
 import Neon.Types.HasAdd ((+))
@@ -139,3 +141,26 @@ instance unitIsEnumerable :: IsEnumerable Unit where
   toEnum x = if x == 0 then Just unit else Nothing
   succ _ = Nothing
   pred _ = Nothing
+
+-- | Returns a range of values.
+-- |
+-- | ``` purescript
+-- | range 1 4
+-- | -- [1, 2, 3, 4]
+-- | ```
+range :: forall a. (IsEnumerable a) => a -> a -> Array a
+range l h = if l > h
+  then []
+  else case succ l of
+    Nothing -> [l]
+    Just x -> [l] + range x h
+
+-- | Alias for `range`.
+-- |
+-- | ``` purescript
+-- | 1 .. 4
+-- | -- [1, 2, 3, 4]
+-- | ```
+(...) :: forall a. (IsEnumerable a) => a -> a -> Array a
+(...) l h = range l h
+infix 0 ...

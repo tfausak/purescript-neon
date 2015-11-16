@@ -44,3 +44,6 @@ main = do
   toEnum 0 ==> Just unit
   succ unit ==> Nothing
   pred unit ==> Nothing
+
+  range 1 3 ==> [1, 2, 3]
+  1 ... 3 ==> [1, 2, 3]
