@@ -2,11 +2,11 @@ module Test.Neon.Transformers where
 
 import Neon
 import Test.Core (Test())
-import Test.Neon.Transformers.MaybeT (testMaybeT)
-import Test.Neon.Transformers.StateT (testStateT)
+import qualified Test.Neon.Transformers.MaybeT as MaybeT
+import qualified Test.Neon.Transformers.StateT as StateT
 
-testTransformers :: Test
-testTransformers = do
+main :: Test
+main = do
   info "Neon.Transformers"
-  testMaybeT
-  testStateT
+  MaybeT.main
+  StateT.main

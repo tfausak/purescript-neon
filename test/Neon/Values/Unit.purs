@@ -1,11 +1,11 @@
 module Test.Neon.Values.Unit where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testUnit :: Test
-testUnit = do
+main :: Test
+main = do
   info "Neon.Values.Unit"
   unit + unit ==> unit
   unit && unit ==> unit

@@ -1,12 +1,12 @@
 module Test.Neon.Transformers.MaybeT where
 
 import Neon
-import Neon.Transformers -- NOTE: purescript/purescript#1594
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Transformers -- TODO: #45
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testMaybeT :: Test
-testMaybeT = do
+main :: Test
+main = do
   info "Neon.Transformers.MaybeT"
   let x = MaybeT (pure (pure 1))
   runMaybeT (MaybeT (pure empty) <|> x) ==> Identity (Just 1)

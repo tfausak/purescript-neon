@@ -1,11 +1,11 @@
 module Test.Neon.Values.Maybe where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testMaybe :: Test
-testMaybe = do
+main :: Test
+main = do
   info "Neon.Values.Maybe"
   Just 1 + Just 2 ==> Just 3
   Nothing <|> Just 1 ==> Just 1
@@ -36,5 +36,5 @@ testMaybe = do
   isJust (Just unit :: Maybe Unit) ==> true
   isNothing (Nothing :: Maybe Unit) ==> true
   isNothing (Just unit :: Maybe Unit) ==> false
-  fromMaybe 1 Nothing ==> 1
-  fromMaybe 1 (Just 2) ==> 2
+  withDefault 1 Nothing ==> 1
+  withDefault 1 (Just 2) ==> 2

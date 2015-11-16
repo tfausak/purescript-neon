@@ -3,8 +3,8 @@ module Test.Neon.Types.HasZero where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasZero :: Test
-testHasZero = do
+main :: Test
+main = do
   info "Neon.Types.HasZero"
   zero ==> [] :: Array Unit
   zero ==> false

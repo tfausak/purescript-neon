@@ -1,11 +1,11 @@
 module Test.Neon.Values.Either where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testEither :: Test
-testEither = do
+main :: Test
+main = do
   info "Neon.Values.Either"
   Left 1 + Right 2.0 ==> Left 1
   Left 1 <|> Right '2' ==> Right '2'
@@ -31,3 +31,11 @@ testEither = do
   zero ==> Right 0 :: Either Unit Int
   either show show (Left 'a' :: Either Char Unit) ==> "'a'"
   either show show (Right 'a' :: Either Unit Char) ==> "'a'"
+  isLeft (Left unit) ==> true
+  isLeft (Right unit) ==> false
+  isRight (Left unit) ==> false
+  isRight (Right unit) ==> true
+  fromEither (Left unit :: Either Unit Boolean) ==> Nothing
+  fromEither (Right unit :: Either Boolean Unit) ==> Just unit
+  toEither unit (Nothing :: Maybe Boolean) ==> Left unit
+  toEither unit (Just true) ==> Right true

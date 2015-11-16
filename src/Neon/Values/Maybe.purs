@@ -1,12 +1,12 @@
 module Neon.Values.Maybe
   ( Maybe(Nothing, Just)
-  , maybe
   , isJust
   , isNothing
-  , fromMaybe
+  , maybe
+  , withDefault
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Types.HasAdd (HasAdd, add, (+))
 import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
@@ -31,6 +31,8 @@ import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
+-- | Represents an optional value. This is similar to `null` in other
+-- | languages, where `Nothing` is `null` and `Just x` is `x`.
 data Maybe a
   = Nothing
   | Just a
@@ -114,16 +116,50 @@ instance maybeHasTop :: (HasTop a) => HasTop (Maybe a) where
 instance maybeHasZero :: (HasZero a) => HasZero (Maybe a) where
   zero = Just zero
 
+-- | Returns the default value if the `Maybe` is `Nothing`. If instead the
+-- | `Maybe` is `Just x`, call the function with `x`.
+-- |
+-- | ``` purescript
+-- | maybe 0 (+ 1) Nothing
+-- | -- 0
+-- | maybe 0 (+ 1) (Just 2)
+-- | -- 3
+-- | ```
 maybe :: forall a b. b -> (a -> b) -> Maybe a -> b
 maybe y f m = case m of
   Just x -> f x
   Nothing -> y
 
+-- | Returns `true` if the `Maybe` is `Just x`. Returns `false` otherwise.
+-- |
+-- | ``` purescript
+-- | isJust (Just 1)
+-- | -- true
+-- | isJust Nothing
+-- | -- false
+-- | ```
 isJust :: forall a. Maybe a -> Boolean
-isJust m = maybe false (constant true) m
+isJust m = maybe false (always true) m
 
+-- | Returns `true` if the `Maybe` is `Nothing`. Returns `false` otherwise.
+-- |
+-- | ``` purescript
+-- | isNothing Nothing
+-- | -- true
+-- | isNothing (Just 1)
+-- | -- false
+-- | ```
 isNothing :: forall a. Maybe a -> Boolean
 isNothing m = not (isJust m)
 
-fromMaybe :: forall a. a -> Maybe a -> a
-fromMaybe y m = maybe y identity m
+-- | Returns the default value if the `Maybe` is `Nothing`. If instead the
+-- | `Maybe` is `Just x`, return `x`.
+-- |
+-- | ``` purescript
+-- | withDefault 0 Nothing
+-- | -- 0
+-- | withDefault 0 (Just 2)
+-- | -- 2
+-- | ```
+withDefault :: forall a. a -> Maybe a -> a
+withDefault y m = maybe y identity m

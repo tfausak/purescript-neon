@@ -1,8 +1,13 @@
 module Neon.Values.Either
   ( Either(Left, Right)
   , either
+  , fromEither
+  , isLeft
+  , isRight
+  , toEither
   ) where
 
+import Neon.Primitives.Function (always)
 import Neon.Types.HasAdd (HasAdd, add, (+))
 import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasAnd (HasAnd, and)
@@ -11,7 +16,7 @@ import Neon.Types.HasBind (HasBind, bind)
 import Neon.Types.HasBottom (HasBottom, bottom)
 import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, divide, modulo)
-import Neon.Types.HasEmpty (HasEmpty)
+import Neon.Types.HasEmpty (HasEmpty, empty)
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
 import Neon.Types.HasMap (HasMap, (<$>))
@@ -19,13 +24,17 @@ import Neon.Types.HasMultiply (HasMultiply, multiply)
 import Neon.Types.HasNot (HasNot, not)
 import Neon.Types.HasOne (HasOne, one)
 import Neon.Types.HasOr (HasOr, or)
-import Neon.Types.HasPure (HasPure)
+import Neon.Types.HasPure (HasPure, pure)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasSubtract (HasSubtract, subtract)
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
+import Neon.Values.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Values.Ordering (Ordering(LessThan, EqualTo, GreaterThan))
 
+-- | Represents a choice between two values. `Either` is conventially used for
+-- | error handling where `Left` represents failure and `Right` represents
+-- | success.
 data Either a b
   = Left a
   | Right b
@@ -106,7 +115,64 @@ instance eitherHasTop :: (HasTop a, HasTop b) => HasTop (Either a b) where
 instance eitherHasZero :: (HasZero b) => HasZero (Either a b) where
   zero = Right zero
 
+-- | Applies the first function to `Left` values and the second function to
+-- | `Right` values.
+-- |
+-- | ``` purescript
+-- | either (+ 2) (* 2) (Left 3)
+-- | -- Left 5
+-- | either (+ 2) (* 2) (Right 3)
+-- | -- Right 6
+-- | ```
 either :: forall a b c. (a -> c) -> (b -> c) -> Either a b -> c
 either f g e = case e of
   Left l -> f l
   Right r -> g r
+
+-- | Returns `true` if the `Either` is a `Left` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isLeft (Left unit)
+-- | -- true
+-- | isLeft (Right unit)
+-- | -- false
+-- | ```
+isLeft :: forall a b. Either a b -> Boolean
+isLeft e = case e of
+  Left _ -> true
+  _ -> false
+
+-- | Returns `true` if the `Either` is a `Right` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isRight (Right unit)
+-- | -- true
+-- | isRight (Left unit)
+-- | -- false
+-- | ```
+isRight :: forall a b. Either a b -> Boolean
+isRight e = not (isLeft e)
+
+-- | Converts an `Either` into a `Maybe`.
+-- |
+-- | ``` purescript
+-- | fromEither (Left unit)
+-- | -- Nothing
+-- | fromEither (Right unit)
+-- | -- Just unit
+-- | ```
+fromEither :: forall a b m. (HasEmpty m, HasPure m) => Either a b -> m b
+fromEither e = either (always empty) pure e
+
+-- | Converts a `Maybe` into an `Either`.
+-- |
+-- | ``` purescript
+-- | toEither unit Nothing
+-- | -- Left unit
+-- | toEither unit (Just true)
+-- | -- Right true
+-- | ```
+toEither :: forall a b. a -> Maybe b -> Either a b
+toEither x m = maybe (Left x) Right m

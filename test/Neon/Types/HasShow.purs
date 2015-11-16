@@ -3,8 +3,8 @@ module Test.Neon.Types.HasShow where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasShow :: Test
-testHasShow = do
+main :: Test
+main = do
   info "Neon.Types.HasShow"
   show [1, 2] ==> "[1, 2]"
   show true ==> "true"

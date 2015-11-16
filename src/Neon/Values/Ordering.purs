@@ -5,6 +5,7 @@ module Neon.Values.Ordering
 import Neon.Types.HasEqual (HasEqual, equal)
 import Neon.Types.HasShow (HasShow, show)
 
+-- | Represents the possible outcomes from comparing two values.
 data Ordering
   = LessThan
   | EqualTo

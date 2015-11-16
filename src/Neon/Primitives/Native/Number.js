@@ -3,15 +3,19 @@
 // module Neon.Primitives.Number
 
 module.exports = {
-  isFinite: function (x) {
-    return isFinite(x);
+  ceiling: function (x) {
+    return Math.ceil(x);
   },
 
-  isInfinite: function (x) {
-    return !isFinite(x);
+  floor: function (x) {
+    return Math.floor(x);
   },
 
   infinity: Number.POSITIVE_INFINITY,
+
+  isFinite: function (x) {
+    return isFinite(x);
+  },
 
   isNaN: function (x) {
     return isNaN(x);
@@ -23,19 +27,11 @@ module.exports = {
     return Math.round(x);
   },
 
-  ceiling: function (x) {
-    return Math.ceil(x);
-  },
-
-  floor: function (x) {
-    return Math.floor(x);
-  },
-
   truncate: function (x) {
     if (x > 0) {
-      return Math.floor(x);
+      return this.floor(x);
     } else {
-      return Math.ceil(x);
+      return this.ceiling(x);
     }
   }
 };

@@ -1,5 +1,8 @@
 module Neon.Values.These
   ( These(This, That, Both)
+  , isBoth
+  , isThat
+  , isThis
   , these
   ) where
 
@@ -13,6 +16,9 @@ import Neon.Types.HasMap (HasMap)
 import Neon.Types.HasPure (HasPure)
 import Neon.Types.HasShow (HasShow, show)
 
+-- | Represents either one value or another, or both. This is different than
+-- | `Either`, which only represents one or the other. And `Pair` only
+-- | represents both values.
 data These a b
   = This a
   | That b
@@ -78,8 +84,55 @@ instance theseHasShow :: (HasShow a, HasShow b) => HasShow (These a b) where
     That b -> "That (" + show b + ")"
     Both a b -> "Both (" + show a + ") (" + show b + ")"
 
+-- | Applies the first function to `This` values, the second function to `That`
+-- | values, and the third function to `Both` values.
+-- |
+-- | ``` purescript
+-- | these (+ 2) (* 2) (+) (This 3)
+-- | -- 5
+-- | these (+ 2) (* 2) (+) (That 3)
+-- | -- 6
+-- | these (+ 2) (* 2) (+) (Both 3 4)
+-- | -- 7
+-- | ```
 these :: forall a b c. (a -> c) -> (b -> c) -> (a -> b -> c) -> These a b -> c
 these f g h x = case x of
   This a -> f a
   That b -> g b
   Both a b -> h a b
+
+-- | Returns `true` if the `These` is a `This` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isThis (This unit)
+-- | -- true
+-- | ```
+isThis :: forall a b. These a b -> Boolean
+isThis x = case x of
+  This _ -> true
+  _ -> false
+
+-- | Returns `true` if the `These` is a `That` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isThat (That unit)
+-- | -- true
+-- | ```
+isThat :: forall a b. These a b -> Boolean
+isThat x = case x of
+  That _ -> true
+  _ -> false
+
+-- | Returns `true` if the `These` is a `Both` value. Returns `false`
+-- | otherwise.
+-- |
+-- | ``` purescript
+-- | isBith (Both unit unit)
+-- | -- true
+-- | ```
+isBoth :: forall a b. These a b -> Boolean
+isBoth x = case x of
+  Both _ _ -> true
+  _ -> false

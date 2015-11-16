@@ -1,18 +1,40 @@
 # [Neon][]
 
-[![Package version](https://img.shields.io/bower/v/purescript-neon.svg)](https://github.com/tfausak/purescript-neon/releases)
-[![Package license](https://img.shields.io/bower/l/purescript-neon.svg?label=license)](https://github.com/tfausak/purescript-neon/blob/master/LICENSE.md)
-[![Documentation](https://img.shields.io/badge/docs-pursuit-blue.svg)](http://pursuit.purescript.org/packages/purescript-neon)
-[![Build status](https://img.shields.io/travis/tfausak/purescript-neon/master.svg)](https://travis-ci.org/tfausak/purescript-neon)
+[![Package version][version badge]][version]
+[![Build status][build badge]][build]
 
-:zap: An experimental PureScript prelude.
+:zap: Neon is an experimental PureScript prelude.
 
-I often have delusions of grandeur about creating my own programming language.
-Realistically, I would never finish such a project. And my language would end
-up being an ML a lot like Haskell and PureScript. So instead of creating my own
-language, I decided to see how hard it would be to create my own core library
-on top of an existing language.
+---
 
-This is just an experiment. Please don't take it seriously.
+Neon is a standard library for PureScript. It is written from the ground up to
+be useful and coherent. It has a some guiding principles:
+
+- There should be one obvious way to do things. This means `return` is not an
+  alias for `pure`. In fact, it doesn't exist at all. Use `pure`.
+
+- Functions should be defined in type classes. This means `plus` can be used
+  for both numbers and strings. Type classes should have laws so the behavior
+  of their functions is known.
+
+- Type classes should be as small as possible. This means the `Bounded` type
+  class is split into `HasBottom` and `HasTop`.
+
+- Design type classes for programmers, not mathematicians. This means `HasAdd`
+  is a semigroup, but it's not called `Semigroup`.
+
+- Pure functions should not throw exceptions. This means `head` returns a
+  `Maybe a` value. Pure functions that do throw exceptions should be marked as
+  "unsafe".
+
+- Qualified imports are annoying, and fewer imports are better. This mean
+  `import Neon` is enough. No need for tens of lines of imports.
+
+Since Neon is written from scratch to follow these principles, it is not
+compatible with any of the existing PureScript ecosystem.
 
 [neon]: https://github.com/tfausak/purescript-neon
+[version badge]: https://img.shields.io/bower/v/purescript-neon.svg?label=version
+[version]: https://github.com/tfausak/purescript-neon/releases
+[build badge]: https://img.shields.io/travis/tfausak/purescript-neon/master.svg
+[build]: https://travis-ci.org/tfausak/purescript-neon

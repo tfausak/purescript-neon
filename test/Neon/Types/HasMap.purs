@@ -3,8 +3,8 @@ module Test.Neon.Types.HasMap where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasMap :: Test
-testHasMap = do
+main :: Test
+main = do
   info "Neon.Types.HasMap"
   (+ 1) <$> [1, 2] ==> [2, 3]
   (map (+ 2) (* 2)) 3 ==> 8

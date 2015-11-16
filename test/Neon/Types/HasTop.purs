@@ -1,11 +1,11 @@
 module Test.Neon.Types.HasTop where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testHasTop :: Test
-testHasTop = do
+main :: Test
+main = do
   info "Neon.Types.HasTop"
   top ==> true
   top ==> '\65535'

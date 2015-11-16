@@ -1,11 +1,11 @@
 module Test.Neon.Values.Pair where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testPair :: Test
-testPair = do
+main :: Test
+main = do
   info "Neon.Values.Pair"
   pair 1 2 + pair 3 4 ==> pair 4 6
   pair false true && pair true true ==> pair false true

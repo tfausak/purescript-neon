@@ -3,10 +3,10 @@ module Test.Neon.Types.HasNot where
 import Neon
 import Test.Core (Test(), (==>))
 
-testHasNot :: Test
-testHasNot = do
+main :: Test
+main = do
   info "Neon.Types.HasNot"
   not true ==> false
-  not (constant false) unit ==> true
+  not (always false) unit ==> true
   notEqual 1 2 ==> true
   1 != 2 ==> true

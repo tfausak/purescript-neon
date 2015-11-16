@@ -25,6 +25,9 @@ import Neon.Types.HasZero (HasZero, zero)
 import Neon.Types.IsEnumerable (IsEnumerable, fromEnum, toEnum, succ, pred)
 import Neon.Values.Maybe (Maybe(Nothing, Just))
 
+-- | A simple wrapper. This is most useful as the base of a monad transformer
+-- | stack. That means you can use this as an "empty" monad and layer others on
+-- | top of it.
 newtype Identity a = Identity a
 
 instance identityHasAdd :: (HasAdd a) => HasAdd (Identity a) where
@@ -92,5 +95,11 @@ instance identityIsEnumerable :: (IsEnumerable a) => IsEnumerable (Identity a) w
   succ (Identity x) = Identity <$> succ x
   pred (Identity x) = Identity <$> pred x
 
+-- | Extracts the value from its wrapper.
+-- |
+-- | ``` purescript
+-- | runIdentity (Identity unit)
+-- | -- unit
+-- | ```
 runIdentity :: forall a. Identity a -> a
 runIdentity (Identity x) = x

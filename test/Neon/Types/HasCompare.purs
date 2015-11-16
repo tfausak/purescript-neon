@@ -1,11 +1,11 @@
 module Test.Neon.Types.HasCompare where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testHasCompare :: Test
-testHasCompare = do
+main :: Test
+main = do
   info "Neon.Types.HasCompare"
   compare [1] [1] ==> EqualTo
   lessThan false true ==> true

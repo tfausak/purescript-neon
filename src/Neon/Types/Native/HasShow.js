@@ -40,7 +40,7 @@ module.exports = {
     } else if (x > 0) {
       return 'infinity';
     } else {
-      return '0.0 - infinity'; // NOTE: purescript/purescript#1591
+      return '0.0 - infinity';
     }
   },
 

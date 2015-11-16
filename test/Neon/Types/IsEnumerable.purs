@@ -1,11 +1,11 @@
 module Test.Neon.Types.IsEnumerable where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testIsEnumerable :: Test
-testIsEnumerable = do
+main :: Test
+main = do
   info "Neon.Types.IsEnumerable"
 
   fromEnum false ==> 0

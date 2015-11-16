@@ -3,10 +3,10 @@ module Test.Neon.Primitives.Function where
 import Neon
 import Test.Core (Test(), (==>))
 
-testFunction :: Test
-testFunction = do
+main :: Test
+main = do
   info "Neon.Primitives.Function"
-  constant true unit ==> true
+  always true unit ==> true
   flip (+) "a" "b" ==> "ba"
   (false |> not) ==> true
   (not <| true) ==> false

@@ -3,7 +3,7 @@ module Neon.Types.HasTop
   , top
   ) where
 
-import Neon.Primitives.Function (constant)
+import Neon.Primitives.Function (always)
 import Neon.Primitives.Number (infinity)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Values.Ordering (Ordering(GreaterThan))
@@ -11,9 +11,17 @@ import Neon.Values.Ordering (Ordering(GreaterThan))
 foreign import nativeTopChar :: Char
 foreign import nativeTopInt :: Int
 
+-- | Represents types that have an upper bound.
+-- |
 -- | Laws:
 -- | - `top >= x`
 class (HasCompare a) <= HasTop a where
+  -- | Returns the upper bound value.
+  -- |
+  -- | ``` purescript
+  -- | top
+  -- | -- true
+  -- | ```
   top :: a
 
 instance booleanHasTop :: HasTop Boolean where
@@ -23,7 +31,7 @@ instance charHasTop :: HasTop Char where
   top = nativeTopChar
 
 instance functionHasTop :: (HasTop b) => HasTop (a -> b) where
-  top = constant top
+  top = always top
 
 instance intHasTop :: HasTop Int where
   top = nativeTopInt

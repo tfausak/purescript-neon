@@ -1,5 +1,7 @@
 module Neon.Values
   ( module Neon.Values
+  , module Neon.Values.Constant
+  , module Neon.Values.Dictionary
   , module Neon.Values.Either
   , module Neon.Values.Identity
   , module Neon.Values.Maybe
@@ -9,6 +11,8 @@ module Neon.Values
   , module Neon.Values.Unit
   ) where
 
+import Neon.Values.Constant
+import Neon.Values.Dictionary
 import Neon.Values.Either
 import Neon.Values.Identity
 import Neon.Values.Maybe

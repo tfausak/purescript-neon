@@ -9,9 +9,16 @@ foreign import nativeShowInt :: Int -> String
 foreign import nativeShowNumber :: Number -> String
 foreign import nativeShowString :: String -> String
 
--- This class is lawless. It could have laws if there was a corresponding
--- `Read` class, but there isn't.
+-- | Represents types that can be converting to a string.
+-- |
+-- | This class does not have any laws.
 class HasShow a where
+  -- | Converts a value into a string.
+  -- |
+  -- | ``` purescript
+  -- | show true
+  -- | -- "true"
+  -- | ```
   show :: a -> String
 
 instance arrayHasShow :: (HasShow a) => HasShow (Array a) where

@@ -1,11 +1,11 @@
 module Test.Neon.Values.These where
 
 import Neon
-import Neon.Values -- NOTE: purescript/purescript#1594
+import Neon.Values -- TODO: #45
 import Test.Core (Test(), (==>))
 
-testThese :: Test
-testThese = do
+main :: Test
+main = do
   info "Neon.Values.These"
   This 1 + That 2 ==> Both 1 2
   Both "a" (+ 1) <*> Both "b" 1 ==> Both "ab" 2
@@ -18,3 +18,9 @@ testThese = do
   these identity (+ 1) (+) (This 1) ==> 1
   these identity (+ 1) (+) (That 1) ==> 2
   these identity (+ 1) (+) (Both 1 2) ==> 3
+  isThis (This unit) ==> true
+  isThis (That unit) ==> false
+  isThat (That unit) ==> true
+  isThat (This unit) ==> false
+  isBoth (Both unit unit) ==> true
+  isBoth (This unit) ==> false
