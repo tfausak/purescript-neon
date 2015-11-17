@@ -14,7 +14,7 @@ foreign import nativeRegex :: String -> RegexFlags -> Regex
 foreign import nativeShow :: Regex -> String
 foreign import nativeTest :: String -> Regex -> Boolean
 
--- | TODO
+-- | Represents regular expressions. A wrapper around `RegExp` from JavaScript.
 foreign import data Regex :: *
 
 instance regexHasEqual :: HasEqual Regex where
@@ -23,18 +23,28 @@ instance regexHasEqual :: HasEqual Regex where
 instance regexHasShow :: HasShow Regex where
   show x = nativeShow x
 
--- | TODO
+-- | Represents the flags that a regex can have.
 type RegexFlags =
   { ignoreCase :: Boolean
   , global :: Boolean
   , multiline :: Boolean
   }
 
--- | TODO
+-- | Creates a regular expression.
+-- |
+-- | ``` purescript
+-- | show (regex "a" { ignoreCase: true, global: false, multiline: false })
+-- | -- "regex \"a\" { ignoreCase: true, global: false, multiline: false }"
+-- | ```
 regex :: String -> RegexFlags -> Regex
 regex s f = nativeRegex s f
 
--- | TODO
+-- | Returns the default regular expression flags.
+-- |
+-- | ``` purescript
+-- | show regexFlags
+-- | -- "{ ignoreCase: false, global: false, multiline: false }"
+-- | ```
 regexFlags :: RegexFlags
 regexFlags =
   { ignoreCase: false
@@ -42,6 +52,11 @@ regexFlags =
   , multiline: false
   }
 
--- | TODO
+-- | Tests if a regular expression matches a string.
+-- |
+-- | ``` purescript
+-- | test "a" (regex "a" regexFlags)
+-- | -- true
+-- | ```
 test :: String -> Regex -> Boolean
 test s r = nativeTest s r
