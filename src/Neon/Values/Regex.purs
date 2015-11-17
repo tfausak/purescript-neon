@@ -3,6 +3,7 @@ module Neon.Values.Regex
   , RegexFlags()
   , regex
   , regexFlags
+  , test
   ) where
 
 import Neon.Types.HasEqual (HasEqual)
@@ -11,6 +12,7 @@ import Neon.Types.HasShow (HasShow)
 foreign import nativeEqual :: Regex -> Regex -> Boolean
 foreign import nativeRegex :: String -> RegexFlags -> Regex
 foreign import nativeShow :: Regex -> String
+foreign import nativeTest :: String -> Regex -> Boolean
 
 -- | TODO
 foreign import data Regex :: *
@@ -39,3 +41,7 @@ regexFlags =
   , global: false
   , multiline: false
   }
+
+-- | TODO
+test :: String -> Regex -> Boolean
+test s r = nativeTest s r

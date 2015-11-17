@@ -28,5 +28,11 @@ module.exports = {
       ', multiline: ' +
       x.multiline +
       ' }';
+  },
+
+  nativeTest: function (string) {
+    return function (pattern) {
+      return pattern.test(string);
+    };
   }
 };
