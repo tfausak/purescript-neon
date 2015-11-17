@@ -6,6 +6,7 @@ module Neon.Values
   , module Neon.Values.Identity
   , module Neon.Values.List
   , module Neon.Values.Maybe
+  , module Neon.Values.Nullable
   , module Neon.Values.Ordering
   , module Neon.Values.Pair
   , module Neon.Values.Regex
@@ -19,6 +20,7 @@ import Neon.Values.Either
 import Neon.Values.Identity
 import Neon.Values.List
 import Neon.Values.Maybe
+import Neon.Values.Nullable
 import Neon.Values.Ordering
 import Neon.Values.Pair
 import Neon.Values.Regex
