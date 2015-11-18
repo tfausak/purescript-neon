@@ -24,3 +24,4 @@ main = do
   min 1 2 ==> 1
   max 1 2 ==> 2
   clamp 2 4 1 ==> 2
+  comparing (/ 2) 4 5 ==> EqualTo

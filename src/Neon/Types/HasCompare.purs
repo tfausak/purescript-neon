@@ -2,6 +2,7 @@ module Neon.Types.HasCompare
   ( HasCompare
   , clamp
   , compare
+  , comparing
   , greaterThan
   , greaterThanOrEqualTo
   , lessThan
@@ -200,3 +201,12 @@ clamp l h x = if l > h then clamp h l x
   else if x < l then l
   else if x > h then h
   else x
+
+-- | Applies a function to both values and compares the results.
+-- |
+-- | ``` purescript
+-- | comparing (/ 2) 4 5
+-- | -- EqualTo
+-- | ```
+comparing :: forall a b. (HasCompare a) => (b -> a) -> b -> b -> Ordering
+comparing f x y = compare (f x) (f y)
