@@ -32,3 +32,4 @@ main = do
   pair 1 2 ==> Pair { first: 1, second: 2 }
   curry (\ (Pair x) -> x.first + x.second) 2 3 ==> 5
   uncurry (\ x y -> x + y) (pair 2 3) ==> 5
+  swap (pair 1 2) ==> pair 2 1

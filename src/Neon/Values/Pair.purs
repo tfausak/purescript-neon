@@ -2,6 +2,7 @@ module Neon.Values.Pair
   ( Pair(Pair)
   , curry
   , pair
+  , swap
   , uncurry
   ) where
 
@@ -129,3 +130,12 @@ curry f = \ x y -> f (pair x y)
 -- | ```
 uncurry :: forall a b c. (a -> b -> c) -> (Pair a b -> c)
 uncurry f = \ (Pair x) -> f x.first x.second
+
+-- | Swaps the elements of the pair.
+-- |
+-- | ``` purescript
+-- | swap (pair 1 2)
+-- | -- pair 2 1
+-- | ```
+swap :: forall a b. Pair a b -> Pair b a
+swap (Pair x) = pair x.second x.first
