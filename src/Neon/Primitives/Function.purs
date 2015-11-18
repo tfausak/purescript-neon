@@ -1,8 +1,9 @@
 module Neon.Primitives.Function
   ( always
   , flip
-  , (|>)
+  , on
   , (<|)
+  , (|>)
   ) where
 
 -- | The constant function. Always returns the first argument.
@@ -22,6 +23,15 @@ always x = \ _ -> x
 -- | ```
 flip :: forall a b c. (a -> b -> c) -> (b -> a -> c)
 flip f = \ x y -> f y x
+
+-- | Flips the order of the first two arguments.
+-- |
+-- | ``` purescript
+-- | ((*) `on` (+ 1)) 2 3
+-- | -- 12
+-- | ```
+on :: forall a b c. (b -> b -> c) -> (a -> b) -> (a -> a -> c)
+on g f = \ x y -> g (f x) (f y)
 
 -- | Applies an argument to a function. This is useful to avoid parentheses.
 -- |
