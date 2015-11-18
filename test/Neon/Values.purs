@@ -11,6 +11,7 @@ import qualified Test.Neon.Values.Maybe as Maybe
 import qualified Test.Neon.Values.Maybe as Nullable
 import qualified Test.Neon.Values.Ordering as Ordering
 import qualified Test.Neon.Values.Pair as Pair
+import qualified Test.Neon.Values.Proxy as Proxy
 import qualified Test.Neon.Values.Regex as Regex
 import qualified Test.Neon.Values.These as These
 import qualified Test.Neon.Values.Unit as Unit
@@ -27,6 +28,7 @@ main = do
   Nullable.main
   Ordering.main
   Pair.main
+  Proxy.main
   Regex.main
   These.main
   Unit.main
