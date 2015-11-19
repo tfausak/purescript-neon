@@ -8,7 +8,6 @@ module Neon.Types.HasBind
   , (>>=)
   ) where
 
-import Neon.Types.HasApply (apply)
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasFold (sum)
 import Neon.Types.HasMap (map)

@@ -1,8 +1,7 @@
 module Test.Neon.Types where
 
 import Neon
-import Neon.Values -- TODO: #45
-import Test.Core (Test(), (==>))
+import Test.Core (Test())
 import qualified Test.Neon.Types.HasAdd as HasAdd
 import qualified Test.Neon.Types.HasAlternative as HasAlternative
 import qualified Test.Neon.Types.HasAnd as HasAnd
