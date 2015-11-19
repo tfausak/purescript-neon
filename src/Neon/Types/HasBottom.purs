@@ -38,7 +38,7 @@ instance intHasBottom :: HasBottom Int where
   bottom = nativeBottomInt
 
 instance numberHasBottom :: HasBottom Number where
-  bottom = negate infinity
+  bottom = -infinity
 
 instance orderingHasBottom :: HasBottom Ordering where
   bottom = LessThan
