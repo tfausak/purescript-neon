@@ -65,7 +65,7 @@ foreign import floor :: Number -> Int
 -- | ``` purescript
 -- | truncate 1.5
 -- | -- 1
--- | truncate (negate 1.5)
--- | -- negate 1
+-- | truncate (-1.5)
+-- | -- -1
 -- | ```
 foreign import truncate :: Number -> Int

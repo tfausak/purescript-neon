@@ -11,5 +11,5 @@ main = do
   bottom ==> '\0'
   bottom unit ==> false
   bottom ==> 0 - 2147483648
-  bottom ==> negate infinity
+  bottom ==> -infinity
   bottom ==> LessThan
