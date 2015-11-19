@@ -8,6 +8,7 @@ main :: Test
 main = do
   info "Neon.Types.HasBottom"
   bottom ==> false
+  bottom ==> '\0'
   bottom unit ==> false
   bottom ==> 0 - 2147483648
   bottom ==> negate infinity
