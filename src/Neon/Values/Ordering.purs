@@ -2,8 +2,8 @@ module Neon.Values.Ordering
   ( Ordering(LessThan, EqualTo, GreaterThan)
   ) where
 
-import Neon.Types.HasEqual (HasEqual, equal)
-import Neon.Types.HasShow (HasShow, show)
+import Neon.Types.HasEqual (HasEqual)
+import Neon.Types.HasShow (HasShow)
 
 -- | Represents the possible outcomes from comparing two values.
 data Ordering

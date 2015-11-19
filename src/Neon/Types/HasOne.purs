@@ -49,6 +49,6 @@ instance numberHasOne :: HasOne Number where
 -- | ```
 sign :: forall a. (HasCompare a, HasOne a, HasSubtract a) => a -> a
 sign x = case compare x zero of
-  LessThan -> negate one
+  LessThan -> -one
   EqualTo -> zero
   GreaterThan -> one

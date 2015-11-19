@@ -16,10 +16,10 @@ main = do
   isNaN 1.0 ==> false
   nan == nan ==> false
   round 0.5 ==> 1
-  round (negate 0.5) ==> 0
+  round (-0.5) ==> 0
   ceiling 0.5 ==> 1
-  ceiling (negate 0.5) ==> 0
+  ceiling (-0.5) ==> 0
   floor 0.5 ==> 0
-  floor (negate 0.5) ==> negate 1
+  floor (-0.5) ==> -1
   truncate 0.5 ==> 0
-  truncate (negate 0.5) ==> 0
+  truncate (-0.5) ==> 0

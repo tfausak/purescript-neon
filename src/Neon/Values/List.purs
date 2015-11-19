@@ -9,7 +9,6 @@ import Neon.Types.HasAnd ((&&))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold, foldl, foldr, foldMap)
 import Neon.Types.HasMap (HasMap, (<$>))
-import Neon.Types.HasPure (pure)
 import Neon.Types.HasShow (HasShow, show)
 
 -- | Represents a linked list of values.
