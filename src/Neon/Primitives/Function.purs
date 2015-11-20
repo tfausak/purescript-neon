@@ -24,7 +24,8 @@ always x = \ _ -> x
 flip :: forall a b c. (a -> b -> c) -> (b -> a -> c)
 flip f = \ x y -> f y x
 
--- | Flips the order of the first two arguments.
+-- | Applies the second function to both arguments before applying the first
+-- | function.
 -- |
 -- | ``` purescript
 -- | ((*) `on` (+ 1)) 2 3
