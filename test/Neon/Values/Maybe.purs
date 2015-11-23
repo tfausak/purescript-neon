@@ -8,7 +8,7 @@ main :: Test
 main = do
   info "Neon.Values.Maybe"
   Just 1 + Just 2 ==> Just 3
-  Nothing <|> Just 1 ==> Just 1
+  alternative Nothing (Just 1) ==> Just 1
   Just true && Just true ==> Just true
   Just (+ 1) <*> Just 1 ==> Just 2
   bind (Just 1) (\x -> pure (x + 1)) ==> Just 2

@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "bower": "1.6.5",
-    "pulp": "4.5.0",
-    "purescript": "0.7.6-rc.1"
+    "pulp": "5.0.0",
+    "purescript": "0.7.6"
   },
   "devDependencies": {
-    "eslint": "1.10.0"
+    "eslint": "1.10.1"
   },
   "engines": {
     "node": "5.0.0",
@@ -23,7 +23,7 @@
     "postinstall": "pulp dep install",
     "pulp": "pulp",
     "psc-publish": "psc-publish",
-    "test": "pulp test && eslint src && psc-publish --dry-run"
+    "test": "mkdir -p bower_components && pulp test && eslint src && psc-publish --dry-run"
   },
   "version": "0.0.0-private"
 }

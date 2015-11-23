@@ -1,7 +1,6 @@
 module Neon.Types.HasAlternative
   ( HasAlternative
   , alternative
-  , (<|>)
   ) where
 
 import Neon.Types.HasAdd ((+))
@@ -11,8 +10,8 @@ import Neon.Types.HasMap (HasMap)
 -- | for types of kind `* -> *` instead of `*`.
 -- |
 -- | Laws:
--- | - Associativity: `(x <|> y) <|> z == x <|> (y <|> z)`
--- | - Distributivity: `f <$> (x <|> y) == (f <$> x) <|> (f <$> y)`
+-- | - Associativity: `alternative (alternative x y) z == alternative x (alternative y z)`
+-- | - Distributivity: `f <$> (alternative x y) == alternative (f <$> x) (f <$> y)`
 class (HasMap f) <= HasAlternative f where
   -- | Returns the alternatives between two values. This is like `add` but for
   -- | higher-kinded types.
@@ -25,13 +24,3 @@ class (HasMap f) <= HasAlternative f where
 
 instance arrayHasAlternative :: HasAlternative Array where
   alternative xs ys = xs + ys
-
--- | Alias for `alternative`.
--- |
--- | ``` purescript
--- | [1, 2] <|> [3, 4]
--- | -- [1, 2, 3, 4]
--- | ```
-(<|>) :: forall f a. (HasAlternative f) => f a -> f a -> f a
-(<|>) x y = alternative x y
-infixl 3 <|>
