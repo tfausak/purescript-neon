@@ -5,7 +5,6 @@ module Neon.Types.IsEnumerable
   , range
   , succ
   , toEnum
-  , (...)
   ) where
 
 import Neon.Types.HasAdd ((+))
@@ -154,13 +153,3 @@ range l h = if l > h
   else case succ l of
     Nothing -> [l]
     Just x -> [l] + range x h
-
--- | Alias for `range`.
--- |
--- | ``` purescript
--- | 1 .. 4
--- | -- [1, 2, 3, 4]
--- | ```
-(...) :: forall a. (IsEnumerable a) => a -> a -> Array a
-(...) l h = range l h
-infix 0 ...

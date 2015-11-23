@@ -46,4 +46,3 @@ main = do
   pred unit ==> Nothing
 
   range 1 3 ==> [1, 2, 3]
-  1 ... 3 ==> [1, 2, 3]
