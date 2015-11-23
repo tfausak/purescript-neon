@@ -8,7 +8,7 @@ main :: Test
 main = do
   info "Neon.Values.Constant"
   Constant "a" + Constant "b" ==> Constant "ab"
-  Constant "a" <|> Constant "b" ==> Constant "ab"
+  alternative (Constant "a") (Constant "b") ==> Constant "ab"
   Constant true && Constant false ==> Constant false
   Constant "a" <*> Constant "b" ==> Constant "ab"
   Constant true >>= not ==> Constant true

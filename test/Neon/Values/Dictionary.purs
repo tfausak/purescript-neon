@@ -7,7 +7,7 @@ main :: Test
 main = do
   info "Neon.Values.Dictionary"
   fromArray [pair "a" 1] + fromArray [pair "b" 2] ==> fromArray [pair "a" 1, pair "b" 2]
-  fromArray [pair "a" 1] <|> fromArray [pair "b" 2] ==> fromArray [pair "a" 1, pair "b" 2]
+  alternative (fromArray [pair "a" 1]) (fromArray [pair "b" 2]) ==> fromArray [pair "a" 1, pair "b" 2]
   fromArray [pair "a" (+ 1)] <*> fromArray [pair "a" 1] ==> fromArray [pair "a" 2]
   empty ==> fromArray [] :: Dictionary Unit
   fromArray [] ==> fromArray [] :: Dictionary Unit

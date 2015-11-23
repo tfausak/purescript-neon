@@ -8,7 +8,7 @@ main :: Test
 main = do
   info "Neon.Values.Either"
   Left 1 + Right 2.0 ==> Left 1
-  Left 1 <|> Right '2' ==> Right '2'
+  alternative (Left 1) (Right '2') ==> Right '2'
   Left false && Right true ==> Left false
   Right (+ 1) <*> Right 1 ==> Right 2 :: Either Unit Int
   (Right 1 >>= \ x -> Right (x + 1)) ==> Right 2 :: Either Unit Int

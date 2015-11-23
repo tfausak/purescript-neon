@@ -3,7 +3,7 @@ module Neon.Transformers.StateT
   , runStateT
   ) where
 
-import Neon.Types.HasAlternative (HasAlternative, (<|>))
+import Neon.Types.HasAlternative (HasAlternative, alternative)
 import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasBind (HasBind, bind, (>>=))
 import Neon.Types.HasCompose ((>>))
@@ -19,7 +19,7 @@ import Neon.Values.Pair (Pair(Pair), pair)
 newtype StateT s m a = StateT (s -> m (Pair a s))
 
 instance stateTHasAlternative :: (HasAlternative m, HasBind m) => HasAlternative (StateT s m) where
-  alternative (StateT f) (StateT g) = StateT \ x -> f x <|> g x
+  alternative (StateT f) (StateT g) = StateT \ x -> alternative (f x) (g x)
 
 -- TODO: #15
 instance stateTHasApply :: (HasBind m) => HasApply (StateT s m) where
