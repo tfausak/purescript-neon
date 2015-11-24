@@ -29,8 +29,9 @@ import qualified Test.Neon.Types.HasRoot as HasRoot
 import qualified Test.Neon.Types.HasShow as HasShow
 import qualified Test.Neon.Types.HasState as HasState
 import qualified Test.Neon.Types.HasSubtract as HasSubtract
-import qualified Test.Neon.Types.HasTraverse as HasTraverse
+import qualified Test.Neon.Types.HasToArray as HasToArray
 import qualified Test.Neon.Types.HasTop as HasTop
+import qualified Test.Neon.Types.HasTraverse as HasTraverse
 import qualified Test.Neon.Types.HasZero as HasZero
 import qualified Test.Neon.Types.IsEnumerable as IsEnumerable
 
@@ -64,6 +65,7 @@ main = do
   HasShow.main
   HasState.main
   HasSubtract.main
+  HasToArray.main
   HasTraverse.main
   HasTop.main
   HasZero.main

@@ -9,7 +9,8 @@ import Neon.Types.HasFold (HasFold)
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasMap (HasMap, (<$>))
 import Neon.Types.HasPure (HasPure, pure)
-import Neon.Values.List (List(Nil, Cons), toList, fromList)
+import Neon.Types.HasToArray (toArray)
+import Neon.Values.List (List(Nil, Cons), toList)
 import Neon.Values.Maybe (Maybe(Nothing, Just))
 
 -- | Represents data structures that can be traversed from left to right.
@@ -31,7 +32,7 @@ class (HasFold t, HasMap t) <= HasTraverse t where
   traverse :: forall a b m. (HasPure m) => (a -> m b) -> t a -> m (t b)
 
 instance arrayHasTraverse :: HasTraverse Array where
-  traverse f x = fromList <$> traverse f (toList x)
+  traverse f x = toArray <$> traverse f (toList x)
 
 instance listHasTraverse :: HasTraverse List where
   traverse f xs = case xs of

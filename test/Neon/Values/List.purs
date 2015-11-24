@@ -15,4 +15,4 @@ main = do
   show (Nil :: List Unit) ==> "Nil"
   show (Cons 1 Nil) ==> "Cons (1) (Nil)"
   toList [1, 2] ==> Cons 1 (Cons 2 Nil)
-  fromList (Cons 1 (Cons 2 Nil)) ==> [1, 2]
+  toArray (Cons 1 (Cons 2 Nil)) ==> [1, 2]
