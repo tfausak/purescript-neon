@@ -1,6 +1,15 @@
 language: node_js
 node_js:
 - 4.1
+script:
+- npm test
+- >-
+  npm outdated --json |
+  ruby -r json -e 'exit JSON
+    .load(STDIN)
+    .reject { |_, v| v["current"] == v["wanted"] }
+    .each { |k, v| puts "#{k}: #{v["current"]} -> #{v["wanted"]}" }
+    .empty?'
 after_success:
 - >-
   test $TRAVIS_TAG &&
