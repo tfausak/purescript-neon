@@ -14,6 +14,7 @@ import qualified Test.Neon.Types.HasDivide as HasDivide
 import qualified Test.Neon.Types.HasEmpty as HasEmpty
 import qualified Test.Neon.Types.HasEqual as HasEqual
 import qualified Test.Neon.Types.HasFold as HasFold
+import qualified Test.Neon.Types.HasFromArray as HasFromArray
 import qualified Test.Neon.Types.HasIdentity as HasIdentity
 import qualified Test.Neon.Types.HasLift as HasLift
 import qualified Test.Neon.Types.HasLogarithm as HasLogarithm
@@ -48,6 +49,7 @@ main = do
   HasEmpty.main
   HasEqual.main
   HasFold.main
+  HasFromArray.main
   HasIdentity.main
   HasLift.main
   HasLogarithm.main
