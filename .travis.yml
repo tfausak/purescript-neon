@@ -1,14 +1,6 @@
 language: node_js
 node_js:
 - 4.1
-script:
-- npm test
-- >-
-  x=$(npm outdated);
-  if test -z "$x";
-  then echo 'Dependencies up to date.';
-  else echo "$x"; false;
-  fi
 after_success:
 - >-
   test $TRAVIS_TAG &&
