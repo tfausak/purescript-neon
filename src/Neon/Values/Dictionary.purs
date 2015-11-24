@@ -1,6 +1,5 @@
 module Neon.Values.Dictionary
   ( Dictionary()
-  , fromArray
   ) where
 
 import Neon.Types.HasAdd (HasAdd, (+))
@@ -9,6 +8,7 @@ import Neon.Types.HasApply (HasApply)
 import Neon.Types.HasEmpty (HasEmpty)
 import Neon.Types.HasEqual (HasEqual)
 import Neon.Types.HasFold (HasFold)
+import Neon.Types.HasFromArray (HasFromArray)
 import Neon.Types.HasMap (HasMap)
 import Neon.Types.HasShow (HasShow)
 import Neon.Types.HasZero (HasZero, zero)
@@ -46,6 +46,9 @@ instance dictionaryHasFold :: HasFold Dictionary where
   foldl f y x = nativeFoldl f y x
   foldr f y x = nativeFoldr f y x
 
+instance dictionaryHasFromArray :: HasFromArray (Pair String a) (Dictionary a) where
+  fromArray xs = nativeFromArray xs
+
 instance dictionaryHasMap :: HasMap Dictionary where
   map f x = nativeMap f x
 
@@ -54,14 +57,3 @@ instance dictionaryHasShow :: (HasShow a) => HasShow (Dictionary a) where
 
 instance dictionaryHasZero :: HasZero (Dictionary a) where
   zero = nativeZero
-
--- TODO: #42
--- | Creates a dictionary from an array of pairs. Each pair has the string key
--- | and the value.
--- |
--- | ``` purescript
--- | fromArray [pair "x" 1] + fromArray [pair "y" 2]
--- | -- fromArray [pair "x" 1, pair "y" 2]
--- | ```
-fromArray :: forall a. Array (Pair String a) -> Dictionary a
-fromArray x = nativeFromArray x

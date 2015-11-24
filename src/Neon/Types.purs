@@ -12,6 +12,7 @@ module Neon.Types
   , module Neon.Types.HasEmpty
   , module Neon.Types.HasEqual
   , module Neon.Types.HasFold
+  , module Neon.Types.HasFromArray
   , module Neon.Types.HasIdentity
   , module Neon.Types.HasLift
   , module Neon.Types.HasLogarithm
@@ -26,6 +27,7 @@ module Neon.Types
   , module Neon.Types.HasShow
   , module Neon.Types.HasState
   , module Neon.Types.HasSubtract
+  , module Neon.Types.HasToArray
   , module Neon.Types.HasTop
   , module Neon.Types.HasTraverse
   , module Neon.Types.HasZero
@@ -44,6 +46,7 @@ import Neon.Types.HasDivide
 import Neon.Types.HasEmpty
 import Neon.Types.HasEqual
 import Neon.Types.HasFold
+import Neon.Types.HasFromArray
 import Neon.Types.HasIdentity
 import Neon.Types.HasLift
 import Neon.Types.HasLogarithm
@@ -58,6 +61,7 @@ import Neon.Types.HasRoot
 import Neon.Types.HasShow
 import Neon.Types.HasState
 import Neon.Types.HasSubtract
+import Neon.Types.HasToArray
 import Neon.Types.HasTop
 import Neon.Types.HasTraverse
 import Neon.Types.HasZero
