@@ -49,8 +49,8 @@ instance arrayHasFold :: HasFold Array where
 -- | additive identity (that is, a monoid).
 -- |
 -- | ``` purescript
--- | foldMap (+) ["ne", "on"]
--- | -- "neon"
+-- | foldMap (+ "!") ["ne", "on"]
+-- | -- "ne!on!"
 -- | ```
 foldMap :: forall f a m. (HasFold f, HasZero m) => (a -> m) -> f a -> m
 foldMap f xs = foldl (\ a e -> a + f e) zero xs

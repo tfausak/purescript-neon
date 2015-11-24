@@ -14,3 +14,4 @@ main = do
   traverse (show >> Just) (Nil :: List Unit) ==> Just Nil
   traverse (show >> Just) (Cons 1 (Cons 2 Nil)) ==> Just (Cons "1" (Cons "2" Nil))
   traverse pure (Just 1) ==> [Just 1]
+  sequence [Just 1, Just 2] ==> Just [1, 2]

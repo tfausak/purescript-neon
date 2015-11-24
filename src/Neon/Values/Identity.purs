@@ -23,7 +23,6 @@ import Neon.Types.HasSubtract (HasSubtract, (-))
 import Neon.Types.HasTop (HasTop, top)
 import Neon.Types.HasZero (HasZero, zero)
 import Neon.Types.IsEnumerable (IsEnumerable, fromEnum, toEnum, succ, pred)
-import Neon.Values.Maybe (Maybe(Nothing, Just))
 
 -- | A simple wrapper. This is most useful as the base of a monad transformer
 -- | stack. That means you can use this as an "empty" monad and layer others on

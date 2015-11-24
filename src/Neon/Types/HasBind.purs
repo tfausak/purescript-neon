@@ -2,13 +2,10 @@ module Neon.Types.HasBind
   ( HasBind
   , bind
   , join
-  , (<=<)
   , (=<<)
-  , (>=>)
   , (>>=)
   ) where
 
-import Neon.Types.HasApply (apply)
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasFold (sum)
 import Neon.Types.HasMap (map)
@@ -53,26 +50,6 @@ infixl 1 >>=
 (=<<) :: forall f a b. (HasBind f) => (a -> f b) -> f a -> f b
 (=<<) f x = bind x f
 infixr 1 =<<
-
--- | Composes actions together from left to right.
--- |
--- | ``` purescript
--- | ((\ x -> [x, x]) >=> (\ x -> [x - 1, x + 1])) 2
--- | -- [1, 3, 1, 3]
--- | ```
-(>=>) :: forall f a b c. (HasBind f) => (a -> f b) -> (b -> f c) -> (a -> f c)
-(>=>) f g = \ x -> f x >>= g
-infixl 1 >=>
-
--- | `(>=>)` with the arguments reversed.
--- |
--- | ``` purescript
--- | ((\ x -> [x, x]) <=< (\ x -> [x - 1, x + 1])) 2
--- | -- [1,1,3,3]
--- | ```
-(<=<) :: forall f a b c. (HasBind f) => (b -> f c) -> (a -> f b) -> (a -> f c)
-(<=<) f g = \ x -> f =<< g x
-infixr 1 <=<
 
 -- | Collapses two wrappers into one.
 -- |

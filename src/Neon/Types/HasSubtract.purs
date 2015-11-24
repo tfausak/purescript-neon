@@ -63,4 +63,4 @@ negate x = zero - x
 -- | -- 1
 -- | ```
 abs :: forall a. (HasCompare a, HasSubtract a) => a -> a
-abs x = if x < zero then negate x else x
+abs x = if x < zero then -x else x

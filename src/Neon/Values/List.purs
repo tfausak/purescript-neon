@@ -1,6 +1,5 @@
 module Neon.Values.List
   ( List(Cons, Nil)
-  , fromList
   , toList
   ) where
 
@@ -9,8 +8,8 @@ import Neon.Types.HasAnd ((&&))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold, foldl, foldr, foldMap)
 import Neon.Types.HasMap (HasMap, (<$>))
-import Neon.Types.HasPure (pure)
 import Neon.Types.HasShow (HasShow, show)
+import Neon.Types.HasToArray (HasToArray)
 
 -- | Represents a linked list of values.
 data List a
@@ -40,6 +39,9 @@ instance listHasShow :: (HasShow a) => HasShow (List a) where
     Nil -> "Nil"
     Cons x l -> "Cons (" + show x + ") (" + show l + ")"
 
+instance listHasToArray :: HasToArray (List a) a where
+  toArray xs = foldMap (\ x -> [x]) xs
+
 -- | Converts a foldable container into a list.
 -- |
 -- | ``` purescript
@@ -48,12 +50,3 @@ instance listHasShow :: (HasShow a) => HasShow (List a) where
 -- | ```
 toList :: forall f a. (HasFold f) => f a -> List a
 toList xs = foldr Cons Nil xs
-
--- | Converts a list into an array.
--- |
--- | ``` purescript
--- | fromList (Cons 1 (Cons 2 Nil))
--- | -- [1, 2]
--- | ```
-fromList :: forall a. List a -> Array a
-fromList xs = foldMap (\ x -> [x]) xs
