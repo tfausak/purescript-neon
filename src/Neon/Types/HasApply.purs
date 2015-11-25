@@ -40,7 +40,7 @@ instance functionHasApply :: HasApply (Function a) where
 -- | -- [5, 6, 6, 8]
 -- | ```
 (<*>) :: forall f a b. (HasApply f) => f (a -> b) -> f a -> f b
-(<*>) f x = apply f x
+(<*>) = apply
 infixl 4 <*>
 
 -- | Returns the second value but also evaluates the first.

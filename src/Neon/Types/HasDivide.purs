@@ -54,7 +54,7 @@ instance numberHasDivide :: HasDivide Number where
 -- | -- 2
 -- | ```
 (/) :: forall a. (HasDivide a) => a -> a -> a
-(/) x y = divide x y
+(/) = divide
 infixl 7 /
 
 -- | Alias for `modulo`.
@@ -64,7 +64,7 @@ infixl 7 /
 -- | -- 1
 -- | ```
 (%) :: forall a. (HasDivide a) => a -> a -> a
-(%) x y = modulo x y
+(%) = modulo
 infixl 7 %
 
 -- | Returns the multiplicative inverse.

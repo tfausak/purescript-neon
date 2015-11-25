@@ -38,5 +38,5 @@ instance functionHasAnd :: (HasAnd b) => HasAnd (a -> b) where
 -- | -- true
 -- | ```
 (&&) :: forall a. (HasAnd a) => a -> a -> a
-(&&) x y = and x y
+(&&) = and
 infixr 3 &&

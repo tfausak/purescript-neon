@@ -99,7 +99,7 @@ lt x y = case compare x y of
 -- | -- true
 -- | ```
 (<) :: forall a. (HasCompare a) => a -> a -> Boolean
-(<) x y = lt x y
+(<) = lt
 infixl 4 <
 
 -- | Returns `true` if the first value is less than or equal to the second
@@ -121,7 +121,7 @@ lte x y = case compare x y of
 -- | -- true
 -- | ```
 (<=) :: forall a. (HasCompare a) => a -> a -> Boolean
-(<=) x y = lte x y
+(<=) = lte
 infixl 4 <=
 
 -- | Returns `true` if the first value is greater than or equal to the second
@@ -143,7 +143,7 @@ gte x y = case compare x y of
 -- | -- true
 -- | ```
 (>=) :: forall a. (HasCompare a) => a -> a -> Boolean
-(>=) x y = gte x y
+(>=) = gte
 infixl 4 >=
 
 -- | Returns `true` if the first value is greater than the second value,
@@ -165,7 +165,7 @@ gt x y = case compare x y of
 -- | -- true
 -- | ```
 (>) :: forall a. (HasCompare a) => a -> a -> Boolean
-(>) x y = gt x y
+(>) = gt
 infixl 4 >
 
 -- | Returns the lesser of two values.

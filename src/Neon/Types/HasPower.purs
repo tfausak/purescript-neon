@@ -38,5 +38,5 @@ instance numberHasPower :: HasPower Number where
 -- | -- 8
 -- | ```
 (^) :: forall a. (HasPower a) => a -> a -> a
-(^) b n = power b n
+(^) = power
 infixr 8 ^

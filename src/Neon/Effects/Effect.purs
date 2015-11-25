@@ -44,7 +44,7 @@ instance effectHasPure :: HasPure (Effect e) where
 -- | -- 1
 -- | ```
 runPure :: forall a. Effect () a -> a
-runPure x = nativeRunEffect x
+runPure = nativeRunEffect
 
 -- | Dangerously runs an effect. In general, you should not use this function.
 -- | Sometimes it is necessary to subvert the type system. This can also be
@@ -55,4 +55,4 @@ runPure x = nativeRunEffect x
 -- | -- logs "..." and returns `1`
 -- | ```
 unsafeRunEffect :: forall e a. Effect e a -> a
-unsafeRunEffect x = nativeRunEffect x
+unsafeRunEffect = nativeRunEffect

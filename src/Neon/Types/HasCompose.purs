@@ -5,6 +5,8 @@ module Neon.Types.HasCompose
   , (>>)
   ) where
 
+import Neon.Primitives.Function (flip)
+
 -- | Represents types that have a composition morphism.
 -- |
 -- | Laws:
@@ -29,7 +31,7 @@ instance functionHasCompose :: HasCompose Function where
 -- | -- 10
 -- | ```
 (>>) :: forall f a b c. (HasCompose f) => f a b -> f b c -> f a c
-(>>) f g = compose f g
+(>>) = compose
 infixr 9 >>
 
 -- | `(>>)` with the arguments flipped.
@@ -39,5 +41,5 @@ infixr 9 >>
 -- | -- 10
 -- | ```
 (<<) :: forall f a b c. (HasCompose f) => f b c -> f a b -> f a c
-(<<) g f = compose f g
+(<<) = flip compose
 infixr 9 <<

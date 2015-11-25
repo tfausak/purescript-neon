@@ -37,7 +37,7 @@ type RegexFlags =
 -- | -- "regex \"a\" { ignoreCase: true, global: false, multiline: false }"
 -- | ```
 regex :: String -> RegexFlags -> Regex
-regex s f = nativeRegex s f
+regex = nativeRegex
 
 -- | Returns the default regular expression flags.
 -- |
@@ -59,4 +59,4 @@ regexFlags =
 -- | -- true
 -- | ```
 test :: String -> Regex -> Boolean
-test s r = nativeTest s r
+test = nativeTest

@@ -6,6 +6,7 @@ module Neon.Types.HasBind
   , (>>=)
   ) where
 
+import Neon.Primitives.Function (flip)
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasFold (sum)
 import Neon.Types.HasMap (map)
@@ -38,7 +39,7 @@ instance functionHasbind :: HasBind (Function a) where
 -- | -- [1, 1, 2, 2]
 -- | ```
 (>>=) :: forall f a b. (HasBind f) => f a -> (a -> f b) -> f b
-(>>=) x f = bind x f
+(>>=) = bind
 infixl 1 >>=
 
 -- | `(>>=)` with the arguments reversed.
@@ -48,7 +49,7 @@ infixl 1 >>=
 -- | -- [1, 1, 2, 2]
 -- | ```
 (=<<) :: forall f a b. (HasBind f) => (a -> f b) -> f a -> f b
-(=<<) f x = bind x f
+(=<<) = flip bind
 infixr 1 =<<
 
 -- | Collapses two wrappers into one.
