@@ -45,4 +45,4 @@ toNullable :: forall a. Maybe a -> Nullable a
 toNullable x = maybe null notNull x
 
 toMaybe :: forall a. Nullable a -> Maybe a
-toMaybe x = fromNullable x
+toMaybe = fromNullable

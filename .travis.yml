@@ -4,11 +4,12 @@ node_js:
 script:
 - npm test
 - >-
-  x=$(npm outdated);
-  if test -z "$x";
-  then echo 'Dependencies up to date.';
-  else echo "$x"; false;
-  fi
+  npm outdated --json |
+  ruby -r json -e 'exit JSON
+    .load(STDIN)
+    .reject { |_, v| v["current"] == v["wanted"] }
+    .each { |k, v| puts "#{k}: #{v["current"]} -> #{v["wanted"]}" }
+    .empty?'
 after_success:
 - >-
   test $TRAVIS_TAG &&

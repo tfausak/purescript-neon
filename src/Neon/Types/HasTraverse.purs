@@ -6,11 +6,12 @@ module Neon.Types.HasTraverse
 
 import Neon.Types.HasApply ((<*>))
 import Neon.Types.HasFold (HasFold)
+import Neon.Types.HasFromArray (fromArray)
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasMap (HasMap, (<$>))
 import Neon.Types.HasPure (HasPure, pure)
 import Neon.Types.HasToArray (toArray)
-import Neon.Values.List (List(Nil, Cons), toList)
+import Neon.Values.List (List(Nil, Cons))
 import Neon.Values.Maybe (Maybe(Nothing, Just))
 
 -- | Represents data structures that can be traversed from left to right.
@@ -52,3 +53,6 @@ instance maybeHasTraverse :: HasTraverse Maybe where
 -- | ```
 sequence :: forall t m a. (HasPure m, HasTraverse t) => t (m a) -> m (t a)
 sequence = traverse identity
+
+toList :: forall a. Array a -> List a
+toList = fromArray

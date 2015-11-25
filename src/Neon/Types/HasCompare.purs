@@ -3,10 +3,10 @@ module Neon.Types.HasCompare
   , clamp
   , compare
   , comparing
-  , greaterThan
-  , greaterThanOrEqualTo
-  , lessThan
-  , lessThanOrEqualTo
+  , gt
+  , gte
+  , lt
+  , lte
   , max
   , min
   , (<)
@@ -84,88 +84,88 @@ instance stringHasCompare :: HasCompare String where
 -- | otherwise.
 -- |
 -- | ``` purescript
--- | lessThan "a" "b"
+-- | lt "a" "b"
 -- | -- true
 -- | ```
-lessThan :: forall a. (HasCompare a) => a -> a -> Boolean
-lessThan x y = case compare x y of
+lt :: forall a. (HasCompare a) => a -> a -> Boolean
+lt x y = case compare x y of
   LessThan -> true
   _ -> false
 
--- | Alias for `lessThan`.
+-- | Alias for `lt`.
 -- |
 -- | ``` purescript
 -- | "a" < "b"
 -- | -- true
 -- | ```
 (<) :: forall a. (HasCompare a) => a -> a -> Boolean
-(<) x y = lessThan x y
+(<) = lt
 infixl 4 <
 
 -- | Returns `true` if the first value is less than or equal to the second
 -- | value, `false` otherwise.
 -- |
 -- | ``` purescript
--- | lessThanOrEqualTo "a" "a"
+-- | lte "a" "a"
 -- | -- true
 -- | ```
-lessThanOrEqualTo :: forall a. (HasCompare a) => a -> a -> Boolean
-lessThanOrEqualTo x y = case compare x y of
+lte :: forall a. (HasCompare a) => a -> a -> Boolean
+lte x y = case compare x y of
   GreaterThan -> false
   _ -> true
 
--- | Alias for `lessThanOrEqualTo`.
+-- | Alias for `lte`.
 -- |
 -- | ``` purescript
 -- | "a" < "a"
 -- | -- true
 -- | ```
 (<=) :: forall a. (HasCompare a) => a -> a -> Boolean
-(<=) x y = lessThanOrEqualTo x y
+(<=) = lte
 infixl 4 <=
 
 -- | Returns `true` if the first value is greater than or equal to the second
 -- | value, `false` otherwise.
 -- |
 -- | ``` purescript
--- | greaterThanOrEqualTo "a" "a"
+-- | gte "a" "a"
 -- | -- true
 -- | ```
-greaterThanOrEqualTo :: forall a. (HasCompare a) => a -> a -> Boolean
-greaterThanOrEqualTo x y = case compare x y of
+gte :: forall a. (HasCompare a) => a -> a -> Boolean
+gte x y = case compare x y of
   LessThan -> false
   _ -> true
 
--- | Alias for `greaterThanOrEqualTo`.
+-- | Alias for `gte`.
 -- |
 -- | ``` purescript
 -- |  "a" >= "a"
 -- | -- true
 -- | ```
 (>=) :: forall a. (HasCompare a) => a -> a -> Boolean
-(>=) x y = greaterThanOrEqualTo x y
+(>=) = gte
 infixl 4 >=
 
 -- | Returns `true` if the first value is greater than the second value,
 -- | `false` otherwise.
 -- |
 -- | ``` purescript
--- | greaterThan "b" "a"
+-- | gt "b" "a"
 -- | -- true
 -- | ```
-greaterThan :: forall a. (HasCompare a) => a -> a -> Boolean
-greaterThan x y = case compare x y of
+gt :: forall a. (HasCompare a) => a -> a -> Boolean
+gt x y = case compare x y of
   GreaterThan -> true
   _ -> false
 
--- | Alias for `greaterThan`.
+-- | Alias for `gt`.
 -- |
 -- | ``` purescript
 -- | "b" > "a"
 -- | -- true
 -- | ```
 (>) :: forall a. (HasCompare a) => a -> a -> Boolean
-(>) x y = greaterThan x y
+(>) = gt
 infixl 4 >
 
 -- | Returns the lesser of two values.

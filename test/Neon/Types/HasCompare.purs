@@ -8,14 +8,14 @@ main :: Test
 main = do
   info "Neon.Types.HasCompare"
   compare [1] [1] ==> EqualTo
-  lessThan false true ==> true
-  greaterThan 'b' 'a' ==> true
+  lt false true ==> true
+  gt 'b' 'a' ==> true
   compare (+ 1) (+ 1) ==> LessThan
   let f = (+ 1)
   compare f f ==> EqualTo
   compare 1 1 ==> EqualTo
-  lessThanOrEqualTo 0.1 2.3 ==> true
-  greaterThanOrEqualTo EqualTo LessThan ==> true
+  lte 0.1 2.3 ==> true
+  gte EqualTo LessThan ==> true
   compare "neon" "neon" ==> EqualTo
   1 < 2 ==> true
   2 <= 2 ==> true

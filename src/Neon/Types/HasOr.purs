@@ -38,5 +38,5 @@ instance functionHasOr :: (HasOr b) => HasOr (a -> b) where
 -- | -- true
 -- | ```
 (||) :: forall a. (HasOr a) => a -> a -> a
-(||) x y = or x y
+(||) = or
 infixr 2 ||

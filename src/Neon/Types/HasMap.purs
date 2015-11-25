@@ -8,7 +8,7 @@ module Neon.Types.HasMap
   , ($>)
   ) where
 
-import Neon.Primitives.Function (always)
+import Neon.Primitives.Function (always, flip)
 import Neon.Types.HasCompose ((>>))
 import Neon.Values.Unit (Unit(), unit)
 
@@ -42,7 +42,7 @@ instance functionHasMap :: HasMap (Function a) where
 -- | -- [2, 3, 4]
 -- | ```
 (<$>) :: forall f a b. (HasMap f) => (a -> b) -> f a -> f b
-(<$>) f x = map f x
+(<$>) = map
 infixl 4 <$>
 
 -- | Replaces all values in the container with the given value.
@@ -81,4 +81,4 @@ void f = f $> unit
 -- | -- [2, 3, 4]
 -- | ```
 for :: forall f a b. (HasMap f) => f a -> (a -> b) -> f b
-for x f = map f x
+for = flip map

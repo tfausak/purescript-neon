@@ -49,5 +49,5 @@ instance stringHasAdd :: HasAdd String where
 -- | -- "ab"
 -- | ```
 (+) :: forall a. (HasAdd a) => a -> a -> a
-(+) x y = add x y
+(+) = add
 infixl 6 +

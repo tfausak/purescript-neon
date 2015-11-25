@@ -59,5 +59,5 @@ notEqual x y = not (equal x y)
 -- | -- true
 -- | ```
 (!=) :: forall a. (HasEqual a) => a -> a -> Boolean
-(!=) x y = notEqual x y
+(!=) = notEqual
 infix 4 !=

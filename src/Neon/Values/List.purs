@@ -1,12 +1,12 @@
 module Neon.Values.List
   ( List(Cons, Nil)
-  , toList
   ) where
 
 import Neon.Types.HasAdd ((+))
 import Neon.Types.HasAnd ((&&))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold, foldl, foldr, foldMap)
+import Neon.Types.HasFromArray (HasFromArray)
 import Neon.Types.HasMap (HasMap, (<$>))
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasToArray (HasToArray)
@@ -29,6 +29,9 @@ instance listHasFold :: HasFold List where
     Nil -> y
     Cons x l -> f x (foldr f y l)
 
+instance listHasFromArray :: HasFromArray a (List a) where
+  fromArray xs = foldr Cons Nil xs
+
 instance listHasMap :: HasMap List where
   map f xs = case xs of
     Nil -> Nil
@@ -41,12 +44,3 @@ instance listHasShow :: (HasShow a) => HasShow (List a) where
 
 instance listHasToArray :: HasToArray (List a) a where
   toArray xs = foldMap (\ x -> [x]) xs
-
--- | Converts a foldable container into a list.
--- |
--- | ``` purescript
--- | toList [1, 2]
--- | -- Cons 1 (Cons 2 Nil)
--- | ```
-toList :: forall f a. (HasFold f) => f a -> List a
-toList xs = foldr Cons Nil xs

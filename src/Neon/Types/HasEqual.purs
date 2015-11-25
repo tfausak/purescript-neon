@@ -55,5 +55,5 @@ instance stringHasEqual :: HasEqual String where
 -- | -- true
 -- | ```
 (==) :: forall a. (HasEqual a) => a -> a -> Boolean
-(==) x y = equal x y
+(==) = equal
 infix 4 ==

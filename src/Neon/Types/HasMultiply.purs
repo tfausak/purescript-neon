@@ -45,5 +45,5 @@ instance numberHasMultiply :: HasMultiply Number where
 -- | -- 6
 -- | ```
 (*) :: forall a. (HasMultiply a) => a -> a -> a
-(*) x y = multiply x y
+(*) = multiply
 infixl 7 *

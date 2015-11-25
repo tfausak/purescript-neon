@@ -8,6 +8,7 @@ main = do
   info "Neon.Types.HasFold"
   foldl (+) "a" ["b", "c"] ==> "abc"
   foldr (+) "a" ["b", "c"] ==> "bca"
+  fold ["a", "b"] ==> "ab"
   foldMap (+ "!") ["a", "b"] ==> "a!b!"
   length [1, 2] ==> 2
   isPresent ([] :: Array Unit) ==> false

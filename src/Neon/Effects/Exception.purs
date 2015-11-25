@@ -42,4 +42,4 @@ foreign import throw :: forall e a. Exception -> Effect (exception :: EXCEPTION 
 foreign import catch :: forall e a. Effect (exception :: EXCEPTION | e) a -> (Exception -> Effect e a) -> Effect e a
 
 instance exceptionHasShow :: HasShow Exception where
-  show x = nativeShow x
+  show = nativeShow

@@ -1,6 +1,7 @@
 module Neon.Types.HasFold
   ( HasFold
   , contains
+  , fold
   , foldl
   , foldMap
   , foldr
@@ -47,6 +48,17 @@ instance arrayHasFold :: HasFold Array where
 
 -- | Reduces the container into a value that supports addition and has an
 -- | additive identity (that is, a monoid).
+-- |
+-- | ``` purescript
+-- | fold ["ne", "on"]
+-- | -- "neon"
+-- | ```
+fold :: forall f m. (HasFold f, HasZero m) => f m -> m
+fold xs = foldl (+) zero xs
+
+-- | Maps the function over the values in the container and then reduces the
+-- | container into a value that supports addition and has an additive identity
+-- | (that is, a monoid).
 -- |
 -- | ``` purescript
 -- | foldMap (+ "!") ["ne", "on"]

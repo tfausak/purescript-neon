@@ -41,7 +41,7 @@ instance numberHasSubtract :: HasSubtract Number where
 -- | -- 1
 -- | ```
 (-) :: forall a. (HasSubtract a) => a -> a -> a
-(-) x y = subtract x y
+(-) = subtract
 infixl 6 -
 
 -- | Negates a value. This is the same as subtracting the value from zero.
