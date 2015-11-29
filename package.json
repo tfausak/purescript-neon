@@ -5,7 +5,7 @@
     "purescript": "0.7.6"
   },
   "devDependencies": {
-    "eslint": "1.10.1"
+    "eslint": "1.10.2"
   },
   "engines": {
     "node": "5.0.0",
