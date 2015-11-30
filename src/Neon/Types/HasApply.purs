@@ -1,15 +1,12 @@
 module Neon.Types.HasApply
   ( HasApply
   , apply
-  , (*>)
-  , (<*)
   , (<*>)
   ) where
 
-import Neon.Primitives.Function (always, flip, (|>))
-import Neon.Types.HasIdentity (identity)
+import Neon.Primitives.Function (flip, (|>))
 import Neon.Types.HasFold (sum)
-import Neon.Types.HasMap (HasMap, map, (<$>))
+import Neon.Types.HasMap (HasMap, map)
 
 -- | Represents types that can be applied from within a container. In other
 -- | words, given both a function and a value in a container, apply the
@@ -42,23 +39,3 @@ instance functionHasApply :: HasApply (Function a) where
 (<*>) :: forall f a b. (HasApply f) => f (a -> b) -> f a -> f b
 (<*>) = apply
 infixl 4 <*>
-
--- | Returns the second value but also evaluates the first.
--- |
--- | ``` purescript
--- | [1] *> [2]
--- | -- [2]
--- | ```
-(*>) :: forall f a b. (HasApply f) => f a -> f b -> f b
-(*>) x y = (always identity <$> x) <*> y
-infixl 4 *>
-
--- | Returns the first value but also evaluates the second.
--- |
--- | ``` purescript
--- | [1] <* [2]
--- | -- [1]
--- | ```
-(<*) :: forall f a b. (HasApply f) => f a -> f b -> f a
-(<*) x y = (always <$> x) <*> y
-infixl 4 <*
