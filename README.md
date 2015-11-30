@@ -23,7 +23,7 @@ be useful and coherent. It has a some guiding principles:
 - Design type classes for programmers, not mathematicians. This means `HasAdd`
   is a semigroup, but it's not called `Semigroup`.
 
-- Pure functions should not throw exceptions. This means `head` returns a
+- Pure functions should not throw exceptions. This means `toEnum` returns a
   `Maybe a` value. Pure functions that do throw exceptions should be marked as
   "unsafe".
 
