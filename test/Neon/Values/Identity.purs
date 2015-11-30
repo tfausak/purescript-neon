@@ -10,7 +10,7 @@ main = do
   Identity 1 + Identity 2 ==> Identity 3
   Identity true && Identity true ==> Identity true
   Identity (+ 1) <*> Identity 2 ==> Identity 3
-  Identity 1 >>= ((+ 1) >> pure) ==> Identity 2
+  bind (Identity 1) ((+ 1) >> pure) ==> Identity 2
   bottom ==> Identity false
   Identity 1 < Identity 2 ==> true
   Identity 5 / Identity 2 ==> Identity 2

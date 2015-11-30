@@ -11,7 +11,7 @@ main = do
   alternative (Constant "a") (Constant "b") ==> Constant "ab"
   Constant true && Constant false ==> Constant false
   Constant "a" <*> Constant "b" ==> Constant "ab"
-  Constant true >>= not ==> Constant true
+  bind (Constant true) not ==> Constant true
   bottom ==> Constant false
   Constant true > Constant false ==> true
   Constant 5 / Constant 2 ==> Constant 2

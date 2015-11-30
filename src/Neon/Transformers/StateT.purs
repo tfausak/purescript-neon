@@ -5,7 +5,7 @@ module Neon.Transformers.StateT
 
 import Neon.Types.HasAlternative (HasAlternative, alternative)
 import Neon.Types.HasApply (HasApply)
-import Neon.Types.HasBind (HasBind, bind, (>>=))
+import Neon.Types.HasBind (HasBind, bind)
 import Neon.Types.HasCompose ((>>))
 import Neon.Types.HasEmpty (HasEmpty, empty)
 import Neon.Types.HasLift (HasLift)
@@ -37,7 +37,7 @@ instance stateTHasEmpty :: (HasBind m, HasEmpty m) => HasEmpty (StateT s m) wher
   empty = StateT \ _ -> empty
 
 instance stateTHasLift :: HasLift (StateT s) where
-  lift m = StateT \ x -> m >>= \ y -> pure (pair y x)
+  lift m = StateT \ x -> bind m (\ y -> pure (pair y x))
 
 instance stateTHasMap :: (HasMap m) => HasMap (StateT s m) where
   map g (StateT f) = StateT \ x ->

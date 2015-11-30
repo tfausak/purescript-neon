@@ -5,7 +5,7 @@ module Neon.Transformers.MaybeT
 
 import Neon.Types.HasAlternative (HasAlternative)
 import Neon.Types.HasApply (HasApply, apply)
-import Neon.Types.HasBind (HasBind, bind, (>>=))
+import Neon.Types.HasBind (HasBind, bind)
 import Neon.Types.HasCompose ((>>))
 import Neon.Types.HasEmpty (HasEmpty, empty)
 import Neon.Types.HasLift (HasLift)
@@ -18,7 +18,7 @@ import Neon.Values.Maybe (Maybe(Just, Nothing), maybe)
 newtype MaybeT m a = MaybeT (m (Maybe a))
 
 instance maybeTHasAlternative :: (HasBind m) => HasAlternative (MaybeT m) where
-  alternative (MaybeT x) (MaybeT y) = MaybeT (x >>= maybe y (pure >> pure))
+  alternative (MaybeT x) (MaybeT y) = MaybeT (bind x (maybe y (pure >> pure)))
 
 -- TODO: #15
 instance maybeTHasApply :: (HasBind m) => HasApply (MaybeT m) where
@@ -38,7 +38,7 @@ instance maybeTHasEmpty :: (HasBind m) => HasEmpty (MaybeT m) where
   empty = MaybeT (pure empty)
 
 instance maybeTHasLift :: HasLift MaybeT where
-  lift x = MaybeT (x >>= pure >> pure)
+  lift x = MaybeT (bind x (pure >> pure))
 
 instance maybeTHasMap :: (HasMap m) => HasMap (MaybeT m) where
   map f (MaybeT x) = MaybeT (map (map f) x)

@@ -11,7 +11,7 @@ main = do
   alternative (Left 1) (Right '2') ==> Right '2'
   Left false && Right true ==> Left false
   Right (+ 1) <*> Right 1 ==> Right 2 :: Either Unit Int
-  (Right 1 >>= \ x -> Right (x + 1)) ==> Right 2 :: Either Unit Int
+  bind (Right 1) (\ x -> Right (x + 1)) ==> Right 2 :: Either Unit Int
   bottom ==> Left false :: Either Boolean Unit
   Left 1 < Right 2 ==> true
   Right 5 / Right 2 ==> Right 2 :: Either Unit Int
