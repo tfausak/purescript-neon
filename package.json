@@ -23,7 +23,7 @@
     "postinstall": "pulp dep install",
     "pulp": "pulp",
     "psc-publish": "psc-publish",
-    "test": "pulp test && eslint src && psc-publish --dry-run"
+    "test": "pulp test --force && eslint src && psc-publish --dry-run"
   },
   "version": "0.0.0-private"
 }
