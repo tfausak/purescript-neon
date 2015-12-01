@@ -10,7 +10,7 @@ main = do
   Just 1 + Just 2 ==> Just 3
   alternative Nothing (Just 1) ==> Just 1
   Just true && Just true ==> Just true
-  Just (+ 1) <*> Just 1 ==> Just 2
+  apply (Just (+ 1)) (Just 1) ==> Just 2
   bind (Just 1) (\x -> pure (x + 1)) ==> Just 2
   bottom ==> Nothing :: Maybe Unit
   compare (Just 1) (Just 2) ==> LessThan

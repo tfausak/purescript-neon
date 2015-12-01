@@ -2,11 +2,8 @@ module Neon.Types.HasBind
   ( HasBind
   , bind
   , join
-  , (=<<)
-  , (>>=)
   ) where
 
-import Neon.Primitives.Function (flip)
 import Neon.Types.HasIdentity (identity)
 import Neon.Types.HasFold (sum)
 import Neon.Types.HasMap (map)
@@ -16,7 +13,7 @@ import Neon.Types.HasPure (HasPure)
 -- | as a [monad](https://en.wikipedia.org/wiki/Monad_(functional_programming)).
 -- |
 -- | Laws:
--- | - Associativity: `(x >>= f) >>= g = x >>= (\ k => f k >>= g)`
+-- | - Associativity: `bind (bind x f) g = bind x (\ k -> bind (f k) g)`
 class (HasPure f) <= HasBind f where
   -- | Sequentially execute an action.
   -- |
@@ -32,26 +29,6 @@ instance arrayHasBind :: HasBind Array where
 instance functionHasbind :: HasBind (Function a) where
   bind g f = \ x -> f (g x) x
 
--- | Alias for `bind`.
--- |
--- | ``` purescript
--- | [1, 2] >>= \ x -> [x, x]
--- | -- [1, 1, 2, 2]
--- | ```
-(>>=) :: forall f a b. (HasBind f) => f a -> (a -> f b) -> f b
-(>>=) = bind
-infixl 1 >>=
-
--- | `(>>=)` with the arguments reversed.
--- |
--- | ``` purescript
--- | (\ x -> [x, x]) =<< [1, 2]
--- | -- [1, 1, 2, 2]
--- | ```
-(=<<) :: forall f a b. (HasBind f) => (a -> f b) -> f a -> f b
-(=<<) = flip bind
-infixr 1 =<<
-
 -- | Collapses two wrappers into one.
 -- |
 -- | ``` purescript
@@ -59,4 +36,4 @@ infixr 1 =<<
 -- | -- [1, 2, 3, 4]
 -- | ```
 join :: forall f a. (HasBind f) => f (f a) -> f a
-join x = x >>= identity
+join x = bind x identity

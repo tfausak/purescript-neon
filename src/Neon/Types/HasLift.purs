@@ -10,7 +10,7 @@ import Neon.Types.HasBind (HasBind)
 -- |
 -- | Laws:
 -- | - `lift (pure x) = pure x`
--- | - `lift (m >>= \ x -> y) = lift m >>= \ x -> lift y`
+-- | - `lift (bind m (\ x -> y)) = bind (lift m) (\ x -> lift y)`
 class HasLift t where
   -- | Lifts a monadic action into the monad transformer.
   -- |

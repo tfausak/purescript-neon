@@ -10,8 +10,8 @@ main = do
   Constant "a" + Constant "b" ==> Constant "ab"
   alternative (Constant "a") (Constant "b") ==> Constant "ab"
   Constant true && Constant false ==> Constant false
-  Constant "a" <*> Constant "b" ==> Constant "ab"
-  Constant true >>= not ==> Constant true
+  apply (Constant "a") (Constant "b") ==> Constant "ab"
+  bind (Constant true) not ==> Constant true
   bottom ==> Constant false
   Constant true > Constant false ==> true
   Constant 5 / Constant 2 ==> Constant 2
@@ -20,7 +20,7 @@ main = do
   Constant unit == Constant unit ==> true
   foldl (+) 1 (Constant 2) ==> 1
   foldr (+) 1 (Constant 2) ==> 1
-  (+ 1) <$> Constant 1 ==> Constant 1
+  map (+ 1) (Constant 1) ==> Constant 1
   Constant 2 * Constant 3 ==> Constant 6
   not (Constant true) ==> Constant false
   one ==> Constant 1

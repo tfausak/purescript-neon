@@ -51,7 +51,7 @@ runPure = nativeRunEffect
 -- | useful for debugging pure functions.
 -- |
 -- | ``` purescript
--- | unsafeRunEffect (log "..." *> pure 1) :: Int
+-- | unsafeRunEffect (do { log "..."; pure 1 }) :: Int
 -- | -- logs "..." and returns `1`
 -- | ```
 unsafeRunEffect :: forall e a. Effect e a -> a

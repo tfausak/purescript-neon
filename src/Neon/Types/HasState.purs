@@ -15,7 +15,7 @@ import Neon.Values.Unit (Unit(), unit)
 -- | Laws:
 -- | - `do { getState ; getState } = getState`
 -- | - `do { setState x ; setState y } = setState y`
--- | - `do { setState x ; getState } = setState x $> x`
+-- | - `do { setState x ; getState } = map (always x) (setState x)`
 -- | - `do { s <- getState ; setState s } = pure unit`
 class (HasBind m) <= HasState s m where
   -- | Updates the state.

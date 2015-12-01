@@ -12,7 +12,7 @@ main = do
   foldl (+) "a" (Cons "b" (Cons "c" Nil)) ==> "abc"
   foldr (+) "a" (Cons "b" (Cons "c" Nil)) ==> "bca"
   fromArray [1, 2] ==> Cons 1 (Cons 2 Nil)
-  (+ 1) <$> Cons 1 (Cons 2 Nil) ==> Cons 2 (Cons 3 Nil)
+  map (+ 1) (Cons 1 (Cons 2 Nil)) ==> Cons 2 (Cons 3 Nil)
   show (Nil :: List Unit) ==> "Nil"
   show (Cons 1 Nil) ==> "Cons (1) (Nil)"
   toArray (Cons 1 (Cons 2 Nil)) ==> [1, 2]
