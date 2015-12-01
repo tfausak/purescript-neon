@@ -4,7 +4,7 @@ module Neon.Types.HasTraverse
   , traverse
   ) where
 
-import Neon.Types.HasApply ((<*>))
+import Neon.Types.HasApply (apply)
 import Neon.Types.HasFold (HasFold)
 import Neon.Types.HasFromArray (fromArray)
 import Neon.Types.HasIdentity (identity)
@@ -38,7 +38,7 @@ instance arrayHasTraverse :: HasTraverse Array where
 instance listHasTraverse :: HasTraverse List where
   traverse f xs = case xs of
     Nil -> pure Nil
-    Cons x l -> map Cons (f x) <*> traverse f l
+    Cons x l -> apply (map Cons (f x)) (traverse f l)
 
 instance maybeHasTraverse :: HasTraverse Maybe where
   traverse f x = case x of

@@ -9,7 +9,7 @@ main = do
   info "Neon.Values.Pair"
   pair 1 2 + pair 3 4 ==> pair 4 6
   pair false true && pair true true ==> pair false true
-  pair 1 (+ 3) <*> pair 3 4 ==> pair 4 7
+  apply (pair 1 (+ 3)) (pair 3 4) ==> pair 4 7
   bind (pair 1 2) (\ x -> pair x x) ==> pair 3 2
   bottom ==> pair false false
   pair 1 2 < pair 1 3 ==> true

@@ -9,7 +9,7 @@ main = do
   info "Neon.Values.Identity"
   Identity 1 + Identity 2 ==> Identity 3
   Identity true && Identity true ==> Identity true
-  Identity (+ 1) <*> Identity 2 ==> Identity 3
+  apply (Identity (+ 1)) (Identity 2) ==> Identity 3
   bind (Identity 1) ((+ 1) >> pure) ==> Identity 2
   bottom ==> Identity false
   Identity 1 < Identity 2 ==> true

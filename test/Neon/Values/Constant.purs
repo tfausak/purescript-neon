@@ -10,7 +10,7 @@ main = do
   Constant "a" + Constant "b" ==> Constant "ab"
   alternative (Constant "a") (Constant "b") ==> Constant "ab"
   Constant true && Constant false ==> Constant false
-  Constant "a" <*> Constant "b" ==> Constant "ab"
+  apply (Constant "a") (Constant "b") ==> Constant "ab"
   bind (Constant true) not ==> Constant true
   bottom ==> Constant false
   Constant true > Constant false ==> true

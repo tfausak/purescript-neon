@@ -13,10 +13,10 @@ import Neon.Values.Unit (Unit(), unit)
 -- | Represents types that allow injecting values into a container.
 -- |
 -- | Laws:
--- | - Identity: `(pure id) <*> v = v`
--- | - Composition: `(pure <<) <*> f <*> g <*> h = f <*> (g <*> h)`
--- | - Homomorphism: `(pure f) <*> (pure x) = pure (f x)`
--- | - Interchange: `u <*> (pure y) = (pure (\ f -> f y)) <*> u`
+-- | - Identity: `apply (pure id) v = v`
+-- | - Composition: `apply (apply (apply (pure <<) f) g) h = apply f (apply g h)`
+-- | - Homomorphism: `apply (pure f) (pure x) = pure (f x)`
+-- | - Interchange: `apply u (pure y) = apply (pure \ f -> f y) u`
 class (HasApply f) <= HasPure f where
   -- | Injects a value into a container.
   -- |

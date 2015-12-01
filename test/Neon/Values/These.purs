@@ -8,7 +8,7 @@ main :: Test
 main = do
   info "Neon.Values.These"
   This 1 + That 2 ==> Both 1 2
-  Both "a" (+ 1) <*> Both "b" 1 ==> Both "ab" 2
+  apply (Both "a" (+ 1)) (Both "b" 1) ==> Both "ab" 2
   This 1 == That 2 ==> false
   foldl (+) "a" (Both "b" "c") ==> "ac"
   foldr (+) "a" (Both "b" "c") ==> "ca"

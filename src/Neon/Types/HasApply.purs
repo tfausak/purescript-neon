@@ -1,7 +1,6 @@
 module Neon.Types.HasApply
   ( HasApply
   , apply
-  , (<*>)
   ) where
 
 import Neon.Primitives.Function (flip, (|>))
@@ -14,7 +13,7 @@ import Neon.Types.HasMap (HasMap, map)
 -- | known as an applicative functor.
 -- |
 -- | Laws:
--- | - Associative composition: `map (<<) f <*> g <*> h = f <*> (g <*> h)`
+-- | - Associative composition: `apply (apply (map (<<) f) g) h = apply f (apply g h)`
 class (HasMap f) <= HasApply f where
   -- | Applies a function to and argument.
   -- |
@@ -29,13 +28,3 @@ instance arrayHasApply :: HasApply Array where
 
 instance functionHasApply :: HasApply (Function a) where
   apply f g = \ x -> f x (g x)
-
--- | Alias for `apply`.
--- |
--- | ``` purescript
--- | [(+ 2), (* 2)] <*> [3, 4]
--- | -- [5, 6, 6, 8]
--- | ```
-(<*>) :: forall f a b. (HasApply f) => f (a -> b) -> f a -> f b
-(<*>) = apply
-infixl 4 <*>

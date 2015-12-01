@@ -7,4 +7,4 @@ main :: Test
 main = do
   info "Neon.Types.HasApply"
   apply [(+ 1), (+ 2)] [1, 2] ==> [2, 3, 3, 4]
-  ((+) <*> (+ 2)) 1 ==> 4
+  apply (+) (+ 2) 1 ==> 4
