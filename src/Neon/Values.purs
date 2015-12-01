@@ -11,6 +11,7 @@ module Neon.Values
   , module Neon.Values.Pair
   , module Neon.Values.Proxy
   , module Neon.Values.Regex
+  , module Neon.Values.Table
   , module Neon.Values.These
   , module Neon.Values.Unit
   ) where
@@ -26,5 +27,6 @@ import Neon.Values.Ordering
 import Neon.Values.Pair
 import Neon.Values.Proxy
 import Neon.Values.Regex
+import Neon.Values.Table
 import Neon.Values.These
 import Neon.Values.Unit
