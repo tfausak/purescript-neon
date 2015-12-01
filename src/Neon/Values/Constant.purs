@@ -14,7 +14,7 @@ import Neon.Types.HasDivide (HasDivide, (/), (%))
 import Neon.Types.HasEmpty (HasEmpty)
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
-import Neon.Types.HasMap (HasMap, (<$>))
+import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasMultiply (HasMultiply, (*))
 import Neon.Types.HasNot (HasNot, not)
 import Neon.Types.HasOne (HasOne, one)
@@ -100,9 +100,9 @@ instance constantHasZero :: (HasZero a) => HasZero (Constant a b) where
 
 instance constantIsEnumerable :: (IsEnumerable a) => IsEnumerable (Constant a b) where
   fromEnum (Constant x) = fromEnum x
-  toEnum x = Constant <$> toEnum x
-  succ (Constant x) = Constant <$> succ x
-  pred (Constant x) = Constant <$> pred x
+  toEnum x = map Constant (toEnum x)
+  succ (Constant x) = map Constant (succ x)
+  pred (Constant x) = map Constant (pred x)
 
 -- | Extracts the value from its wrapper.
 -- |

@@ -20,7 +20,7 @@ main = do
   Constant unit == Constant unit ==> true
   foldl (+) 1 (Constant 2) ==> 1
   foldr (+) 1 (Constant 2) ==> 1
-  (+ 1) <$> Constant 1 ==> Constant 1
+  map (+ 1) (Constant 1) ==> Constant 1
   Constant 2 * Constant 3 ==> Constant 6
   not (Constant true) ==> Constant false
   one ==> Constant 1

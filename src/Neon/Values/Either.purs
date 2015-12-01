@@ -19,7 +19,7 @@ import Neon.Types.HasDivide (HasDivide, divide, modulo)
 import Neon.Types.HasEmpty (HasEmpty, empty)
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
-import Neon.Types.HasMap (HasMap, (<$>))
+import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasMultiply (HasMultiply, multiply)
 import Neon.Types.HasNot (HasNot, not)
 import Neon.Types.HasOne (HasOne, one)
@@ -40,17 +40,17 @@ data Either a b
   | Right b
 
 instance eitherHasAdd :: (HasAdd b) => HasAdd (Either a b) where
-  add x y = add <$> x <*> y
+  add x y = map add x <*> y
 
 instance eitherHasAlternative :: HasAlternative (Either a) where
   alternative (Left _) y = y
   alternative x _ = x
 
 instance eitherHasAnd :: (HasBottom a, HasTop a, HasAnd b) => HasAnd (Either a b) where
-  and x y = and <$> x <*> y
+  and x y = map and x <*> y
 
 instance eitherHasApply :: HasApply (Either a) where
-  apply (Right f) x = f <$> x
+  apply (Right f) x = map f x
   apply (Left x) _ = Left x
 
 instance eitherHasBind :: HasBind (Either a) where
@@ -67,8 +67,8 @@ instance eitherHasCompare :: (HasCompare a, HasCompare b) => HasCompare (Either 
   compare _ (Left _) = GreaterThan
 
 instance eitherHasDivide :: (HasDivide b) => HasDivide (Either a b) where
-  divide x y = divide <$> x <*> y
-  modulo x y = modulo <$> x <*> y
+  divide x y = map divide x <*> y
+  modulo x y = map modulo x <*> y
 
 instance eitherHasEqual :: (HasEqual a, HasEqual b) => HasEqual (Either a b) where
   equal (Left x) (Left y) = x == y
@@ -88,16 +88,16 @@ instance eitherHasMap :: HasMap (Either a) where
   map _ (Left x) = Left x
 
 instance eitherHasMultiply :: (HasMultiply b) => HasMultiply (Either a b) where
-  multiply x y = multiply <$> x <*> y
+  multiply x y = map multiply x <*> y
 
 instance eitherHasNot :: (HasBottom a, HasTop a, HasNot b) => HasNot (Either a b) where
-  not x = not <$> x
+  not x = map not x
 
 instance eitherHasOne :: (HasOne b) => HasOne (Either a b) where
   one = Right one
 
 instance eitherHasOr :: (HasBottom a, HasTop a, HasOr b) => HasOr (Either a b) where
-  or x y = or <$> x <*> y
+  or x y = map or x <*> y
 
 instance eitherHasPure :: HasPure (Either a) where
   pure x = Right x
@@ -107,7 +107,7 @@ instance eitherHasShow :: (HasShow a, HasShow b) => HasShow (Either a b) where
   show (Right x) = "Right (" + show x + ")"
 
 instance eitherHasSubtract :: (HasSubtract b) => HasSubtract (Either a b) where
-  subtract x y = subtract <$> x <*> y
+  subtract x y = map subtract x <*> y
 
 instance eitherHasTop :: (HasTop a, HasTop b) => HasTop (Either a b) where
   top = Right top

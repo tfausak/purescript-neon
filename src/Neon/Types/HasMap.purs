@@ -3,7 +3,6 @@ module Neon.Types.HasMap
   , for
   , map
   , void
-  , (<$>)
   ) where
 
 import Neon.Primitives.Function (always, flip)
@@ -33,16 +32,6 @@ instance arrayHasMap :: HasMap Array where
 instance functionHasMap :: HasMap (Function a) where
   map f g = g >> f
 
--- | Alias for `map`.
--- |
--- | ``` purescript
--- | (+ 1) <$> [1, 2, 3]
--- | -- [2, 3, 4]
--- | ```
-(<$>) :: forall f a b. (HasMap f) => (a -> b) -> f a -> f b
-(<$>) = map
-infixl 4 <$>
-
 -- | Discards the result. This is useful for `Effect`s.
 -- |
 -- | ``` purescript
@@ -50,7 +39,7 @@ infixl 4 <$>
 -- | -- [unit, unit, unit]
 -- | ```
 void :: forall f a. (HasMap f) => f a -> f Unit
-void f = always unit <$> f
+void f = map (always unit) f
 
 -- | `map` with the arguments flipped.
 -- |

@@ -18,7 +18,7 @@ main = do
   Identity 2 == Identity 2 ==> true
   foldl (+) "a" (Identity "b") ==> "ab"
   foldr (+) "a" (Identity "b") ==> "ba"
-  (+ 1) <$> Identity 1 ==> Identity 2
+  map (+ 1) (Identity 1) ==> Identity 2
   Identity 2 * Identity 3 ==> Identity 6
   not (Identity false) ==> Identity true
   one ==> Identity 1

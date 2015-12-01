@@ -14,7 +14,7 @@ import Neon.Types.HasMap (HasMap, map)
 -- | known as an applicative functor.
 -- |
 -- | Laws:
--- | - Associative composition: `(<<) <$> f <*> g <*> h = f <*> (g <*> h)`
+-- | - Associative composition: `map (<<) f <*> g <*> h = f <*> (g <*> h)`
 class (HasMap f) <= HasApply f where
   -- | Applies a function to and argument.
   -- |

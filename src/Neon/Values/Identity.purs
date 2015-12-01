@@ -12,7 +12,7 @@ import Neon.Types.HasCompare (HasCompare, compare)
 import Neon.Types.HasDivide (HasDivide, (/), (%))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold)
-import Neon.Types.HasMap (HasMap, (<$>))
+import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasMultiply (HasMultiply, (*))
 import Neon.Types.HasNot (HasNot, not)
 import Neon.Types.HasOne (HasOne, one)
@@ -90,9 +90,9 @@ instance identityHasZero :: (HasZero a) => HasZero (Identity a) where
 
 instance identityIsEnumerable :: (IsEnumerable a) => IsEnumerable (Identity a) where
   fromEnum (Identity x) = fromEnum x
-  toEnum x = Identity <$> toEnum x
-  succ (Identity x) = Identity <$> succ x
-  pred (Identity x) = Identity <$> pred x
+  toEnum x = map Identity (toEnum x)
+  succ (Identity x) = map Identity (succ x)
+  pred (Identity x) = map Identity (pred x)
 
 -- | Extracts the value from its wrapper.
 -- |

@@ -19,7 +19,7 @@ main = do
   Left 1 == Right '2' ==> false
   foldl (+) 1 (Right 2) ==> 3
   foldr (+) 1 (Left 2) ==> 1
-  (+ 1) <$> Right 1 ==> Right 2 :: Either Unit Int
+  map (+ 1) (Right 1) ==> Right 2 :: Either Unit Int
   Right 2 * Right 3 ==> Right 6 :: Either Unit Int
   not (Right false) ==> Right true :: Either Unit Boolean
   one ==> Right 1 :: Either Unit Int

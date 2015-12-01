@@ -7,7 +7,7 @@ import Neon.Types.HasAnd ((&&))
 import Neon.Types.HasEqual (HasEqual, (==))
 import Neon.Types.HasFold (HasFold, foldl, foldr, foldMap)
 import Neon.Types.HasFromArray (HasFromArray)
-import Neon.Types.HasMap (HasMap, (<$>))
+import Neon.Types.HasMap (HasMap, map)
 import Neon.Types.HasShow (HasShow, show)
 import Neon.Types.HasToArray (HasToArray)
 
@@ -35,7 +35,7 @@ instance listHasFromArray :: HasFromArray a (List a) where
 instance listHasMap :: HasMap List where
   map f xs = case xs of
     Nil -> Nil
-    Cons x l -> Cons (f x) (f <$> l)
+    Cons x l -> Cons (f x) (map f l)
 
 instance listHasShow :: (HasShow a) => HasShow (List a) where
   show xs = case xs of

@@ -11,7 +11,7 @@ import Neon.Types.HasMap (HasMap)
 -- |
 -- | Laws:
 -- | - Associativity: `alternative (alternative x y) z == alternative x (alternative y z)`
--- | - Distributivity: `f <$> (alternative x y) == alternative (f <$> x) (f <$> y)`
+-- | - Distributivity: `map f (alternative x y) == alternative (map f x) (map f y)`
 class (HasMap f) <= HasAlternative f where
   -- | Returns the alternatives between two values. This is like `add` but for
   -- | higher-kinded types.

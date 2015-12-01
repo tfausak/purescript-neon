@@ -14,7 +14,7 @@ main = do
   runStateT (bind x ((+ 1) >> pure)) 2 ==> Identity (pair 1 2)
   runStateT empty 2 ==> Nothing :: Maybe (Pair Unit Int)
   runStateT (lift (pure 1)) 2 ==> Identity (pair 1 2)
-  runStateT ((+ 1) <$> x) 2 ==> Identity (pair 1 2)
+  runStateT (map (+ 1) x) 2 ==> Identity (pair 1 2)
   runStateT (pure 1) 2 ==> Identity (pair 1 2)
   runStateT x 2 ==> Identity (pair 0 2)
   runStateT (state \ x -> pair (x - 1) (x + 1)) 2 ==> Identity (pair 1 3)

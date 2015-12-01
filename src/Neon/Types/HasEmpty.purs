@@ -14,7 +14,7 @@ import Neon.Values.Unit (Unit(), unit)
 -- | Laws:
 -- | - Left identity: `alternative empty x == x`
 -- | - Right identity: `alternative x empty == x`
--- | - Annihilation: `f <$> empty == empty`
+-- | - Annihilation: `map f empty == empty`
 class (HasAlternative f) <= HasEmpty f where
   -- | An empty container. This is like `zero` but for higher-kinded types.
   -- |
