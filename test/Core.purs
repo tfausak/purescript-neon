@@ -9,6 +9,6 @@ type Test = Effect (exception :: EXCEPTION, console :: CONSOLE) Unit
   then do
     info ("- PASS: " + show x + " = " + show y)
   else do
-    error ("- FAIL: " + show x + " ≠ " + show y)
+    error ("- FAIL: " + show x + " != " + show y)
     throw (exception "test failed")
 infix 0 ==>
