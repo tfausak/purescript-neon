@@ -15,16 +15,6 @@ module.exports = {
     };
   },
 
-  nativeAddBoolean: function (x) {
-    return function (y) {
-      if (x) {
-        return x;
-      } else {
-        return y;
-      }
-    };
-  },
-
   nativeAddInt: addGeneric,
 
   nativeAddNumber: addGeneric,
