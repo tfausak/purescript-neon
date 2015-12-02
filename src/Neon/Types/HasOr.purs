@@ -4,6 +4,7 @@ module Neon.Types.HasOr
   , (||)
   ) where
 
+import Neon.Types.HasAdd ((+))
 import Neon.Types.HasBottom (HasBottom)
 import Neon.Types.HasTop (HasTop)
 
@@ -26,7 +27,7 @@ class (HasBottom a, HasTop a) <= HasOr a where
   or :: a -> a -> a
 
 instance booleanHasOr :: HasOr Boolean where
-  or x y = if x then true else y
+  or x y = x + y
 
 instance functionHasOr :: (HasOr b) => HasOr (a -> b) where
   or f g = \ x -> f x || g x
