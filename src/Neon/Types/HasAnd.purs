@@ -5,6 +5,7 @@ module Neon.Types.HasAnd
   ) where
 
 import Neon.Types.HasBottom (HasBottom)
+import Neon.Types.HasMultiply ((*))
 import Neon.Types.HasTop (HasTop)
 
 -- | Represents types than can be "and"ed together. This is also known as a
@@ -26,7 +27,7 @@ class (HasBottom a, HasTop a) <= HasAnd a where
   and :: a -> a -> a
 
 instance booleanHasAnd :: HasAnd Boolean where
-  and x y = if x then y else false
+  and x y = x * y
 
 instance functionHasAnd :: (HasAnd b) => HasAnd (a -> b) where
   and f g = \ x -> f x && g x
