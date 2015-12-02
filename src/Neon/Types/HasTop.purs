@@ -8,9 +8,6 @@ import Neon.Primitives.Number (infinity)
 import Neon.Types.HasCompare (HasCompare)
 import Neon.Values.Ordering (Ordering(GreaterThan))
 
-foreign import nativeTopChar :: Char
-foreign import nativeTopInt :: Int
-
 -- | Represents types that have an upper bound.
 -- |
 -- | Laws:
@@ -28,13 +25,13 @@ instance booleanHasTop :: HasTop Boolean where
   top = true
 
 instance charHasTop :: HasTop Char where
-  top = nativeTopChar
+  top = '\65535'
 
 instance functionHasTop :: (HasTop b) => HasTop (a -> b) where
   top = always top
 
 instance intHasTop :: HasTop Int where
-  top = nativeTopInt
+  top = 2147483647
 
 instance numberHasTop :: HasTop Number where
   top = infinity

@@ -10,7 +10,7 @@ module.exports = {
           return x();
         } catch (e) {
           if (e instanceof Error) {
-            return f(x)();
+            return f(e)();
           } else {
             return f(new Error(e.toString()))();
           }

@@ -9,9 +9,6 @@ import Neon.Types.HasCompare (HasCompare)
 import Neon.Types.HasSubtract (negate)
 import Neon.Values.Ordering (Ordering(LessThan))
 
-foreign import nativeBottomChar :: Char
-foreign import nativeBottomInt :: Int
-
 -- | Represents types that have a lower bound.
 -- |
 -- | Laws:
@@ -29,13 +26,13 @@ instance booleanHasBottom :: HasBottom Boolean where
   bottom = false
 
 instance charHasBottom :: HasBottom Char where
-  bottom = nativeBottomChar
+  bottom = '\0'
 
 instance functionHasBottom :: (HasBottom b) => HasBottom (a -> b) where
   bottom = always bottom
 
 instance intHasBottom :: HasBottom Int where
-  bottom = nativeBottomInt
+  bottom = -2147483648
 
 instance numberHasBottom :: HasBottom Number where
   bottom = -infinity

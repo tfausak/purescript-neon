@@ -27,7 +27,7 @@ class (HasZero a) <= HasMultiply a where
   multiply :: a -> a -> a
 
 instance booleanHasMultiply :: HasMultiply Boolean where
-  multiply x y = nativeMultiplyBoolean x y
+  multiply x y = if x then y else false
 
 instance functionHasMultiply :: (HasMultiply b) => HasMultiply (a -> b) where
   multiply f g = \ x -> f x * g x

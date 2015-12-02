@@ -28,7 +28,7 @@ instance arrayHasAdd :: HasAdd (Array a) where
   add x y = nativeAddArray x y
 
 instance booleanHasAdd :: HasAdd Boolean where
-  add x y = nativeAddBoolean x y
+  add x y = if x then true else y
 
 instance functionHasAdd :: (HasAdd b) => HasAdd (a -> b) where
   add f g = \ x -> f x + g x
