@@ -14,14 +14,11 @@ it message spec = do
   info message
   spec
 
-shouldBe :: Boolean -> Boolean -> Spec
+shouldBe :: forall a. (Equal a, Show a) => a -> a -> Spec
 shouldBe actual expected =
-  let pass = info "PASS"
-      fail = do
-        error "FAIL"
-        throw (exception "Assertion failed!")
-  in  case { actual: actual, expected: expected } of
-        { actual: false, expected: true } -> fail
-        { actual: true, expected: false } -> fail
-        { actual: false, expected: false } -> pass
-        { actual: true, expected: true } -> pass
+  if equal actual expected
+  then do
+    info "PASS"
+  else do
+    error "FAIL"
+    throw (exception (show actual))
