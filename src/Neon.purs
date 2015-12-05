@@ -1,14 +1,12 @@
 module Neon
   ( module Neon
-  , module Neon.Effects
-  , module Neon.Primitives
-  , module Neon.Transformers
-  , module Neon.Types
-  , module Neon.Values
+  , module Neon.Class
+  , module Neon.Data
+  , module Neon.Effect
+  , module Neon.Primitive
   ) where
 
-import Neon.Effects
-import Neon.Primitives
-import Neon.Transformers
-import Neon.Types
-import Neon.Values
+import Neon.Class
+import Neon.Data
+import Neon.Effect
+import Neon.Primitive
