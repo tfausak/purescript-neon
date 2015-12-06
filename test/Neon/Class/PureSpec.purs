@@ -5,4 +5,6 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Pure" do
-  pure 1 `shouldBe` [1]
+  describe "Array" do
+    it "supports pure" do
+      pure 1 `shouldBe` [1]

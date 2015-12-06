@@ -5,4 +5,6 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Compose" do
-  compose (+ 2) (* 2) 3 `shouldBe` 10
+  describe "Function" do
+    it "can be composed" do
+      compose (+ 2) (* 2) 3 `shouldBe` 10

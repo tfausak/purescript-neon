@@ -5,15 +5,21 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Greater" do
-  it "greaters arrays" do
-    greater [1, 2] [1, 1] `shouldBe` true
-  it "greaters booleans" do
-    greater true false `shouldBe` true
-  it "greaters characters" do
-    greater 'b' 'a' `shouldBe` true
-  it "greaters integers" do
-    greater 2 1 `shouldBe` true
-  it "greaters numbers" do
-    greater 2.0 1.0 `shouldBe` true
-  it "greaters strings" do
-    greater "ab" "aa" `shouldBe` true
+  describe "Array" do
+    it "can be greater than" do
+      greater [1, 2] [1, 1] `shouldBe` true
+  describe "Boolean" do
+    it "can be greater than" do
+      greater true false `shouldBe` true
+  describe "Char" do
+    it "can be greater than" do
+      greater 'b' 'a' `shouldBe` true
+  describe "Int" do
+    it "can be greater than" do
+      greater 2 1 `shouldBe` true
+  describe "Number" do
+    it "can be greater than" do
+      greater 2.0 1.0 `shouldBe` true
+  describe "String" do
+    it "can be greater than" do
+      greater "ab" "aa" `shouldBe` true

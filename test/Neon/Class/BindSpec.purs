@@ -5,4 +5,6 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Bind" do
-  bind [3, 5] (\ x -> [x, x * 2]) `shouldBe` [3, 6, 5, 10]
+  describe "Array" do
+    it "can be bound" do
+      bind [3, 5] (\ x -> [x, x * 2]) `shouldBe` [3, 6, 5, 10]

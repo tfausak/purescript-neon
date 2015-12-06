@@ -5,7 +5,9 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Subtract" do
-  it "subtracts integers" do
-    subtract 2 1 `shouldBe` 1
-  it "subtracts numbers" do
-    subtract 2.0 1.0 `shouldBe` 1.0
+  describe "Int" do
+    it "can be subtracted" do
+      subtract 2 1 `shouldBe` 1
+  describe "Number" do
+    it "can be subtracted" do
+      subtract 2.0 1.0 `shouldBe` 1.0

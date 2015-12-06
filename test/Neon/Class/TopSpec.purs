@@ -5,7 +5,15 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Top" do
-  top `shouldBe` true
-  top `shouldBe` '\65535'
-  top `shouldBe` 2147483647
-  top `shouldBe` infinity
+  describe "Boolean" do
+    it "has a top" do
+      top `shouldBe` true
+  describe "Char" do
+    it "has a top" do
+      top `shouldBe` '\65535'
+  describe "Int" do
+    it "has a top" do
+      top `shouldBe` 2147483647
+  describe "Number" do
+    it "has a top" do
+      top `shouldBe` infinity

@@ -5,4 +5,6 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Flip" do
-  flip add "ab" "cd" `shouldBe` "cdab"
+  describe "Function" do
+    it "can be flipped" do
+      flip add "ab" "cd" `shouldBe` "cdab"

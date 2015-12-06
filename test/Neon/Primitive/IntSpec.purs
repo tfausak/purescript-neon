@@ -5,4 +5,6 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Primitive.Int" do
-  pure unit
+  describe "toNumber" do
+    it "converts an integer into a number" do
+      toNumber 1 `shouldBe` 1.0

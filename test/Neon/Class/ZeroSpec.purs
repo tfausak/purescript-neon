@@ -5,11 +5,15 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Zero" do
-  it "zeros arrays" do
-    zero `shouldBe` ([] :: Array Int)
-  it "zeros integers" do
-    zero `shouldBe` 0
-  it "zeros numbers" do
-    zero `shouldBe` 0.0
-  it "zeros strings" do
-    zero `shouldBe` ""
+  describe "Array" do
+    it "has a zero" do
+      zero `shouldBe` ([] :: Array Int)
+  describe "Int" do
+    it "has a zero" do
+      zero `shouldBe` 0
+  describe "Number" do
+    it "has a zero" do
+      zero `shouldBe` 0.0
+  describe "String" do
+    it "has a zero" do
+      zero `shouldBe` ""

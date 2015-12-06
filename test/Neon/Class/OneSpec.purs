@@ -5,7 +5,9 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.One" do
-  it "ones integers" do
-    one `shouldBe` 1
-  it "ones numbers" do
-    one `shouldBe` 1.0
+  describe "Int" do
+    it "has a one" do
+      one `shouldBe` 1
+  describe "Number" do
+    it "has a one" do
+      one `shouldBe` 1.0

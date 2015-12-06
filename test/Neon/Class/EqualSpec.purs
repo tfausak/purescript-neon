@@ -5,15 +5,21 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Equal" do
-  it "equals arrays" do
-    equal [1, 2] [1, 2] `shouldBe` true
-  it "equals booleans" do
-    equal false false `shouldBe` true
-  it "equals characters" do
-    equal 'a' 'a' `shouldBe` true
-  it "equals integers" do
-    equal 1 1 `shouldBe` true
-  it "equals numbers" do
-    equal 1.0 1.0 `shouldBe` true
-  it "equals strings" do
-    equal "a" "a" `shouldBe` true
+  describe "Array" do
+    it "can be equated" do
+      equal [1, 2] [1, 2] `shouldBe` true
+  describe "Boolean" do
+    it "can be equated" do
+      equal false false `shouldBe` true
+  describe "Char" do
+    it "can be equated" do
+      equal 'a' 'a' `shouldBe` true
+  describe "Int" do
+    it "can be equated" do
+      equal 1 1 `shouldBe` true
+  describe "Number" do
+    it "can be equated" do
+      equal 1.0 1.0 `shouldBe` true
+  describe "String" do
+    it "can be equated" do
+      equal "a" "a" `shouldBe` true

@@ -5,4 +5,6 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Map" do
-  map (+ 1) [1, 2] `shouldBe` [2, 3]
+  describe "Array" do
+    it "can be mapped" do
+      map (+ 1) [1, 2] `shouldBe` [2, 3]
