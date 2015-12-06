@@ -3,6 +3,8 @@ module Neon.Operator
   , (<|)
   , (+)
   , (&&)
+  , (>>)
+  , (<<)
   , (==)
   , (>)
   , (>=)
@@ -18,6 +20,7 @@ module Neon.Operator
 
 import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
+import Neon.Class.Compose (Compose, compose)
 import Neon.Class.Equal (Equal, equal)
 import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Less (Less, less)
@@ -28,6 +31,8 @@ import Neon.Class.Power (Power, power)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
 
+infixl 9 >>
+infixr 9 <<
 infixr 8 ^
 infixl 7 *
 infixl 7 %
@@ -55,6 +60,12 @@ infixr 1 <|
 
 (&&) :: forall a. (And a) => a -> a -> a
 (&&) = and
+
+(>>) :: forall a b c d. (Compose a) => a b c -> a c d -> a b d
+(>>) = compose
+
+(<<) :: forall a b c d. (Compose a) => a c d -> a b c -> a b d
+(<<) g f = compose f g
 
 (==) :: forall a. (Equal a) => a -> a -> Boolean
 (==) = equal

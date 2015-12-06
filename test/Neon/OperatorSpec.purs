@@ -9,6 +9,8 @@ main = describe "Neon.Operator" do
   (not <| false) `shouldBe` true
   (1 + 2) `shouldBe` 3
   (false && true) `shouldBe` false
+  ((+ 2) >> (* 2)) 3 `shouldBe` 10
+  ((+ 2) << (* 2)) 3 `shouldBe` 8
   (1 == 1) `shouldBe` true
   (2 > 1) `shouldBe` true
   (2 >= 1) `shouldBe` true
