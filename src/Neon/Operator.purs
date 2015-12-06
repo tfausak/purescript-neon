@@ -22,6 +22,7 @@ import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
 import Neon.Class.Compose (Compose, compose)
 import Neon.Class.Equal (Equal, equal)
+import Neon.Class.Flip (flip)
 import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Less (Less, less)
 import Neon.Class.Modulo (Modulo, modulo)
@@ -53,7 +54,7 @@ infixr 1 <|
 (|>) x f = f x
 
 (<|) :: forall a b. (a -> b) -> a -> b
-(<|) f x = f x
+(<|) = flip (|>)
 
 (+) :: forall a. (Add a) => a -> a -> a
 (+) = add
@@ -65,7 +66,7 @@ infixr 1 <|
 (>>) = compose
 
 (<<) :: forall a b c d. (Compose a) => a c d -> a b c -> a b d
-(<<) g f = compose f g
+(<<) = flip compose
 
 (==) :: forall a. (Equal a) => a -> a -> Boolean
 (==) = equal
