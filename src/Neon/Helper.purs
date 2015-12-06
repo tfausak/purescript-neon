@@ -10,6 +10,7 @@ module Neon.Helper
   , greaterOrEqual
   , increment
   , isEmpty
+  , isInfinite
   , isJust
   , isNothing
   , join
@@ -58,6 +59,7 @@ import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Data.Pair (Pair(Pair), pair)
 import Neon.Effect.Effect (unsafeRunEffect)
 import Neon.Effect.Exception (throw)
+import Neon.Primitive.Number (isFinite)
 
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
 absoluteValue x = if less x zero then negate x else x
@@ -94,6 +96,9 @@ increment x = fromInt (add (toInt x) 1)
 
 isEmpty :: forall a b. (Reduce a) => a b -> Boolean
 isEmpty = all (always false)
+
+isInfinite :: Number -> Boolean
+isInfinite = not isFinite
 
 isJust :: forall a. Maybe a -> Boolean
 isJust = maybe (always true) false

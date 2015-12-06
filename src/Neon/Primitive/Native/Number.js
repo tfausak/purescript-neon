@@ -13,6 +13,10 @@ module.exports = {
 
   nativeInfinity: Number.POSITIVE_INFINITY,
 
+  nativeIsFinite: Number.isFinite,
+
+  nativeIsNaN: Number.isNaN,
+
   nativeNan: Number.NaN,
 
   nativeRound: function (x) {

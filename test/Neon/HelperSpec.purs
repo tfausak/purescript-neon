@@ -51,6 +51,13 @@ main = describe "Neon.Helper" do
       isEmpty ([] :: Array Int) `shouldBe` true
     it "returns false if the collection is not empty" do
       isEmpty [1] `shouldBe` false
+  describe "isInfinite" do
+    it "returns true for infinity and nan" do
+      isInfinite infinity `shouldBe` true
+      isInfinite (-infinity) `shouldBe` true
+      isInfinite nan `shouldBe` true
+    it "returns false for anything else" do
+      isInfinite 0.0 `shouldBe` false
   describe "isJust" do
     it "returns true if just" do
       isJust (Just 1) `shouldBe` true
