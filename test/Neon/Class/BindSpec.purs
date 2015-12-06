@@ -5,4 +5,4 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Bind" do
-  pure unit
+  bind [3, 5] (\ x -> [x, x * 2]) `shouldBe` [3, 6, 5, 10]

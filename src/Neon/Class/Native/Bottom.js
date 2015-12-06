@@ -3,7 +3,7 @@
 // module Neon.Class.Bottom
 
 module.exports = {
-  nativeBottomInt: Number.MIN_SAFE_INTEGER,
+  nativeBottomInt: -2147483648,
 
   nativeBottomNumber: Number.NEGATIVE_INFINITY
 };

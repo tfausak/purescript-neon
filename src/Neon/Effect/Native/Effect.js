@@ -19,6 +19,14 @@ module.exports = {
     };
   },
 
+  nativeMap: function (f) {
+    return function (x) {
+      return function () {
+        return f(x());
+      };
+    };
+  },
+
   nativePure: function (x) {
     return function () {
       return x;

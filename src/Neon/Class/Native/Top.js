@@ -3,7 +3,7 @@
 // module Neon.Class.Top
 
 module.exports = {
-  nativeTopInt: Number.MAX_SAFE_INTEGER,
+  nativeTopInt: 2147483647,
 
   nativeTopNumber: Number.POSITIVE_INFINITY
 };

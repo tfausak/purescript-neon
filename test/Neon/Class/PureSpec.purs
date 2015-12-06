@@ -5,4 +5,4 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Pure" do
-  pure unit
+  pure 1 `shouldBe` [1]

@@ -5,4 +5,4 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Class.Apply" do
-  pure unit
+  apply [(+ 2), (* 2)] [3, 5] `shouldBe` [5, 6, 7, 10]

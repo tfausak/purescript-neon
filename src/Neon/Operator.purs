@@ -5,6 +5,7 @@ module Neon.Operator
   , (&&)
   , (>>)
   , (<<)
+  , (/)
   , (==)
   , (>)
   , (>=)
@@ -21,6 +22,7 @@ module Neon.Operator
 import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
 import Neon.Class.Compose (Compose, compose)
+import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, equal)
 import Neon.Class.Flip (flip)
 import Neon.Class.Greater (Greater, greater)
@@ -36,6 +38,7 @@ infixl 9 >>
 infixr 9 <<
 infixr 8 ^
 infixl 7 *
+infixl 7 /
 infixl 7 %
 infixl 6 +
 infixl 6 -
@@ -67,6 +70,9 @@ infixr 1 <|
 
 (<<) :: forall a b c d. (Compose a) => a c d -> a b c -> a b d
 (<<) = flip compose
+
+(/) :: forall a. (Divide a) => a -> a -> a
+(/) = divide
 
 (==) :: forall a. (Equal a) => a -> a -> Boolean
 (==) = equal
