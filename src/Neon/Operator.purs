@@ -2,6 +2,7 @@ module Neon.Operator
   ( (+)
   , (&&)
   , (==)
+  , (>)
   , (%)
   , (*)
   , (!=)
@@ -13,6 +14,7 @@ module Neon.Operator
 import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
 import Neon.Class.Equal (Equal, equal)
+import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Modulo (Modulo, modulo)
 import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Or (Or, or)
@@ -27,6 +29,7 @@ infixl 6 +
 infixl 6 -
 infix  4 ==
 infix  4 !=
+infix  4 >
 infixr 3 &&
 infixr 2 ||
 
@@ -38,6 +41,9 @@ infixr 2 ||
 
 (==) :: forall a. (Equal a) => a -> a -> Boolean
 (==) = equal
+
+(>) :: forall a. (Greater a) => a -> a -> Boolean
+(>) = greater
 
 (%) :: forall a. (Modulo a) => a -> a -> a
 (%) = modulo
