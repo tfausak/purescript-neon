@@ -7,5 +7,6 @@ main :: Spec
 main = describe "Neon.Operator" do
   (1 + 2) `shouldBe` 3
   (1 == 1) `shouldBe` true
-  (2 - 1) `shouldBe` 1
+  (5 % 2) `shouldBe` 1
   (2 * 3) `shouldBe` 6
+  (2 - 1) `shouldBe` 1
