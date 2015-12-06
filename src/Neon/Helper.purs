@@ -1,5 +1,6 @@
 module Neon.Helper
-  ( all
+  ( absoluteValue
+  , all
   , any
   , clamp
   , decrement
@@ -19,6 +20,7 @@ module Neon.Helper
   , product
   , range
   , reciprocal
+  , sign
   , sum
   , withDefault
   , unsafeFromJust
@@ -50,6 +52,9 @@ import Neon.Data.Exception (exception)
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Effect.Effect (unsafeRunEffect)
 import Neon.Effect.Exception (throw)
+
+absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
+absoluteValue x = if less x zero then negate x else x
 
 all :: forall a b c. (And c, Reduce a, Top c) => (b -> c) -> a b -> c
 all p xs = reduce (\ a x -> and a (p x)) top xs
@@ -122,6 +127,14 @@ range l h =
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal = divide one
+
+sign :: forall a. (Greater a, Less a, One a, Subtract a, Zero a) => a -> a
+sign x =
+  if less x zero
+  then -one
+  else if greater x zero
+  then one
+  else zero
 
 sum :: forall a b. (Add b, Reduce a, Zero b) => a b -> b
 sum = reduce add zero

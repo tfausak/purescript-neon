@@ -6,6 +6,10 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Helper" do
+  describe "absoluteValue" do
+    it "returns the absolute value" do
+      absoluteValue 1 `shouldBe` 1
+      absoluteValue (-1.0) `shouldBe` 1.0
   describe "all" do
     it "checks if all elements pass the predicate" do
       all identity [] `shouldBe` true
@@ -83,6 +87,11 @@ main = describe "Neon.Helper" do
   describe "reciprocal" do
     it "is one divided by the number" do
       reciprocal 2.0 `shouldBe` 0.5
+  describe "sign" do
+    it "returns the sign" do
+      sign (-2) `shouldBe` -1
+      sign 0.0 `shouldBe` 0.0
+      sign 2 `shouldBe` 1
   describe "sum" do
     it "is the array summed up" do
       sum [2, 3] `shouldBe` 5
