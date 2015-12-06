@@ -14,6 +14,11 @@ main = describe "Neon.Class.Equal" do
   describe "Char" do
     it "can be equated" do
       equal 'a' 'a' `shouldBe` true
+  describe "Function" do
+    it "can be equated" do
+      equal (+ 1) (+ 1) `shouldBe` false
+      let f = (+ 1)
+      equal f f `shouldBe` true
   describe "Int" do
     it "can be equated" do
       equal 1 1 `shouldBe` true

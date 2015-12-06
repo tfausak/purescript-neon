@@ -15,6 +15,9 @@ instance equalBoolean :: Equal Boolean where
 instance equalChar :: Equal Char where
   equal = nativeEqual
 
+instance equalFunction :: Equal (a -> b) where
+  equal = nativeEqual
+
 instance equalInt :: Equal Int where
   equal = nativeEqual
 
