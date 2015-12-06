@@ -4,6 +4,7 @@ import Neon
 import Test.Spec
 import qualified Test.Neon.Class.AddSpec as Add
 import qualified Test.Neon.Class.BindSpec as Bind
+import qualified Test.Neon.Class.DivideSpec as Divide
 import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.MultiplySpec as Multiply
 import qualified Test.Neon.Class.OneSpec as One
@@ -16,6 +17,7 @@ main :: Spec
 main = describe "Neon.Class" do
   Add.main
   Bind.main
+  Divide.main
   Equal.main
   Multiply.main
   One.main
