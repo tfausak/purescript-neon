@@ -107,6 +107,9 @@ main = describe "Neon.Helper" do
   describe "reciprocal" do
     it "is one divided by the number" do
       reciprocal 2.0 `shouldBe` 0.5
+  describe "sequence" do
+    it "sequences the actions" do
+      sequence [Just 1, Just 2] `shouldBe` Just [1, 2]
   describe "sign" do
     it "returns the sign" do
       sign (-2) `shouldBe` -1

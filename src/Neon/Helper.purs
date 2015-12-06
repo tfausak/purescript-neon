@@ -24,6 +24,7 @@ module Neon.Helper
   , product
   , range
   , reciprocal
+  , sequence
   , sign
   , size
   , sum
@@ -37,6 +38,7 @@ module Neon.Helper
 import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
 import Neon.Class.Always (always)
+import Neon.Class.Apply (Apply)
 import Neon.Class.Bind (Bind, bind)
 import Neon.Class.Bottom (Bottom, bottom)
 import Neon.Class.Divide (Divide, divide)
@@ -51,7 +53,8 @@ import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Not (not)
 import Neon.Class.One (One, one)
 import Neon.Class.Or (Or, or)
-import Neon.Class.Pure (pure)
+import Neon.Class.Pure (Pure, pure)
+import Neon.Class.Traverse (Traverse, traverse)
 import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Class.ToInt (ToInt, toInt)
@@ -150,6 +153,9 @@ range l h =
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal = divide one
+
+sequence :: forall a b c. (Apply b, Map b, Pure b, Traverse a) => a (b c) -> b (a c)
+sequence = traverse identity
 
 sign :: forall a. (Greater a, Less a, One a, Subtract a, Zero a) => a -> a
 sign x =
