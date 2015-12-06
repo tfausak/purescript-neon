@@ -6,6 +6,7 @@ module Neon.Class
   , module Neon.Class.Divide
   , module Neon.Class.Equal
   , module Neon.Class.Greater
+  , module Neon.Class.Less
   , module Neon.Class.Modulo
   , module Neon.Class.Multiply
   , module Neon.Class.Not
@@ -24,6 +25,7 @@ import Neon.Class.Bind
 import Neon.Class.Divide
 import Neon.Class.Equal
 import Neon.Class.Greater
+import Neon.Class.Less
 import Neon.Class.Modulo
 import Neon.Class.Multiply
 import Neon.Class.Not
