@@ -5,6 +5,7 @@ import Test.Spec
 import qualified Test.Neon.Class.AddSpec as Add
 import qualified Test.Neon.Class.AndSpec as And
 import qualified Test.Neon.Class.BindSpec as Bind
+import qualified Test.Neon.Class.BottomSpec as Bottom
 import qualified Test.Neon.Class.ComposeSpec as Compose
 import qualified Test.Neon.Class.DivideSpec as Divide
 import qualified Test.Neon.Class.EqualSpec as Equal
@@ -27,6 +28,7 @@ main = describe "Neon.Class" do
   Add.main
   And.main
   Bind.main
+  Bottom.main
   Compose.main
   Divide.main
   Equal.main
