@@ -26,6 +26,7 @@ import qualified Test.Neon.Class.PowerSpec as Power
 import qualified Test.Neon.Class.PureSpec as Pure
 import qualified Test.Neon.Class.ReduceSpec as Reduce
 import qualified Test.Neon.Class.RemainderSpec as Remainder
+import qualified Test.Neon.Class.RootSpec as Root
 import qualified Test.Neon.Class.ShowSpec as Show
 import qualified Test.Neon.Class.SubtractSpec as Subtract
 import qualified Test.Neon.Class.ToArraySpec as ToArray
@@ -59,6 +60,7 @@ main = describe "Neon.Class" do
   Pure.main
   Reduce.main
   Remainder.main
+  Root.main
   Show.main
   Subtract.main
   ToArray.main
