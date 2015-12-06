@@ -32,6 +32,7 @@ import qualified Test.Neon.Class.SubtractSpec as Subtract
 import qualified Test.Neon.Class.ToArraySpec as ToArray
 import qualified Test.Neon.Class.ToIntSpec as ToInt
 import qualified Test.Neon.Class.TopSpec as Top
+import qualified Test.Neon.Class.TraverseSpec as Traverse
 import qualified Test.Neon.Class.ZeroSpec as Zero
 
 main :: Spec
@@ -66,4 +67,5 @@ main = describe "Neon.Class" do
   ToArray.main
   ToInt.main
   Top.main
+  Traverse.main
   Zero.main

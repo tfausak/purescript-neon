@@ -12,6 +12,12 @@ main = describe "Neon.Data.List" do
   describe "FromArray" do
     it "can be converted from an array" do
       fromArray [1, 2] `shouldBe` x
+  describe "Map" do
+    it "can be mapped" do
+      map (+ 1) x `shouldBe` fromArray [2, 3]
+  describe "Reduce" do
+    it "can be reduced" do
+      reduce add 0 x `shouldBe` 3
   describe "Show" do
     it "can be shown" do
       show x `shouldBe` "Cons (1) (Cons (2) (Nil))"

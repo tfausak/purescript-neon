@@ -4,7 +4,8 @@ import Neon.Class.And (and)
 import Neon.Class.Add (add)
 import Neon.Class.Equal (Equal, equal)
 import Neon.Class.FromArray (FromArray)
-import Neon.Class.Reduce (reduce)
+import Neon.Class.Map (Map, map)
+import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Show (Show, show)
 import Neon.Class.ToArray (ToArray)
 
@@ -23,6 +24,16 @@ instance equalList :: (Equal a) => Equal (List a) where
 
 instance fromArrayList :: FromArray a (List a) where
   fromArray = nativeFromArray Nil Cons
+
+instance mapList :: Map List where
+  map f x = case x of
+    Nil -> Nil
+    Cons h t -> Cons (f h) (map f t)
+
+instance reduceList :: Reduce List where
+  reduce f y x = case x of
+    Nil -> y
+    Cons h t -> reduce f (f y h) t
 
 instance showList :: (Show a) => Show (List a) where
   show x = case x of

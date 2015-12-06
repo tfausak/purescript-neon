@@ -30,6 +30,7 @@ module Neon.Class
   , module Neon.Class.ToArray
   , module Neon.Class.ToInt
   , module Neon.Class.Top
+  , module Neon.Class.Traverse
   , module Neon.Class.Zero
   ) where
 
@@ -63,4 +64,5 @@ import Neon.Class.Subtract
 import Neon.Class.ToArray
 import Neon.Class.ToInt
 import Neon.Class.Top
+import Neon.Class.Traverse
 import Neon.Class.Zero
