@@ -4,6 +4,7 @@ module Neon.Operator
   , (==)
   , (%)
   , (*)
+  , (!=)
   , (||)
   , (^)
   , (-)
@@ -17,6 +18,7 @@ import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Or (Or, or)
 import Neon.Class.Power (Power, power)
 import Neon.Class.Subtract (Subtract, subtract)
+import Neon.Helper (notEqual)
 
 infixr 8 ^
 infixl 7 *
@@ -24,6 +26,7 @@ infixl 7 %
 infixl 6 +
 infixl 6 -
 infix  4 ==
+infix  4 !=
 infixr 3 &&
 infixr 2 ||
 
@@ -41,6 +44,9 @@ infixr 2 ||
 
 (*) :: forall a. (Multiply a) => a -> a -> a
 (*) = multiply
+
+(!=) :: forall a. (Equal a) => a -> a -> Boolean
+(!=) = notEqual
 
 (||) :: forall a. (Or a) => a -> a -> a
 (||) = or
