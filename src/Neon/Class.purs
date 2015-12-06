@@ -1,6 +1,7 @@
 module Neon.Class
   ( module Neon.Class
   , module Neon.Class.Add
+  , module Neon.Class.And
   , module Neon.Class.Bind
   , module Neon.Class.Divide
   , module Neon.Class.Equal
@@ -15,6 +16,7 @@ module Neon.Class
   ) where
 
 import Neon.Class.Add
+import Neon.Class.And
 import Neon.Class.Bind
 import Neon.Class.Divide
 import Neon.Class.Equal

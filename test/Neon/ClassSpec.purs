@@ -3,6 +3,7 @@ module Test.Neon.ClassSpec where
 import Neon
 import Test.Spec
 import qualified Test.Neon.Class.AddSpec as Add
+import qualified Test.Neon.Class.AndSpec as And
 import qualified Test.Neon.Class.BindSpec as Bind
 import qualified Test.Neon.Class.DivideSpec as Divide
 import qualified Test.Neon.Class.EqualSpec as Equal
@@ -18,6 +19,7 @@ import qualified Test.Neon.Class.ZeroSpec as Zero
 main :: Spec
 main = describe "Neon.Class" do
   Add.main
+  And.main
   Bind.main
   Divide.main
   Equal.main
