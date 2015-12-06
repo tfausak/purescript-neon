@@ -9,6 +9,7 @@ import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.ModuloSpec as Modulo
 import qualified Test.Neon.Class.MultiplySpec as Multiply
 import qualified Test.Neon.Class.OneSpec as One
+import qualified Test.Neon.Class.PowerSpec as Power
 import qualified Test.Neon.Class.PureSpec as Pure
 import qualified Test.Neon.Class.ShowSpec as Show
 import qualified Test.Neon.Class.SubtractSpec as Subtract
@@ -23,6 +24,7 @@ main = describe "Neon.Class" do
   Modulo.main
   Multiply.main
   One.main
+  Power.main
   Pure.main
   Show.main
   Subtract.main
