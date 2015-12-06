@@ -23,9 +23,9 @@ infixl 7 *
 infixl 7 %
 infixl 6 +
 infixl 6 -
-infix  5 ==
-infixl 4 &&
-infixl 3 ||
+infix  4 ==
+infixr 3 &&
+infixr 2 ||
 
 (+) :: forall a. (Add a) => a -> a -> a
 (+) = add
