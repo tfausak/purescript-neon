@@ -7,6 +7,7 @@ import qualified Test.Neon.Class.BindSpec as Bind
 import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.PureSpec as Pure
 import qualified Test.Neon.Class.ShowSpec as Show
+import qualified Test.Neon.Class.ZeroSpec as Zero
 
 main :: Spec
 main = describe "Neon.Class" do
@@ -15,3 +16,4 @@ main = describe "Neon.Class" do
   Equal.main
   Pure.main
   Show.main
+  Zero.main

@@ -5,6 +5,7 @@ module Neon.Class
   , module Neon.Class.Equal
   , module Neon.Class.Pure
   , module Neon.Class.Show
+  , module Neon.Class.Zero
   ) where
 
 import Neon.Class.Add
@@ -12,3 +13,4 @@ import Neon.Class.Bind
 import Neon.Class.Equal
 import Neon.Class.Pure
 import Neon.Class.Show
+import Neon.Class.Zero
