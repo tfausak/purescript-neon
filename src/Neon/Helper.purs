@@ -1,5 +1,7 @@
 module Neon.Helper
-  ( for
+  ( all
+  , any
+  , for
   , greaterOrEqual
   , isJust
   , isNothing
@@ -15,8 +17,10 @@ module Neon.Helper
   ) where
 
 import Neon.Class.Add (Add, add)
+import Neon.Class.And (And, and)
 import Neon.Class.Always (always)
 import Neon.Class.Bind (Bind, bind)
+import Neon.Class.Bottom (Bottom, bottom)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, equal)
 import Neon.Class.Flip (flip)
@@ -27,14 +31,21 @@ import Neon.Class.Map (Map, map)
 import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Not (not)
 import Neon.Class.One (One, one)
-import Neon.Class.Or (or)
+import Neon.Class.Or (Or, or)
 import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Subtract (Subtract, subtract)
+import Neon.Class.Top (Top, top)
 import Neon.Class.Zero (Zero, zero)
 import Neon.Data.Exception (exception)
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Effect.Effect (unsafeRunEffect)
 import Neon.Effect.Exception (throw)
+
+all :: forall a b c. (And c, Reduce a, Top c) => (b -> c) -> a b -> c
+all p xs = reduce (\ a x -> and a (p x)) top xs
+
+any :: forall a b c. (Bottom c, Or c, Reduce a) => (b -> c) -> a b -> c
+any p xs = reduce (\ a x -> or a (p x)) bottom xs
 
 for :: forall a b c. (Map a) => a b -> (b -> c) -> a c
 for = flip map

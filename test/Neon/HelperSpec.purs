@@ -6,6 +6,16 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Helper" do
+  describe "all" do
+    it "checks if all elements pass the predicate" do
+      all identity [] `shouldBe` true
+      all identity [true, false] `shouldBe` false
+      all (> 1) [2, 3] `shouldBe` true
+  describe "any" do
+    it "checks if any elements pass the predicate" do
+      any identity [] `shouldBe` false
+      any identity [true, false] `shouldBe` true
+      any (> 1) [1, 2] `shouldBe` true
   describe "for" do
     it "is map flipped" do
       for [1, 2] (+ 1) `shouldBe` [2, 3]
