@@ -28,10 +28,18 @@ module.exports = {
   },
 
   nativeShowNumber: function (x) {
-    if (x === (x | 0)) {
-      return x.toFixed(1);
+    if (isNaN(x)) {
+      return 'nan';
+    } else if (isFinite(x)) {
+      if (x === (x | 0)) {
+        return x.toFixed(1);
+      } else {
+        return x.toString();
+      }
+    } else if (x > 0) {
+      return 'infinity';
     } else {
-      return x.toString();
+      return '-infinity';
     }
   },
 

@@ -20,6 +20,8 @@ main = describe "Neon.Class.Show" do
   it "shows numbers" do
     show 1.0 `shouldBe` "1.0"
     show 1.1 `shouldBe` "1.1"
+    show infinity `shouldBe` "infinity"
+    show nan `shouldBe` "nan"
   it "shows strings" do
     show "a" `shouldBe` "\"a\""
     show "\0" `shouldBe` "\"\\0\""
