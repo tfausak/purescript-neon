@@ -1,6 +1,5 @@
 module Test.Neon.Effect.ExceptionSpec where
 
-import Neon
 import Test.Spec
 
 main :: Spec

@@ -1,6 +1,5 @@
 module Test.Neon.Primitive.BooleanSpec where
 
-import Neon
 import Test.Spec
 
 main :: Spec

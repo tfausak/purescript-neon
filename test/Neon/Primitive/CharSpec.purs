@@ -1,6 +1,5 @@
 module Test.Neon.Primitive.CharSpec where
 
-import Neon
 import Test.Spec
 
 main :: Spec
