@@ -3,7 +3,9 @@ module Neon.Operator
   , (&&)
   , (==)
   , (>)
+  , (>=)
   , (<)
+  , (<=)
   , (%)
   , (*)
   , (!=)
@@ -22,7 +24,7 @@ import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Or (Or, or)
 import Neon.Class.Power (Power, power)
 import Neon.Class.Subtract (Subtract, subtract)
-import Neon.Helper (notEqual)
+import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
 
 infixr 8 ^
 infixl 7 *
@@ -32,7 +34,9 @@ infixl 6 -
 infix  4 ==
 infix  4 !=
 infix  4 >
+infix  4 >=
 infix  4 <
+infix  4 <=
 infixr 3 &&
 infixr 2 ||
 
@@ -48,8 +52,14 @@ infixr 2 ||
 (>) :: forall a. (Greater a) => a -> a -> Boolean
 (>) = greater
 
+(>=) :: forall a. (Equal a, Greater a) => a -> a -> Boolean
+(>=) = greaterOrEqual
+
 (<) :: forall a. (Less a) => a -> a -> Boolean
 (<) = less
+
+(<=) :: forall a. (Equal a, Less a) => a -> a -> Boolean
+(<=) = lessOrEqual
 
 (%) :: forall a. (Modulo a) => a -> a -> a
 (%) = modulo
