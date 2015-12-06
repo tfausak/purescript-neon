@@ -18,7 +18,7 @@ shouldBe :: forall a. (Equal a, Show a) => a -> a -> Spec
 shouldBe actual expected =
   if equal actual expected
   then do
-    info "PASS"
+    info ("- PASS: " + show actual + " == " + show expected)
   else do
-    error "FAIL"
+    error ("- FAIL: " + show actual + " != " + show expected)
     throw (exception (show actual))
