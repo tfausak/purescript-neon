@@ -22,6 +22,7 @@ module Neon.Class
   , module Neon.Class.Reduce
   , module Neon.Class.Show
   , module Neon.Class.Subtract
+  , module Neon.Class.ToArray
   , module Neon.Class.Top
   , module Neon.Class.Zero
   ) where
@@ -48,5 +49,6 @@ import Neon.Class.Pure
 import Neon.Class.Reduce
 import Neon.Class.Show
 import Neon.Class.Subtract
+import Neon.Class.ToArray
 import Neon.Class.Top
 import Neon.Class.Zero

@@ -24,6 +24,7 @@ import qualified Test.Neon.Class.PureSpec as Pure
 import qualified Test.Neon.Class.ReduceSpec as Reduce
 import qualified Test.Neon.Class.ShowSpec as Show
 import qualified Test.Neon.Class.SubtractSpec as Subtract
+import qualified Test.Neon.Class.ToArraySpec as ToArray
 import qualified Test.Neon.Class.TopSpec as Top
 import qualified Test.Neon.Class.ZeroSpec as Zero
 
@@ -51,5 +52,6 @@ main = describe "Neon.Class" do
   Reduce.main
   Show.main
   Subtract.main
+  ToArray.main
   Top.main
   Zero.main
