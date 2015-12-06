@@ -18,6 +18,7 @@ module Neon.Class
   , module Neon.Class.Or
   , module Neon.Class.Power
   , module Neon.Class.Pure
+  , module Neon.Class.Reduce
   , module Neon.Class.Show
   , module Neon.Class.Subtract
   , module Neon.Class.Top
@@ -42,6 +43,7 @@ import Neon.Class.One
 import Neon.Class.Or
 import Neon.Class.Power
 import Neon.Class.Pure
+import Neon.Class.Reduce
 import Neon.Class.Show
 import Neon.Class.Subtract
 import Neon.Class.Top

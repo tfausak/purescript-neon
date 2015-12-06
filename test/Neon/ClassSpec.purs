@@ -20,6 +20,7 @@ import qualified Test.Neon.Class.OneSpec as One
 import qualified Test.Neon.Class.OrSpec as Or
 import qualified Test.Neon.Class.PowerSpec as Power
 import qualified Test.Neon.Class.PureSpec as Pure
+import qualified Test.Neon.Class.ReduceSpec as Reduce
 import qualified Test.Neon.Class.ShowSpec as Show
 import qualified Test.Neon.Class.SubtractSpec as Subtract
 import qualified Test.Neon.Class.TopSpec as Top
@@ -45,6 +46,7 @@ main = describe "Neon.Class" do
   Or.main
   Power.main
   Pure.main
+  Reduce.main
   Show.main
   Subtract.main
   Top.main
