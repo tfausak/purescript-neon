@@ -25,6 +25,11 @@ main = describe "Neon.Helper" do
       clamp 3 5 2 `shouldBe` 3
       clamp 3 5 4 `shouldBe` 4
       clamp 3 5 6 `shouldBe` 5
+  describe "contains" do
+    it "returns true if the collection contains the element" do
+      contains 1 [0, 1, 2] `shouldBe` true
+    it "returns false if the collection does not contain the element" do
+      contains 3 [0, 1, 2] `shouldBe` false
   describe "decrement" do
     it "decrements the value" do
       decrement true `shouldBe` Just false
@@ -38,6 +43,11 @@ main = describe "Neon.Helper" do
   describe "increment" do
     it "increments the value" do
       increment false `shouldBe` Just true
+  describe "isEmpty" do
+    it "returns true if the collection is empty" do
+      isEmpty ([] :: Array Int) `shouldBe` true
+    it "returns false if the collection is not empty" do
+      isEmpty [1] `shouldBe` false
   describe "isJust" do
     it "returns true if just" do
       isJust (Just 1) `shouldBe` true
@@ -92,6 +102,11 @@ main = describe "Neon.Helper" do
       sign (-2) `shouldBe` -1
       sign 0.0 `shouldBe` 0.0
       sign 2 `shouldBe` 1
+  describe "size" do
+    it "returns the size of the collection" do
+      size ([] :: Array Int) `shouldBe` 0
+      size [1] `shouldBe` 1
+      size [1, 1, 1] `shouldBe` 3
   describe "sum" do
     it "is the array summed up" do
       sum [2, 3] `shouldBe` 5

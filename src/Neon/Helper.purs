@@ -3,10 +3,12 @@ module Neon.Helper
   , all
   , any
   , clamp
+  , contains
   , decrement
   , for
   , greaterOrEqual
   , increment
+  , isEmpty
   , isJust
   , isNothing
   , join
@@ -21,6 +23,7 @@ module Neon.Helper
   , range
   , reciprocal
   , sign
+  , size
   , sum
   , withDefault
   , unsafeFromJust
@@ -46,7 +49,6 @@ import Neon.Class.Or (Or, or)
 import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Class.ToInt (ToInt, toInt)
-import Neon.Class.Top (Top, top)
 import Neon.Class.Zero (Zero, zero)
 import Neon.Data.Exception (exception)
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
@@ -56,10 +58,10 @@ import Neon.Effect.Exception (throw)
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
 absoluteValue x = if less x zero then negate x else x
 
-all :: forall a b c. (And c, Reduce a, Top c) => (b -> c) -> a b -> c
-all p xs = reduce (\ a x -> and a (p x)) top xs
+all :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
+all p xs = reduce (\ a x -> and a (p x)) true xs
 
-any :: forall a b c. (Bottom c, Or c, Reduce a) => (b -> c) -> a b -> c
+any :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 any p xs = reduce (\ a x -> or a (p x)) bottom xs
 
 clamp :: forall a. (Greater a, Less a) => a -> a -> a -> a
@@ -67,6 +69,9 @@ clamp b t x =
   if greater b t
   then clamp t b x
   else max b (min t x)
+
+contains :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
+contains x = any (equal x)
 
 decrement :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 decrement x = fromInt (subtract (toInt x) 1)
@@ -79,6 +84,9 @@ greaterOrEqual x = or (greater x) (equal x)
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add (toInt x) 1)
+
+isEmpty :: forall a b. (Reduce a) => a b -> Boolean
+isEmpty = all (always false)
 
 isJust :: forall a. Maybe a -> Boolean
 isJust = maybe (always true) false
@@ -135,6 +143,9 @@ sign x =
   else if greater x zero
   then one
   else zero
+
+size :: forall a b. (Reduce a) => a b -> Int
+size = reduce (\ a _ -> add a 1) 0
 
 sum :: forall a b. (Add b, Reduce a, Zero b) => a b -> b
 sum = reduce add zero
