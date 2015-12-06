@@ -14,9 +14,9 @@ main = describe "Neon.Primitive.Number" do
       floor 1.2 `shouldBe` 1
       floor (-1.2) `shouldBe` -2
   describe "infinity" do
-    pure unit
+    pending
   describe "nan" do
-    pure unit
+    pending
   describe "round" do
     it "returns the integer closest to the number" do
       round 1.2 `shouldBe` 1

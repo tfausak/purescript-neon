@@ -22,3 +22,6 @@ shouldBe actual expected =
   else do
     error ("- FAIL: " + show actual + " != " + show expected)
     throw (exception (show actual))
+
+pending :: Spec
+pending = pure unit

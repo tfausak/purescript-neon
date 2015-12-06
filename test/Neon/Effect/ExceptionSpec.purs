@@ -5,4 +5,4 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Effect.Exception" do
-  pure unit
+  pending

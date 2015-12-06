@@ -14,4 +14,4 @@ main = describe "Neon.Data.Exception" do
     it "can be shown" do
       show (exception "a") `shouldBe` "exception \"a\""
   describe "exception" do
-    pure unit
+    pending

@@ -5,4 +5,4 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Primitive.Array" do
-  pure unit
+  pending

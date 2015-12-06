@@ -5,4 +5,4 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Primitive.String" do
-  pure unit
+  pending

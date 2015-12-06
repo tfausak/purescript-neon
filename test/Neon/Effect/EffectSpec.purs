@@ -18,7 +18,7 @@ main = describe "Neon.Effect.Effect" do
     it "supports pure" do
       runPure (pure true) `shouldBe` true
   describe "runPure" do
-    pure unit
+    pending
   describe "unsafeRunEffect" do
     it "runs the effect" do
       unsafeRunEffect (pure true) `shouldBe` true
