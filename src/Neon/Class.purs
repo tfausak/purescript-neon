@@ -16,7 +16,6 @@ module Neon.Class
   , module Neon.Class.Identity
   , module Neon.Class.Less
   , module Neon.Class.Map
-  , module Neon.Class.Modulo
   , module Neon.Class.Multiply
   , module Neon.Class.Not
   , module Neon.Class.One
@@ -24,6 +23,7 @@ module Neon.Class
   , module Neon.Class.Power
   , module Neon.Class.Pure
   , module Neon.Class.Reduce
+  , module Neon.Class.Remainder
   , module Neon.Class.Show
   , module Neon.Class.Subtract
   , module Neon.Class.ToArray
@@ -48,7 +48,6 @@ import Neon.Class.Greater
 import Neon.Class.Identity
 import Neon.Class.Less
 import Neon.Class.Map
-import Neon.Class.Modulo
 import Neon.Class.Multiply
 import Neon.Class.Not
 import Neon.Class.One
@@ -56,6 +55,7 @@ import Neon.Class.Or
 import Neon.Class.Power
 import Neon.Class.Pure
 import Neon.Class.Reduce
+import Neon.Class.Remainder
 import Neon.Class.Show
 import Neon.Class.Subtract
 import Neon.Class.ToArray

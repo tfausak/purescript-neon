@@ -1,9 +1,9 @@
 'use strict';
 
-// module Neon.Class.Modulo
+// module Neon.Class.Remainder
 
 module.exports = {
-  nativeModulo: function (x) {
+  nativeRemainder: function (x) {
     return function (y) {
       return x % y;
     };

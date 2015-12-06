@@ -12,13 +12,12 @@ import qualified Test.Neon.Class.ComposeSpec as Compose
 import qualified Test.Neon.Class.DivideSpec as Divide
 import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.FlipSpec as Flip
-import qualified Test.Neon.Class.FromArraySpec as FromArray
 import qualified Test.Neon.Class.FlipSpec as FromInt
+import qualified Test.Neon.Class.FromArraySpec as FromArray
 import qualified Test.Neon.Class.GreaterSpec as Greater
 import qualified Test.Neon.Class.GreaterSpec as Identity
 import qualified Test.Neon.Class.LessSpec as Less
 import qualified Test.Neon.Class.MapSpec as Map
-import qualified Test.Neon.Class.ModuloSpec as Modulo
 import qualified Test.Neon.Class.MultiplySpec as Multiply
 import qualified Test.Neon.Class.NotSpec as Not
 import qualified Test.Neon.Class.OneSpec as One
@@ -26,6 +25,7 @@ import qualified Test.Neon.Class.OrSpec as Or
 import qualified Test.Neon.Class.PowerSpec as Power
 import qualified Test.Neon.Class.PureSpec as Pure
 import qualified Test.Neon.Class.ReduceSpec as Reduce
+import qualified Test.Neon.Class.RemainderSpec as Remainder
 import qualified Test.Neon.Class.ShowSpec as Show
 import qualified Test.Neon.Class.SubtractSpec as Subtract
 import qualified Test.Neon.Class.ToArraySpec as ToArray
@@ -51,7 +51,6 @@ main = describe "Neon.Class" do
   Identity.main
   Less.main
   Map.main
-  Modulo.main
   Multiply.main
   Not.main
   One.main
@@ -59,6 +58,7 @@ main = describe "Neon.Class" do
   Power.main
   Pure.main
   Reduce.main
+  Remainder.main
   Show.main
   Subtract.main
   ToArray.main
