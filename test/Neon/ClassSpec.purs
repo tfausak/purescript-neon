@@ -4,6 +4,7 @@ import Neon
 import Test.Spec
 import qualified Test.Neon.Class.AddSpec as Add
 import qualified Test.Neon.Class.AndSpec as And
+import qualified Test.Neon.Class.ApplySpec as Apply
 import qualified Test.Neon.Class.BindSpec as Bind
 import qualified Test.Neon.Class.BottomSpec as Bottom
 import qualified Test.Neon.Class.ComposeSpec as Compose
@@ -30,6 +31,7 @@ main :: Spec
 main = describe "Neon.Class" do
   Add.main
   And.main
+  Apply.main
   Bind.main
   Bottom.main
   Compose.main
