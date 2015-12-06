@@ -21,6 +21,7 @@ import qualified Test.Neon.Class.PowerSpec as Power
 import qualified Test.Neon.Class.PureSpec as Pure
 import qualified Test.Neon.Class.ShowSpec as Show
 import qualified Test.Neon.Class.SubtractSpec as Subtract
+import qualified Test.Neon.Class.TopSpec as Top
 import qualified Test.Neon.Class.ZeroSpec as Zero
 
 main :: Spec
@@ -44,4 +45,5 @@ main = describe "Neon.Class" do
   Pure.main
   Show.main
   Subtract.main
+  Top.main
   Zero.main

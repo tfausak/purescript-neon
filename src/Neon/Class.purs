@@ -19,6 +19,7 @@ module Neon.Class
   , module Neon.Class.Pure
   , module Neon.Class.Show
   , module Neon.Class.Subtract
+  , module Neon.Class.Top
   , module Neon.Class.Zero
   ) where
 
@@ -41,4 +42,5 @@ import Neon.Class.Power
 import Neon.Class.Pure
 import Neon.Class.Show
 import Neon.Class.Subtract
+import Neon.Class.Top
 import Neon.Class.Zero
