@@ -7,6 +7,7 @@ module Neon.Class
   , module Neon.Class.Equal
   , module Neon.Class.Modulo
   , module Neon.Class.Multiply
+  , module Neon.Class.Not
   , module Neon.Class.One
   , module Neon.Class.Or
   , module Neon.Class.Power
@@ -23,6 +24,7 @@ import Neon.Class.Divide
 import Neon.Class.Equal
 import Neon.Class.Modulo
 import Neon.Class.Multiply
+import Neon.Class.Not
 import Neon.Class.One
 import Neon.Class.Or
 import Neon.Class.Power
