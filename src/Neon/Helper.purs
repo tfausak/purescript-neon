@@ -28,9 +28,10 @@ module Neon.Helper
   , size
   , sum
   , swap
-  , withDefault
   , uncurry
   , unsafeFromJust
+  , unsafeLog
+  , withDefault
   ) where
 
 import Neon.Class.Add (Add, add)
@@ -50,6 +51,7 @@ import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Not (not)
 import Neon.Class.One (One, one)
 import Neon.Class.Or (Or, or)
+import Neon.Class.Pure (pure)
 import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Class.ToInt (ToInt, toInt)
@@ -57,6 +59,7 @@ import Neon.Class.Zero (Zero, zero)
 import Neon.Data.Exception (exception)
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Data.Pair (Pair(Pair), pair)
+import Neon.Effect.Console (log)
 import Neon.Effect.Effect (unsafeRunEffect)
 import Neon.Effect.Exception (throw)
 import Neon.Primitive.Number (isFinite)
@@ -172,6 +175,12 @@ unsafeFromJust :: forall a. Maybe a -> a
 unsafeFromJust x = case x of
   Nothing -> unsafeRunEffect (throw (exception "unsafeFromJust"))
   Just j -> j
+
+unsafeLog :: forall a. String -> a -> a
+unsafeLog message value = unsafeRunEffect
+  (do
+    log message
+    pure value)
 
 withDefault :: forall a. a -> Maybe a -> a
 withDefault = maybe identity

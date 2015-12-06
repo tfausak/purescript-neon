@@ -131,6 +131,8 @@ main = describe "Neon.Helper" do
       unsafeFromJust (Just 1) `shouldBe` 1
     it "throws an exception if nothing" do
       pending
+  describe "unsafeLog" do
+    pending
   describe "withDefault" do
     it "returns the default if nothing" do
       withDefault 1 Nothing `shouldBe` 1
