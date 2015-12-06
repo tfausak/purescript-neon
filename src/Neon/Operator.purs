@@ -1,5 +1,7 @@
 module Neon.Operator
-  ( (+)
+  ( (|>)
+  , (<|)
+  , (+)
   , (&&)
   , (==)
   , (>)
@@ -39,6 +41,14 @@ infix  4 <
 infix  4 <=
 infixr 3 &&
 infixr 2 ||
+infixl 1 |>
+infixr 1 <|
+
+(|>) :: forall a b. a -> (a -> b) -> b
+(|>) x f = f x
+
+(<|) :: forall a b. (a -> b) -> a -> b
+(<|) f x = f x
 
 (+) :: forall a. (Add a) => a -> a -> a
 (+) = add

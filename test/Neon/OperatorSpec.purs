@@ -5,6 +5,8 @@ import Test.Spec
 
 main :: Spec
 main = describe "Neon.Operator" do
+  (false |> not) `shouldBe` true
+  (not <| false) `shouldBe` true
   (1 + 2) `shouldBe` 3
   (false && true) `shouldBe` false
   (1 == 1) `shouldBe` true
