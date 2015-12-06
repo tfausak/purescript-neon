@@ -11,6 +11,7 @@ module Neon.Class
   , module Neon.Class.Flip
   , module Neon.Class.FromArray
   , module Neon.Class.Greater
+  , module Neon.Class.Identity
   , module Neon.Class.Less
   , module Neon.Class.Map
   , module Neon.Class.Modulo
@@ -39,6 +40,7 @@ import Neon.Class.Equal
 import Neon.Class.Flip
 import Neon.Class.FromArray
 import Neon.Class.Greater
+import Neon.Class.Identity
 import Neon.Class.Less
 import Neon.Class.Map
 import Neon.Class.Modulo

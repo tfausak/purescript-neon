@@ -1,6 +1,7 @@
 module Neon.Helper
   ( for
   , greaterOrEqual
+  , join
   , lessOrEqual
   , negate
   , notEqual
@@ -10,10 +11,12 @@ module Neon.Helper
   ) where
 
 import Neon.Class.Add (Add, add)
+import Neon.Class.Bind (Bind, bind)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, equal)
 import Neon.Class.Flip (flip)
 import Neon.Class.Greater (Greater, greater)
+import Neon.Class.Identity (identity)
 import Neon.Class.Less (Less, less)
 import Neon.Class.Map (Map, map)
 import Neon.Class.Multiply (Multiply, multiply)
@@ -29,6 +32,9 @@ for = flip map
 
 greaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 greaterOrEqual x = or (greater x) (equal x)
+
+join :: forall a b. (Bind a) => a (a b) -> a b
+join = flip bind identity
 
 lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
 lessOrEqual x = or (less x) (equal x)

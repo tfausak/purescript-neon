@@ -12,6 +12,9 @@ main = describe "Neon.Helper" do
     it "is greater or equal" do
       greaterOrEqual 2 1 `shouldBe` true
       greaterOrEqual 1 1 `shouldBe` true
+  describe "join" do
+    it "joins things" do
+      join [[1, 2], [3, 4]] `shouldBe` [1, 2, 3, 4]
   describe "lessOrEqual" do
     it "is less or equal" do
       lessOrEqual 1 2 `shouldBe` true
