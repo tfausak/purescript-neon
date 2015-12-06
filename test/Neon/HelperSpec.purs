@@ -16,6 +16,11 @@ main = describe "Neon.Helper" do
       any identity [] `shouldBe` false
       any identity [true, false] `shouldBe` true
       any (> 1) [1, 2] `shouldBe` true
+  describe "clamp" do
+    it "clamps the value between the bounds" do
+      clamp 3 5 2 `shouldBe` 3
+      clamp 3 5 4 `shouldBe` 4
+      clamp 3 5 6 `shouldBe` 5
   describe "for" do
     it "is map flipped" do
       for [1, 2] (+ 1) `shouldBe` [2, 3]
@@ -40,6 +45,22 @@ main = describe "Neon.Helper" do
     it "is less or equal" do
       lessOrEqual 1 2 `shouldBe` true
       lessOrEqual 1 1 `shouldBe` true
+  describe "max" do
+    it "returns the max" do
+      max 1 2 `shouldBe` 2
+  describe "maximum" do
+    it "returns nothing for an empty colleciton" do
+      maximum ([] :: Array Int) `shouldBe` Nothing
+    it "returns the maximum value" do
+      maximum [1, 2, 0] `shouldBe` Just 2
+  describe "min" do
+    it "returns the min" do
+      min 1 2 `shouldBe` 1
+  describe "minimum" do
+    it "returns nothing for an empty colleciton" do
+      minimum ([] :: Array Int) `shouldBe` Nothing
+    it "returns the minimum value" do
+      minimum [1, 2, 0] `shouldBe` Just 0
   describe "negate" do
     it "is the number subtracted from zero" do
       negate 1 `shouldBe` -1

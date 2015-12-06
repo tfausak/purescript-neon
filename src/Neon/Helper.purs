@@ -1,12 +1,17 @@
 module Neon.Helper
   ( all
   , any
+  , clamp
   , for
   , greaterOrEqual
   , isJust
   , isNothing
   , join
   , lessOrEqual
+  , max
+  , maximum
+  , min
+  , minimum
   , negate
   , notEqual
   , product
@@ -47,6 +52,12 @@ all p xs = reduce (\ a x -> and a (p x)) top xs
 any :: forall a b c. (Bottom c, Or c, Reduce a) => (b -> c) -> a b -> c
 any p xs = reduce (\ a x -> or a (p x)) bottom xs
 
+clamp :: forall a. (Greater a, Less a) => a -> a -> a -> a
+clamp b t x =
+  if greater b t
+  then clamp t b x
+  else max b (min t x)
+
 for :: forall a b c. (Map a) => a b -> (b -> c) -> a c
 for = flip map
 
@@ -64,6 +75,22 @@ join = flip bind identity
 
 lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
 lessOrEqual x = or (less x) (equal x)
+
+max :: forall a. (Greater a) => a -> a -> a
+max x y = unsafeFromJust (maximum [x, y])
+
+maximum :: forall a b. (Greater b, Reduce a) => a b -> Maybe b
+maximum = reduce
+  (\ a x -> maybe (\ j -> Just (if greater j x then j else x)) (Just x) a)
+  Nothing
+
+min :: forall a. (Less a) => a -> a -> a
+min x y = unsafeFromJust (minimum [x, y])
+
+minimum :: forall a b. (Less b, Reduce a) => a b -> Maybe b
+minimum = reduce
+  (\ a x -> maybe (\ j -> Just (if less j x then j else x)) (Just x) a)
+  Nothing
 
 negate :: forall a. (Subtract a, Zero a) => a -> a
 negate = subtract zero
