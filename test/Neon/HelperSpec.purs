@@ -30,6 +30,9 @@ main = describe "Neon.Helper" do
       contains 1 [0, 1, 2] `shouldBe` true
     it "returns false if the collection does not contain the element" do
       contains 3 [0, 1, 2] `shouldBe` false
+  describe "curry" do
+    it "curries the function" do
+      curry (\ (Pair x) -> x.first + x.second) "ab" "cd" `shouldBe` "abcd"
   describe "decrement" do
     it "decrements the value" do
       decrement true `shouldBe` Just false
@@ -110,6 +113,12 @@ main = describe "Neon.Helper" do
   describe "sum" do
     it "is the array summed up" do
       sum [2, 3] `shouldBe` 5
+  describe "swap" do
+    it "swaps the elements" do
+      swap (pair 1 2.0) `shouldBe` pair 2.0 1
+  describe "uncurry" do
+    it "uncurries the function" do
+      uncurry add (pair "ab" "cd") `shouldBe` "abcd"
   describe "unsafeFromJust" do
     it "returns the value if just" do
       unsafeFromJust (Just 1) `shouldBe` 1

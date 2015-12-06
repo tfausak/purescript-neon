@@ -4,6 +4,7 @@ module Neon.Helper
   , any
   , clamp
   , contains
+  , curry
   , decrement
   , for
   , greaterOrEqual
@@ -25,7 +26,9 @@ module Neon.Helper
   , sign
   , size
   , sum
+  , swap
   , withDefault
+  , uncurry
   , unsafeFromJust
   ) where
 
@@ -52,6 +55,7 @@ import Neon.Class.ToInt (ToInt, toInt)
 import Neon.Class.Zero (Zero, zero)
 import Neon.Data.Exception (exception)
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
+import Neon.Data.Pair (Pair(Pair), pair)
 import Neon.Effect.Effect (unsafeRunEffect)
 import Neon.Effect.Exception (throw)
 
@@ -72,6 +76,9 @@ clamp b t x =
 
 contains :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
 contains x = any (equal x)
+
+curry :: forall a b c. (Pair a b -> c) -> (a -> b -> c)
+curry f = \ x y -> f (pair x y)
 
 decrement :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 decrement x = fromInt (subtract (toInt x) 1)
@@ -149,6 +156,12 @@ size = reduce (\ a _ -> add a 1) 0
 
 sum :: forall a b. (Add b, Reduce a, Zero b) => a b -> b
 sum = reduce add zero
+
+swap :: forall a b. Pair a b -> Pair b a
+swap (Pair x) = pair x.second x.first
+
+uncurry :: forall a b c. (a -> b -> c) -> (Pair a b -> c)
+uncurry f = \ (Pair x) -> f x.first x.second
 
 unsafeFromJust :: forall a. Maybe a -> a
 unsafeFromJust x = case x of
