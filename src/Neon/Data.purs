@@ -2,6 +2,7 @@ module Neon.Data
   ( module Neon.Data
   , module Neon.Data.Dictionary
   , module Neon.Data.Exception
+  , module Neon.Data.List
   , module Neon.Data.Maybe
   , module Neon.Data.Pair
   , module Neon.Data.Unit
@@ -9,6 +10,7 @@ module Neon.Data
 
 import Neon.Data.Dictionary
 import Neon.Data.Exception
+import Neon.Data.List
 import Neon.Data.Maybe
 import Neon.Data.Pair
 import Neon.Data.Unit
