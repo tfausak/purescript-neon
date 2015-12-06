@@ -11,6 +11,7 @@ import qualified Test.Neon.Class.ComposeSpec as Compose
 import qualified Test.Neon.Class.DivideSpec as Divide
 import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.FlipSpec as Flip
+import qualified Test.Neon.Class.FlipSpec as FromArray
 import qualified Test.Neon.Class.GreaterSpec as Greater
 import qualified Test.Neon.Class.LessSpec as Less
 import qualified Test.Neon.Class.MapSpec as Map
@@ -39,6 +40,7 @@ main = describe "Neon.Class" do
   Divide.main
   Equal.main
   Flip.main
+  FromArray.main
   Greater.main
   Less.main
   Map.main
