@@ -12,7 +12,8 @@ import qualified Test.Neon.Class.ComposeSpec as Compose
 import qualified Test.Neon.Class.DivideSpec as Divide
 import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.FlipSpec as Flip
-import qualified Test.Neon.Class.FlipSpec as FromArray
+import qualified Test.Neon.Class.FromArraySpec as FromArray
+import qualified Test.Neon.Class.FlipSpec as FromInt
 import qualified Test.Neon.Class.GreaterSpec as Greater
 import qualified Test.Neon.Class.GreaterSpec as Identity
 import qualified Test.Neon.Class.LessSpec as Less
@@ -45,6 +46,7 @@ main = describe "Neon.Class" do
   Equal.main
   Flip.main
   FromArray.main
+  FromInt.main
   Greater.main
   Identity.main
   Less.main
