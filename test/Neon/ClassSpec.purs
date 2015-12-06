@@ -12,6 +12,7 @@ import qualified Test.Neon.Class.EqualSpec as Equal
 import qualified Test.Neon.Class.FlipSpec as Flip
 import qualified Test.Neon.Class.GreaterSpec as Greater
 import qualified Test.Neon.Class.LessSpec as Less
+import qualified Test.Neon.Class.MapSpec as Map
 import qualified Test.Neon.Class.ModuloSpec as Modulo
 import qualified Test.Neon.Class.MultiplySpec as Multiply
 import qualified Test.Neon.Class.NotSpec as Not
@@ -36,6 +37,7 @@ main = describe "Neon.Class" do
   Flip.main
   Greater.main
   Less.main
+  Map.main
   Modulo.main
   Multiply.main
   Not.main

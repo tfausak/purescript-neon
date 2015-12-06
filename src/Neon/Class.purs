@@ -10,6 +10,7 @@ module Neon.Class
   , module Neon.Class.Flip
   , module Neon.Class.Greater
   , module Neon.Class.Less
+  , module Neon.Class.Map
   , module Neon.Class.Modulo
   , module Neon.Class.Multiply
   , module Neon.Class.Not
@@ -33,6 +34,7 @@ import Neon.Class.Equal
 import Neon.Class.Flip
 import Neon.Class.Greater
 import Neon.Class.Less
+import Neon.Class.Map
 import Neon.Class.Modulo
 import Neon.Class.Multiply
 import Neon.Class.Not
