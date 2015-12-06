@@ -1,6 +1,7 @@
 module Neon.Class
   ( module Neon.Class
   , module Neon.Class.Add
+  , module Neon.Class.Always
   , module Neon.Class.And
   , module Neon.Class.Apply
   , module Neon.Class.Bind
@@ -30,6 +31,7 @@ module Neon.Class
   ) where
 
 import Neon.Class.Add
+import Neon.Class.Always
 import Neon.Class.And
 import Neon.Class.Apply
 import Neon.Class.Bind

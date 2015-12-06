@@ -1,6 +1,7 @@
 module Test.Neon.HelperSpec where
 
 import Neon
+import Neon.Data -- HACK
 import Test.Spec
 
 main :: Spec
@@ -12,6 +13,16 @@ main = describe "Neon.Helper" do
     it "is greater or equal" do
       greaterOrEqual 2 1 `shouldBe` true
       greaterOrEqual 1 1 `shouldBe` true
+  describe "isJust" do
+    it "returns true if just" do
+      isJust (Just 1) `shouldBe` true
+    it "returns false if nothing" do
+      isJust (Nothing :: Maybe Int) `shouldBe` false
+  describe "isNothing" do
+    it "returns false if just" do
+      isNothing (Just 1) `shouldBe` false
+    it "returns true if nothing" do
+      isNothing (Nothing :: Maybe Int) `shouldBe` true
   describe "join" do
     it "joins things" do
       join [[1, 2], [3, 4]] `shouldBe` [1, 2, 3, 4]
@@ -35,3 +46,13 @@ main = describe "Neon.Helper" do
   describe "sum" do
     it "is the array summed up" do
       sum [2, 3] `shouldBe` 5
+  describe "unsafeFromJust" do
+    it "returns the value if just" do
+      unsafeFromJust (Just 1) `shouldBe` 1
+    it "throws an exception if nothing" do
+      pending
+  describe "withDefault" do
+    it "returns the default if nothing" do
+      withDefault 1 Nothing `shouldBe` 1
+    it "returns the value if just" do
+      withDefault 1 (Just 2) `shouldBe` 2
