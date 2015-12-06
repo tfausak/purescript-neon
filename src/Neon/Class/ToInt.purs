@@ -10,3 +10,6 @@ instance toIntBoolean :: ToInt Boolean where
 
 instance toIntChar :: ToInt Char where
   toInt = nativeToIntChar
+
+instance toIntInt :: ToInt Int where
+  toInt x = x

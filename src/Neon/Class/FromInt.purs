@@ -23,3 +23,6 @@ instance fromIntChar :: FromInt Char where
     if or (less x bottom) (greater x top)
     then Nothing
     else Just (nativeFromIntChar x)
+
+instance fromIntInt :: FromInt Int where
+  fromInt = Just

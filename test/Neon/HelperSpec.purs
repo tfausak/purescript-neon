@@ -21,6 +21,9 @@ main = describe "Neon.Helper" do
       clamp 3 5 2 `shouldBe` 3
       clamp 3 5 4 `shouldBe` 4
       clamp 3 5 6 `shouldBe` 5
+  describe "decrement" do
+    it "decrements the value" do
+      decrement true `shouldBe` Just false
   describe "for" do
     it "is map flipped" do
       for [1, 2] (+ 1) `shouldBe` [2, 3]
@@ -28,6 +31,9 @@ main = describe "Neon.Helper" do
     it "is greater or equal" do
       greaterOrEqual 2 1 `shouldBe` true
       greaterOrEqual 1 1 `shouldBe` true
+  describe "increment" do
+    it "increments the value" do
+      increment false `shouldBe` Just true
   describe "isJust" do
     it "returns true if just" do
       isJust (Just 1) `shouldBe` true
@@ -71,6 +77,9 @@ main = describe "Neon.Helper" do
   describe "product" do
     it "is the array multiplied together" do
       product [2, 3] `shouldBe` 6
+  describe "range" do
+    it "returns a range of values" do
+      range 1 3 `shouldBe` [1, 2, 3]
   describe "reciprocal" do
     it "is one divided by the number" do
       reciprocal 2.0 `shouldBe` 0.5

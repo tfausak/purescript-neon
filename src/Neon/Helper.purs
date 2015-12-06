@@ -2,8 +2,10 @@ module Neon.Helper
   ( all
   , any
   , clamp
+  , decrement
   , for
   , greaterOrEqual
+  , increment
   , isJust
   , isNothing
   , join
@@ -15,6 +17,7 @@ module Neon.Helper
   , negate
   , notEqual
   , product
+  , range
   , reciprocal
   , sum
   , withDefault
@@ -29,6 +32,7 @@ import Neon.Class.Bottom (Bottom, bottom)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, equal)
 import Neon.Class.Flip (flip)
+import Neon.Class.FromInt (FromInt, fromInt)
 import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Identity (identity)
 import Neon.Class.Less (Less, less)
@@ -39,6 +43,7 @@ import Neon.Class.One (One, one)
 import Neon.Class.Or (Or, or)
 import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Subtract (Subtract, subtract)
+import Neon.Class.ToInt (ToInt, toInt)
 import Neon.Class.Top (Top, top)
 import Neon.Class.Zero (Zero, zero)
 import Neon.Data.Exception (exception)
@@ -58,11 +63,17 @@ clamp b t x =
   then clamp t b x
   else max b (min t x)
 
+decrement :: forall a. (FromInt a, ToInt a) => a -> Maybe a
+decrement x = fromInt (subtract (toInt x) 1)
+
 for :: forall a b c. (Map a) => a b -> (b -> c) -> a c
 for = flip map
 
 greaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 greaterOrEqual x = or (greater x) (equal x)
+
+increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
+increment x = fromInt (add (toInt x) 1)
 
 isJust :: forall a. Maybe a -> Boolean
 isJust = maybe (always true) false
@@ -100,6 +111,14 @@ notEqual = not equal
 
 product :: forall a b. (Multiply b, One b, Reduce a) => a b -> b
 product = reduce multiply one
+
+range :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
+range l h =
+  if greater l h
+  then []
+  else case increment l of
+    Nothing -> [l]
+    Just x -> add [l] (range x h)
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal = divide one
