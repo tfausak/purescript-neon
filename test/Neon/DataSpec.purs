@@ -9,11 +9,11 @@ import qualified Test.Neon.Data.MaybeSpec as Maybe
 import qualified Test.Neon.Data.MaybeSpec as Pair
 import qualified Test.Neon.Data.UnitSpec as Unit
 
-main :: Spec
-main = describe "Neon.Data" do
-  Dictionary.main
-  Exception.main
-  List.main
-  Maybe.main
-  Pair.main
-  Unit.main
+spec :: Spec
+spec = describe "Neon.Data" do
+  Dictionary.spec
+  Exception.spec
+  List.spec
+  Maybe.spec
+  Pair.spec
+  Unit.spec

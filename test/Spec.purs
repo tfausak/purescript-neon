@@ -4,6 +4,9 @@ import Neon
 
 type Spec = Effect (console :: CONSOLE, exception :: EXCEPTION) Unit
 
+runSpec :: Spec -> Spec
+runSpec = identity
+
 describe :: String -> Spec -> Spec
 describe message spec = do
   info message

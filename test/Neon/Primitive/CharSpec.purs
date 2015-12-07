@@ -3,8 +3,8 @@ module Test.Neon.Primitive.CharSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Primitive.Char" do
+spec :: Spec
+spec = describe "Neon.Primitive.Char" do
   describe "toLower" do
     it "lowercases the character" do
       toLower 'A' `shouldBe` 'a'

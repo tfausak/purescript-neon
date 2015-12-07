@@ -3,8 +3,8 @@ module Test.Neon.Data.ExceptionSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Data.Exception" do
+spec :: Spec
+spec = describe "Neon.Data.Exception" do
   describe "Equal" do
     it "can be equated" do
       equal (exception "a") (exception "a") `shouldBe` false

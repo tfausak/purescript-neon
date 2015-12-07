@@ -4,8 +4,8 @@ import Neon
 import Neon.Data -- Hack
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Traverse" do
+spec :: Spec
+spec = describe "Neon.Class.Traverse" do
   describe "Array" do
     it "can be traversed" do
       traverse (always Nothing) [1] `shouldBe` Nothing :: Maybe (Array Int)

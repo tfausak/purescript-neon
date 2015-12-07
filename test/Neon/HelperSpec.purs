@@ -4,8 +4,8 @@ import Neon
 import Neon.Data -- HACK
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Helper" do
+spec :: Spec
+spec = describe "Neon.Helper" do
   describe "absoluteValue" do
     it "returns the absolute value" do
       absoluteValue 1 `shouldBe` 1

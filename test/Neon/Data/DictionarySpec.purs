@@ -3,8 +3,8 @@ module Test.Neon.Data.DictionarySpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Data.Dictionary" do
+spec :: Spec
+spec = describe "Neon.Data.Dictionary" do
   let d = fromArray [pair "a" 1, pair "b" 2] :: Dictionary Int
   describe "Add" do
     it "can be added" do

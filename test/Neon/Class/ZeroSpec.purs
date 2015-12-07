@@ -3,8 +3,8 @@ module Test.Neon.Class.ZeroSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Zero" do
+spec :: Spec
+spec = describe "Neon.Class.Zero" do
   describe "Array" do
     it "has a zero" do
       zero `shouldBe` ([] :: Array Int)

@@ -3,8 +3,8 @@ module Test.Neon.Class.ShowSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Show" do
+spec :: Spec
+spec = describe "Neon.Class.Show" do
   describe "Array" do
     it "can be shown" do
       show ([] :: Array Int) `shouldBe` "[]"

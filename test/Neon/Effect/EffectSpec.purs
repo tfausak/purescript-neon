@@ -3,8 +3,8 @@ module Test.Neon.Effect.EffectSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Effect.Effect" do
+spec :: Spec
+spec = describe "Neon.Effect.Effect" do
   describe "Apply" do
     it "can be applied" do
       runPure (apply (pure show) (pure true)) `shouldBe` "true"

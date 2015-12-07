@@ -3,8 +3,8 @@ module Test.Neon.OperatorSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Operator" do
+spec :: Spec
+spec = describe "Neon.Operator" do
   it "defines the operators" do
     (false |> not) `shouldBe` true
     (not <| false) `shouldBe` true

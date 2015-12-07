@@ -3,8 +3,8 @@ module Test.Neon.Class.AddSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Add" do
+spec :: Spec
+spec = describe "Neon.Class.Add" do
   describe "Array" do
     it "can be added" do
       add [1, 2] [3, 4] `shouldBe` [1, 2, 3, 4]

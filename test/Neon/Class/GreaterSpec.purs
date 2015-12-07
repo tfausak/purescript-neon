@@ -3,8 +3,8 @@ module Test.Neon.Class.GreaterSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Greater" do
+spec :: Spec
+spec = describe "Neon.Class.Greater" do
   describe "Array" do
     it "can be greater than" do
       greater [1, 2] [1, 1] `shouldBe` true

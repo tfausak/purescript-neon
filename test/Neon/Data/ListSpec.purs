@@ -3,8 +3,8 @@ module Test.Neon.Data.ListSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Data.List" do
+spec :: Spec
+spec = describe "Neon.Data.List" do
   let x = fromArray [1, 2] :: List Int
   describe "Equal" do
     it "can be equated" do

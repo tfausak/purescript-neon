@@ -3,8 +3,8 @@ module Test.Neon.Class.RootSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Root" do
+spec :: Spec
+spec = describe "Neon.Class.Root" do
   describe "Int" do
     it "supports roots" do
       root 2 9 `shouldBe` 3

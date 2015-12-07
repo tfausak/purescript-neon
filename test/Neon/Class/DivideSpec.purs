@@ -3,8 +3,8 @@ module Test.Neon.Class.DivideSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Divide" do
+spec :: Spec
+spec = describe "Neon.Class.Divide" do
   describe "Int" do
     it "can be divided" do
       divide 4 2 `shouldBe` 2

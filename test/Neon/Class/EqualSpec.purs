@@ -3,8 +3,8 @@ module Test.Neon.Class.EqualSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Equal" do
+spec :: Spec
+spec = describe "Neon.Class.Equal" do
   describe "Array" do
     it "can be equated" do
       equal [1, 2] [1, 2] `shouldBe` true

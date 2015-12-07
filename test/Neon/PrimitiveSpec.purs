@@ -11,13 +11,13 @@ import qualified Test.Neon.Primitive.NumberSpec as Number
 import qualified Test.Neon.Primitive.ObjectSpec as Object
 import qualified Test.Neon.Primitive.StringSpec as String
 
-main :: Spec
-main = describe "Neon.Primitive" do
-  Array.main
-  Boolean.main
-  Char.main
-  Function.main
-  Int.main
-  Number.main
-  Object.main
-  String.main
+spec :: Spec
+spec = describe "Neon.Primitive" do
+  Array.spec
+  Boolean.spec
+  Char.spec
+  Function.spec
+  Int.spec
+  Number.spec
+  Object.spec
+  String.spec

@@ -3,8 +3,8 @@ module Test.Neon.Primitive.NumberSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Primitive.Number" do
+spec :: Spec
+spec = describe "Neon.Primitive.Number" do
   describe "ceiling" do
     it "returns the smallest integer greater than the number" do
       ceiling 1.2 `shouldBe` 2

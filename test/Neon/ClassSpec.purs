@@ -35,37 +35,37 @@ import qualified Test.Neon.Class.TopSpec as Top
 import qualified Test.Neon.Class.TraverseSpec as Traverse
 import qualified Test.Neon.Class.ZeroSpec as Zero
 
-main :: Spec
-main = describe "Neon.Class" do
-  Add.main
-  Always.main
-  And.main
-  Apply.main
-  Bind.main
-  Bottom.main
-  Compose.main
-  Divide.main
-  Equal.main
-  Flip.main
-  FromArray.main
-  FromInt.main
-  Greater.main
-  Identity.main
-  Less.main
-  Map.main
-  Multiply.main
-  Not.main
-  One.main
-  Or.main
-  Power.main
-  Pure.main
-  Reduce.main
-  Remainder.main
-  Root.main
-  Show.main
-  Subtract.main
-  ToArray.main
-  ToInt.main
-  Top.main
-  Traverse.main
-  Zero.main
+spec :: Spec
+spec = describe "Neon.Class" do
+  Add.spec
+  Always.spec
+  And.spec
+  Apply.spec
+  Bind.spec
+  Bottom.spec
+  Compose.spec
+  Divide.spec
+  Equal.spec
+  Flip.spec
+  FromArray.spec
+  FromInt.spec
+  Greater.spec
+  Identity.spec
+  Less.spec
+  Map.spec
+  Multiply.spec
+  Not.spec
+  One.spec
+  Or.spec
+  Power.spec
+  Pure.spec
+  Reduce.spec
+  Remainder.spec
+  Root.spec
+  Show.spec
+  Subtract.spec
+  ToArray.spec
+  ToInt.spec
+  Top.spec
+  Traverse.spec
+  Zero.spec

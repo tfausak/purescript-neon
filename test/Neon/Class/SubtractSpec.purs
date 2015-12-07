@@ -3,8 +3,8 @@ module Test.Neon.Class.SubtractSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Subtract" do
+spec :: Spec
+spec = describe "Neon.Class.Subtract" do
   describe "Int" do
     it "can be subtracted" do
       subtract 2 1 `shouldBe` 1

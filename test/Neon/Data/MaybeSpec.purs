@@ -4,8 +4,8 @@ import Neon
 import Neon.Data -- HACK
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Data.Maybe" do
+spec :: Spec
+spec = describe "Neon.Data.Maybe" do
   describe "Apply" do
     it "can be applied" do
       apply (Just (+ 1)) (Just 1) `shouldBe` Just 2

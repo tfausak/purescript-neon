@@ -3,8 +3,8 @@ module Test.Neon.Class.TopSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Top" do
+spec :: Spec
+spec = describe "Neon.Class.Top" do
   describe "Boolean" do
     it "has a top" do
       top `shouldBe` true

@@ -4,4 +4,4 @@ import Test.Spec
 import qualified Test.NeonSpec as Neon
 
 main :: Spec
-main = Neon.main
+main = runSpec Neon.spec

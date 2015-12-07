@@ -9,11 +9,11 @@ import qualified Test.Neon.HelperSpec as Helper
 import qualified Test.Neon.OperatorSpec as Operator
 import qualified Test.Neon.PrimitiveSpec as Primitive
 
-main :: Spec
-main = describe "Neon" do
-  Class.main
-  Data.main
-  Effect.main
-  Helper.main
-  Operator.main
-  Primitive.main
+spec :: Spec
+spec = describe "Neon" do
+  Class.spec
+  Data.spec
+  Effect.spec
+  Helper.spec
+  Operator.spec
+  Primitive.spec

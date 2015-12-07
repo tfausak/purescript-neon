@@ -3,8 +3,8 @@ module Test.Neon.Class.LessSpec where
 import Neon
 import Test.Spec
 
-main :: Spec
-main = describe "Neon.Class.Less" do
+spec :: Spec
+spec = describe "Neon.Class.Less" do
   describe "Array" do
     it "can be less than" do
       less [1, 2] [1, 1] `shouldBe` false
