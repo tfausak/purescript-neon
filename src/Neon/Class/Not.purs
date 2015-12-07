@@ -7,6 +7,3 @@ class Not a where
 
 instance notBoolean :: Not Boolean where
   not = nativeNot
-
-instance notFunction :: (Not b) => Not (a -> b) where
-  not f = \ x -> not (f x)

@@ -18,11 +18,17 @@ instance showBoolean :: Show Boolean where
 instance showChar :: Show Char where
   show = nativeShowChar
 
+instance showFunction :: Show (a -> b) where
+  show _ = "{- Function -}"
+
 instance showInt :: Show Int where
   show = nativeShow
 
 instance showNumber :: Show Number where
   show = nativeShowNumber
+
+instance showObject :: Show { | a } where
+  show _ = "{- Object -}"
 
 instance showString :: Show String where
   show = nativeShowString

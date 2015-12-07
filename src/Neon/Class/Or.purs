@@ -7,6 +7,3 @@ class Or a where
 
 instance orBoolean :: Or Boolean where
   or = nativeOr
-
-instance orFunction :: (Or b) => Or (a -> b) where
-  or f g = \ x -> or (f x) (g x)

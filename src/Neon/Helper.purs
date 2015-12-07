@@ -95,7 +95,7 @@ for :: forall a b c. (Map a) => a b -> (b -> c) -> a c
 for = flip map
 
 greaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
-greaterOrEqual x = or (greater x) (equal x)
+greaterOrEqual x y = or (greater x y) (equal x y)
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add (toInt x) 1)
@@ -104,19 +104,19 @@ isEmpty :: forall a b. (Reduce a) => a b -> Boolean
 isEmpty = all (always false)
 
 isInfinite :: Number -> Boolean
-isInfinite = not isFinite
+isInfinite x = not (isFinite x)
 
 isJust :: forall a. Maybe a -> Boolean
 isJust = maybe (always true) false
 
 isNothing :: forall a. Maybe a -> Boolean
-isNothing = not isJust
+isNothing x = not (isJust x)
 
 join :: forall a b. (Bind a) => a (a b) -> a b
 join = flip bind identity
 
 lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
-lessOrEqual x = or (less x) (equal x)
+lessOrEqual x y = or (less x y) (equal x y)
 
 max :: forall a. (Greater a) => a -> a -> a
 max x y = unsafeFromJust (maximum [x, y])
@@ -138,7 +138,7 @@ negate :: forall a. (Subtract a, Zero a) => a -> a
 negate = subtract zero
 
 notEqual :: forall a. (Equal a) => a -> a -> Boolean
-notEqual = not equal
+notEqual x y = not (equal x y)
 
 product :: forall a b. (Multiply b, One b, Reduce a) => a b -> b
 product = reduce multiply one

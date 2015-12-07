@@ -11,10 +11,8 @@ class Traverse t where
   traverse :: forall a b m. (Apply m, Map m, Pure m) => (a -> m b) -> t a -> m (t b)
 
 instance arrayTraverse :: Traverse Array where
-  traverse f x =
-    let toList :: forall a. Array a -> List a
-        toList = fromArray
-    in  map toArray (traverse f (toList x))
+  traverse f x = map toArray
+    (traverse f ((fromArray :: forall a. Array a -> List a) x))
 
 instance listTraverse :: Traverse List where
   traverse f xs = case xs of

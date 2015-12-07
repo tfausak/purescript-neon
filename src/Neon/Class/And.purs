@@ -7,6 +7,3 @@ class And a where
 
 instance andBoolean :: And Boolean where
   and = nativeAnd
-
-instance andFunction :: (And b) => And (a -> b) where
-  and f g = \ x -> and (f x) (g x)
