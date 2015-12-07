@@ -1,8 +1,7 @@
 module Test.Main where
 
-import Test.Core (Test())
-import qualified Test.Neon as Neon
+import Test.Spec
+import qualified Test.NeonSpec as Neon
 
-main :: Test
-main = do
-  Neon.main
+main :: Spec
+main = Neon.main

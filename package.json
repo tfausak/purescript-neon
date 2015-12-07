@@ -1,15 +1,15 @@
 {
   "dependencies": {
-    "bower": "1.6.8",
+    "bower": "1.6.9",
     "pulp": "5.0.2",
     "purescript": "0.7.6"
   },
   "devDependencies": {
-    "eslint": "1.10.2"
+    "eslint": "1.10.3"
   },
   "engines": {
-    "node": "5.0.0",
-    "npm": "3.3.9"
+    "node": "5.1.1",
+    "npm": "3.3.12"
   },
   "license": "MIT",
   "name": "purescript-neon",
