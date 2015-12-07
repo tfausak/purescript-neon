@@ -20,6 +20,9 @@ main = describe "Neon.Helper" do
       any identity [] `shouldBe` false
       any identity [true, false] `shouldBe` true
       any (> 1) [1, 2] `shouldBe` true
+  describe "asTypeOf" do
+    it "hints at the right type" do
+      asTypeOf [] [1] `shouldBe` []
   describe "clamp" do
     it "clamps the value between the bounds" do
       clamp 3 5 2 `shouldBe` 3
@@ -98,6 +101,8 @@ main = describe "Neon.Helper" do
   describe "notEqual" do
     it "is not equal" do
       notEqual false true `shouldBe` true
+  describe "print" do
+    pending
   describe "product" do
     it "is the array multiplied together" do
       product [2, 3] `shouldBe` 6
@@ -129,6 +134,11 @@ main = describe "Neon.Helper" do
   describe "uncurry" do
     it "uncurries the function" do
       uncurry add (pair "ab" "cd") `shouldBe` "abcd"
+  describe "unless" do
+    it "executes the action if the predicate is false" do
+      unless false [unit, unit] `shouldBe` [unit, unit]
+    it "returns unit if the predicate is true" do
+      unless true [unit, unit] `shouldBe` [unit]
   describe "unsafeFromJust" do
     it "returns the value if just" do
       unsafeFromJust (Just 1) `shouldBe` 1
@@ -136,6 +146,20 @@ main = describe "Neon.Helper" do
       pending
   describe "unsafeLog" do
     pending
+  describe "until" do
+    it "iterates until the predicate is true" do
+      until (> 3) (+ 1) 1 `shouldBe` 4
+  describe "void" do
+    it "discards the result" do
+      void [1, 2] `shouldBe` [unit, unit]
+  describe "when" do
+    it "executes the action if the predicate is true" do
+      when true [unit, unit] `shouldBe` [unit, unit]
+    it "returns unit if the predicate is false" do
+      when false [unit, unit] `shouldBe` [unit]
+  describe "while" do
+    it "iterates while the predicate is true" do
+      while (< 3) (+ 1) 1 `shouldBe` 3
   describe "withDefault" do
     it "returns the default if nothing" do
       withDefault 1 Nothing `shouldBe` 1

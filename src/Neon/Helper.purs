@@ -2,6 +2,7 @@ module Neon.Helper
   ( absoluteValue
   , all
   , any
+  , asTypeOf
   , clamp
   , contains
   , curry
@@ -21,6 +22,7 @@ module Neon.Helper
   , minimum
   , negate
   , notEqual
+  , print
   , product
   , range
   , reciprocal
@@ -30,8 +32,13 @@ module Neon.Helper
   , sum
   , swap
   , uncurry
+  , unless
   , unsafeFromJust
   , unsafeLog
+  , until
+  , void
+  , when
+  , while
   , withDefault
   ) where
 
@@ -56,14 +63,16 @@ import Neon.Class.Or (Or, or)
 import Neon.Class.Pure (Pure, pure)
 import Neon.Class.Traverse (Traverse, traverse)
 import Neon.Class.Reduce (Reduce, reduce)
+import Neon.Class.Show (Show, show)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Class.ToInt (ToInt, toInt)
 import Neon.Class.Zero (Zero, zero)
 import Neon.Data.Exception (exception)
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Data.Pair (Pair(Pair), pair)
-import Neon.Effect.Console (log)
-import Neon.Effect.Effect (unsafeRunEffect)
+import Neon.Data.Unit (Unit(), unit)
+import Neon.Effect.Console (CONSOLE(), log)
+import Neon.Effect.Effect (Effect(), unsafeRunEffect)
 import Neon.Effect.Exception (throw)
 import Neon.Primitive.Number (isFinite)
 
@@ -75,6 +84,9 @@ all p xs = reduce (\ a x -> and a (p x)) true xs
 
 any :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 any p xs = reduce (\ a x -> or a (p x)) bottom xs
+
+asTypeOf :: forall a. a -> a -> a
+asTypeOf = always
 
 clamp :: forall a. (Greater a, Less a) => a -> a -> a -> a
 clamp b t x =
@@ -140,6 +152,9 @@ negate = subtract zero
 notEqual :: forall a. (Equal a) => a -> a -> Boolean
 notEqual x y = not (equal x y)
 
+print :: forall a. (Show a) => a -> Effect (console :: CONSOLE) Unit
+print x = log (show x)
+
 product :: forall a b. (Multiply b, One b, Reduce a) => a b -> b
 product = reduce multiply one
 
@@ -177,6 +192,9 @@ swap (Pair x) = pair x.second x.first
 uncurry :: forall a b c. (a -> b -> c) -> (Pair a b -> c)
 uncurry f = \ (Pair x) -> f x.first x.second
 
+unless :: forall a. (Pure a) => Boolean -> a Unit -> a Unit
+unless p x = if p then pure unit else x
+
 unsafeFromJust :: forall a. Maybe a -> a
 unsafeFromJust x = case x of
   Nothing -> unsafeRunEffect (throw (exception "unsafeFromJust"))
@@ -187,6 +205,18 @@ unsafeLog message value = unsafeRunEffect
   (do
     log message
     pure value)
+
+until :: forall a. (a -> Boolean) -> (a -> a) -> a -> a
+until p f x = if p x then x else until p f (f x)
+
+void :: forall a b. (Map a) => a b -> a Unit
+void x = map (always unit) x
+
+when :: forall a. (Pure a) => Boolean -> a Unit -> a Unit
+when p x = if p then x else pure unit
+
+while :: forall a. (a -> Boolean) -> (a -> a) -> a -> a
+while p f x = if p x then while p f (f x) else x
 
 withDefault :: forall a. a -> Maybe a -> a
 withDefault = maybe identity
