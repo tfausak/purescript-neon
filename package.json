@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "bower": "1.6.9",
+    "bower": "1.7.0",
     "pulp": "5.0.2",
     "purescript": "0.7.6"
   },
