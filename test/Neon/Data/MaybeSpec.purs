@@ -14,18 +14,18 @@ spec = describe "Neon.Data.Maybe" do
       bind (Just 1) (\ x -> Just (x + 1)) ?= Just 2
   describe "Equal" do
     it "can be equated" do
-      equal Nothing (Nothing :: Maybe Int) ?= true
-      equal (Just 1) (Just 1) ?= true
-      equal Nothing (Just 1) ?= false
+      Nothing == (Nothing :: Maybe Int) ?= true
+      Just 1 == Just 1 ?= true
+      Nothing == Just 1 ?= false
   describe "FromArray" do
     it "can be converted from an array" do
       fromArray [1, 2] ?= Just 1
   describe "Greater" do
     it "can be greater than" do
-      greater (Just 2) (Just 1) ?= true
+      Just 2 > Just 1 ?= true
   describe "Less" do
     it "can be less than" do
-      less (Just 1) (Just 2) ?= true
+      Just 1 < Just 2 ?= true
   describe "Map" do
     it "can be mapped" do
       map (+ 1) (Just 1) ?= Just 2

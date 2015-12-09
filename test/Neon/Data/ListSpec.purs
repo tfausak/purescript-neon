@@ -8,7 +8,7 @@ spec = describe "Neon.Data.List" do
   let x = fromArray [1, 2] :: List Int
   describe "Equal" do
     it "can be equated" do
-      equal x x ?= true
+      x == x ?= true
   describe "FromArray" do
     it "can be converted from an array" do
       fromArray [1, 2] ?= x

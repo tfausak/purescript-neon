@@ -44,8 +44,8 @@ spec = describe "Neon.Helper" do
       for [1, 2] (+ 1) ?= [2, 3]
   describe "greaterOrEqual" do
     it "is greater or equal" do
-      greaterOrEqual 2 1 ?= true
-      greaterOrEqual 1 1 ?= true
+      2 >= 1 ?= true
+      1 >= 1 ?= true
   describe "increment" do
     it "increments the value" do
       increment false ?= Just true
@@ -76,8 +76,8 @@ spec = describe "Neon.Helper" do
       join [[1, 2], [3, 4]] ?= [1, 2, 3, 4]
   describe "lessOrEqual" do
     it "is less or equal" do
-      lessOrEqual 1 2 ?= true
-      lessOrEqual 1 1 ?= true
+      1 <= 2 ?= true
+      1 <= 1 ?= true
   describe "max" do
     it "returns the max" do
       max 1 2 ?= 2

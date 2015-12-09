@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.Remainder" do
   describe "Int" do
     it "supports modular arithmetic" do
-      remainder 5 2 ?= 1
+      5 % 2 ?= 1

@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.Or" do
   describe "Boolean" do
     it "can be ored" do
-      or false true ?= true
+      false || true ?= true

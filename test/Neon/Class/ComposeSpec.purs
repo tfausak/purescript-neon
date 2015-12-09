@@ -7,4 +7,5 @@ spec :: Spec
 spec = describe "Neon.Class.Compose" do
   describe "Function" do
     it "can be composed" do
-      compose (+ 2) (* 2) 3 ?= 10
+      ((+ 2) >> (* 2)) 3 ?= 10
+      ((+ 2) << (* 2)) 3 ?= 8

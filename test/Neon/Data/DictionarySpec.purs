@@ -8,10 +8,10 @@ spec = describe "Neon.Data.Dictionary" do
   let d = fromArray [pair "a" 1, pair "b" 2] :: Dictionary Int
   describe "Add" do
     it "can be added" do
-      add (fromArray [pair "a" 1]) (fromArray [pair "b" 2]) ?= d
+      fromArray [pair "a" 1] + fromArray [pair "b" 2] ?= d
   describe "Equal" do
     it "can be equated" do
-      equal d d ?= true
+      d == d ?= true
   describe "FromArray" do
     it "can be converted from an array" do
       fromArray [pair "a" 1, pair "b" 2] ?= d
