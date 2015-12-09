@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.And" do
   describe "Boolean" do
     it "can be anded" do
-      and false true `shouldBe` false
+      and false true ?= false

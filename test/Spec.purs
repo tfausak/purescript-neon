@@ -26,5 +26,9 @@ shouldBe actual expected =
     error ("- FAIL: " + show actual + " != " + show expected)
     throw (exception (show actual))
 
+(?=) :: forall a. (Equal a, Show a) => a -> a -> Spec
+(?=) = shouldBe
+infix 0 ?=
+
 pending :: Spec
 pending = pure unit

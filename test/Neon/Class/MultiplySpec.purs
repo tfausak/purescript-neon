@@ -7,7 +7,7 @@ spec :: Spec
 spec = describe "Neon.Class.Multiply" do
   describe "Int" do
     it "can be multiplied" do
-      multiply 2 3 `shouldBe` 6
+      multiply 2 3 ?= 6
   describe "Number" do
     it "can be multiplied" do
-      multiply 2.0 3.0 `shouldBe` 6.0
+      multiply 2.0 3.0 ?= 6.0

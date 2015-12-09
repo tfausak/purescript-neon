@@ -7,13 +7,13 @@ spec :: Spec
 spec = describe "Neon.Class.Top" do
   describe "Boolean" do
     it "has a top" do
-      top `shouldBe` true
+      top ?= true
   describe "Char" do
     it "has a top" do
-      top `shouldBe` '\65535'
+      top ?= '\65535'
   describe "Int" do
     it "has a top" do
-      top `shouldBe` 2147483647
+      top ?= 2147483647
   describe "Number" do
     it "has a top" do
-      top `shouldBe` infinity
+      top ?= infinity

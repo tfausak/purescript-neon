@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.Reduce" do
   describe "Array" do
     it "can be reduced" do
-      reduce add "z" ["a", "b"] `shouldBe` "zab"
+      reduce add "z" ["a", "b"] ?= "zab"

@@ -7,13 +7,13 @@ spec :: Spec
 spec = describe "Neon.Class.Zero" do
   describe "Array" do
     it "has a zero" do
-      zero `shouldBe` ([] :: Array Int)
+      zero ?= ([] :: Array Int)
   describe "Int" do
     it "has a zero" do
-      zero `shouldBe` 0
+      zero ?= 0
   describe "Number" do
     it "has a zero" do
-      zero `shouldBe` 0.0
+      zero ?= 0.0
   describe "String" do
     it "has a zero" do
-      zero `shouldBe` ""
+      zero ?= ""

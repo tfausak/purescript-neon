@@ -7,7 +7,7 @@ spec :: Spec
 spec = describe "Neon.Data.Unit" do
   describe "Equal" do
     it "can be equated" do
-      equal unit unit `shouldBe` true
+      equal unit unit ?= true
   describe "Show" do
     it "can be shown" do
-      show unit `shouldBe` "unit"
+      show unit ?= "unit"

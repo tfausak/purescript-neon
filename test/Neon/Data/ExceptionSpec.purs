@@ -7,11 +7,11 @@ spec :: Spec
 spec = describe "Neon.Data.Exception" do
   describe "Equal" do
     it "can be equated" do
-      equal (exception "a") (exception "a") `shouldBe` false
+      equal (exception "a") (exception "a") ?= false
       let x = exception "a"
-      equal x x `shouldBe` true
+      equal x x ?= true
   describe "Show" do
     it "can be shown" do
-      show (exception "a") `shouldBe` "exception \"a\""
+      show (exception "a") ?= "exception \"a\""
   describe "exception" do
     pending

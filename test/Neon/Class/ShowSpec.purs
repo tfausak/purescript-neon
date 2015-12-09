@@ -7,28 +7,28 @@ spec :: Spec
 spec = describe "Neon.Class.Show" do
   describe "Array" do
     it "can be shown" do
-      show ([] :: Array Int) `shouldBe` "[]"
-      show [1] `shouldBe` "[1]"
-      show [1, 2] `shouldBe` "[1, 2]"
+      show ([] :: Array Int) ?= "[]"
+      show [1] ?= "[1]"
+      show [1, 2] ?= "[1, 2]"
   describe "Boolean" do
     it "can be shown" do
-      show false `shouldBe` "false"
+      show false ?= "false"
   describe "Char" do
     it "can be shown" do
-      show 'a' `shouldBe` "'a'"
-      show '\0' `shouldBe` "'\\0'"
-      show '\'' `shouldBe` "'\\''"
+      show 'a' ?= "'a'"
+      show '\0' ?= "'\\0'"
+      show '\'' ?= "'\\''"
   describe "Int" do
     it "can be shown" do
-      show 1 `shouldBe` "1"
+      show 1 ?= "1"
   describe "Number" do
     it "can be shown" do
-      show 1.0 `shouldBe` "1.0"
-      show 1.1 `shouldBe` "1.1"
-      show infinity `shouldBe` "infinity"
-      show nan `shouldBe` "nan"
+      show 1.0 ?= "1.0"
+      show 1.1 ?= "1.1"
+      show infinity ?= "infinity"
+      show nan ?= "nan"
   describe "String" do
     it "can be shown" do
-      show "a" `shouldBe` "\"a\""
-      show "\0" `shouldBe` "\"\\0\""
-      show "\"" `shouldBe` "\"\\\"\""
+      show "a" ?= "\"a\""
+      show "\0" ?= "\"\\0\""
+      show "\"" ?= "\"\\\"\""

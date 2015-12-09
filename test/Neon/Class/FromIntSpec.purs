@@ -8,7 +8,7 @@ spec :: Spec
 spec = describe "Neon.Class.FromInt" do
   describe "Boolean" do
     it "can be converted from an int" do
-      fromInt 0 `shouldBe` Just false
+      fromInt 0 ?= Just false
   describe "Char" do
     it "can be converted from an int" do
-      fromInt 0 `shouldBe` Just '\0'
+      fromInt 0 ?= Just '\0'

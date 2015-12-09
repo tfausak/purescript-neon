@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.Flip" do
   describe "Function" do
     it "can be flipped" do
-      flip add "ab" "cd" `shouldBe` "cdab"
+      flip add "ab" "cd" ?= "cdab"

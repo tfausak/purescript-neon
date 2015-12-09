@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.Bind" do
   describe "Array" do
     it "can be bound" do
-      bind [3, 5] (\ x -> [x, x * 2]) `shouldBe` [3, 6, 5, 10]
+      bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]

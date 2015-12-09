@@ -7,7 +7,7 @@ spec :: Spec
 spec = describe "Neon.Class.One" do
   describe "Int" do
     it "has a one" do
-      one `shouldBe` 1
+      one ?= 1
   describe "Number" do
     it "has a one" do
-      one `shouldBe` 1.0
+      one ?= 1.0

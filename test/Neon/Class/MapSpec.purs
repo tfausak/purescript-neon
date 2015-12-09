@@ -7,4 +7,4 @@ spec :: Spec
 spec = describe "Neon.Class.Map" do
   describe "Array" do
     it "can be mapped" do
-      map (+ 1) [1, 2] `shouldBe` [2, 3]
+      map (+ 1) [1, 2] ?= [2, 3]
