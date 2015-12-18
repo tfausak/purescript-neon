@@ -14,6 +14,9 @@ guiding principles:
 - There should be no type class hierarchy. This means `Bind` does not imply
   `Pure`. If you need both, add both to your type signature.
 
+- There should be as few operators as possible. This means `>>=` does not
+  exist. Use `bind` instead.
+
 - There should be one obvious way to do things. This means `return` is not an
   alias for `pure`. In fact, it doesn't exist at all.
 
