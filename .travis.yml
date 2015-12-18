@@ -11,3 +11,6 @@ after_success:
     -d @output/purescript-neon-${TRAVIS_TAG}.json \
     -H 'Accept: application/json' \
     -H "Authorization: token ${GITHUB_TOKEN}"
+cache:
+  directories:
+  - node_modules
