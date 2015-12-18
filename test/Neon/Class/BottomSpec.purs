@@ -13,7 +13,7 @@ spec = describe "Neon.Class.Bottom" do
       bottom ?= '\0'
   describe "Int" do
     it "has a bottom" do
-      bottom ?= -2147483648
+      bottom ?= round (-2147483648.0)
   describe "Number" do
     it "has a bottom" do
       bottom ?= -infinity
