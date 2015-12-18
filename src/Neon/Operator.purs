@@ -7,6 +7,7 @@ import Neon.Class.Divide (class Divide, divide)
 import Neon.Class.Equal (class Equal, equal)
 import Neon.Class.Flip (flip)
 import Neon.Class.Greater (class Greater, greater)
+import Neon.Class.Identity (identity)
 import Neon.Class.Less (class Less, less)
 import Neon.Class.Multiply (class Multiply, multiply)
 import Neon.Class.Or (class Or, or)
@@ -32,7 +33,7 @@ infix  4 _lessOrEqual    as <=
 infixr 3 _and            as &&
 infixr 2 _or             as ||
 infixl 1 _apply          as |>
-infixr 1 _ylppa          as <|
+infixr 1 _identity       as <|
 
 _compose :: forall a b c d. (Compose a) => a b c -> a c d -> a b d
 _compose = compose
@@ -85,5 +86,5 @@ _or = or
 _apply :: forall a b. a -> (a -> b) -> b
 _apply x f = f x
 
-_ylppa :: forall a b. (a -> b) -> a -> b
-_ylppa = flip _apply
+_identity :: forall a b. (a -> b) -> a -> b
+_identity = identity
