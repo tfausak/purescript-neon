@@ -6,7 +6,7 @@
       "name": "Taylor Fausak"
     }
   ],
-  "description": "An experimental PureScript prelude.",
+  "description": "An experimental standard library for PureScript.",
   "homepage": "https://github.com/tfausak/purescript-neon",
   "ignore": [
     "/.psci",
