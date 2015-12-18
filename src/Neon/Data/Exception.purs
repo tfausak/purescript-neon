@@ -1,4 +1,4 @@
-module Neon.Data.Exception (Exception(), exception) where
+module Neon.Data.Exception (Exception, exception) where
 
 import Neon.Class.Add (add)
 import Neon.Class.Equal (class Equal)

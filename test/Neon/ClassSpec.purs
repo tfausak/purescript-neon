@@ -1,39 +1,39 @@
 module Test.Neon.ClassSpec where
 
-import Neon
-import Test.Spec
-import qualified Test.Neon.Class.AddSpec as Add
-import qualified Test.Neon.Class.AlwaysSpec as Always
-import qualified Test.Neon.Class.AndSpec as And
-import qualified Test.Neon.Class.ApplySpec as Apply
-import qualified Test.Neon.Class.BindSpec as Bind
-import qualified Test.Neon.Class.BottomSpec as Bottom
-import qualified Test.Neon.Class.ComposeSpec as Compose
-import qualified Test.Neon.Class.DivideSpec as Divide
-import qualified Test.Neon.Class.EqualSpec as Equal
-import qualified Test.Neon.Class.FlipSpec as Flip
-import qualified Test.Neon.Class.FlipSpec as FromInt
-import qualified Test.Neon.Class.FromArraySpec as FromArray
-import qualified Test.Neon.Class.GreaterSpec as Greater
-import qualified Test.Neon.Class.GreaterSpec as Identity
-import qualified Test.Neon.Class.LessSpec as Less
-import qualified Test.Neon.Class.MapSpec as Map
-import qualified Test.Neon.Class.MultiplySpec as Multiply
-import qualified Test.Neon.Class.NotSpec as Not
-import qualified Test.Neon.Class.OneSpec as One
-import qualified Test.Neon.Class.OrSpec as Or
-import qualified Test.Neon.Class.PowerSpec as Power
-import qualified Test.Neon.Class.PureSpec as Pure
-import qualified Test.Neon.Class.ReduceSpec as Reduce
-import qualified Test.Neon.Class.RemainderSpec as Remainder
-import qualified Test.Neon.Class.RootSpec as Root
-import qualified Test.Neon.Class.ShowSpec as Show
-import qualified Test.Neon.Class.SubtractSpec as Subtract
-import qualified Test.Neon.Class.ToArraySpec as ToArray
-import qualified Test.Neon.Class.ToIntSpec as ToInt
-import qualified Test.Neon.Class.TopSpec as Top
-import qualified Test.Neon.Class.TraverseSpec as Traverse
-import qualified Test.Neon.Class.ZeroSpec as Zero
+import Neon (..)
+import Test.Spec (..)
+import Test.Neon.Class.AddSpec (spec) as Add
+import Test.Neon.Class.AlwaysSpec (spec) as Always
+import Test.Neon.Class.AndSpec (spec) as And
+import Test.Neon.Class.ApplySpec (spec) as Apply
+import Test.Neon.Class.BindSpec (spec) as Bind
+import Test.Neon.Class.BottomSpec (spec) as Bottom
+import Test.Neon.Class.ComposeSpec (spec) as Compose
+import Test.Neon.Class.DivideSpec (spec) as Divide
+import Test.Neon.Class.EqualSpec (spec) as Equal
+import Test.Neon.Class.FlipSpec (spec) as Flip
+import Test.Neon.Class.FromArraySpec (spec) as FromArray
+import Test.Neon.Class.FromIntSpec (spec) as FromInt
+import Test.Neon.Class.GreaterSpec (spec) as Greater
+import Test.Neon.Class.IdentitySpec (spec) as Identity
+import Test.Neon.Class.LessSpec (spec) as Less
+import Test.Neon.Class.MapSpec (spec) as Map
+import Test.Neon.Class.MultiplySpec (spec) as Multiply
+import Test.Neon.Class.NotSpec (spec) as Not
+import Test.Neon.Class.OneSpec (spec) as One
+import Test.Neon.Class.OrSpec (spec) as Or
+import Test.Neon.Class.PowerSpec (spec) as Power
+import Test.Neon.Class.PureSpec (spec) as Pure
+import Test.Neon.Class.ReduceSpec (spec) as Reduce
+import Test.Neon.Class.RemainderSpec (spec) as Remainder
+import Test.Neon.Class.RootSpec (spec) as Root
+import Test.Neon.Class.ShowSpec (spec) as Show
+import Test.Neon.Class.SubtractSpec (spec) as Subtract
+import Test.Neon.Class.ToArraySpec (spec) as ToArray
+import Test.Neon.Class.ToIntSpec (spec) as ToInt
+import Test.Neon.Class.TopSpec (spec) as Top
+import Test.Neon.Class.TraverseSpec (spec) as Traverse
+import Test.Neon.Class.ZeroSpec (spec) as Zero
 
 spec :: Spec
 spec = describe "Neon.Class" do

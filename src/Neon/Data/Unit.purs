@@ -1,4 +1,4 @@
-module Neon.Data.Unit (Unit(), unit) where
+module Neon.Data.Unit (Unit, unit) where
 
 import Neon.Class.Equal (class Equal)
 import Neon.Class.Show (class Show)

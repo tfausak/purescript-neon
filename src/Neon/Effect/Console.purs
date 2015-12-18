@@ -1,7 +1,7 @@
-module Neon.Effect.Console (CONSOLE(), info, log, warn, error) where
+module Neon.Effect.Console (CONSOLE, info, log, warn, error) where
 
-import Neon.Effect.Effect (Effect())
-import Neon.Data.Unit (Unit())
+import Neon.Effect.Effect (Effect)
+import Neon.Data.Unit (Unit)
 
 foreign import nativeInfo :: forall a. String -> Effect (console :: CONSOLE | a) Unit
 foreign import nativeLog :: forall a. String -> Effect (console :: CONSOLE | a) Unit

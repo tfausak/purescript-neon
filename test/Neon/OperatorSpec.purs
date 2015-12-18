@@ -1,7 +1,7 @@
 module Test.Neon.OperatorSpec where
 
-import Neon
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Operator" do

@@ -1,6 +1,6 @@
 module Test.Spec where
 
-import Neon
+import Neon (..)
 
 type Spec = Effect (console :: CONSOLE, exception :: EXCEPTION) Unit
 

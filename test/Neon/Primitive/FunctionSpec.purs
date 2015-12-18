@@ -1,6 +1,6 @@
 module Test.Neon.Primitive.FunctionSpec where
 
-import Test.Spec
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Primitive.Function" do

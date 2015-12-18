@@ -1,4 +1,4 @@
-module Neon.Data.Dictionary (Dictionary()) where
+module Neon.Data.Dictionary (Dictionary) where
 
 import Neon.Class.Add (class Add, add)
 import Neon.Class.Equal (class Equal, equal)
@@ -8,7 +8,7 @@ import Neon.Class.Reduce (class Reduce)
 import Neon.Class.Show (class Show, show)
 import Neon.Class.ToArray (class ToArray, toArray)
 import Neon.Class.Zero (class Zero)
-import Neon.Data.Pair (Pair())
+import Neon.Data.Pair (Pair)
 
 foreign import nativeAdd :: forall a. Dictionary a -> Dictionary a -> Dictionary a
 foreign import nativeFromArray :: forall a. Array (Pair String a) -> Dictionary a

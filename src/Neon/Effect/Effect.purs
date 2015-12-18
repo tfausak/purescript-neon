@@ -1,4 +1,4 @@
-module Neon.Effect.Effect (Effect(), runPure, unsafeRunEffect) where
+module Neon.Effect.Effect (Effect, runPure, unsafeRunEffect) where
 
 import Neon.Class.Apply (class Apply)
 import Neon.Class.Bind (class Bind)

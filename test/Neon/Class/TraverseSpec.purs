@@ -1,8 +1,7 @@
 module Test.Neon.Class.TraverseSpec where
 
-import Neon
-import Neon.Data -- Hack
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Class.Traverse" do

@@ -1,7 +1,7 @@
 module Test.Neon.Primitive.CharSpec where
 
-import Neon
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Primitive.Char" do
