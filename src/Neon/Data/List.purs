@@ -2,12 +2,12 @@ module Neon.Data.List (List(Nil, Cons)) where
 
 import Neon.Class.And (and)
 import Neon.Class.Add (add)
-import Neon.Class.Equal (Equal, equal)
-import Neon.Class.FromArray (FromArray)
-import Neon.Class.Map (Map, map)
-import Neon.Class.Reduce (Reduce, reduce)
-import Neon.Class.Show (Show, show)
-import Neon.Class.ToArray (ToArray)
+import Neon.Class.Equal (class Equal, equal)
+import Neon.Class.FromArray (class FromArray)
+import Neon.Class.Map (class Map, map)
+import Neon.Class.Reduce (class Reduce, reduce)
+import Neon.Class.Show (class Show, show)
+import Neon.Class.ToArray (class ToArray)
 
 foreign import nativeFromArray :: forall a. List a -> (a -> List a -> List a) -> Array a -> List a
 foreign import nativeToArray :: forall a. List a -> List a -> Array a

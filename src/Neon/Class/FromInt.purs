@@ -1,4 +1,4 @@
-module Neon.Class.FromInt (FromInt, fromInt) where
+module Neon.Class.FromInt (class FromInt, fromInt) where
 
 import Neon.Class.Bottom (bottom)
 import Neon.Class.Greater (greater)

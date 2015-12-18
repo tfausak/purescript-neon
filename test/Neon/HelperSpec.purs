@@ -1,8 +1,7 @@
 module Test.Neon.HelperSpec where
 
-import Neon
-import Neon.Data -- HACK
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Helper" do

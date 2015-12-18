@@ -1,4 +1,4 @@
-module Neon.Class.Equal (Equal, equal) where
+module Neon.Class.Equal (class Equal, equal) where
 
 foreign import nativeEqual :: forall a. a -> a -> Boolean
 foreign import nativeEqualArray :: forall a. (Equal a) => Array a -> Array a -> Boolean

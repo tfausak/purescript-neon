@@ -2,8 +2,8 @@ module Neon.Data.Pair (Pair(Pair), pair) where
 
 import Neon.Class.Add (add)
 import Neon.Class.And (and)
-import Neon.Class.Equal (Equal, equal)
-import Neon.Class.Show (Show, show)
+import Neon.Class.Equal (class Equal, equal)
+import Neon.Class.Show (class Show, show)
 import Neon.Class.Reduce (reduce)
 
 newtype Pair a b = Pair { first :: a, second :: b }

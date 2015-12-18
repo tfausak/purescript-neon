@@ -1,4 +1,4 @@
-module Neon.Class.ToArray (ToArray, toArray) where
+module Neon.Class.ToArray (class ToArray, toArray) where
 
 foreign import nativeToArrayString :: String -> Array Char
 

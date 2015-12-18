@@ -1,7 +1,7 @@
 module Test.Neon.Data.ExceptionSpec where
 
-import Neon
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Data.Exception" do

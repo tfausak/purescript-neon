@@ -1,7 +1,7 @@
 module Test.Neon.Effect.EffectSpec where
 
-import Neon
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Effect.Effect" do

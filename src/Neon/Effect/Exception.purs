@@ -1,7 +1,7 @@
-module Neon.Effect.Exception (EXCEPTION(), catch, throw) where
+module Neon.Effect.Exception (EXCEPTION, catch, throw) where
 
-import Neon.Effect.Effect (Effect())
-import Neon.Data.Exception (Exception())
+import Neon.Effect.Effect (Effect)
+import Neon.Data.Exception (Exception)
 
 foreign import nativeCatch :: forall a b. Effect (exception :: EXCEPTION | a) b -> (Exception -> Effect a b) -> Effect a b
 foreign import nativeThrow :: forall a b. Exception -> Effect (exception :: EXCEPTION | a) b

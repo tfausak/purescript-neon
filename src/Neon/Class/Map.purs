@@ -1,4 +1,4 @@
-module Neon.Class.Map (Map, map) where
+module Neon.Class.Map (class Map, map) where
 
 foreign import nativeMapArray :: forall a b. (a -> b) -> Array a -> Array b
 

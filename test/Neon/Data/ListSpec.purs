@@ -1,7 +1,7 @@
 module Test.Neon.Data.ListSpec where
 
-import Neon
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Data.List" do

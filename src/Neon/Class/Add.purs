@@ -1,4 +1,4 @@
-module Neon.Class.Add (Add, add) where
+module Neon.Class.Add (class Add, add) where
 
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (truncate)

@@ -1,4 +1,4 @@
-module Neon.Class.Identity (Identity, identity) where
+module Neon.Class.Identity (class Identity, identity) where
 
 class Identity a where
   identity :: forall b. a b b

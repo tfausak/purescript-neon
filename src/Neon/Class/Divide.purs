@@ -1,4 +1,4 @@
-module Neon.Class.Divide (Divide, divide) where
+module Neon.Class.Divide (class Divide, divide) where
 
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (truncate)

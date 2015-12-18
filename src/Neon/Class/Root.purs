@@ -1,4 +1,4 @@
-module Neon.Class.Root (Root, root) where
+module Neon.Class.Root (class Root, root) where
 
 import Neon.Class.Divide (divide)
 import Neon.Class.Power (power)

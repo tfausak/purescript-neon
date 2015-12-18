@@ -1,7 +1,7 @@
 module Test.Neon.Class.TopSpec where
 
-import Neon
-import Test.Spec
+import Neon (..)
+import Test.Spec (..)
 
 spec :: Spec
 spec = describe "Neon.Class.Top" do

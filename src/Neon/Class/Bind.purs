@@ -1,4 +1,4 @@
-module Neon.Class.Bind (Bind, bind) where
+module Neon.Class.Bind (class Bind, bind) where
 
 foreign import nativeBindArray :: forall a b. Array a -> (a -> Array b) -> Array b
 
