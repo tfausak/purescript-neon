@@ -15,24 +15,24 @@ import Neon.Class.Remainder (class Remainder, remainder)
 import Neon.Class.Subtract (class Subtract, subtract)
 import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
 
-infixl 8 _compose as >>
-infixr 8 _esopmoc as <<
-infixr 7 _power as ^
-infixl 6 _multiply as *
-infixl 6 _divide as /
-infixl 6 _remainder as %
-infixl 5 _add as +
-infixl 5 _subtract as -
-infix  4 _equal as ==
-infix  4 _notEqual as !=
-infix  4 _greater as >
+infixl 8 _compose        as >>
+infixr 8 _esopmoc        as <<
+infixr 7 _power          as ^
+infixl 6 _multiply       as *
+infixl 6 _divide         as /
+infixl 6 _remainder      as %
+infixl 5 _add            as +
+infixl 5 _subtract       as -
+infix  4 _equal          as ==
+infix  4 _notEqual       as !=
+infix  4 _greater        as >
 infix  4 _greaterOrEqual as >=
-infix  4 _less as <
-infix  4 _lessOrEqual as <=
-infixr 3 _and as &&
-infixr 2 _or as ||
-infixl 1 _apply as |>
-infixr 1 _ylppa as <|
+infix  4 _less           as <
+infix  4 _lessOrEqual    as <=
+infixr 3 _and            as &&
+infixr 2 _or             as ||
+infixl 1 _apply          as |>
+infixr 1 _ylppa          as <|
 
 _compose :: forall a b c d. (Compose a) => a b c -> a c d -> a b d
 _compose = compose
