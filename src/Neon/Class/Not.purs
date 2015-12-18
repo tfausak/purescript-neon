@@ -1,4 +1,4 @@
-module Neon.Class.Not (Not, not) where
+module Neon.Class.Not (class Not, not) where
 
 foreign import nativeNot :: forall a. a -> a
 

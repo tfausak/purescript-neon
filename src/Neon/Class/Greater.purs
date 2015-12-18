@@ -1,6 +1,6 @@
-module Neon.Class.Greater (Greater, greater) where
+module Neon.Class.Greater (class Greater, greater) where
 
-import Neon.Class.Equal (Equal)
+import Neon.Class.Equal (class Equal)
 
 foreign import nativeGreater :: forall a. a -> a -> Boolean
 foreign import nativeGreaterArray :: forall a. (Equal a, Greater a) => Array a -> Array a -> Boolean

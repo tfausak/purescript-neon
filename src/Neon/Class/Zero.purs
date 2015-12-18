@@ -1,4 +1,4 @@
-module Neon.Class.Zero (Zero, zero) where
+module Neon.Class.Zero (class Zero, zero) where
 
 class Zero a where
   zero :: a

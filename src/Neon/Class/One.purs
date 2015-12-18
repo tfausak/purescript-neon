@@ -1,4 +1,4 @@
-module Neon.Class.One (One, one) where
+module Neon.Class.One (class One, one) where
 
 class One a where
   one :: a

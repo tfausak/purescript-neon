@@ -1,4 +1,4 @@
-module Neon.Class.FromArray (FromArray, fromArray) where
+module Neon.Class.FromArray (class FromArray, fromArray) where
 
 foreign import nativeFromArrayString :: Array Char -> String
 

@@ -1,4 +1,4 @@
-module Neon.Class.Power (Power, power) where
+module Neon.Class.Power (class Power, power) where
 
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (truncate)

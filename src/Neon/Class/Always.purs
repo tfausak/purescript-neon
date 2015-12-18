@@ -1,4 +1,4 @@
-module Neon.Class.Always (Always, always) where
+module Neon.Class.Always (class Always, always) where
 
 class Always a where
   always :: forall b c. a b (a c b)

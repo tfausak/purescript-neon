@@ -1,4 +1,4 @@
-module Neon.Class.Subtract (Subtract, subtract) where
+module Neon.Class.Subtract (class Subtract, subtract) where
 
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (truncate)

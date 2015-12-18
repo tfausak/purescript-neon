@@ -1,17 +1,17 @@
 module Neon.Data.Maybe (Maybe(Nothing, Just), maybe) where
 
 import Neon.Class.Add (add)
-import Neon.Class.Apply (Apply)
-import Neon.Class.Bind (Bind)
-import Neon.Class.Equal (Equal, equal)
-import Neon.Class.FromArray (FromArray)
-import Neon.Class.Greater (Greater, greater)
-import Neon.Class.Less (Less, less)
-import Neon.Class.Map (Map)
-import Neon.Class.Pure (Pure)
+import Neon.Class.Apply (class Apply)
+import Neon.Class.Bind (class Bind)
+import Neon.Class.Equal (class Equal, equal)
+import Neon.Class.FromArray (class FromArray)
+import Neon.Class.Greater (class Greater, greater)
+import Neon.Class.Less (class Less, less)
+import Neon.Class.Map (class Map)
+import Neon.Class.Pure (class Pure)
 import Neon.Class.Reduce (reduce)
-import Neon.Class.Show (Show, show)
-import Neon.Class.ToArray (ToArray)
+import Neon.Class.Show (class Show, show)
+import Neon.Class.ToArray (class ToArray)
 
 data Maybe a
   = Nothing

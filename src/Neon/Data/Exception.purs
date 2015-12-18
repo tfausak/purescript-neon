@@ -1,8 +1,8 @@
 module Neon.Data.Exception (Exception(), exception) where
 
 import Neon.Class.Add (add)
-import Neon.Class.Equal (Equal)
-import Neon.Class.Show (Show, show)
+import Neon.Class.Equal (class Equal)
+import Neon.Class.Show (class Show, show)
 
 foreign import nativeEqual :: Exception -> Exception -> Boolean
 foreign import nativeFromException :: Exception -> String

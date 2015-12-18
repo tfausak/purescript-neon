@@ -1,4 +1,4 @@
-module Neon.Class.Flip (Flip, flip) where
+module Neon.Class.Flip (class Flip, flip) where
 
 class Flip a where
   flip :: forall b c d. a b (a c d) -> a c (a b d)

@@ -1,13 +1,13 @@
 module Neon.Data.Dictionary (Dictionary()) where
 
-import Neon.Class.Add (Add, add)
-import Neon.Class.Equal (Equal, equal)
-import Neon.Class.FromArray (FromArray, fromArray)
-import Neon.Class.Map (Map)
-import Neon.Class.Reduce (Reduce)
-import Neon.Class.Show (Show, show)
-import Neon.Class.ToArray (ToArray, toArray)
-import Neon.Class.Zero (Zero)
+import Neon.Class.Add (class Add, add)
+import Neon.Class.Equal (class Equal, equal)
+import Neon.Class.FromArray (class FromArray, fromArray)
+import Neon.Class.Map (class Map)
+import Neon.Class.Reduce (class Reduce)
+import Neon.Class.Show (class Show, show)
+import Neon.Class.ToArray (class ToArray, toArray)
+import Neon.Class.Zero (class Zero)
 import Neon.Data.Pair (Pair())
 
 foreign import nativeAdd :: forall a. Dictionary a -> Dictionary a -> Dictionary a

@@ -1,4 +1,4 @@
-module Neon.Class.ToInt (ToInt, toInt) where
+module Neon.Class.ToInt (class ToInt, toInt) where
 
 foreign import nativeToIntChar :: Char -> Int
 

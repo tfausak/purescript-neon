@@ -1,6 +1,6 @@
-module Neon.Class.Less (Less, less) where
+module Neon.Class.Less (class Less, less) where
 
-import Neon.Class.Equal (Equal)
+import Neon.Class.Equal (class Equal)
 
 foreign import nativeLess :: forall a. a -> a -> Boolean
 foreign import nativeLessArray :: forall a. (Equal a, Less a) => Array a -> Array a -> Boolean

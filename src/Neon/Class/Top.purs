@@ -1,4 +1,4 @@
-module Neon.Class.Top (Top, top) where
+module Neon.Class.Top (class Top, top) where
 
 foreign import nativeTopInt :: Int
 foreign import nativeTopNumber :: Number

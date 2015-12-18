@@ -1,7 +1,7 @@
 module Neon.Data.Unit (Unit(), unit) where
 
-import Neon.Class.Equal (Equal)
-import Neon.Class.Show (Show)
+import Neon.Class.Equal (class Equal)
+import Neon.Class.Show (class Show)
 
 newtype Unit = Unit {}
 

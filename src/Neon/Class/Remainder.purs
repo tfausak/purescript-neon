@@ -1,4 +1,4 @@
-module Neon.Class.Remainder (Remainder, remainder) where
+module Neon.Class.Remainder (class Remainder, remainder) where
 
 foreign import nativeRemainder :: forall a. a -> a -> a
 

@@ -1,4 +1,4 @@
-module Neon.Class.Show (Show, show) where
+module Neon.Class.Show (class Show, show) where
 
 foreign import nativeShow :: forall a. a -> String
 foreign import nativeShowArray :: forall a. (Show a) => Array a -> String

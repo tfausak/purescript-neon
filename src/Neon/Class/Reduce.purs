@@ -1,4 +1,4 @@
-module Neon.Class.Reduce (Reduce, reduce) where
+module Neon.Class.Reduce (class Reduce, reduce) where
 
 foreign import nativeReduceArray :: forall a b. (b -> a -> b) -> b -> Array a -> b
 

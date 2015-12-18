@@ -1,4 +1,4 @@
-module Neon.Class.Compose (Compose, compose) where
+module Neon.Class.Compose (class Compose, compose) where
 
 class Compose a where
   compose :: forall b c d. a b c -> a c d -> a b d

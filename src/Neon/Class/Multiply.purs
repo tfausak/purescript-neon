@@ -1,4 +1,4 @@
-module Neon.Class.Multiply (Multiply, multiply) where
+module Neon.Class.Multiply (class Multiply, multiply) where
 
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (truncate)
