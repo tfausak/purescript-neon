@@ -1,4 +1,4 @@
-module Neon.Class.Filter where
+module Neon.Class.Filter (class Filter, filter) where
 
 foreign import nativeFilterArray :: forall a. (a -> Boolean) -> Array a -> Array a
 
