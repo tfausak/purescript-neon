@@ -9,6 +9,7 @@ module Neon.Class
   , module Neon.Class.Compose
   , module Neon.Class.Divide
   , module Neon.Class.Equal
+  , module Neon.Class.Filter
   , module Neon.Class.Flip
   , module Neon.Class.FromArray
   , module Neon.Class.FromInt
@@ -43,6 +44,7 @@ import Neon.Class.Bottom
 import Neon.Class.Compose
 import Neon.Class.Divide
 import Neon.Class.Equal
+import Neon.Class.Filter
 import Neon.Class.Flip
 import Neon.Class.FromArray
 import Neon.Class.FromInt

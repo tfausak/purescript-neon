@@ -11,6 +11,7 @@ import Test.Neon.Class.BottomSpec (spec) as Bottom
 import Test.Neon.Class.ComposeSpec (spec) as Compose
 import Test.Neon.Class.DivideSpec (spec) as Divide
 import Test.Neon.Class.EqualSpec (spec) as Equal
+import Test.Neon.Class.FilterSpec (spec) as Filter
 import Test.Neon.Class.FlipSpec (spec) as Flip
 import Test.Neon.Class.FromArraySpec (spec) as FromArray
 import Test.Neon.Class.FromIntSpec (spec) as FromInt
@@ -46,6 +47,7 @@ spec = describe "Neon.Class" do
   Compose.spec
   Divide.spec
   Equal.spec
+  Filter.spec
   Flip.spec
   FromArray.spec
   FromInt.spec
