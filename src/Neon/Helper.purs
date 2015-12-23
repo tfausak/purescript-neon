@@ -65,9 +65,11 @@ import Neon.Class.Traverse (class Traverse, traverse)
 import Neon.Class.Reduce (class Reduce, reduce)
 import Neon.Class.Show (class Show, show)
 import Neon.Class.Subtract (class Subtract, subtract)
+import Neon.Class.ToArray (toArray)
 import Neon.Class.ToInt (class ToInt, toInt)
 import Neon.Class.Zero (class Zero, zero)
 import Neon.Data.Exception (exception)
+import Neon.Data.List (List(Nil, Cons))
 import Neon.Data.Maybe (Maybe(Nothing, Just), maybe)
 import Neon.Data.Pair (Pair(Pair), pair)
 import Neon.Data.Unit (Unit, unit)
@@ -159,12 +161,14 @@ product :: forall a b. (Multiply b, One b, Reduce a) => a b -> b
 product = reduce multiply one
 
 range :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
-range l h =
-  if greater l h
-  then []
+range l h = toArray (rangeList l h)
+
+rangeList :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> List a
+rangeList l h = if greater l h
+  then Nil
   else case increment l of
-    Nothing -> [l]
-    Just x -> add [l] (range x h)
+    Nothing -> Cons l Nil
+    Just x -> Cons l (rangeList x h)
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal = divide one
