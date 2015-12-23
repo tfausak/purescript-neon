@@ -111,6 +111,10 @@ spec = describe "Neon.Helper" do
   describe "reciprocal" do
     it "is one divided by the number" do
       reciprocal 2.0 ?= 0.5
+  describe "replicate" do
+    it "replicates the value" do
+      replicate 0 unit ?= []
+      replicate 2 unit ?= [unit, unit]
   describe "sequence" do
     it "sequences the actions" do
       sequence [Just 1, Just 2] ?= Just [1, 2]

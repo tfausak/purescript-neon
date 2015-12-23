@@ -26,6 +26,7 @@ module Neon.Helper
   , product
   , range
   , reciprocal
+  , replicate
   , sequence
   , sign
   , size
@@ -172,6 +173,14 @@ rangeList l h = if greater l h
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal = divide one
+
+replicate :: forall a. Int -> a -> Array a
+replicate n x = toArray (replicateList n x)
+
+replicateList :: forall a. Int -> a -> List a
+replicateList n x = if less n 1
+  then Nil
+  else Cons x (replicateList (subtract n 1) x)
 
 sequence :: forall a b c. (Apply b, Map b, Pure b, Traverse a) => a (b c) -> b (a c)
 sequence = traverse identity
