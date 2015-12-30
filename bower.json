@@ -6,6 +6,9 @@
       "name": "Taylor Fausak"
     }
   ],
+  "devDependencies": {
+    "purescript-spec": "0.7.2"
+  },
   "description": "An experimental standard library for PureScript.",
   "homepage": "https://github.com/tfausak/purescript-neon",
   "ignore": [

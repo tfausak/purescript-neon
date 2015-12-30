@@ -5,7 +5,7 @@
 module.exports = {
   nativeLess: function (x) {
     return function (y) {
-      return x < y;
+      return y < x;
     };
   },
 
@@ -18,13 +18,13 @@ module.exports = {
           for (var i = 0; i < xl && i < yl; ++i) {
             var xi = x[i];
             var yi = y[i];
-            if (Less.less(xi)(yi)) {
+            if (Less.less(yi)(xi)) {
               return true;
-            } else if (!Equal.equal(xi)(yi)) {
+            } else if (!Equal.equal(yi)(xi)) {
               return false;
             }
           }
-          return xl < yl;
+          return yl < xl;
         };
       };
     };
