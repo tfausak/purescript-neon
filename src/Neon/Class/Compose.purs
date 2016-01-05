@@ -1,7 +1,9 @@
-module Neon.Class.Compose (class Compose, compose) where
+module Neon.Class.Compose (Compose, compose) where
+
+import Prelude as Prelude
 
 class Compose a where
-  compose :: forall b c d. a b c -> a c d -> a b d
+  compose :: forall b c d. a c d -> a b c -> a b d
 
 instance composeFunction :: Compose Function where
-  compose f g = \ x -> g (f x)
+  compose g f = f Prelude.>>> g

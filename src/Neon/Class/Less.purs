@@ -1,27 +1,25 @@
-module Neon.Class.Less (class Less, less) where
+module Neon.Class.Less (Less, isLess) where
 
-import Neon.Class.Equal (class Equal)
-
-foreign import nativeLess :: forall a. a -> a -> Boolean
-foreign import nativeLessArray :: forall a. (Equal a, Less a) => Array a -> Array a -> Boolean
+import Prelude as Prelude
 
 class Less a where
-  less :: a -> a -> Boolean
+  isLess :: a -> a -> Boolean
 
-instance lessArray :: (Equal a, Less a) => Less (Array a) where
-  less = nativeLessArray
+-- TODO: I need `map` and `reduce` for this.
+-- instance lessArray :: (Less a) => Less (Array a) where
+--   isLess y x = x Prelude.< y
 
 instance lessBoolean :: Less Boolean where
-  less = nativeLess
+  isLess y x = x Prelude.< y
 
 instance lessChar :: Less Char where
-  less = nativeLess
+  isLess y x = x Prelude.< y
 
 instance lessInt :: Less Int where
-  less = nativeLess
+  isLess y x = x Prelude.< y
 
 instance lessNumber :: Less Number where
-  less = nativeLess
+  isLess y x = x Prelude.< y
 
 instance lessString :: Less String where
-  less = nativeLess
+  isLess y x = x Prelude.< y

@@ -1,22 +1,18 @@
-module Neon.Class.Add (class Add, add) where
+module Neon.Class.Add (Add, add) where
 
-import Neon.Primitive.Int (toNumber)
-import Neon.Primitive.Number (truncate)
-
-foreign import nativeAdd :: forall a. a -> a -> a
-foreign import nativeAddArray :: forall a. Array a -> Array a -> Array a
+import Prelude as Prelude
 
 class Add a where
   add :: a -> a -> a
 
 instance addArray :: Add (Array a) where
-  add = nativeAddArray
+  add y x = x Prelude.++ y
 
 instance addInt :: Add Int where
-  add x y = truncate (add (toNumber x) (toNumber y))
+  add y x = x Prelude.+ y
 
 instance addNumber :: Add Number where
-  add = nativeAdd
+  add y x = x Prelude.+ y
 
 instance addString :: Add String where
-  add = nativeAdd
+  add y x = x Prelude.++ y

@@ -1,11 +1,8 @@
 {
   "dependencies": {
-    "bower": "1.7.1",
-    "pulp": "6.1.0",
-    "purescript": "0.8.0-rc.1"
-  },
-  "devDependencies": {
-    "eslint": "1.10.3"
+    "bower": "1.7.2",
+    "pulp": "6.2.1",
+    "purescript": "0.7.6"
   },
   "engines": {
     "node": "5.3.0",
@@ -19,11 +16,10 @@
     "url": "git://github.com/tfausak/purescript-neon.git"
   },
   "scripts": {
-    "eslint": "eslint",
     "postinstall": "pulp dep install",
     "pulp": "pulp",
     "psc-publish": "psc-publish",
-    "test": "pulp test --force && eslint src && psc-publish --dry-run"
+    "test": "pulp test --force && psc-publish --dry-run"
   },
   "version": "0.0.0-private"
 }

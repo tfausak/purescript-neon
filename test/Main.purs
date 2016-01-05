@@ -1,7 +1,6 @@
 module Test.Main where
 
-import Test.Spec (..)
-import Test.NeonSpec (spec) as Neon
+import Batteries
 
-main :: Spec
-main = runSpec Neon.spec
+main :: Eff () Unit
+main = pure unit

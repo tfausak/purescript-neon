@@ -1,15 +1,13 @@
-module Neon.Class.Power (class Power, power) where
+module Neon.Class.Power (Power, power) where
 
-import Neon.Primitive.Int (toNumber)
-import Neon.Primitive.Number (truncate)
-
-foreign import nativePower :: forall a. a -> a -> a
+import Data.Int as Int
+import Math as Math
 
 class Power a where
   power :: a -> a -> a
 
 instance powerInt :: Power Int where
-  power x y = truncate (power (toNumber x) (toNumber y))
+  power y x = Int.floor (Math.pow (Int.toNumber x) (Int.toNumber y))
 
 instance powerNumber :: Power Number where
-  power = nativePower
+  power y x = Math.pow x y

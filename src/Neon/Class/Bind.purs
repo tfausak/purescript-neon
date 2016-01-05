@@ -1,9 +1,11 @@
-module Neon.Class.Bind (class Bind, bind) where
+module Neon.Class.Bind (Bind, bind) where
 
-foreign import nativeBindArray :: forall a b. Array a -> (a -> Array b) -> Array b
+import Prelude as Prelude
 
 class Bind a where
+  -- TODO: I want the "container" to be the last argument, but PureScript's
+  --   syntax requires this order.
   bind :: forall b c. a b -> (b -> a c) -> a c
 
 instance bindArray :: Bind Array where
-  bind = nativeBindArray
+  bind xs f = Prelude.bind xs f

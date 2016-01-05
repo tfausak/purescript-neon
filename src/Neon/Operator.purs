@@ -1,89 +1,88 @@
 module Neon.Operator where
 
-import Neon.Class.Add (class Add, add)
-import Neon.Class.And (class And, and)
-import Neon.Class.Compose (class Compose, compose)
-import Neon.Class.Divide (class Divide, divide)
-import Neon.Class.Equal (class Equal, equal)
-import Neon.Class.Flip (flip)
-import Neon.Class.Greater (class Greater, greater)
-import Neon.Class.Less (class Less, less)
-import Neon.Class.Multiply (class Multiply, multiply)
-import Neon.Class.Or (class Or, or)
-import Neon.Class.Power (class Power, power)
-import Neon.Class.Remainder (class Remainder, remainder)
-import Neon.Class.Subtract (class Subtract, subtract)
-import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
+import Neon.Class.Add (Add, add)
+import Neon.Class.And (And, and)
+import Neon.Class.Compose (Compose, compose)
+import Neon.Class.Divide (Divide, divide)
+import Neon.Class.Equal (Equal, isEqual)
+import Neon.Class.Greater (Greater, isGreater)
+import Neon.Class.Less (Less, isLess)
+import Neon.Class.Multiply (Multiply, multiply)
+import Neon.Class.Or (Or, or)
+import Neon.Class.Power (Power, power)
+import Neon.Class.Remainder (Remainder, remainder)
+import Neon.Class.Subtract (Subtract, subtract)
+import Neon.Helper (isGreaterOrEqual, isLessOrEqual, isNotEqual)
 
-infixl 8 _compose        as >>
-infixr 8 _esopmoc        as <<
-infixr 7 _power          as ^
-infixl 6 _multiply       as *
-infixl 6 _divide         as /
-infixl 6 _remainder      as %
-infixl 5 _add            as +
-infixl 5 _subtract       as -
-infix  4 _equal          as ==
-infix  4 _notEqual       as !=
-infix  4 _greater        as >
-infix  4 _greaterOrEqual as >=
-infix  4 _less           as <
-infix  4 _lessOrEqual    as <=
-infixr 3 _and            as &&
-infixr 2 _or             as ||
-infixl 1 _apply          as |>
-infixr 1 _ylppa          as <|
+infixl 8 >>
+infixr 8 <<
+infixr 7 ^
+infixl 6 *
+infixl 6 /
+infixl 6 %
+infixl 5 +
+infixl 5 -
+infix  4 ==
+infix  4 !=
+infix  4 >
+infix  4 >=
+infix  4 <
+infix  4 <=
+infixr 3 &&
+infixr 2 ||
+infixl 1 |>
+infixr 1 <|
 
-_compose :: forall a b c d. (Compose a) => a b c -> a c d -> a b d
-_compose = compose
+(>>) :: forall a b c d. (Compose a) => a b c -> a c d -> a b d
+(>>) f g = compose g f
 
-_esopmoc :: forall a b c d. (Compose a) => a c d -> a b c -> a b d
-_esopmoc = flip _compose
+(<<) :: forall a b c d. (Compose a) => a c d -> a b c -> a b d
+(<<) f g = compose f g
 
-_power :: forall a. (Power a) => a -> a -> a
-_power = power
+(^) :: forall a. (Power a) => a -> a -> a
+(^) x y = power y x
 
-_multiply :: forall a. (Multiply a) => a -> a -> a
-_multiply = multiply
+(*) :: forall a. (Multiply a) => a -> a -> a
+(*) x y = multiply y x
 
-_divide :: forall a. (Divide a) => a -> a -> a
-_divide = divide
+(/) :: forall a. (Divide a) => a -> a -> a
+(/) x y = divide y x
 
-_remainder :: forall a. (Remainder a) => a -> a -> a
-_remainder = remainder
+(%) :: forall a. (Remainder a) => a -> a -> a
+(%) x y = remainder y x
 
-_add :: forall a. (Add a) => a -> a -> a
-_add = add
+(+) :: forall a. (Add a) => a -> a -> a
+(+) x y = add y x
 
-_subtract :: forall a. (Subtract a) => a -> a -> a
-_subtract = subtract
+(-) :: forall a. (Subtract a) => a -> a -> a
+(-) x y = subtract y x
 
-_equal :: forall a. (Equal a) => a -> a -> Boolean
-_equal = equal
+(==) :: forall a. (Equal a) => a -> a -> Boolean
+(==) x y = isEqual y x
 
-_notEqual :: forall a. (Equal a) => a -> a -> Boolean
-_notEqual = notEqual
+(!=) :: forall a. (Equal a) => a -> a -> Boolean
+(!=) x y = isNotEqual y x
 
-_greater :: forall a. (Greater a) => a -> a -> Boolean
-_greater = greater
+(>) :: forall a. (Greater a) => a -> a -> Boolean
+(>) x y = isGreater y x
 
-_greaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
-_greaterOrEqual = greaterOrEqual
+(>=) :: forall a. (Equal a, Greater a) => a -> a -> Boolean
+(>=) x y = isGreaterOrEqual y x
 
-_less :: forall a. (Less a) => a -> a -> Boolean
-_less = less
+(<) :: forall a. (Less a) => a -> a -> Boolean
+(<) x y = isLess y x
 
-_lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
-_lessOrEqual = lessOrEqual
+(<=) :: forall a. (Equal a, Less a) => a -> a -> Boolean
+(<=) x y = isLessOrEqual y x
 
-_and :: forall a. (And a) => a -> a -> a
-_and = and
+(&&) :: forall a. (And a) => a -> a -> a
+(&&) x y = and y x
 
-_or :: forall a. (Or a) => a -> a -> a
-_or = or
+(||) :: forall a. (Or a) => a -> a -> a
+(||) x y = or y x
 
-_apply :: forall a b. a -> (a -> b) -> b
-_apply x f = f x
+(|>) :: forall a b. a -> (a -> b) -> b
+(|>) x f = f x
 
-_ylppa :: forall a b. (a -> b) -> a -> b
-_ylppa = flip _apply
+(<|) :: forall a b. (a -> b) -> a -> b
+(<|) f x = f x
