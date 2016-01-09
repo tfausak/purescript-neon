@@ -28,7 +28,6 @@ infix  4 <=
 infixr 3 &&
 infixr 2 ||
 infixl 1 |>
-infixr 1 <|
 
 (^) :: forall a. (Power a) => a -> a -> a
 (^) x y = power y x
@@ -74,6 +73,3 @@ infixr 1 <|
 
 (|>) :: forall a b. a -> (a -> b) -> b
 (|>) x f = f x
-
-(<|) :: forall a b. (a -> b) -> a -> b
-(<|) f x = f x

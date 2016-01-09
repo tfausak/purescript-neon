@@ -314,9 +314,6 @@ main = run [consoleReporter] do
       describe "|>" do
         it "is application" do
           false Neon.|> not ?= true
-      describe "<|" do
-        it "is application" do
-          not Neon.<| false ?= true
     describe "Primitive" do
       describe "Array" do
         pending "TODO"
