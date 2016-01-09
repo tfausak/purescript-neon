@@ -1,28 +1,25 @@
-module Neon.Class.Equal (class Equal, equal) where
+module Neon.Class.Equal (Equal, isEqual) where
 
-foreign import nativeEqual :: forall a. a -> a -> Boolean
-foreign import nativeEqualArray :: forall a. (Equal a) => Array a -> Array a -> Boolean
+import Prelude as Prelude
 
 class Equal a where
-  equal :: a -> a -> Boolean
+  isEqual :: a -> a -> Boolean
 
-instance equalArray :: (Equal a) => Equal (Array a) where
-  equal = nativeEqualArray
+-- TODO: instance equalArray :: (Equal a) => Equal (Array a) where
 
 instance equalBoolean :: Equal Boolean where
-  equal = nativeEqual
+  isEqual y x = Prelude.eq x y
 
 instance equalChar :: Equal Char where
-  equal = nativeEqual
-
-instance equalFunction :: Equal (a -> b) where
-  equal = nativeEqual
+  isEqual y x = Prelude.eq x y
 
 instance equalInt :: Equal Int where
-  equal = nativeEqual
+  isEqual y x = Prelude.eq x y
+
+-- TODO: instance equalList :: Equal List where
 
 instance equalNumber :: Equal Number where
-  equal = nativeEqual
+  isEqual y x = Prelude.eq x y
 
 instance equalString :: Equal String where
-  equal = nativeEqual
+  isEqual y x = Prelude.eq x y

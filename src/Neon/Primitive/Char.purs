@@ -4,15 +4,13 @@ module Neon.Primitive.Char
   , toUpper
   ) where
 
-foreign import nativeToLower :: Char -> Char
-foreign import nativeToString :: Char -> String
-foreign import nativeToUpper :: Char -> Char
+import Data.Char as Char
 
 toLower :: Char -> Char
-toLower = nativeToLower
+toLower x = Char.toLower x
 
 toString :: Char -> String
-toString = nativeToString
+toString x = Char.toString x
 
 toUpper :: Char -> Char
-toUpper = nativeToUpper
+toUpper x = Char.toUpper x

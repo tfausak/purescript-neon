@@ -6,38 +6,28 @@ module Neon.Primitive.Number
   , isNaN
   , nan
   , round
-  , truncate
   ) where
 
-foreign import nativeCeiling :: Number -> Int
-foreign import nativeFloor :: Number -> Int
-foreign import nativeInfinity :: Number
-foreign import nativeIsFinite :: Number -> Boolean
-foreign import nativeIsNaN :: Number -> Boolean
-foreign import nativeNan :: Number
-foreign import nativeRound :: Number -> Int
-foreign import nativeTruncate :: Number -> Int
+import Data.Int as Int
+import Global as Global
 
 ceiling :: Number -> Int
-ceiling = nativeCeiling
+ceiling x = Int.ceil x
 
 floor :: Number -> Int
-floor = nativeFloor
+floor x = Int.floor x
 
 infinity :: Number
-infinity = nativeInfinity
+infinity = Global.infinity
 
 isFinite :: Number -> Boolean
-isFinite = nativeIsFinite
+isFinite x = Global.isFinite x
 
 isNaN :: Number -> Boolean
-isNaN = nativeIsNaN
+isNaN x = Global.isNaN x
 
 nan :: Number
-nan = nativeNan
+nan = Global.nan
 
 round :: Number -> Int
-round = nativeRound
-
-truncate :: Number -> Int
-truncate = nativeTruncate
+round x = Int.round x

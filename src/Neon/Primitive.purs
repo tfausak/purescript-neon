@@ -1,6 +1,5 @@
 module Neon.Primitive
-  ( module Neon.Primitive
-  , module Neon.Primitive.Array
+  ( module Neon.Primitive.Array
   , module Neon.Primitive.Boolean
   , module Neon.Primitive.Char
   , module Neon.Primitive.Function

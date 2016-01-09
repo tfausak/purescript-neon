@@ -1,15 +1,16 @@
-module Neon.Class.Subtract (class Subtract, subtract) where
+module Neon.Class.Subtract (Subtract, subtract) where
 
-import Neon.Primitive.Int (toNumber)
-import Neon.Primitive.Number (truncate)
-
-foreign import nativeSubtract :: forall a. a -> a -> a
+import Prelude as Prelude
 
 class Subtract a where
   subtract :: a -> a -> a
 
+-- TODO: instance subtractArray :: (Equal a) => Subtract (Array a) where
+
 instance subtractInt :: Subtract Int where
-  subtract x y = truncate (subtract (toNumber x) (toNumber y))
+  subtract y x = Prelude.sub x y
+
+-- TODO: instance subtractList :: (Equal a) => Subtract (List a) where
 
 instance subtractNumber :: Subtract Number where
-  subtract = nativeSubtract
+  subtract y x = Prelude.sub x y

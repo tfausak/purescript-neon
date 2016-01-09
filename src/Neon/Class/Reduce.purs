@@ -1,9 +1,13 @@
-module Neon.Class.Reduce (class Reduce, reduce) where
+module Neon.Class.Reduce (Reduce, reduce) where
 
-foreign import nativeReduceArray :: forall a b. (b -> a -> b) -> b -> Array a -> b
+import Data.Foldable as Foldable
+import Neon.Data (List())
 
 class Reduce a where
   reduce :: forall b c. (c -> b -> c) -> c -> a b -> c
 
 instance reduceArray :: Reduce Array where
-  reduce = nativeReduceArray
+  reduce f x xs = Foldable.foldl f x xs
+
+instance reduceList :: Reduce List where
+  reduce f x xs = Foldable.foldl f x xs

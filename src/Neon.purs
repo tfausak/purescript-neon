@@ -1,6 +1,5 @@
 module Neon
-  ( module Neon
-  , module Neon.Class
+  ( module Neon.Class
   , module Neon.Data
   , module Neon.Effect
   , module Neon.Helper

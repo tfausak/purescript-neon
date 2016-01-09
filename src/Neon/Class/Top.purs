@@ -1,19 +1,19 @@
-module Neon.Class.Top (class Top, top) where
+module Neon.Class.Top (Top, top) where
 
-foreign import nativeTopInt :: Int
-foreign import nativeTopNumber :: Number
+import Neon.Primitive.Number (infinity)
+import Prelude as Prelude
 
 class Top a where
   top :: a
 
 instance topBoolean :: Top Boolean where
-  top = true
+  top = Prelude.top
 
 instance topChar :: Top Char where
-  top = '\65535'
+  top = Prelude.top
 
 instance topInt :: Top Int where
-  top = nativeTopInt
+  top = Prelude.top
 
 instance topNumber :: Top Number where
-  top = nativeTopNumber
+  top = infinity

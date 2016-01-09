@@ -1,27 +1,25 @@
-module Neon.Class.Greater (class Greater, greater) where
+module Neon.Class.Greater (Greater, isGreater) where
 
-import Neon.Class.Equal (class Equal)
-
-foreign import nativeGreater :: forall a. a -> a -> Boolean
-foreign import nativeGreaterArray :: forall a. (Equal a, Greater a) => Array a -> Array a -> Boolean
+import Prelude as Prelude
 
 class Greater a where
-  greater :: a -> a -> Boolean
+  isGreater :: a -> a -> Boolean
 
-instance greaterArray :: (Equal a, Greater a) => Greater (Array a) where
-  greater = nativeGreaterArray
+-- TODO: instance greaterArray :: (Greater a) => Greater (Array a) where
 
 instance greaterBoolean :: Greater Boolean where
-  greater = nativeGreater
+  isGreater y x = x Prelude.> y
 
 instance greaterChar :: Greater Char where
-  greater = nativeGreater
+  isGreater y x = x Prelude.> y
 
 instance greaterInt :: Greater Int where
-  greater = nativeGreater
+  isGreater y x = x Prelude.> y
+
+-- TODO: instance greaterList :: (Greater a) => Greater (List a) where
 
 instance greaterNumber :: Greater Number where
-  greater = nativeGreater
+  isGreater y x = x Prelude.> y
 
 instance greaterString :: Greater String where
-  greater = nativeGreater
+  isGreater y x = x Prelude.> y

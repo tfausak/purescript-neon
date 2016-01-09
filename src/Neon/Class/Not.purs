@@ -1,12 +1,12 @@
-module Neon.Class.Not (class Not, not) where
+module Neon.Class.Not (Not, not) where
 
-foreign import nativeNot :: forall a. a -> a
+import Prelude as Prelude
 
 class Not a where
   not :: a -> a
 
 instance notBoolean :: Not Boolean where
-  not = nativeNot
+  not x = Prelude.not x
 
 instance notFunction :: (Not b) => Not (a -> b) where
   not f = \ x -> not (f x)

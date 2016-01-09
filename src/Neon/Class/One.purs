@@ -1,10 +1,12 @@
-module Neon.Class.One (class One, one) where
+module Neon.Class.One (One, one) where
+
+import Prelude as Prelude
 
 class One a where
   one :: a
 
 instance oneInt :: One Int where
-  one = 1
+  one = Prelude.one
 
 instance oneNumber :: One Number where
-  one = 1.0
+  one = Prelude.one

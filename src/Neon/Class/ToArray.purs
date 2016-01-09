@@ -1,12 +1,13 @@
-module Neon.Class.ToArray (class ToArray, toArray) where
+module Neon.Class.ToArray (ToArray, toArray) where
 
-foreign import nativeToArrayString :: String -> Array Char
+import Data.List as List
+import Data.String as String
 
 class ToArray a b where
   toArray :: a -> Array b
 
-instance toArrayArray :: ToArray (Array a) a where
-  toArray x = x
+instance toArrayList :: ToArray (List.List a) a where
+  toArray x = List.fromList x
 
 instance toArrayString :: ToArray String Char where
-  toArray = nativeToArrayString
+  toArray x = String.toCharArray x

@@ -1,15 +1,12 @@
-module Neon.Class.Multiply (class Multiply, multiply) where
+module Neon.Class.Multiply (Multiply, multiply) where
 
-import Neon.Primitive.Int (toNumber)
-import Neon.Primitive.Number (truncate)
-
-foreign import nativeMultiply :: forall a. a -> a -> a
+import Prelude as Prelude
 
 class Multiply a where
   multiply :: a -> a -> a
 
 instance multiplyInt :: Multiply Int where
-  multiply x y = truncate (multiply (toNumber x) (toNumber y))
+  multiply y x = Prelude.mul x y
 
 instance multiplyNumber :: Multiply Number where
-  multiply = nativeMultiply
+  multiply y x = Prelude.mul x y

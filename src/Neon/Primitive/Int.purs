@@ -2,7 +2,7 @@ module Neon.Primitive.Int
   ( toNumber
   ) where
 
-foreign import nativeToNumber :: Int -> Number
+import Data.Int as Int
 
 toNumber :: Int -> Number
-toNumber = nativeToNumber
+toNumber x = Int.toNumber x

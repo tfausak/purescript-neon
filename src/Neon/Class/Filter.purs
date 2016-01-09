@@ -1,9 +1,15 @@
-module Neon.Class.Filter (class Filter, filter) where
+module Neon.Class.Filter (Filter, filter) where
 
-foreign import nativeFilterArray :: forall a. (a -> Boolean) -> Array a -> Array a
+import Data.Array as Array
+import Neon.Data (List(Nil, Cons))
 
 class Filter a where
   filter :: forall b. (b -> Boolean) -> a b -> a b
 
 instance filterArray :: Filter Array where
-  filter = nativeFilterArray
+  filter f xs = Array.filter f xs
+
+instance filterList :: Filter List where
+  filter f xs = case xs of
+    Nil -> Nil
+    Cons h t -> if f h then Cons h (filter f t) else filter f t

@@ -1,34 +1,25 @@
-module Neon.Class.Show (class Show, show) where
+module Neon.Class.Show (Show, show) where
 
-foreign import nativeShow :: forall a. a -> String
-foreign import nativeShowArray :: forall a. (Show a) => Array a -> String
-foreign import nativeShowChar :: Char -> String
-foreign import nativeShowNumber :: Number -> String
-foreign import nativeShowString :: String -> String
+import Prelude as Prelude
 
 class Show a where
   show :: a -> String
 
-instance showArray :: (Show a) => Show (Array a) where
-  show = nativeShowArray
+-- TODO: instance showArray :: (Show a) => Show (Array a) where
 
 instance showBoolean :: Show Boolean where
-  show = nativeShow
+  show x = Prelude.show x
 
 instance showChar :: Show Char where
-  show = nativeShowChar
-
-instance showFunction :: Show (a -> b) where
-  show _ = "{- Function -}"
+  show x = Prelude.show x
 
 instance showInt :: Show Int where
-  show = nativeShow
+  show x = Prelude.show x
+
+-- TODO: instance showList :: (Show a) => Show (List a) where
 
 instance showNumber :: Show Number where
-  show = nativeShowNumber
-
-instance showObject :: Show { | a } where
-  show _ = "{- Object -}"
+  show x = Prelude.show x
 
 instance showString :: Show String where
-  show = nativeShowString
+  show x = Prelude.show x
