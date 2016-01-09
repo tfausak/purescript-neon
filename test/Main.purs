@@ -160,11 +160,6 @@ main = run [consoleReporter] do
           Neon.power 3 2 ?= 8
         it "can power numbers" do
           Neon.power 3.0 2.0 ?= 8.0
-      describe "Pure" do
-        it "can pure arrays" do
-          Neon.pure 1 ?= [1]
-        it "can pure lists" do
-          Neon.pure 1 ?= Neon.Cons 1 Neon.Nil
       describe "Reduce" do
         it "can reduce arrays" do
           Neon.reduce Neon.add "a" ["b", "c"] ?= "cba"
@@ -208,6 +203,11 @@ main = run [consoleReporter] do
           Neon.top ?= 2147483647
         it "has a top for numbers" do
           Neon.top ?= Neon.infinity
+      describe "Wrap" do
+        it "can wrap arrays" do
+          Neon.wrap 1 ?= [1]
+        it "can wrap lists" do
+          Neon.wrap 1 ?= Neon.Cons 1 Neon.Nil
       describe "Zero" do
         it "has a zero for arrays" do
           Neon.zero ?= ([] :: Array Unit)
