@@ -67,6 +67,9 @@ main = run [consoleReporter] do
           Neon.isEqual 1.0 1.0 ?= true
         it "can equal strings" do
           Neon.isEqual "a" "a" ?= true
+      describe "Filter" do
+        it "can filter arrays" do
+          Neon.filter (Neon.isGreater 1) [0, 2, 1, 3] ?= [2, 3]
       describe "Greater" do
         it "can compare booleans" do
           Neon.isGreater false true ?= true
@@ -122,6 +125,9 @@ main = run [consoleReporter] do
       describe "Pure" do
         it "can pure arrays" do
           Neon.pure 1 ?= [1]
+      describe "Reduce" do
+        it "can reduce arrays" do
+          Neon.reduce Neon.add "a" ["b", "c"] ?= "cba"
       describe "Remainder" do
         it "can remainder ints" do
           Neon.remainder 2 5 ?= 1

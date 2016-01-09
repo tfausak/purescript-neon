@@ -7,6 +7,7 @@ module Neon.Class
   , module Neon.Class.Compose
   , module Neon.Class.Divide
   , module Neon.Class.Equal
+  , module Neon.Class.Filter
   , module Neon.Class.Greater
   , module Neon.Class.Less
   , module Neon.Class.Map
@@ -16,6 +17,7 @@ module Neon.Class
   , module Neon.Class.Or
   , module Neon.Class.Power
   , module Neon.Class.Pure
+  , module Neon.Class.Reduce
   , module Neon.Class.Remainder
   , module Neon.Class.Show
   , module Neon.Class.Subtract
@@ -31,6 +33,7 @@ import Neon.Class.Bottom
 import Neon.Class.Compose
 import Neon.Class.Divide
 import Neon.Class.Equal
+import Neon.Class.Filter
 import Neon.Class.Greater
 import Neon.Class.Less
 import Neon.Class.Map
@@ -40,6 +43,7 @@ import Neon.Class.One
 import Neon.Class.Or
 import Neon.Class.Power
 import Neon.Class.Pure
+import Neon.Class.Reduce
 import Neon.Class.Remainder
 import Neon.Class.Show
 import Neon.Class.Subtract
