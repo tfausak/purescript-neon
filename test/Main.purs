@@ -269,9 +269,6 @@ main = run [consoleReporter] do
         it "replaces values with unit" do
           Neon.void [1, 2] ?= [unit, unit]
     describe "Operator" do
-      describe ">>" do
-        it "is compose" do
-          ((+ 2) Neon.>> (* 2)) 3 ?= 10
       describe "^" do
         it "is power" do
           2 Neon.^ 3 ?= 8
