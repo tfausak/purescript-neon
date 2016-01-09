@@ -79,12 +79,14 @@ main = run [consoleReporter] do
         it "can divide numbers" do
           Neon.divide 2.0 5.0 ?= 2.5
       describe "Equal" do
+        pending "can equal arrays"
         it "can equal booleans" do
           Neon.isEqual false false ?= true
         it "can equal chars" do
           Neon.isEqual 'a' 'a' ?= true
         it "can equal ints" do
           Neon.isEqual 1 1 ?= true
+        pending "can equal lists"
         it "can equal numbers" do
           Neon.isEqual 1.0 1.0 ?= true
         it "can equal strings" do
@@ -98,23 +100,27 @@ main = run [consoleReporter] do
             (Neon.Cons 0 (Neon.Cons 2 (Neon.Cons 1 Neon.Nil)))
             ?= Neon.Cons 2 Neon.Nil
       describe "Greater" do
+        pending "can compare arrays"
         it "can compare booleans" do
           Neon.isGreater false true ?= true
         it "can compare chars" do
           Neon.isGreater 'a' 'b' ?= true
         it "can compare ints" do
           Neon.isGreater 1 2 ?= true
+        pending "can compare lists"
         it "can compare numbers" do
           Neon.isGreater 1.0 2.0 ?= true
         it "can compare strings" do
           Neon.isGreater "a" "b" ?= true
       describe "Less" do
+        pending "can compare arrays"
         it "can compare booleans" do
           Neon.isLess true false ?= true
         it "can compare chars" do
           Neon.isLess 'b' 'a' ?= true
         it "can compare ints" do
           Neon.isLess 2 1 ?= true
+        pending "can compare lists"
         it "can compare numbers" do
           Neon.isLess 2.0 1.0 ?= true
         it "can compare strings" do
@@ -172,6 +178,7 @@ main = run [consoleReporter] do
         it "can remainder ints" do
           Neon.remainder 2 5 ?= 1
       describe "Show" do
+        pending "can show arrays"
         it "can show booleans" do
           Neon.show false ?= "false"
         it "can show chars" do
@@ -180,13 +187,16 @@ main = run [consoleReporter] do
           Neon.show '\'' ?= "'\\''"
         it "can show ints" do
           Neon.show 1 ?= "1"
+        pending "can show lists"
         it "can show numbers" do
           Neon.show 1.0 ?= "1.0"
         it "can show strings" do
           Neon.show "a" ?= "\"a\""
       describe "Subtract" do
+        pending "can subtract arrays"
         it "can subtract ints" do
           Neon.subtract 1 2 ?= 1
+        pending "can subtract lists"
         it "can subtract numbers" do
           Neon.subtract 1.0 2.0 ?= 1.0
       describe "Top" do
@@ -212,67 +222,148 @@ main = run [consoleReporter] do
     describe "Data" do
       pending "TODO"
     describe "Helper" do
-      it "asTypeOf" do
-        Neon.asTypeOf [1] [] ?= ([] :: Array Int)
-      it "isGreaterOrEqual" do
-        Neon.isGreaterOrEqual 1 0 ?= false
-        Neon.isGreaterOrEqual 1 1 ?= true
-        Neon.isGreaterOrEqual 1 2 ?= true
-      it "isLessOrEqual" do
-        Neon.isLessOrEqual 1 0 ?= true
-        Neon.isLessOrEqual 1 1 ?= true
-        Neon.isLessOrEqual 1 2 ?= false
-      it "isNotEqual" do
-        Neon.isNotEqual 1 1 ?= false
-        Neon.isNotEqual 1 0 ?= true
-      it "negate" do
-        Neon.negate 1 ?= -1
-      it "void" do
-        Neon.void [1, 2] ?= [unit, unit]
+      describe "asTypeOf" do
+        it "is always" do
+          Neon.asTypeOf [1] [] ?= ([] :: Array Int)
+      describe "isGreaterOrEqual" do
+        it "is isGreater or isEqual" do
+          Neon.isGreaterOrEqual 1 0 ?= false
+          Neon.isGreaterOrEqual 1 1 ?= true
+          Neon.isGreaterOrEqual 1 2 ?= true
+      describe "isLessOrEqual" do
+        it "is isLess or isEqual" do
+          Neon.isLessOrEqual 1 0 ?= true
+          Neon.isLessOrEqual 1 1 ?= true
+          Neon.isLessOrEqual 1 2 ?= false
+      describe "isNotEqual" do
+        it "is not isEqual" do
+          Neon.isNotEqual 1 1 ?= false
+          Neon.isNotEqual 1 0 ?= true
+      describe "negate" do
+        it "subtracts from zero" do
+          Neon.negate 1 ?= -1
+      describe "void" do
+        it "replaces values with unit" do
+          Neon.void [1, 2] ?= [unit, unit]
     describe "Operator" do
-      it ">>" do
-        ((+ 2) Neon.>> (* 2)) 3 ?= 10
-      it "<<" do
-        ((+ 2) Neon.<< (* 2)) 3 ?= 8
-      it "^" do
-        2 Neon.^ 3 ?= 8
-      it "*" do
-        2 Neon.* 3 ?= 6
-      it "/" do
-        5 Neon./ 2 ?= 2
-      it "%" do
-        5 Neon.% 2 ?= 1
-      it "+" do
-        "a" Neon.+ "b" ?= "ab"
-      it "-" do
-        2 Neon.- 1 ?= 1
-      it "==" do
-        false Neon.== false ?= true
-      it "!=" do
-        false Neon.!= true ?= true
-      it ">" do
-        2 Neon.> 1 ?= true
-      it ">=" do
-        1 Neon.>= 1 ?= true
-      it "<" do
-        1 Neon.< 2 ?= true
-      it "<=" do
-        1 Neon.<= 1 ?= true
-      it "&&" do
-        true Neon.&& true ?= true
-      it "||" do
-        false Neon.|| true ?= true
-      it "|>" do
-        false Neon.|> not ?= true
-      it "<|" do
-        not Neon.<| false ?= true
+      describe ">>" do
+        it "is compose" do
+          ((+ 2) Neon.>> (* 2)) 3 ?= 10
+      describe "<<" do
+        it "is compose" do
+          ((+ 2) Neon.<< (* 2)) 3 ?= 8
+      describe "^" do
+        it "is power" do
+          2 Neon.^ 3 ?= 8
+      describe "*" do
+        it "is multiply" do
+          2 Neon.* 3 ?= 6
+      describe "/" do
+        it "is divide" do
+          5 Neon./ 2 ?= 2
+      describe "%" do
+        it "is remainder" do
+          5 Neon.% 2 ?= 1
+      describe "+" do
+        it "is add" do
+          "a" Neon.+ "b" ?= "ab"
+      describe "-" do
+        it "is subtract" do
+          2 Neon.- 1 ?= 1
+      describe "==" do
+        it "is isEqual" do
+          false Neon.== false ?= true
+      describe "!=" do
+        it "is isNotEqual" do
+          false Neon.!= true ?= true
+      describe ">" do
+        it "is isGreater" do
+          2 Neon.> 1 ?= true
+      describe ">=" do
+        it "is isGreaterOrEqual" do
+          1 Neon.>= 1 ?= true
+      describe "<" do
+        it "is isLess" do
+          1 Neon.< 2 ?= true
+      describe "<=" do
+        it "is isLessOrEqual" do
+          1 Neon.<= 1 ?= true
+      describe "&&" do
+        it "is and" do
+          true Neon.&& true ?= true
+      describe "||" do
+        it "is or" do
+          false Neon.|| true ?= true
+      describe "|>" do
+        it "is application" do
+          false Neon.|> not ?= true
+      describe "<|" do
+        it "is application" do
+          not Neon.<| false ?= true
     describe "Primitive" do
+      describe "Array" do
+        pending "TODO"
+      describe "Boolean" do
+        pending "TODO"
+      describe "Char" do
+        describe "toLower" do
+          it "lower cases the character" do
+            Neon.toLower 'A' ?= 'a'
+        describe "toString" do
+          it "converts to a string" do
+            Neon.toString 'a' ?= "a"
+        describe "toUpper" do
+          it "upper cases the character" do
+            Neon.toUpper 'a' ?= 'A'
       describe "Function" do
-        it "always" do
-          Neon.always 1 unit ?= 1
-        it "compose" do
-          Neon.compose (* 2) (+ 2) 3 ?= 10
-        it "flip" do
-          Neon.flip Neon.add "a" "b" ?= "ab"
-        it "identity" do
-          Neon.identity unit ?= unit
+        describe "always" do
+          it "always returns the first argument" do
+            Neon.always 1 unit ?= 1
+        describe "compose" do
+          it "composes functions" do
+            Neon.compose (* 2) (+ 2) 3 ?= 10
+        describe "flip" do
+          it "flips functions" do
+            Neon.flip Neon.add "a" "b" ?= "ab"
+        describe "identity" do
+          it "returns the argument" do
+            Neon.identity unit ?= unit
+      describe "Int" do
+        describe "toNumber" do
+          it "converts to a number" do
+            Neon.toNumber 1 ?= 1.0
+      describe "Number" do
+        describe "ceiling" do
+          it "returns the smallest integer greater than the number" do
+            Neon.ceiling 1.2 ?= 2
+            Neon.ceiling (-1.2) ?= -1
+        describe "floor" do
+          it "returns the largest integer less than the number" do
+            Neon.floor 1.2 ?= 1
+            Neon.floor (-1.2) ?= -2
+        describe "infinity" do
+          pending "TODO"
+        describe "isFinite" do
+          it "returns false for infinity and nan" do
+            Neon.isFinite Neon.infinity ?= false
+            Neon.isFinite (-Neon.infinity) ?= false
+            Neon.isFinite Neon.nan ?= false
+          it "returns true for anything else" do
+            Neon.isFinite 0.0 ?= true
+        describe "isNaN" do
+          it "returns true for nan" do
+            Neon.isNaN Neon.nan ?= true
+          it "returns false for anything else" do
+            Neon.isNaN Neon.infinity ?= false
+            Neon.isNaN 0.0 ?= false
+        describe "nan" do
+          pending "TODO"
+        describe "round" do
+          it "returns the integer closest to the number" do
+            Neon.round 1.2 ?= 1
+            Neon.round (-1.2) ?= -1
+            Neon.round 1.5 ?= 2
+      describe "Object" do
+        pending "TODO"
+      describe "String" do
+        pending "TODO"
