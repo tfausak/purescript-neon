@@ -15,17 +15,11 @@ instance showBoolean :: Show Boolean where
 instance showChar :: Show Char where
   show x = Prelude.show x
 
-instance showFunction :: Show (a -> b) where
-  show _ = "{- Function -}"
-
 instance showInt :: Show Int where
   show x = Prelude.show x
 
 instance showNumber :: Show Number where
   show x = Prelude.show x
-
-instance showObject :: Show { | a } where
-  show _ = "{- Object -}"
 
 instance showString :: Show String where
   show x = Prelude.show x
