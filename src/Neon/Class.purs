@@ -2,8 +2,8 @@ module Neon.Class
   ( module Neon.Class.Add
   , module Neon.Class.And
   , module Neon.Class.Apply
-  , module Neon.Class.Bind
   , module Neon.Class.Bottom
+  , module Neon.Class.Chain
   , module Neon.Class.Divide
   , module Neon.Class.Equal
   , module Neon.Class.Filter
@@ -32,8 +32,8 @@ module Neon.Class
 import Neon.Class.Add
 import Neon.Class.And
 import Neon.Class.Apply
-import Neon.Class.Bind
 import Neon.Class.Bottom
+import Neon.Class.Chain
 import Neon.Class.Divide
 import Neon.Class.Equal
 import Neon.Class.Filter

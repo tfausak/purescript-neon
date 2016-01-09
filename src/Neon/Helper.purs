@@ -1,5 +1,6 @@
 module Neon.Helper where
 
+import Neon.Class.Chain (Chain, chain)
 import Neon.Class.Equal (Equal, isEqual)
 import Neon.Class.Greater (Greater, isGreater)
 import Neon.Class.Less (Less, isLess)
@@ -13,6 +14,9 @@ import Neon.Primitive.Function (always)
 
 asTypeOf :: forall a. a -> a -> a
 asTypeOf y x = always x y
+
+bind :: forall a b c. (Chain a) => a b -> (b -> a c) -> a c
+bind x f = chain f x
 
 isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 isGreaterOrEqual y x = or (isGreater y x) (isEqual y x)

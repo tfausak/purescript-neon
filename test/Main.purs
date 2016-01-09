@@ -56,14 +56,6 @@ main = run [consoleReporter] do
             (Neon.Cons (+ 2) (Neon.Cons (* 2) Neon.Nil))
             (Neon.Cons 3 (Neon.Cons 5 Neon.Nil))
             ?= Neon.Cons 5 (Neon.Cons 7 (Neon.Cons 6 (Neon.Cons 10 Neon.Nil)))
-      describe "Bind" do
-        it "can bind arrays" do
-          Neon.bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
-        it "can bind lists" do
-          Neon.bind
-            (Neon.Cons 3 (Neon.Cons 5 Neon.Nil))
-            (\ x -> Neon.Cons x (Neon.Cons (x * 2) Neon.Nil))
-            ?= Neon.Cons 3 (Neon.Cons 6 (Neon.Cons 5 (Neon.Cons 10 Neon.Nil)))
       describe "Bottom" do
         it "has a bottom for booleans" do
           Neon.bottom ?= false
@@ -73,6 +65,14 @@ main = run [consoleReporter] do
           Neon.bottom ?= -2147483648
         it "has a bottom for numbers" do
           Neon.bottom ?= -Neon.infinity
+      describe "Chain" do
+        it "can chain arrays" do
+          Neon.chain (\ x -> [x, x * 2]) [3, 5] ?= [3, 6, 5, 10]
+        it "can chain lists" do
+          Neon.chain
+            (\ x -> Neon.Cons x (Neon.Cons (x * 2) Neon.Nil))
+            (Neon.Cons 3 (Neon.Cons 5 Neon.Nil))
+            ?= Neon.Cons 3 (Neon.Cons 6 (Neon.Cons 5 (Neon.Cons 10 Neon.Nil)))
       describe "Divide" do
         it "can divide ints" do
           Neon.divide 2 5 ?= 2
@@ -225,6 +225,9 @@ main = run [consoleReporter] do
       describe "asTypeOf" do
         it "is always" do
           Neon.asTypeOf [1] [] ?= ([] :: Array Int)
+      describe "bind" do
+        it "is chain flipped" do
+          Neon.bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
       describe "isGreaterOrEqual" do
         it "is isGreater or isEqual" do
           Neon.isGreaterOrEqual 1 0 ?= false
