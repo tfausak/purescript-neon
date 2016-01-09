@@ -272,9 +272,6 @@ main = run [consoleReporter] do
       describe ">>" do
         it "is compose" do
           ((+ 2) Neon.>> (* 2)) 3 ?= 10
-      describe "<<" do
-        it "is compose" do
-          ((+ 2) Neon.<< (* 2)) 3 ?= 8
       describe "^" do
         it "is power" do
           2 Neon.^ 3 ?= 8

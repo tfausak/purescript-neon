@@ -15,7 +15,6 @@ import Neon.Helper (isGreaterOrEqual, isLessOrEqual, isNotEqual)
 import Neon.Primitive.Function (compose)
 
 infixl 8 >>
-infixr 8 <<
 infixr 7 ^
 infixl 6 *
 infixl 6 /
@@ -35,9 +34,6 @@ infixr 1 <|
 
 (>>) :: forall a b c. (a -> b) -> (b -> c) -> (a -> c)
 (>>) f g = compose g f
-
-(<<) :: forall a b c. (b -> c) -> (a -> b) -> (a -> c)
-(<<) f g = compose f g
 
 (^) :: forall a. (Power a) => a -> a -> a
 (^) x y = power y x
