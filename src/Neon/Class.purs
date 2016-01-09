@@ -8,6 +8,8 @@ module Neon.Class
   , module Neon.Class.Divide
   , module Neon.Class.Equal
   , module Neon.Class.Filter
+  , module Neon.Class.FromArray
+  , module Neon.Class.FromInt
   , module Neon.Class.Greater
   , module Neon.Class.Less
   , module Neon.Class.Map
@@ -21,7 +23,10 @@ module Neon.Class
   , module Neon.Class.Remainder
   , module Neon.Class.Show
   , module Neon.Class.Subtract
+  , module Neon.Class.ToArray
+  , module Neon.Class.ToInt
   , module Neon.Class.Top
+  , module Neon.Class.Traverse
   , module Neon.Class.Zero
   ) where
 
@@ -34,6 +39,8 @@ import Neon.Class.Compose
 import Neon.Class.Divide
 import Neon.Class.Equal
 import Neon.Class.Filter
+import Neon.Class.FromArray
+import Neon.Class.FromInt
 import Neon.Class.Greater
 import Neon.Class.Less
 import Neon.Class.Map
@@ -47,5 +54,8 @@ import Neon.Class.Reduce
 import Neon.Class.Remainder
 import Neon.Class.Show
 import Neon.Class.Subtract
+import Neon.Class.ToArray
+import Neon.Class.ToInt
 import Neon.Class.Top
+import Neon.Class.Traverse
 import Neon.Class.Zero
