@@ -218,7 +218,17 @@ main = run [consoleReporter] do
       describe "bind" do
         it "is chain flipped" do
           bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
+      describe "contains" do
+        pending "TODO"
+      describe "curry" do
+        pending "TODO"
+      describe "decrement" do
+        pending "TODO"
       describe "flatten" do
+        pending "TODO"
+      describe "increment" do
+        pending "TODO"
+      describe "isEmpty" do
         pending "TODO"
       describe "isGreaterOrEqual" do
         it "is isGreater or isEqual" do
@@ -236,10 +246,16 @@ main = run [consoleReporter] do
         it "is not isEqual" do
           isNotEqual 1 1 ?= false
           isNotEqual 1 0 ?= true
+      describe "maximum" do
+        pending "TODO"
+      describe "minimum" do
+        pending "TODO"
       describe "negate" do
         it "subtracts from zero" do
           negate 1 ?= -1
       describe "product" do
+        pending "TODO"
+      describe "range" do
         pending "TODO"
       describe "reciprocal" do
         pending "TODO"
@@ -247,11 +263,21 @@ main = run [consoleReporter] do
         pending "TODO"
       describe "sign" do
         pending "TODO"
+      describe "size" do
+        pending "TODO"
       describe "sum" do
+        pending "TODO"
+      describe "swap" do
+        pending "TODO"
+      describe "uncurry" do
         pending "TODO"
       describe "void" do
         it "replaces values with unit" do
           void [1, 2] ?= [unit, unit]
+      describe "when" do
+        pending "TODO"
+      describe "while" do
+        pending "TODO"
     describe "Operator" do
       describe "^" do
         it "is power" do

@@ -11,3 +11,6 @@ instance fromIntBoolean :: FromInt Boolean where
 
 instance fromIntChar :: FromInt Char where
   fromInt x = Enum.toEnum x
+
+instance fromIntInt :: FromInt Int where
+  fromInt x = Maybe.Just x

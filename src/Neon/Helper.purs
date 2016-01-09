@@ -6,6 +6,7 @@ import Neon.Class.Apply (Apply)
 import Neon.Class.Chain (Chain, chain)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, isEqual)
+import Neon.Class.FromInt (FromInt, fromInt)
 import Neon.Class.Greater (Greater, isGreater)
 import Neon.Class.Less (Less, isLess)
 import Neon.Class.Map (Map, map)
@@ -15,10 +16,12 @@ import Neon.Class.One (One, one)
 import Neon.Class.Or (or)
 import Neon.Class.Reduce (Reduce, reduce)
 import Neon.Class.Subtract (Subtract, subtract)
+import Neon.Class.ToArray (toArray)
+import Neon.Class.ToInt (ToInt, toInt)
 import Neon.Class.Traverse (Traverse, traverse)
-import Neon.Class.Wrap (Wrap)
+import Neon.Class.Wrap (Wrap, wrap)
 import Neon.Class.Zero (Zero, zero)
-import Neon.Data (Unit(), unit)
+import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Tuple(Tuple), Unit(), unit)
 import Neon.Primitive.Function (always, identity)
 import Neon.Primitive.Number (isFinite)
 
@@ -37,8 +40,23 @@ asTypeOf y x = always x y
 bind :: forall a b c. (Chain a) => a b -> (b -> a c) -> a c
 bind x f = chain f x
 
+contains :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
+contains x xs = any (isEqual x) xs
+
+curry :: forall a b c. (Tuple a b -> c) -> (a -> b -> c)
+curry f = \ x y -> f (Tuple x y)
+
+decrement :: forall a. (FromInt a, ToInt a) => a -> Maybe a
+decrement x = fromInt (subtract 1 (toInt x))
+
 flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
+
+increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
+increment x = fromInt (add 1 (toInt x))
+
+isEmpty :: forall a b. (Reduce a) => a b -> Boolean
+isEmpty xs = all (always false) xs
 
 isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 isGreaterOrEqual y x = or (isGreater y x) (isEqual y x)
@@ -52,8 +70,34 @@ isLessOrEqual y x = or (isLess y x) (isEqual y x)
 isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
 isNotEqual y x = not (isEqual y x)
 
+maximum :: forall a b. (Greater b, Reduce a) => a b -> Maybe b
+maximum xs = reduce
+  (\ a x -> case a of
+    Nothing -> Just x
+    Just y -> Just (if isGreater y x then x else y))
+  Nothing
+  xs
+
+minimum :: forall a b. (Less b, Reduce a) => a b -> Maybe b
+minimum xs = reduce
+  (\ a x -> case a of
+    Nothing -> Just x
+    Just y -> Just (if isLess y x then x else y))
+  Nothing
+  xs
+
 negate :: forall a. (Subtract a, Zero a) => a -> a
 negate x = subtract x zero
+
+range :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
+range h l =
+  let rangeList :: (FromInt a, Greater a, ToInt a) => a -> a -> List a
+      rangeList t b = if isGreater t b
+        then Nil
+        else case increment b of
+          Nothing -> Cons b Nil
+          Just x -> Cons b (rangeList t x)
+  in  toArray (rangeList h l)
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal x = divide x one
@@ -72,8 +116,23 @@ sign x =
   then one
   else zero
 
+size :: forall a b. (Reduce a) => a b -> Int
+size xs = reduce (\ a _ -> add 1 a) 0 xs
+
 sum :: forall a b. (Add b, Reduce a, Zero b) => a b -> b
 sum xs = reduce add zero xs
 
+swap :: forall a b. Tuple a b -> Tuple b a
+swap (Tuple x y) = Tuple y x
+
+uncurry :: forall a b c. (a -> b -> c) -> (Tuple a b -> c)
+uncurry f = \ (Tuple x y) -> f x y
+
 void :: forall a b. (Map a) => a b -> a Unit
 void x = map (always unit) x
+
+when :: forall a. (Wrap a) => Boolean -> a Unit -> a Unit
+when p x = if p then x else wrap unit
+
+while :: forall a. (a -> Boolean) -> (a -> a) -> a -> a
+while p f x = if p x then while p f (f x) else x
