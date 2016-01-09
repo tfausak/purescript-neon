@@ -25,10 +25,7 @@ main = run [consoleReporter] do
         it "can add ints" do
           add 2 1 ?= 3
         it "can add lists" do
-          add
-            (Cons 2 Nil)
-            (Cons 1 Nil)
-            ?= Cons 1 (Cons 2 Nil)
+          add (Cons 2 Nil) (Cons 1 Nil) ?= Cons 1 (Cons 2 Nil)
         it "can add numbers" do
           add 2.0 1.0 ?= 3.0
         it "can add strings" do
@@ -44,10 +41,7 @@ main = run [consoleReporter] do
         it "can and functions" do
           and not not false ?= true
         it "can and lists" do
-          and
-            (Cons 2 Nil)
-            (Cons 1 (Cons 2 Nil))
-            ?= Cons 2 Nil
+          and (Cons 2 Nil) (Cons 1 (Cons 2 Nil)) ?= Cons 2 Nil
       describe "Apply" do
         it "can apply arrays" do
           apply [(+ 2), (* 2)] [3, 5] ?= [5, 7, 6, 10]
@@ -95,10 +89,7 @@ main = run [consoleReporter] do
         it "can filter arrays" do
           filter (isGreater 1) [0, 2, 1] ?= [2]
         it "can filter lists" do
-          filter
-            (isGreater 1)
-            (Cons 0 (Cons 2 (Cons 1 Nil)))
-            ?= Cons 2 Nil
+          filter (isGreater 1) (Cons 0 (Cons 2 (Cons 1 Nil))) ?= Cons 2 Nil
       describe "Greater" do
         pending "can compare arrays"
         it "can compare booleans" do
@@ -129,10 +120,7 @@ main = run [consoleReporter] do
         it "can map arrays" do
           map (+ 1) [1, 2] ?= [2, 3]
         it "can map lists" do
-          map
-            (+ 1)
-            (Cons 1 (Cons 2 Nil))
-            ?= Cons 2 (Cons 3 Nil)
+          map (+ 1) (Cons 1 (Cons 2 Nil)) ?= Cons 2 (Cons 3 Nil)
       describe "Multiply" do
         it "can multiply ints" do
           multiply 3 2 ?= 6
@@ -164,11 +152,7 @@ main = run [consoleReporter] do
         it "can reduce arrays" do
           reduce add "a" ["b", "c"] ?= "cba"
         it "can reduce lists" do
-          reduce
-            add
-            "a"
-            (Cons "b" (Cons "c" Nil))
-            ?= "cba"
+          reduce add "a" (Cons "b" (Cons "c" Nil)) ?= "cba"
       describe "Remainder" do
         it "can remainder ints" do
           remainder 2 5 ?= 1
