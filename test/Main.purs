@@ -222,17 +222,27 @@ main = run [consoleReporter] do
     describe "Data" do
       pending "TODO"
     describe "Helper" do
+      describe "absoluteValue" do
+        pending "TODO"
+      describe "all" do
+        pending "TODO"
+      describe "any" do
+        pending "TODO"
       describe "asTypeOf" do
         it "is always" do
           Neon.asTypeOf [1] [] ?= ([] :: Array Int)
       describe "bind" do
         it "is chain flipped" do
           Neon.bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
+      describe "flatten" do
+        pending "TODO"
       describe "isGreaterOrEqual" do
         it "is isGreater or isEqual" do
           Neon.isGreaterOrEqual 1 0 ?= false
           Neon.isGreaterOrEqual 1 1 ?= true
           Neon.isGreaterOrEqual 1 2 ?= true
+      describe "isInfinite" do
+        pending "TODO"
       describe "isLessOrEqual" do
         it "is isLess or isEqual" do
           Neon.isLessOrEqual 1 0 ?= true
@@ -245,6 +255,16 @@ main = run [consoleReporter] do
       describe "negate" do
         it "subtracts from zero" do
           Neon.negate 1 ?= -1
+      describe "product" do
+        pending "TODO"
+      describe "reciprocal" do
+        pending "TODO"
+      describe "sequence" do
+        pending "TODO"
+      describe "sign" do
+        pending "TODO"
+      describe "sum" do
+        pending "TODO"
       describe "void" do
         it "replaces values with unit" do
           Neon.void [1, 2] ?= [unit, unit]
