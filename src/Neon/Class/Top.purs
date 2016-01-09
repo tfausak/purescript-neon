@@ -1,5 +1,6 @@
 module Neon.Class.Top (Top, top) where
 
+import Neon.Primitive.Number (infinity)
 import Prelude as Prelude
 
 class Top a where
@@ -13,3 +14,6 @@ instance topChar :: Top Char where
 
 instance topInt :: Top Int where
   top = Prelude.top
+
+instance topNumber :: Top Number where
+  top = infinity

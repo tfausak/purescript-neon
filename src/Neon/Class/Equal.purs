@@ -5,9 +5,7 @@ import Prelude as Prelude
 class Equal a where
   isEqual :: a -> a -> Boolean
 
--- TODO: I need `map` and `reduce` for this.
--- instance equalArray :: (Equal a) => Equal (Array a) where
---   isEqual y x = x Prelude.== y
+-- TODO: instance equalArray :: (Equal a) => Equal (Array a) where
 
 instance equalBoolean :: Equal Boolean where
   isEqual y x = Prelude.eq x y
@@ -17,6 +15,8 @@ instance equalChar :: Equal Char where
 
 instance equalInt :: Equal Int where
   isEqual y x = Prelude.eq x y
+
+-- TODO: instance equalList :: Equal List where
 
 instance equalNumber :: Equal Number where
   isEqual y x = Prelude.eq x y

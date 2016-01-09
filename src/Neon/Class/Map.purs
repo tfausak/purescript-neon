@@ -1,5 +1,6 @@
 module Neon.Class.Map (Map, map) where
 
+import Neon.Data (List(Nil, Cons))
 import Prelude as Prelude
 
 class Map a where
@@ -7,3 +8,8 @@ class Map a where
 
 instance mapArray :: Map Array where
   map f xs = Prelude.map f xs
+
+instance mapList :: Map List where
+  map f xs = case xs of
+    Nil -> Nil
+    Cons h t -> Cons (f h) (map f t)

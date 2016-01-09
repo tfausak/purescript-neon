@@ -4,6 +4,7 @@ import Control.Monad.Aff as Aff
 import Control.Monad.Eff as Eff
 import Control.Monad.Eff.Console as Console
 import Neon as Neon
+import Neon.Data as Neon -- HACK
 import Prelude
 import Test.Spec (describe, it, pending)
 import Test.Spec.Assertions (shouldEqual)
@@ -23,11 +24,18 @@ main = run [consoleReporter] do
           Neon.add [2] [1] ?= [1, 2]
         it "can add ints" do
           Neon.add 2 1 ?= 3
+        it "can add lists" do
+          Neon.add
+            (Neon.Cons 2 Neon.Nil)
+            (Neon.Cons 1 Neon.Nil)
+            ?= Neon.Cons 1 (Neon.Cons 2 Neon.Nil)
         it "can add numbers" do
           Neon.add 2.0 1.0 ?= 3.0
         it "can add strings" do
           Neon.add "b" "a" ?= "ab"
       describe "And" do
+        it "can and arrays" do
+          Neon.and [2] [1, 2] ?= [2]
         it "can and booleans" do
           Neon.and false false ?= false
           Neon.and true false ?= false
@@ -35,12 +43,27 @@ main = run [consoleReporter] do
           Neon.and true true ?= true
         it "can and functions" do
           Neon.and Neon.not Neon.not false ?= true
+        it "can and lists" do
+          Neon.and
+            (Neon.Cons 2 Neon.Nil)
+            (Neon.Cons 1 (Neon.Cons 2 Neon.Nil))
+            ?= Neon.Cons 2 Neon.Nil
       describe "Apply" do
         it "can apply arrays" do
           Neon.apply [(+ 2), (* 2)] [3, 5] ?= [5, 7, 6, 10]
+        it "can apply lists" do
+          Neon.apply
+            (Neon.Cons (+ 2) (Neon.Cons (* 2) Neon.Nil))
+            (Neon.Cons 3 (Neon.Cons 5 Neon.Nil))
+            ?= Neon.Cons 5 (Neon.Cons 7 (Neon.Cons 6 (Neon.Cons 10 Neon.Nil)))
       describe "Bind" do
         it "can bind arrays" do
           Neon.bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
+        it "can bind lists" do
+          Neon.bind
+            (Neon.Cons 3 (Neon.Cons 5 Neon.Nil))
+            (\ x -> Neon.Cons x (Neon.Cons (x * 2) Neon.Nil))
+            ?= Neon.Cons 3 (Neon.Cons 6 (Neon.Cons 5 (Neon.Cons 10 Neon.Nil)))
       describe "Bottom" do
         it "has a bottom for booleans" do
           Neon.bottom ?= false
@@ -48,9 +71,8 @@ main = run [consoleReporter] do
           Neon.bottom ?= '\0'
         it "has a bottom for ints" do
           Neon.bottom ?= -2147483648
-      describe "Compose" do
-        it "can compose functions" do
-          Neon.compose (* 2) (+ 2) 3 ?= 10
+        it "has a bottom for numbers" do
+          Neon.bottom ?= -Neon.infinity
       describe "Divide" do
         it "can divide ints" do
           Neon.divide 2 5 ?= 2
@@ -69,7 +91,12 @@ main = run [consoleReporter] do
           Neon.isEqual "a" "a" ?= true
       describe "Filter" do
         it "can filter arrays" do
-          Neon.filter (Neon.isGreater 1) [0, 2, 1, 3] ?= [2, 3]
+          Neon.filter (Neon.isGreater 1) [0, 2, 1] ?= [2]
+        it "can filter lists" do
+          Neon.filter
+            (Neon.isGreater 1)
+            (Neon.Cons 0 (Neon.Cons 2 (Neon.Cons 1 Neon.Nil)))
+            ?= Neon.Cons 2 Neon.Nil
       describe "Greater" do
         it "can compare booleans" do
           Neon.isGreater false true ?= true
@@ -95,6 +122,11 @@ main = run [consoleReporter] do
       describe "Map" do
         it "can map arrays" do
           Neon.map (+ 1) [1, 2] ?= [2, 3]
+        it "can map lists" do
+          Neon.map
+            (+ 1)
+            (Neon.Cons 1 (Neon.Cons 2 Neon.Nil))
+            ?= Neon.Cons 2 (Neon.Cons 3 Neon.Nil)
       describe "Multiply" do
         it "can multiply ints" do
           Neon.multiply 3 2 ?= 6
@@ -125,9 +157,17 @@ main = run [consoleReporter] do
       describe "Pure" do
         it "can pure arrays" do
           Neon.pure 1 ?= [1]
+        it "can pure lists" do
+          Neon.pure 1 ?= Neon.Cons 1 Neon.Nil
       describe "Reduce" do
         it "can reduce arrays" do
           Neon.reduce Neon.add "a" ["b", "c"] ?= "cba"
+        it "can reduce lists" do
+          Neon.reduce
+            Neon.add
+            "a"
+            (Neon.Cons "b" (Neon.Cons "c" Neon.Nil))
+            ?= "cba"
       describe "Remainder" do
         it "can remainder ints" do
           Neon.remainder 2 5 ?= 1
@@ -156,11 +196,19 @@ main = run [consoleReporter] do
           Neon.top ?= '\65535'
         it "has a top for ints" do
           Neon.top ?= 2147483647
+        it "has a top for numbers" do
+          Neon.top ?= Neon.infinity
       describe "Zero" do
+        it "has a zero for arrays" do
+          Neon.zero ?= ([] :: Array Unit)
         it "has a zero for ints" do
           Neon.zero ?= 0
+        it "has a zero for lists" do
+          Neon.zero ?= (Neon.Nil :: Neon.List Unit)
         it "has a zero for numbers" do
           Neon.zero ?= 0.0
+        it "has a zero for strings" do
+          Neon.zero ?= ""
     describe "Data" do
       pending "TODO"
     describe "Helper" do
@@ -222,6 +270,8 @@ main = run [consoleReporter] do
       describe "Function" do
         it "always" do
           Neon.always 1 unit ?= 1
+        it "compose" do
+          Neon.compose (* 2) (+ 2) 3 ?= 10
         it "flip" do
           Neon.flip Neon.add "a" "b" ?= "ab"
         it "identity" do

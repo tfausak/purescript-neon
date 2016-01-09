@@ -2,7 +2,6 @@ module Neon.Operator where
 
 import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
-import Neon.Class.Compose (Compose, compose)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, isEqual)
 import Neon.Class.Greater (Greater, isGreater)
@@ -13,6 +12,7 @@ import Neon.Class.Power (Power, power)
 import Neon.Class.Remainder (Remainder, remainder)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Helper (isGreaterOrEqual, isLessOrEqual, isNotEqual)
+import Neon.Primitive.Function (compose)
 
 infixl 8 >>
 infixr 8 <<
@@ -33,10 +33,10 @@ infixr 2 ||
 infixl 1 |>
 infixr 1 <|
 
-(>>) :: forall a b c d. (Compose a) => a b c -> a c d -> a b d
+(>>) :: forall a b c. (a -> b) -> (b -> c) -> (a -> c)
 (>>) f g = compose g f
 
-(<<) :: forall a b c d. (Compose a) => a c d -> a b c -> a b d
+(<<) :: forall a b c. (b -> c) -> (a -> b) -> (a -> c)
 (<<) f g = compose f g
 
 (^) :: forall a. (Power a) => a -> a -> a
