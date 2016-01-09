@@ -6,7 +6,7 @@ class Subtract a where
   subtract :: a -> a -> a
 
 instance subtractInt :: Subtract Int where
-  subtract y x = x Prelude.- y
+  subtract y x = Prelude.sub x y
 
 instance subtractNumber :: Subtract Number where
-  subtract y x = x Prelude.- y
+  subtract y x = Prelude.sub x y

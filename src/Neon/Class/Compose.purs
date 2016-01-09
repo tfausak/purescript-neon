@@ -6,4 +6,4 @@ class Compose a where
   compose :: forall b c d. a c d -> a b c -> a b d
 
 instance composeFunction :: Compose Function where
-  compose g f = f Prelude.>>> g
+  compose g f = Prelude.compose g f

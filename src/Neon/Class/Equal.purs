@@ -10,16 +10,16 @@ class Equal a where
 --   isEqual y x = x Prelude.== y
 
 instance equalBoolean :: Equal Boolean where
-  isEqual y x = x Prelude.== y
+  isEqual y x = Prelude.eq x y
 
 instance equalChar :: Equal Char where
-  isEqual y x = x Prelude.== y
+  isEqual y x = Prelude.eq x y
 
 instance equalInt :: Equal Int where
-  isEqual y x = x Prelude.== y
+  isEqual y x = Prelude.eq x y
 
 instance equalNumber :: Equal Number where
-  isEqual y x = x Prelude.== y
+  isEqual y x = Prelude.eq x y
 
 instance equalString :: Equal String where
-  isEqual y x = x Prelude.== y
+  isEqual y x = Prelude.eq x y

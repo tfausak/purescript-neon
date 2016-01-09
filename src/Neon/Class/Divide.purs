@@ -6,7 +6,7 @@ class Divide a where
   divide :: a -> a -> a
 
 instance divideInt :: Divide Int where
-  divide y x = x Prelude./ y
+  divide y x = Prelude.div x y
 
 instance divideNumber :: Divide Number where
-  divide y x = x Prelude./ y
+  divide y x = Prelude.div x y
