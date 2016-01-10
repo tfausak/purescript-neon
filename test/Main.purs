@@ -236,6 +236,11 @@ main = run [consoleReporter] do
         it "decrements the argument" do
           decrement 'b' ?= Just 'a'
           decrement '\0' ?= Nothing
+      describe "downTo" do
+        it "returns an array of values from low to high" do
+          downTo 1 3 ?= [3, 2, 1]
+          downTo 3 1 ?= []
+          downTo 1 1 ?= [1]
       describe "flatten" do
         it "removes a level of nesting" do
           flatten [[1, 2], [3, 4]] ?= [1, 2, 3, 4]

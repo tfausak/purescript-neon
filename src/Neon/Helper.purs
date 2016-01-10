@@ -49,6 +49,16 @@ curry f = \ x y -> f (Tuple x y)
 decrement :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 decrement x = fromInt (subtract 1 (toInt x))
 
+downTo :: forall a. (FromInt a, Less a, ToInt a) => a -> a -> Array a
+downTo l h =
+  let downToList :: (FromInt a, Less a, ToInt a) => a -> a -> List a
+      downToList b t = if isLess b t
+        then Nil
+        else case decrement t of
+          Nothing -> Cons t Nil
+          Just x -> Cons t (downToList b x)
+  in  toArray (downToList l h)
+
 flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
 
