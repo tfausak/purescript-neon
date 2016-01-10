@@ -378,6 +378,10 @@ main = run [consoleReporter] do
       describe "while" do
         it "iterates while the predicate is true" do
           while (< 3) (+ 1) 1 ?= 3
+      describe "withDefault" do
+        it "uses the default value" do
+          withDefault 1 Nothing ?= 1
+          withDefault 1 (Just 2) ?= 2
     describe "Operator" do
       describe "^" do
         it "is power" do

@@ -185,3 +185,8 @@ when p x = if p then x else wrap unit
 
 while :: forall a. (a -> Boolean) -> (a -> a) -> a -> a
 while p f x = if p x then while p f (f x) else x
+
+withDefault :: forall a. a -> Maybe a -> a
+withDefault y mx = case mx of
+  Nothing -> y
+  Just x -> x
