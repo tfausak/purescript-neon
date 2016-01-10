@@ -15,6 +15,7 @@ import Neon.Class.Not (not)
 import Neon.Class.One (One, one)
 import Neon.Class.Or (or)
 import Neon.Class.Reduce (Reduce, reduce)
+import Neon.Class.Show (Show, show)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Class.ToArray (toArray)
 import Neon.Class.ToInt (ToInt, toInt)
@@ -22,6 +23,7 @@ import Neon.Class.Traverse (Traverse, traverse)
 import Neon.Class.Wrap (Wrap, wrap)
 import Neon.Class.Zero (Zero, zero)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Tuple(Tuple), Unit(), unit)
+import Neon.Effect (Eff(), CONSOLE(), log, unsafePerformEff)
 import Neon.Primitive.Function (always, identity)
 import Neon.Primitive.Number (isFinite)
 
@@ -39,6 +41,12 @@ asTypeOf y x = always x y
 
 bind :: forall a b c. (Chain a) => a b -> (b -> a c) -> a c
 bind x f = chain f x
+
+clamp :: forall a. (Greater a, Less a) => a -> a -> a -> a
+clamp l h x =
+  if isGreater h l
+  then clamp h l x
+  else max l (min h x)
 
 contains :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
 contains x xs = any (isEqual x) xs
@@ -70,19 +78,25 @@ isLessOrEqual y x = or (isLess y x) (isEqual y x)
 isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
 isNotEqual y x = not (isEqual y x)
 
+max :: forall a. (Greater a) => a -> a -> a
+max y x = if isGreater y x then x else y
+
 maximum :: forall a b. (Greater b, Reduce a) => a b -> Maybe b
 maximum xs = reduce
   (\ a x -> case a of
     Nothing -> Just x
-    Just y -> Just (if isGreater y x then x else y))
+    Just y -> Just (max y x))
   Nothing
   xs
+
+min :: forall a. (Less a) => a -> a -> a
+min y x = if isLess y x then x else y
 
 minimum :: forall a b. (Less b, Reduce a) => a b -> Maybe b
 minimum xs = reduce
   (\ a x -> case a of
     Nothing -> Just x
-    Just y -> Just (if isLess y x then x else y))
+    Just y -> Just (min y x))
   Nothing
   xs
 
@@ -101,6 +115,9 @@ range h l =
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal x = divide x one
+
+print :: forall a b. (Show a) => a -> Eff (console :: CONSOLE | b) Unit
+print x = log (show x)
 
 product :: forall a b. (Multiply b, One b, Reduce a) => a b -> b
 product xs = reduce multiply one xs
@@ -127,6 +144,11 @@ swap (Tuple x y) = Tuple y x
 
 uncurry :: forall a b c. (a -> b -> c) -> (Tuple a b -> c)
 uncurry f = \ (Tuple x y) -> f x y
+
+unsafeLog :: forall a. String -> a -> a
+unsafeLog m x = unsafePerformEff do
+  log m
+  wrap x
 
 void :: forall a b. (Map a) => a b -> a Unit
 void x = map (always unit) x

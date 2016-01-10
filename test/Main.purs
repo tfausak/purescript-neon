@@ -227,6 +227,12 @@ main = run [consoleReporter] do
       describe "bind" do
         it "is chain flipped" do
           bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
+      describe "clamp" do
+        it "clamps the value between the bounds" do
+          clamp 3 5 2 ?= 3
+          clamp 3 5 4 ?= 4
+          clamp 3 5 6 ?= 5
+          clamp 5 3 4 ?= 4
       describe "contains" do
         it "returns true when the container contains the element" do
           contains 1 [0, 1, 2] ?= true
@@ -271,12 +277,18 @@ main = run [consoleReporter] do
         it "is not isEqual" do
           isNotEqual 1 1 ?= false
           isNotEqual 1 0 ?= true
+      describe "max" do
+        it "returns the max" do
+          max 1 2 ?= 2
       describe "maximum" do
         it "returns the greatest element in the container" do
           maximum ([] :: Array Int) ?= Nothing
           maximum [1] ?= Just 1
           maximum [1, 2] ?= Just 2
           maximum [2, 1] ?= Just 2
+      describe "min" do
+        it "returns the min" do
+          min 1 2 ?= 1
       describe "minimum" do
         it "returns the least element in the container" do
           minimum ([] :: Array Int) ?= Nothing
@@ -286,6 +298,8 @@ main = run [consoleReporter] do
       describe "negate" do
         it "subtracts from zero" do
           negate 1 ?= -1
+      describe "print" do
+        pending ""
       describe "product" do
         it "multiplies the elements in the container together" do
           product [] ?= 1
@@ -323,6 +337,8 @@ main = run [consoleReporter] do
         it "converts a normal function into a tuple function" do
           let f x y = "(" + x + ", " + y + ")"
           uncurry f (Tuple "a" "b") ?= "(a, b)"
+      describe "unsafeLog" do
+        pending ""
       describe "void" do
         it "replaces values with unit" do
           void [1, 2] ?= [unit, unit]
