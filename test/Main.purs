@@ -346,6 +346,13 @@ main = run [consoleReporter] do
       describe "swap" do
         it "swaps the parts of a tuple" do
           swap (Tuple 1 2.0) ?= Tuple 2.0 1
+      describe "todo" do
+        it "is unit" do
+          todo ?= unit
+        it "can be any type" do
+          isEqual unit todo ?= true
+          isEqual 1 todo ?= false
+          isEqual 1.0 todo ?= false
       describe "uncurry" do
         it "converts a normal function into a tuple function" do
           let f x y = "(" + x + ", " + y + ")"

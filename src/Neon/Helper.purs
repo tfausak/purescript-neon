@@ -153,6 +153,9 @@ sum xs = reduce (\ a x -> add x a) zero xs
 swap :: forall a b. Tuple a b -> Tuple b a
 swap (Tuple x y) = Tuple y x
 
+todo :: forall a. a
+todo = unsafeCoerce unit
+
 uncurry :: forall a b c. (a -> b -> c) -> (Tuple a b -> c)
 uncurry f = \ (Tuple x y) -> f x y
 

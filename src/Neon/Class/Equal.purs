@@ -1,6 +1,6 @@
 module Neon.Class.Equal (Equal, isEqual) where
 
-import Neon.Data (Maybe(Nothing, Just))
+import Neon.Data (Maybe(Nothing, Just), Unit())
 import Prelude as Prelude
 
 class Equal a where
@@ -30,3 +30,6 @@ instance equalNumber :: Equal Number where
 
 instance equalString :: Equal String where
   isEqual y x = Prelude.eq x y
+
+instance equalUnit :: Equal Unit where
+  isEqual _ _ = true
