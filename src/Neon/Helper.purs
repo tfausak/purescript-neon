@@ -31,9 +31,6 @@ import Neon.Primitive.Number (isFinite)
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
 absoluteValue x = if isLess zero x then negate x else x
 
-all :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
-all p xs = reduce (\ a x -> and a (p x)) true xs
-
 any :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 any p xs = reduce (\ a x -> or a (p x)) false xs
 
@@ -68,7 +65,10 @@ isDivisibleBy :: forall a. (Equal a, Remainder a, Zero a) => a -> a -> Boolean
 isDivisibleBy y x = isEqual zero (remainder y x)
 
 isEmpty :: forall a b. (Reduce a) => a b -> Boolean
-isEmpty xs = all (always false) xs
+isEmpty xs = isEvery (always false) xs
+
+isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
+isEvery p xs = reduce (\ a x -> and a (p x)) true xs
 
 isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 isGreaterOrEqual y x = or (isGreater y x) (isEqual y x)

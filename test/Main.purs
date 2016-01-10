@@ -211,11 +211,6 @@ main = run [consoleReporter] do
           absoluteValue 1 ?= 1
           absoluteValue 0.0 ?= 0.0
           absoluteValue (-1) ?= 1
-      describe "all" do
-        it "returns true when every element passes the predicate" do
-          all (isGreater 1) [] ?= true
-          all (isGreater 1) [2, 3] ?= true
-          all (isGreater 1) [1, 2] ?= false
       describe "any" do
         it "returns true when any element passes the predicate" do
           any (isGreater 1) [] ?= false
@@ -262,6 +257,11 @@ main = run [consoleReporter] do
         it "returns true when the container is empty" do
           isEmpty [] ?= true
           isEmpty [1] ?= false
+      describe "isEvery" do
+        it "returns true when every element passes the predicate" do
+          isEvery (isGreater 1) [] ?= true
+          isEvery (isGreater 1) [2, 3] ?= true
+          isEvery (isGreater 1) [1, 2] ?= false
       describe "isGreaterOrEqual" do
         it "is isGreater or isEqual" do
           isGreaterOrEqual 1 0 ?= false
