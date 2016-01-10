@@ -1,6 +1,6 @@
 module Neon.Class.Map (Map, map) where
 
-import Neon.Data (List(Nil, Cons))
+import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 import Prelude as Prelude
 
 class Map a where
@@ -13,3 +13,8 @@ instance mapList :: Map List where
   map f xs = case xs of
     Nil -> Nil
     Cons h t -> Cons (f h) (map f t)
+
+instance mapMaybe :: Map Maybe where
+  map f mx = case mx of
+    Nothing -> Nothing
+    Just x -> Just (f x)

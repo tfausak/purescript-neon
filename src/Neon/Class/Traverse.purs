@@ -5,16 +5,21 @@ import Neon.Class.FromArray (fromArray)
 import Neon.Class.Map (Map, map)
 import Neon.Class.Wrap (Wrap, wrap)
 import Neon.Class.ToArray (toArray)
-import Neon.Data (List(Nil, Cons))
+import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 
 class Traverse t where
   traverse :: forall a b m. (Apply m, Map m, Wrap m) => (a -> m b) -> t a -> m (t b)
 
-instance arrayTraverse :: Traverse Array where
+instance traverseArray :: Traverse Array where
   traverse f x = map toArray
     (traverse f ((fromArray :: forall a. Array a -> List a) x))
 
-instance listTraverse :: Traverse List where
+instance traverseList :: Traverse List where
   traverse f xs = case xs of
     Nil -> wrap Nil
     Cons x l -> apply (map Cons (f x)) (traverse f l)
+
+instance traverseMaybe :: Traverse Maybe where
+  traverse f mx = case mx of
+    Nothing -> wrap Nothing
+    Just x -> map Just (f x)

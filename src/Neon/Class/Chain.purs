@@ -1,6 +1,6 @@
 module Neon.Class.Chain (Chain, chain) where
 
-import Neon.Data (List())
+import Neon.Data (List(), Maybe())
 import Neon.Effect (Eff())
 import Prelude as Prelude
 
@@ -15,3 +15,6 @@ instance chainEff :: Chain (Eff a) where
 
 instance chainList :: Chain List where
   chain f xs = Prelude.bind xs f
+
+instance chainMaybe :: Chain Maybe where
+  chain f mx = Prelude.bind mx f

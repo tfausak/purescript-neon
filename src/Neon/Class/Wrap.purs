@@ -1,6 +1,6 @@
 module Neon.Class.Wrap (Wrap, wrap) where
 
-import Neon.Data (List(Nil, Cons))
+import Neon.Data (List(Nil, Cons), Maybe(Just))
 import Neon.Effect (Eff())
 import Prelude as Prelude
 
@@ -15,3 +15,6 @@ instance wrapEff :: Wrap (Eff a) where
 
 instance wrapList :: Wrap List where
   wrap x = Cons x Nil
+
+instance wrapMaybe :: Wrap Maybe where
+  wrap x = Just x
