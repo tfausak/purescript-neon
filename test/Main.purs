@@ -207,11 +207,20 @@ main = run [consoleReporter] do
       pending "TODO"
     describe "Helper" do
       describe "absoluteValue" do
-        pending "TODO"
+        it "returns the absolute value" do
+          absoluteValue 1 ?= 1
+          absoluteValue 0.0 ?= 0.0
+          absoluteValue (-1) ?= 1
       describe "all" do
-        pending "TODO"
+        it "returns true when every element passes the predicate" do
+          all (isGreater 1) [] ?= true
+          all (isGreater 1) [2, 3] ?= true
+          all (isGreater 1) [1, 2] ?= false
       describe "any" do
-        pending "TODO"
+        it "returns true when any element passes the predicate" do
+          any (isGreater 1) [] ?= false
+          any (isGreater 1) [1, 2] ?= true
+          any (isGreater 1) [0, 1] ?= false
       describe "asTypeOf" do
         it "is always" do
           asTypeOf [1] [] ?= ([] :: Array Int)
@@ -219,24 +228,40 @@ main = run [consoleReporter] do
         it "is chain flipped" do
           bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
       describe "contains" do
-        pending "TODO"
+        it "returns true when the container contains the element" do
+          contains 1 [0, 1, 2] ?= true
+          contains 1 [0, 2] ?= false
+          contains 1 [] ?= false
       describe "curry" do
-        pending "TODO"
+        it "converts a tuple function into a normal function" do
+          let f (Tuple x y) = "(" + x + ", " + y + ")"
+          curry f "a" "b" ?= "(a, b)"
       describe "decrement" do
-        pending "TODO"
+        it "decrements the argument" do
+          decrement 'b' ?= Just 'a'
+          decrement '\0' ?= Nothing
       describe "flatten" do
-        pending "TODO"
+        it "removes a level of nesting" do
+          flatten [[1, 2], [3, 4]] ?= [1, 2, 3, 4]
       describe "increment" do
-        pending "TODO"
+        it "increments the argument" do
+          increment 'a' ?= Just 'b'
+          increment '\65535' ?= Nothing
       describe "isEmpty" do
-        pending "TODO"
+        it "returns true when the container is empty" do
+          isEmpty [] ?= true
+          isEmpty [1] ?= false
       describe "isGreaterOrEqual" do
         it "is isGreater or isEqual" do
           isGreaterOrEqual 1 0 ?= false
           isGreaterOrEqual 1 1 ?= true
           isGreaterOrEqual 1 2 ?= true
       describe "isInfinite" do
-        pending "TODO"
+        it "returns true when the number is infinite" do
+          isInfinite infinity ?= true
+          isInfinite (-infinity) ?= true
+          isInfinite nan ?= true
+          isInfinite 0.0 ?= false
       describe "isLessOrEqual" do
         it "is isLess or isEqual" do
           isLessOrEqual 1 0 ?= true
@@ -247,37 +272,68 @@ main = run [consoleReporter] do
           isNotEqual 1 1 ?= false
           isNotEqual 1 0 ?= true
       describe "maximum" do
-        pending "TODO"
+        it "returns the greatest element in the container" do
+          maximum ([] :: Array Int) ?= Nothing
+          maximum [1] ?= Just 1
+          maximum [1, 2] ?= Just 2
+          maximum [2, 1] ?= Just 2
       describe "minimum" do
-        pending "TODO"
+        it "returns the least element in the container" do
+          minimum ([] :: Array Int) ?= Nothing
+          minimum [1] ?= Just 1
+          minimum [1, 2] ?= Just 1
+          minimum [2, 1] ?= Just 1
       describe "negate" do
         it "subtracts from zero" do
           negate 1 ?= -1
       describe "product" do
-        pending "TODO"
+        it "multiplies the elements in the container together" do
+          product [] ?= 1
+          product [2] ?= 2
+          product [2, 3] ?= 6
       describe "range" do
-        pending "TODO"
+        it "returns an array of values from low to high" do
+          range 3 1 ?= [1, 2, 3]
+          range 1 3 ?= []
+          range 1 1 ?= [1]
       describe "reciprocal" do
-        pending "TODO"
+        it "returns the reciprocal of the number" do
+          reciprocal 2.0 ?= 0.5
       describe "sequence" do
         pending "TODO"
       describe "sign" do
-        pending "TODO"
+        it "returns the sign of the number" do
+          sign 2 ?= 1
+          sign 0 ?= 0
+          sign (-2) ?= -1
       describe "size" do
-        pending "TODO"
+        it "returns the size of the container" do
+          size [] ?= 0
+          size [2] ?= 1
+          size [2, 3, 4] ?= 3
       describe "sum" do
-        pending "TODO"
+        it "adds the elements in the container together" do
+          sum [] ?= ""
+          sum ["a"] ?= "a"
+          sum ["a", "b"] ?= "ab"
       describe "swap" do
-        pending "TODO"
+        it "swaps the parts of a tuple" do
+          swap (Tuple 1 2.0) ?= Tuple 2.0 1
       describe "uncurry" do
-        pending "TODO"
+        it "converts a normal function into a tuple function" do
+          let f x y = "(" + x + ", " + y + ")"
+          uncurry f (Tuple "a" "b") ?= "(a, b)"
       describe "void" do
         it "replaces values with unit" do
           void [1, 2] ?= [unit, unit]
       describe "when" do
-        pending "TODO"
+        it "executes the action if the predicate is true" do
+          when true [unit, unit] ?= [unit, unit]
+        it "returns unit if the predicate is false" do
+          when false [unit, unit] ?= [unit]
       describe "while" do
-        pending "TODO"
+        it "iterates while the predicate is true" do
+          while (< 3) (+ 1) 1 ?= 3
     describe "Operator" do
       describe "^" do
         it "is power" do
@@ -326,9 +382,9 @@ main = run [consoleReporter] do
           false .. not ?= true
     describe "Primitive" do
       describe "Array" do
-        pending "TODO"
+        pending ""
       describe "Boolean" do
-        pending "TODO"
+        pending ""
       describe "Char" do
         describe "toLower" do
           it "lower cases the character" do
@@ -366,7 +422,7 @@ main = run [consoleReporter] do
             floor 1.2 ?= 1
             floor (-1.2) ?= -2
         describe "infinity" do
-          pending "TODO"
+          pending ""
         describe "isFinite" do
           it "returns false for infinity and nan" do
             isFinite infinity ?= false
@@ -381,13 +437,13 @@ main = run [consoleReporter] do
             isNaN infinity ?= false
             isNaN 0.0 ?= false
         describe "nan" do
-          pending "TODO"
+          pending ""
         describe "round" do
           it "returns the integer closest to the number" do
             round 1.2 ?= 1
             round (-1.2) ?= -1
             round 1.5 ?= 2
       describe "Object" do
-        pending "TODO"
+        pending ""
       describe "String" do
-        pending "TODO"
+        pending ""

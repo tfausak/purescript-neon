@@ -120,7 +120,7 @@ size :: forall a b. (Reduce a) => a b -> Int
 size xs = reduce (\ a _ -> add 1 a) 0 xs
 
 sum :: forall a b. (Add b, Reduce a, Zero b) => a b -> b
-sum xs = reduce add zero xs
+sum xs = reduce (\ a x -> add x a) zero xs
 
 swap :: forall a b. Tuple a b -> Tuple b a
 swap (Tuple x y) = Tuple y x
