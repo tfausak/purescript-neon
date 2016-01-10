@@ -8,6 +8,9 @@ Neon is an experimental standard library for [PureScript][].
 Neon is written from the ground up to be useful and coherent. It has some
 guiding principles:
 
+- Functions should take their subject last. This means `add x y` is really
+  `y + x`. Consider calling functions with `(..)`, like `y..add x`.
+
 - Type classes should be lawless. This means `zero` doesn't have to be the
   additive identity. That's recommended, but not necessary.
 
@@ -34,9 +37,6 @@ guiding principles:
 
 - Qualified imports are annoying, and fewer imports are better. This mean
   `import Neon` is enough. No need for tens of lines of imports.
-
-Since Neon is written from scratch to follow these principles, it is not
-compatible with any of the existing PureScript ecosystem.
 
 [neon]: https://github.com/tfausak/purescript-neon
 [package version]: https://img.shields.io/bower/v/purescript-neon.svg?label=version
