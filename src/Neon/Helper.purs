@@ -43,9 +43,6 @@ clamp l h x =
   then clamp h l x
   else max l (min h x)
 
-contains :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
-contains x xs = isAny (isEqual x) xs
-
 curry :: forall a b c. (Tuple a b -> c) -> (a -> b -> c)
 curry f = \ x y -> f (Tuple x y)
 
@@ -54,6 +51,9 @@ decrement x = fromInt (subtract 1 (toInt x))
 
 flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
+
+hasElement :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
+hasElement x xs = isAny (isEqual x) xs
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
