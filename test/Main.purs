@@ -310,11 +310,6 @@ main = run [consoleReporter] do
           product [] ?= 1
           product [2] ?= 2
           product [2, 3] ?= 6
-      describe "range" do
-        it "returns an array of values from low to high" do
-          range 3 1 ?= [1, 2, 3]
-          range 1 3 ?= []
-          range 1 1 ?= [1]
       describe "reciprocal" do
         it "returns the reciprocal of the number" do
           reciprocal 2.0 ?= 0.5
@@ -344,6 +339,11 @@ main = run [consoleReporter] do
           uncurry f (Tuple "a" "b") ?= "(a, b)"
       describe "unsafeLog" do
         pending ""
+      describe "upTo" do
+        it "returns an array of values from low to high" do
+          upTo 3 1 ?= [1, 2, 3]
+          upTo 1 3 ?= []
+          upTo 1 1 ?= [1]
       describe "void" do
         it "replaces values with unit" do
           void [1, 2] ?= [unit, unit]

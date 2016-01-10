@@ -107,16 +107,6 @@ minimum xs = reduce
 negate :: forall a. (Subtract a, Zero a) => a -> a
 negate x = subtract x zero
 
-range :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
-range h l =
-  let rangeList :: (FromInt a, Greater a, ToInt a) => a -> a -> List a
-      rangeList t b = if isGreater t b
-        then Nil
-        else case increment b of
-          Nothing -> Cons b Nil
-          Just x -> Cons b (rangeList t x)
-  in  toArray (rangeList h l)
-
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal x = divide x one
 
@@ -153,6 +143,16 @@ unsafeLog :: forall a. String -> a -> a
 unsafeLog m x = unsafePerformEff do
   log m
   wrap x
+
+upTo :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
+upTo h l =
+  let upToList :: (FromInt a, Greater a, ToInt a) => a -> a -> List a
+      upToList t b = if isGreater t b
+        then Nil
+        else case increment b of
+          Nothing -> Cons b Nil
+          Just x -> Cons b (upToList t x)
+  in  toArray (upToList h l)
 
 void :: forall a b. (Map a) => a b -> a Unit
 void x = map (always unit) x
