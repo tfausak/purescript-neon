@@ -1,7 +1,7 @@
 module Neon.Class.Show (Show, show) where
 
 import Neon.Class.Add (add)
-import Neon.Data (Maybe(Nothing, Just))
+import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
 import Prelude as Prelude
 
 class Show a where
@@ -18,7 +18,10 @@ instance showChar :: Show Char where
 instance showInt :: Show Int where
   show x = Prelude.show x
 
--- TODO: instance showList :: (Show a) => Show (List a) where
+instance showList :: (Show a) => Show (List a) where
+  show xs = case xs of
+    Nil -> "Nil"
+    Cons h t -> add ")" (add (show t) (add ") (" (add (show h) "Cons (")))
 
 instance showMaybe :: (Show a) => Show (Maybe a) where
   show mx = case mx of
@@ -30,3 +33,6 @@ instance showNumber :: Show Number where
 
 instance showString :: Show String where
   show x = Prelude.show x
+
+instance showUnit :: Show Unit where
+  show _ = "unit"

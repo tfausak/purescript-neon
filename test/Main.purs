@@ -205,6 +205,8 @@ main = run [consoleReporter] do
           zero ?= ""
     describe "Data" do
       pending "TODO"
+    describe "Effect" do
+      pending "TODO"
     describe "Helper" do
       describe "absoluteValue" do
         it "returns the absolute value" do
@@ -327,7 +329,8 @@ main = run [consoleReporter] do
         it "returns the reciprocal of the number" do
           reciprocal 2.0 ?= 0.5
       describe "sequence" do
-        pending "TODO"
+        it "sequences the actions" do
+          sequence [Just 1, Just 2] ?= Just [1, 2]
       describe "sign" do
         it "returns the sign of the number" do
           sign 2 ?= 1

@@ -1,12 +1,17 @@
 module Neon.Class.Equal (Equal, isEqual) where
 
-import Neon.Data (Maybe(Nothing, Just), Unit())
+import Neon.Class.FromArray (fromArray)
+import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
 import Prelude as Prelude
 
 class Equal a where
   isEqual :: a -> a -> Boolean
 
--- TODO: instance equalArray :: (Equal a) => Equal (Array a) where
+instance equalArray :: (Equal a) => Equal (Array a) where
+  isEqual y x =
+    let toList :: forall a. Array a -> List a
+        toList xs = fromArray xs
+    in  isEqual (toList y) (toList x)
 
 instance equalBoolean :: Equal Boolean where
   isEqual y x = Prelude.eq x y
@@ -17,7 +22,13 @@ instance equalChar :: Equal Char where
 instance equalInt :: Equal Int where
   isEqual y x = Prelude.eq x y
 
--- instance equalList :: (Equal a) => Equal (List a) where
+instance equalList :: (Equal a) => Equal (List a) where
+  isEqual y x = case { x: x, y: y } of
+    { x: Nil, y: Nil } -> true
+    { x: Cons xh xt, y: Cons yh yt } -> if isEqual yh xh
+      then isEqual yt xt
+      else false
+    _ -> false
 
 instance equalMaybe :: (Equal a) => Equal (Maybe a) where
   isEqual y x = case { x: x, y: y } of
