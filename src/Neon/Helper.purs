@@ -27,6 +27,7 @@ import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Tuple(Tuple), Unit(), u
 import Neon.Effect (Eff(), CONSOLE(), log, unsafePerformEff)
 import Neon.Primitive.Function (always, identity)
 import Neon.Primitive.Number (isFinite)
+import Unsafe.Coerce as Coerce
 
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
 absoluteValue x = if isLess zero x then negate x else x
@@ -154,6 +155,9 @@ swap (Tuple x y) = Tuple y x
 
 uncurry :: forall a b c. (a -> b -> c) -> (Tuple a b -> c)
 uncurry f = \ (Tuple x y) -> f x y
+
+unsafeCoerce :: forall a b. a -> b
+unsafeCoerce x = Coerce.unsafeCoerce x
 
 unsafeLog :: forall a. String -> a -> a
 unsafeLog m x = unsafePerformEff do

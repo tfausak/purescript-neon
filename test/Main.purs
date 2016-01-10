@@ -350,6 +350,9 @@ main = run [consoleReporter] do
         it "converts a normal function into a tuple function" do
           let f x y = "(" + x + ", " + y + ")"
           uncurry f (Tuple "a" "b") ?= "(a, b)"
+      describe "unsafeCoerce" do
+        it "convinces the type system" do
+          unsafeCoerce 1 ?= 1.0
       describe "unsafeLog" do
         pending ""
       describe "upTo" do
