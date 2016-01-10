@@ -398,9 +398,10 @@ main = run [consoleReporter] do
       describe "||" do
         it "is or" do
           false || true ?= true
-      describe ".." do
+      describe ":" do
         it "is application" do
-          false .. not ?= true
+          let x = false :not -- HACK
+          x ?= true
     describe "Primitive" do
       describe "Array" do
         pending ""
