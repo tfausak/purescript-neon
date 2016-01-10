@@ -253,6 +253,11 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
+      describe "isDivisibleBy" do
+        it "returns true if the number is divisible by the other" do
+          isDivisibleBy 3 6 ?= true
+          isDivisibleBy 4 6 ?= false
+          isDivisibleBy 6 3 ?= false
       describe "isEmpty" do
         it "returns true when the container is empty" do
           isEmpty [] ?= true

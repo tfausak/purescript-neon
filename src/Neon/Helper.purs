@@ -15,6 +15,7 @@ import Neon.Class.Not (not)
 import Neon.Class.One (One, one)
 import Neon.Class.Or (or)
 import Neon.Class.Reduce (Reduce, reduce)
+import Neon.Class.Remainder (Remainder, remainder)
 import Neon.Class.Show (Show, show)
 import Neon.Class.Subtract (Subtract, subtract)
 import Neon.Class.ToArray (toArray)
@@ -62,6 +63,9 @@ flatten xss = chain identity xss
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
+
+isDivisibleBy :: forall a. (Equal a, Remainder a, Zero a) => a -> a -> Boolean
+isDivisibleBy y x = isEqual zero (remainder y x)
 
 isEmpty :: forall a b. (Reduce a) => a b -> Boolean
 isEmpty xs = all (always false) xs
