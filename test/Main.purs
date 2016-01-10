@@ -211,11 +211,6 @@ main = run [consoleReporter] do
           absoluteValue 1 ?= 1
           absoluteValue 0.0 ?= 0.0
           absoluteValue (-1) ?= 1
-      describe "any" do
-        it "returns true when any element passes the predicate" do
-          any (isGreater 1) [] ?= false
-          any (isGreater 1) [1, 2] ?= true
-          any (isGreater 1) [0, 1] ?= false
       describe "asTypeOf" do
         it "is always" do
           asTypeOf [1] [] ?= ([] :: Array Int)
@@ -248,6 +243,11 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
+      describe "isAny" do
+        it "returns true when any element passes the predicate" do
+          isAny (isGreater 1) [] ?= false
+          isAny (isGreater 1) [1, 2] ?= true
+          isAny (isGreater 1) [0, 1] ?= false
       describe "isDivisibleBy" do
         it "returns true if the number is divisible by the other" do
           isDivisibleBy 3 6 ?= true
