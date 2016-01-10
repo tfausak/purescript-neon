@@ -5,7 +5,7 @@
     "purescript": "0.7.6"
   },
   "engines": {
-    "node": "5.3.0",
+    "node": "5.4.0",
     "npm": "3.3.12"
   },
   "license": "MIT",
