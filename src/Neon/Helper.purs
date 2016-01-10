@@ -77,6 +77,9 @@ isDivisibleBy y x = isEqual zero (remainder y x)
 isEmpty :: forall a b. (Reduce a) => a b -> Boolean
 isEmpty xs = isEvery (always false) xs
 
+isEven :: Int -> Boolean
+isEven x = isDivisibleBy 2 x
+
 isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 isEvery p xs = reduce (\ a x -> and a (p x)) true xs
 
@@ -91,6 +94,9 @@ isLessOrEqual y x = or (isLess y x) (isEqual y x)
 
 isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
 isNotEqual y x = not (isEqual y x)
+
+isOdd :: Int -> Boolean
+isOdd x = not (isEven x)
 
 max :: forall a. (Greater a) => a -> a -> a
 max y x = if isGreater y x then x else y

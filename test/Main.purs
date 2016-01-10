@@ -262,6 +262,10 @@ main = run [consoleReporter] do
         it "returns true when the container is empty" do
           isEmpty [] ?= true
           isEmpty [1] ?= false
+      describe "isEven" do
+        it "returns true when the int is even" do
+          isEven 2 ?= true
+          isEven 3 ?= false
       describe "isEvery" do
         it "returns true when every element passes the predicate" do
           isEvery (isGreater 1) [] ?= true
@@ -287,6 +291,10 @@ main = run [consoleReporter] do
         it "is not isEqual" do
           isNotEqual 1 1 ?= false
           isNotEqual 1 0 ?= true
+      describe "isOdd" do
+        it "returns true when the int is even" do
+          isOdd 2 ?= false
+          isOdd 3 ?= true
       describe "max" do
         it "returns the max" do
           max 1 2 ?= 2
