@@ -1,6 +1,7 @@
 module Neon.Class.Map (Map, map) where
 
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
+import Neon.Effect (Eff())
 import Prelude as Prelude
 
 class Map a where
@@ -8,6 +9,9 @@ class Map a where
 
 instance mapArray :: Map Array where
   map f xs = Prelude.map f xs
+
+instance mapEff :: Map (Eff a) where
+  map f x = Prelude.map f x
 
 instance mapList :: Map List where
   map f xs = case xs of

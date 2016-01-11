@@ -1,6 +1,7 @@
 module Neon.Class.Apply (Apply, apply) where
 
 import Neon.Data (List(), Maybe())
+import Neon.Effect (Eff())
 import Prelude as Prelude
 
 class Apply a where
@@ -8,6 +9,9 @@ class Apply a where
 
 instance applyArray :: Apply Array where
   apply fs xs = Prelude.apply fs xs
+
+instance applyEff :: Apply (Eff a) where
+  apply f x = Prelude.apply f x
 
 instance applyList :: Apply List where
   apply fs xs = Prelude.apply fs xs
