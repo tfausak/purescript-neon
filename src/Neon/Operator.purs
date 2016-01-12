@@ -4,7 +4,7 @@ import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, isEqual)
-import Neon.Class.Greater (Greater, isGreater)
+import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Less (Less, less)
 import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Or (Or, or)
@@ -54,7 +54,7 @@ infixl 1 ..
 (!=) x y = isNotEqual y x
 
 (>) :: forall a. (Greater a) => a -> a -> Boolean
-(>) x y = isGreater y x
+(>) x y = greater y x
 
 (>=) :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 (>=) x y = isGreaterOrEqual y x

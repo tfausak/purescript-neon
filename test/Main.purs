@@ -87,22 +87,22 @@ main = run [consoleReporter] do
           isEqual "a" "a" ?= true
       describe "Filter" do
         it "can filter arrays" do
-          filter (isGreater 1) [0, 2, 1] ?= [2]
+          filter (greater 1) [0, 2, 1] ?= [2]
         it "can filter lists" do
-          filter (isGreater 1) (Cons 0 (Cons 2 (Cons 1 Nil))) ?= Cons 2 Nil
+          filter (greater 1) (Cons 0 (Cons 2 (Cons 1 Nil))) ?= Cons 2 Nil
       describe "Greater" do
         pending "can compare arrays"
         it "can compare booleans" do
-          isGreater false true ?= true
+          greater false true ?= true
         it "can compare chars" do
-          isGreater 'a' 'b' ?= true
+          greater 'a' 'b' ?= true
         it "can compare ints" do
-          isGreater 1 2 ?= true
+          greater 1 2 ?= true
         pending "can compare lists"
         it "can compare numbers" do
-          isGreater 1.0 2.0 ?= true
+          greater 1.0 2.0 ?= true
         it "can compare strings" do
-          isGreater "a" "b" ?= true
+          greater "a" "b" ?= true
       describe "Less" do
         pending "can compare arrays"
         it "can compare booleans" do
@@ -252,9 +252,9 @@ main = run [consoleReporter] do
           increment '\65535' ?= Nothing
       describe "isAny" do
         it "returns true when any element passes the predicate" do
-          isAny (isGreater 1) [] ?= false
-          isAny (isGreater 1) [1, 2] ?= true
-          isAny (isGreater 1) [0, 1] ?= false
+          isAny (greater 1) [] ?= false
+          isAny (greater 1) [1, 2] ?= true
+          isAny (greater 1) [0, 1] ?= false
       describe "isDivisibleBy" do
         it "returns true if the number is divisible by the other" do
           isDivisibleBy 3 6 ?= true
@@ -270,11 +270,11 @@ main = run [consoleReporter] do
           isEven 3 ?= false
       describe "isEvery" do
         it "returns true when every element passes the predicate" do
-          isEvery (isGreater 1) [] ?= true
-          isEvery (isGreater 1) [2, 3] ?= true
-          isEvery (isGreater 1) [1, 2] ?= false
+          isEvery (greater 1) [] ?= true
+          isEvery (greater 1) [2, 3] ?= true
+          isEvery (greater 1) [1, 2] ?= false
       describe "isGreaterOrEqual" do
-        it "is isGreater or isEqual" do
+        it "is greater or isEqual" do
           isGreaterOrEqual 1 0 ?= false
           isGreaterOrEqual 1 1 ?= true
           isGreaterOrEqual 1 2 ?= true
@@ -411,7 +411,7 @@ main = run [consoleReporter] do
         it "is isNotEqual" do
           false != true ?= true
       describe ">" do
-        it "is isGreater" do
+        it "is greater" do
           2 > 1 ?= true
       describe ">=" do
         it "is isGreaterOrEqual" do

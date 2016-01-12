@@ -7,7 +7,7 @@ import Neon.Class.Chain (Chain, chain)
 import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, isEqual)
 import Neon.Class.FromInt (FromInt, fromInt)
-import Neon.Class.Greater (Greater, isGreater)
+import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Less (Less, less)
 import Neon.Class.Map (Map, map)
 import Neon.Class.Multiply (Multiply, multiply)
@@ -40,7 +40,7 @@ bind x f = chain f x
 
 clamp :: forall a. (Greater a, Less a) => a -> a -> a -> a
 clamp l h x =
-  if isGreater h l
+  if greater h l
   then clamp h l x
   else max l (min h x)
 
@@ -85,7 +85,7 @@ isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 isEvery p xs = reduce (\ a x -> and a (p x)) true xs
 
 isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
-isGreaterOrEqual y x = or (isGreater y x) (isEqual y x)
+isGreaterOrEqual y x = or (greater y x) (isEqual y x)
 
 isInfinite :: Number -> Boolean
 isInfinite x = not (finite x)
@@ -100,7 +100,7 @@ isOdd :: Int -> Boolean
 isOdd x = not (isEven x)
 
 max :: forall a. (Greater a) => a -> a -> a
-max y x = if isGreater y x then x else y
+max y x = if greater y x then x else y
 
 maximum :: forall a b. (Greater b, Reduce a) => a b -> Maybe b
 maximum xs = reduce
@@ -140,7 +140,7 @@ sign :: forall a. (Greater a, Less a, One a, Subtract a, Zero a) => a -> a
 sign x =
   if less zero x
   then negate one
-  else if isGreater zero x
+  else if greater zero x
   then one
   else zero
 
@@ -170,7 +170,7 @@ unsafeLog m x = unsafePerformEff do
 upTo :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
 upTo h l =
   let upToList :: (FromInt a, Greater a, ToInt a) => a -> a -> List a
-      upToList t b = if isGreater t b
+      upToList t b = if greater t b
         then Nil
         else case increment b of
           Nothing -> Cons b Nil
