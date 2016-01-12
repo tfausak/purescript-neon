@@ -106,16 +106,16 @@ main = run [consoleReporter] do
       describe "Less" do
         pending "can compare arrays"
         it "can compare booleans" do
-          isLess true false ?= true
+          less true false ?= true
         it "can compare chars" do
-          isLess 'b' 'a' ?= true
+          less 'b' 'a' ?= true
         it "can compare ints" do
-          isLess 2 1 ?= true
+          less 2 1 ?= true
         pending "can compare lists"
         it "can compare numbers" do
-          isLess 2.0 1.0 ?= true
+          less 2.0 1.0 ?= true
         it "can compare strings" do
-          isLess "b" "a" ?= true
+          less "b" "a" ?= true
       describe "Map" do
         it "can map arrays" do
           map (+ 1) [1, 2] ?= [2, 3]
@@ -285,7 +285,7 @@ main = run [consoleReporter] do
           isInfinite nan ?= true
           isInfinite 0.0 ?= false
       describe "isLessOrEqual" do
-        it "is isLess or isEqual" do
+        it "is less or isEqual" do
           isLessOrEqual 1 0 ?= true
           isLessOrEqual 1 1 ?= true
           isLessOrEqual 1 2 ?= false
@@ -417,7 +417,7 @@ main = run [consoleReporter] do
         it "is isGreaterOrEqual" do
           1 >= 1 ?= true
       describe "<" do
-        it "is isLess" do
+        it "is less" do
           1 < 2 ?= true
       describe "<=" do
         it "is isLessOrEqual" do

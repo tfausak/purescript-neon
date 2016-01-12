@@ -8,7 +8,7 @@ import Neon.Class.Divide (Divide, divide)
 import Neon.Class.Equal (Equal, isEqual)
 import Neon.Class.FromInt (FromInt, fromInt)
 import Neon.Class.Greater (Greater, isGreater)
-import Neon.Class.Less (Less, isLess)
+import Neon.Class.Less (Less, less)
 import Neon.Class.Map (Map, map)
 import Neon.Class.Multiply (Multiply, multiply)
 import Neon.Class.Not (not)
@@ -30,7 +30,7 @@ import Neon.Primitive.Number (finite)
 import Unsafe.Coerce as Coerce
 
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
-absoluteValue x = if isLess zero x then negate x else x
+absoluteValue x = if less zero x then negate x else x
 
 asTypeOf :: forall a. a -> a -> a
 asTypeOf y x = always x y
@@ -53,7 +53,7 @@ decrement x = fromInt (subtract 1 (toInt x))
 downTo :: forall a. (FromInt a, Less a, ToInt a) => a -> a -> Array a
 downTo l h =
   let downToList :: (FromInt a, Less a, ToInt a) => a -> a -> List a
-      downToList b t = if isLess b t
+      downToList b t = if less b t
         then Nil
         else case decrement t of
           Nothing -> Cons t Nil
@@ -91,7 +91,7 @@ isInfinite :: Number -> Boolean
 isInfinite x = not (finite x)
 
 isLessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
-isLessOrEqual y x = or (isLess y x) (isEqual y x)
+isLessOrEqual y x = or (less y x) (isEqual y x)
 
 isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
 isNotEqual y x = not (isEqual y x)
@@ -111,7 +111,7 @@ maximum xs = reduce
   xs
 
 min :: forall a. (Less a) => a -> a -> a
-min y x = if isLess y x then x else y
+min y x = if less y x then x else y
 
 minimum :: forall a b. (Less b, Reduce a) => a b -> Maybe b
 minimum xs = reduce
@@ -138,7 +138,7 @@ sequence = traverse identity
 
 sign :: forall a. (Greater a, Less a, One a, Subtract a, Zero a) => a -> a
 sign x =
-  if isLess zero x
+  if less zero x
   then negate one
   else if isGreater zero x
   then one
