@@ -5,7 +5,7 @@ import Neon.Class.And (and)
 import Neon.Class.Apply (Apply)
 import Neon.Class.Chain (Chain, chain)
 import Neon.Class.Divide (Divide, divide)
-import Neon.Class.Equal (Equal, isEqual)
+import Neon.Class.Equal (Equal, equal)
 import Neon.Class.FromInt (FromInt, fromInt)
 import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Less (Less, less)
@@ -64,7 +64,7 @@ flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
 
 hasElement :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
-hasElement x xs = isAny (isEqual x) xs
+hasElement x xs = isAny (equal x) xs
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
@@ -73,7 +73,7 @@ isAny :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 isAny p xs = reduce (\ a x -> or a (p x)) false xs
 
 isDivisibleBy :: forall a. (Equal a, Remainder a, Zero a) => a -> a -> Boolean
-isDivisibleBy y x = isEqual zero (remainder y x)
+isDivisibleBy y x = equal zero (remainder y x)
 
 isEmpty :: forall a b. (Reduce a) => a b -> Boolean
 isEmpty xs = isEvery (always false) xs
@@ -85,16 +85,16 @@ isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 isEvery p xs = reduce (\ a x -> and a (p x)) true xs
 
 isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
-isGreaterOrEqual y x = or (greater y x) (isEqual y x)
+isGreaterOrEqual y x = or (greater y x) (equal y x)
 
 isInfinite :: Number -> Boolean
 isInfinite x = not (finite x)
 
 isLessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
-isLessOrEqual y x = or (less y x) (isEqual y x)
+isLessOrEqual y x = or (less y x) (equal y x)
 
 isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
-isNotEqual y x = not (isEqual y x)
+isNotEqual y x = not (equal y x)
 
 isOdd :: Int -> Boolean
 isOdd x = not (isEven x)

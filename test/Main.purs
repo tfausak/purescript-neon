@@ -75,16 +75,16 @@ main = run [consoleReporter] do
       describe "Equal" do
         pending "can equal arrays"
         it "can equal booleans" do
-          isEqual false false ?= true
+          equal false false ?= true
         it "can equal chars" do
-          isEqual 'a' 'a' ?= true
+          equal 'a' 'a' ?= true
         it "can equal ints" do
-          isEqual 1 1 ?= true
+          equal 1 1 ?= true
         pending "can equal lists"
         it "can equal numbers" do
-          isEqual 1.0 1.0 ?= true
+          equal 1.0 1.0 ?= true
         it "can equal strings" do
-          isEqual "a" "a" ?= true
+          equal "a" "a" ?= true
       describe "Filter" do
         it "can filter arrays" do
           filter (greater 1) [0, 2, 1] ?= [2]
@@ -274,7 +274,7 @@ main = run [consoleReporter] do
           isEvery (greater 1) [2, 3] ?= true
           isEvery (greater 1) [1, 2] ?= false
       describe "isGreaterOrEqual" do
-        it "is greater or isEqual" do
+        it "is greater or equal" do
           isGreaterOrEqual 1 0 ?= false
           isGreaterOrEqual 1 1 ?= true
           isGreaterOrEqual 1 2 ?= true
@@ -285,12 +285,12 @@ main = run [consoleReporter] do
           isInfinite nan ?= true
           isInfinite 0.0 ?= false
       describe "isLessOrEqual" do
-        it "is less or isEqual" do
+        it "is less or equal" do
           isLessOrEqual 1 0 ?= true
           isLessOrEqual 1 1 ?= true
           isLessOrEqual 1 2 ?= false
       describe "isNotEqual" do
-        it "is not isEqual" do
+        it "is not equal" do
           isNotEqual 1 1 ?= false
           isNotEqual 1 0 ?= true
       describe "isOdd" do
@@ -353,9 +353,9 @@ main = run [consoleReporter] do
         it "is unit" do
           todo ?= unit
         it "can be any type" do
-          isEqual unit todo ?= true
-          isEqual 1 todo ?= false
-          isEqual 1.0 todo ?= false
+          equal unit todo ?= true
+          equal 1 todo ?= false
+          equal 1.0 todo ?= false
       describe "uncurry" do
         it "converts a normal function into a tuple function" do
           let f x y = "(" + x + ", " + y + ")"
@@ -405,7 +405,7 @@ main = run [consoleReporter] do
         it "is subtract" do
           2 - 1 ?= 1
       describe "==" do
-        it "is isEqual" do
+        it "is equal" do
           false == false ?= true
       describe "!=" do
         it "is isNotEqual" do

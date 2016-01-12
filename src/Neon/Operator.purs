@@ -3,7 +3,7 @@ module Neon.Operator where
 import Neon.Class.Add (Add, add)
 import Neon.Class.And (And, and)
 import Neon.Class.Divide (Divide, divide)
-import Neon.Class.Equal (Equal, isEqual)
+import Neon.Class.Equal (Equal, equal)
 import Neon.Class.Greater (Greater, greater)
 import Neon.Class.Less (Less, less)
 import Neon.Class.Multiply (Multiply, multiply)
@@ -48,7 +48,7 @@ infixl 1 ..
 (-) x y = subtract y x
 
 (==) :: forall a. (Equal a) => a -> a -> Boolean
-(==) x y = isEqual y x
+(==) x y = equal y x
 
 (!=) :: forall a. (Equal a) => a -> a -> Boolean
 (!=) x y = isNotEqual y x
