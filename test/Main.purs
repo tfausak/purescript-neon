@@ -257,6 +257,10 @@ main = run [consoleReporter] do
         it "returns true when the container is empty" do
           empty [] ?= true
           empty [1] ?= false
+      describe "even" do
+        it "returns true when the int is even" do
+          even 2 ?= true
+          even 3 ?= false
       describe "flatten" do
         it "removes a level of nesting" do
           flatten [[1, 2], [3, 4]] ?= [1, 2, 3, 4]
@@ -264,10 +268,6 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
-      describe "isEven" do
-        it "returns true when the int is even" do
-          isEven 2 ?= true
-          isEven 3 ?= false
       describe "isEvery" do
         it "returns true when every element passes the predicate" do
           isEvery (greater 1) [] ?= true

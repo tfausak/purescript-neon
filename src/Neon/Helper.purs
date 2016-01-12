@@ -72,14 +72,14 @@ downTo l h =
 empty :: forall a b. (Reduce a) => a b -> Boolean
 empty xs = isEvery (always false) xs
 
+even :: Int -> Boolean
+even x = divisibleBy 2 x
+
 flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
-
-isEven :: Int -> Boolean
-isEven x = divisibleBy 2 x
 
 isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 isEvery p xs = reduce (\ a x -> and a (p x)) true xs
@@ -97,7 +97,7 @@ isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
 isNotEqual y x = not (equal y x)
 
 isOdd :: Int -> Boolean
-isOdd x = not (isEven x)
+isOdd x = not (even x)
 
 max :: forall a. (Greater a) => a -> a -> a
 max y x = if greater y x then x else y
