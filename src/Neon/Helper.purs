@@ -56,6 +56,9 @@ curry f = \ x y -> f (Tuple x y)
 decrement :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 decrement x = fromInt (subtract 1 (toInt x))
 
+divisibleBy :: forall a. (Equal a, Remainder a, Zero a) => a -> a -> Boolean
+divisibleBy y x = equal zero (remainder y x)
+
 downTo :: forall a. (FromInt a, Less a, ToInt a) => a -> a -> Array a
 downTo l h =
   let downToList :: (FromInt a, Less a, ToInt a) => a -> a -> List a
@@ -72,14 +75,11 @@ flatten xss = chain identity xss
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
 
-isDivisibleBy :: forall a. (Equal a, Remainder a, Zero a) => a -> a -> Boolean
-isDivisibleBy y x = equal zero (remainder y x)
-
 isEmpty :: forall a b. (Reduce a) => a b -> Boolean
 isEmpty xs = isEvery (always false) xs
 
 isEven :: Int -> Boolean
-isEven x = isDivisibleBy 2 x
+isEven x = divisibleBy 2 x
 
 isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 isEvery p xs = reduce (\ a x -> and a (p x)) true xs

@@ -243,6 +243,11 @@ main = run [consoleReporter] do
         it "decrements the argument" do
           decrement 'b' ?= Just 'a'
           decrement '\0' ?= Nothing
+      describe "divisibleBy" do
+        it "returns true if the number is divisible by the other" do
+          divisibleBy 3 6 ?= true
+          divisibleBy 4 6 ?= false
+          divisibleBy 6 3 ?= false
       describe "downTo" do
         it "returns an array of values from low to high" do
           downTo 1 3 ?= [3, 2, 1]
@@ -255,11 +260,6 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
-      describe "isDivisibleBy" do
-        it "returns true if the number is divisible by the other" do
-          isDivisibleBy 3 6 ?= true
-          isDivisibleBy 4 6 ?= false
-          isDivisibleBy 6 3 ?= false
       describe "isEmpty" do
         it "returns true when the container is empty" do
           isEmpty [] ?= true
