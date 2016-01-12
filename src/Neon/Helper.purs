@@ -134,7 +134,7 @@ reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal x = divide x one
 
 sequence :: forall a b c. (Apply b, Map b, Traverse a, Wrap b) => a (b c) -> b (a c)
-sequence = traverse identity
+sequence xs = traverse identity xs
 
 sign :: forall a. (Greater a, Less a, One a, Subtract a, Zero a) => a -> a
 sign x =
