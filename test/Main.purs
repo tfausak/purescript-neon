@@ -284,10 +284,6 @@ main = run [consoleReporter] do
           infinite (-infinity) ?= true
           infinite nan ?= true
           infinite 0.0 ?= false
-      describe "isOdd" do
-        it "returns true when the int is even" do
-          isOdd 2 ?= false
-          isOdd 3 ?= true
       describe "lessOrEqual" do
         it "is less or equal" do
           lessOrEqual 1 0 ?= true
@@ -318,6 +314,10 @@ main = run [consoleReporter] do
         it "is not equal" do
           notEqual 1 1 ?= false
           notEqual 1 0 ?= true
+      describe "odd" do
+        it "returns true when the int is even" do
+          odd 2 ?= false
+          odd 3 ?= true
       describe "print" do
         pending ""
       describe "product" do

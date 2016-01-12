@@ -90,9 +90,6 @@ increment x = fromInt (add 1 (toInt x))
 infinite :: Number -> Boolean
 infinite x = not (finite x)
 
-isOdd :: Int -> Boolean
-isOdd x = not (even x)
-
 lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
 lessOrEqual y x = or (less y x) (equal y x)
 
@@ -124,14 +121,17 @@ negate x = subtract x zero
 notEqual :: forall a. (Equal a) => a -> a -> Boolean
 notEqual y x = not (equal y x)
 
-reciprocal :: forall a. (Divide a, One a) => a -> a
-reciprocal x = divide x one
+odd :: Int -> Boolean
+odd x = not (even x)
 
 print :: forall a b. (Show a) => a -> Eff (console :: CONSOLE | b) Unit
 print x = log (show x)
 
 product :: forall a b. (Multiply b, One b, Reduce a) => a b -> b
 product xs = reduce multiply one xs
+
+reciprocal :: forall a. (Divide a, One a) => a -> a
+reciprocal x = divide x one
 
 sequence :: forall a b c. (Apply b, Map b, Traverse a, Wrap b) => a (b c) -> b (a c)
 sequence = traverse identity
