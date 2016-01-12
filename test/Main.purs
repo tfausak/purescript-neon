@@ -269,15 +269,15 @@ main = run [consoleReporter] do
       describe "flatten" do
         it "removes a level of nesting" do
           flatten [[1, 2], [3, 4]] ?= [1, 2, 3, 4]
+      describe "greaterOrEqual" do
+        it "is greater or equal" do
+          greaterOrEqual 1 0 ?= false
+          greaterOrEqual 1 1 ?= true
+          greaterOrEqual 1 2 ?= true
       describe "increment" do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
-      describe "isGreaterOrEqual" do
-        it "is greater or equal" do
-          isGreaterOrEqual 1 0 ?= false
-          isGreaterOrEqual 1 1 ?= true
-          isGreaterOrEqual 1 2 ?= true
       describe "isInfinite" do
         it "returns true when the number is infinite" do
           isInfinite infinity ?= true
@@ -414,7 +414,7 @@ main = run [consoleReporter] do
         it "is greater" do
           2 > 1 ?= true
       describe ">=" do
-        it "is isGreaterOrEqual" do
+        it "is greaterOrEqual" do
           1 >= 1 ?= true
       describe "<" do
         it "is less" do

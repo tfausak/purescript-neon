@@ -81,11 +81,11 @@ even x = divisibleBy 2 x
 flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
 
+greaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
+greaterOrEqual y x = or (greater y x) (equal y x)
+
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
-
-isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
-isGreaterOrEqual y x = or (greater y x) (equal y x)
 
 isInfinite :: Number -> Boolean
 isInfinite x = not (finite x)
