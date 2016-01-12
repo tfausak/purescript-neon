@@ -32,6 +32,9 @@ import Unsafe.Coerce as Coerce
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
 absoluteValue x = if less zero x then negate x else x
 
+all :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
+all p xs = reduce (\ a x -> and a (p x)) true xs
+
 any :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
 any p xs = reduce (\ a x -> or a (p x)) false xs
 
@@ -70,7 +73,7 @@ downTo l h =
   in  toArray (downToList l h)
 
 empty :: forall a b. (Reduce a) => a b -> Boolean
-empty xs = isEvery (always false) xs
+empty xs = all (always false) xs
 
 even :: Int -> Boolean
 even x = divisibleBy 2 x
@@ -80,9 +83,6 @@ flatten xss = chain identity xss
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
-
-isEvery :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
-isEvery p xs = reduce (\ a x -> and a (p x)) true xs
 
 isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 isGreaterOrEqual y x = or (greater y x) (equal y x)

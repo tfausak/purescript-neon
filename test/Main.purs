@@ -213,6 +213,11 @@ main = run [consoleReporter] do
           absoluteValue 1 ?= 1
           absoluteValue 0.0 ?= 0.0
           absoluteValue (-1) ?= 1
+      describe "all" do
+        it "returns true when every element passes the predicate" do
+          all (greater 1) [] ?= true
+          all (greater 1) [2, 3] ?= true
+          all (greater 1) [1, 2] ?= false
       describe "any" do
         it "returns true when any element passes the predicate" do
           any (greater 1) [] ?= false
@@ -268,11 +273,6 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
-      describe "isEvery" do
-        it "returns true when every element passes the predicate" do
-          isEvery (greater 1) [] ?= true
-          isEvery (greater 1) [2, 3] ?= true
-          isEvery (greater 1) [1, 2] ?= false
       describe "isGreaterOrEqual" do
         it "is greater or equal" do
           isGreaterOrEqual 1 0 ?= false
