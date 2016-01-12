@@ -3,6 +3,16 @@ module Neon.Class.Remainder (Remainder, remainder) where
 import Prelude as Prelude
 import Unsafe.Coerce as Coerce
 
+-- | Represents types that are divisible.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | remainder 2 7 -- 1
+-- | remainder 2.0 7.0 -- 1.0
+-- | ```
+-- |
+-- | Laws:
+-- | - `(x / y) * y + (x % y) = x`
 class Remainder a where
   remainder :: a -> a -> a
 

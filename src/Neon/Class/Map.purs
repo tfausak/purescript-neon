@@ -4,6 +4,17 @@ import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 import Neon.Effect (Eff())
 import Prelude as Prelude
 
+-- | Represents types that can be mapped over. This is also know as a
+-- | [functor](https://en.wikipedia.org/wiki/Functor).
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | map (+ 1) [1, 2, 3] -- [2, 3, 4]
+-- | ```
+-- |
+-- | Laws:
+-- | - `map identity = identity`
+-- | - `map (compose g f) = compose (map g) (map f)
 class Map a where
   map :: forall b c. (b -> c) -> a b -> a c
 

@@ -4,5 +4,11 @@ module Neon.Primitive.Int
 
 import Data.Int as Int
 
+-- | Converts an integer into a number.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | toNumber 1 -- 1.0
+-- | ```
 toNumber :: Int -> Number
 toNumber x = Int.toNumber x

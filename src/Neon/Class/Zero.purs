@@ -3,6 +3,17 @@ module Neon.Class.Zero (Zero, zero) where
 import Neon.Data (List(Nil))
 import Prelude as Prelude
 
+-- | Represents types that have an additive identity. This is also known as a
+-- | [monoid](https://en.wikipedia.org/wiki/Monoid).
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | zero :: Int -- 0
+-- | zero :: Number -- 0.0
+-- | ```
+-- |
+-- | Laws:
+-- | - `zero + x = x + zero = x`
 class Zero a where
   zero :: a
 

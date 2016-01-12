@@ -3,6 +3,16 @@ module Neon.Class.Top (Top, top) where
 import Neon.Primitive.Number (infinity)
 import Prelude as Prelude
 
+-- | Represents types that have an upper bound.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | top :: Boolean -- true
+-- | top :: Char -- '\65535'
+-- | ```
+-- |
+-- | Laws:
+-- | - `top >= x`
 class Top a where
   top :: a
 

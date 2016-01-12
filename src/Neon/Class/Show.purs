@@ -4,6 +4,18 @@ import Neon.Class.Add (add)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
 import Prelude as Prelude
 
+-- | Represents types that can be converting to a string. This is typically
+-- | used for debugging. The result of `show x` should be a valid PureScript
+-- | expressions.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | show 123 -- "123"
+-- | show (Just 123) -- "Just (123)"
+-- | ```
+-- |
+-- | Laws:
+-- | - none
 class Show a where
   show :: a -> String
 

@@ -4,6 +4,17 @@ import Math as Math
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (floor)
 
+-- | Represents types that can be exponentiated.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | power 3 2 -- 8
+-- | ```
+-- |
+-- | Laws:
+-- | - `(b ^ n) * (b ^ m) = b ^ (n + m)`
+-- | - `(b ^ n) ^ m = b ^ (n * m)`
+-- | - `(b * y) ^ n = (b ^ n) * (y ^ n)`
 class Power a where
   power :: a -> a -> a
 

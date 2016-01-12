@@ -4,6 +4,18 @@ import Neon.Class.FromArray (fromArray)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
 import Prelude as Prelude
 
+-- | Represents types that can be equal to each other.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | equal 1 2 -- false
+-- | equal 3 3 -- true
+-- | ```
+-- |
+-- | Laws:
+-- | - `x == x = true`
+-- | - `x == y = y == x`
+-- | - `if x == y && y == z then x == z`
 class Equal a where
   equal :: a -> a -> Boolean
 

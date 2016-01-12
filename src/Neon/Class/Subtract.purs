@@ -2,6 +2,15 @@ module Neon.Class.Subtract (Subtract, subtract) where
 
 import Prelude as Prelude
 
+-- | Represents types that can be subtracted from each other.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | subtract 2 3 -- 1
+-- | ```
+-- |
+-- | Laws:
+-- | - `a - a = a + (zero - a) = zero`
 class Subtract a where
   subtract :: a -> a -> a
 

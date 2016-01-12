@@ -7,6 +7,17 @@ import Neon.Class.Wrap (Wrap, wrap)
 import Neon.Class.ToArray (toArray)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 
+-- | Represents data structures that can be traversed from left to right.
+-- | Unlike `Reduce`, these structures can be traversed while keeping their
+-- | shape.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | traverse (compose Just show) [1, 2] -- Just ["1", "2"]
+-- | ```
+-- |
+-- | Laws:
+-- | - `compose t (traverse f) = traverse (compose t f)`
 class Traverse t where
   traverse :: forall a b m. (Apply m, Map m, Wrap m) => (a -> m b) -> t a -> m (t b)
 

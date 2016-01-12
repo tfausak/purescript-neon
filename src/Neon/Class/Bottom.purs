@@ -3,6 +3,16 @@ module Neon.Class.Bottom (Bottom, bottom) where
 import Neon.Primitive.Number (infinity)
 import Prelude as Prelude
 
+-- | Represents types that have a lower bound.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | bottom :: Boolean -- false
+-- | bottom :: Char -- '\0'
+-- | ```
+-- |
+-- | Laws:
+-- | - `bottom <= x`
 class Bottom a where
   bottom :: a
 

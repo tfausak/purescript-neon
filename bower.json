@@ -25,9 +25,12 @@
     "/output/"
   ],
   "keywords": [
+    "core",
+    "library",
     "neon",
     "prelude",
-    "purescript"
+    "purescript",
+    "standard"
   ],
   "license": "MIT",
   "main": [
@@ -37,9 +40,5 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/tfausak/purescript-neon.git"
-  },
-  "resolutions": {
-    "purescript-aff": "~0.13.0",
-    "purescript-transformers": "~0.8.2"
   }
 }
