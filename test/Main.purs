@@ -253,6 +253,10 @@ main = run [consoleReporter] do
           downTo 1 3 ?= [3, 2, 1]
           downTo 3 1 ?= []
           downTo 1 1 ?= [1]
+      describe "empty" do
+        it "returns true when the container is empty" do
+          empty [] ?= true
+          empty [1] ?= false
       describe "flatten" do
         it "removes a level of nesting" do
           flatten [[1, 2], [3, 4]] ?= [1, 2, 3, 4]
@@ -260,10 +264,6 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
-      describe "isEmpty" do
-        it "returns true when the container is empty" do
-          isEmpty [] ?= true
-          isEmpty [1] ?= false
       describe "isEven" do
         it "returns true when the int is even" do
           isEven 2 ?= true

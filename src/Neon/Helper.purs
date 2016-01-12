@@ -69,14 +69,14 @@ downTo l h =
           Just x -> Cons t (downToList b x)
   in  toArray (downToList l h)
 
+empty :: forall a b. (Reduce a) => a b -> Boolean
+empty xs = isEvery (always false) xs
+
 flatten :: forall a b. (Chain a) => a (a b) -> a b
 flatten xss = chain identity xss
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
-
-isEmpty :: forall a b. (Reduce a) => a b -> Boolean
-isEmpty xs = isEvery (always false) xs
 
 isEven :: Int -> Boolean
 isEven x = divisibleBy 2 x
