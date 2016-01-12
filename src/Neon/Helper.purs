@@ -26,7 +26,7 @@ import Neon.Class.Zero (Zero, zero)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Tuple(Tuple), Unit(), unit)
 import Neon.Effect (Eff(), CONSOLE(), log, unsafePerformEff)
 import Neon.Primitive.Function (always, identity)
-import Neon.Primitive.Number (isFinite)
+import Neon.Primitive.Number (finite)
 import Unsafe.Coerce as Coerce
 
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
@@ -88,7 +88,7 @@ isGreaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
 isGreaterOrEqual y x = or (isGreater y x) (isEqual y x)
 
 isInfinite :: Number -> Boolean
-isInfinite x = not (isFinite x)
+isInfinite x = not (finite x)
 
 isLessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
 isLessOrEqual y x = or (isLess y x) (isEqual y x)

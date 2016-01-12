@@ -1,8 +1,8 @@
 module Neon.Primitive.Number
   ( ceiling
+  , finite
   , floor
   , infinity
-  , isFinite
   , isNaN
   , nan
   , round
@@ -14,14 +14,14 @@ import Global as Global
 ceiling :: Number -> Int
 ceiling x = Int.ceil x
 
+finite :: Number -> Boolean
+finite x = Global.isFinite x
+
 floor :: Number -> Int
 floor x = Int.floor x
 
 infinity :: Number
 infinity = Global.infinity
-
-isFinite :: Number -> Boolean
-isFinite x = Global.isFinite x
 
 isNaN :: Number -> Boolean
 isNaN x = Global.isNaN x
