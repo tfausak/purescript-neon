@@ -9,7 +9,7 @@ class Equal a where
 
 instance equalArray :: (Equal a) => Equal (Array a) where
   isEqual y x =
-    let toList :: forall a. Array a -> List a
+    let toList :: Array a -> List a
         toList xs = fromArray xs
     in  isEqual (toList y) (toList x)
 
