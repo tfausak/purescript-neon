@@ -225,11 +225,11 @@ main = run [consoleReporter] do
           clamp 3 5 4 ?= 4
           clamp 3 5 6 ?= 5
           clamp 5 3 4 ?= 4
-      describe "hasElement" do
+      describe "contains" do
         it "returns true when the container contains the element" do
-          hasElement 1 [0, 1, 2] ?= true
-          hasElement 1 [0, 2] ?= false
-          hasElement 1 [] ?= false
+          contains 1 [0, 1, 2] ?= true
+          contains 1 [0, 2] ?= false
+          contains 1 [] ?= false
       describe "curry" do
         it "converts a tuple function into a normal function" do
           let f (Tuple x y) = "(" + x + ", " + y + ")"
