@@ -64,7 +64,7 @@ divisibleBy y x = equal zero (remainder y x)
 
 downTo :: forall a. (FromInt a, Less a, ToInt a) => a -> a -> Array a
 downTo l h =
-  let downToList :: (FromInt a, Less a, ToInt a) => a -> a -> List a
+  let downToList :: a -> a -> List a
       downToList b t = if less b t
         then Nil
         else case decrement t of
@@ -169,7 +169,7 @@ unsafeLog m x = unsafePerformEff do
 
 upTo :: forall a. (FromInt a, Greater a, ToInt a) => a -> a -> Array a
 upTo h l =
-  let upToList :: (FromInt a, Greater a, ToInt a) => a -> a -> List a
+  let upToList :: a -> a -> List a
       upToList t b = if greater t b
         then Nil
         else case increment b of
