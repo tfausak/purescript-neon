@@ -90,9 +90,6 @@ increment x = fromInt (add 1 (toInt x))
 infinite :: Number -> Boolean
 infinite x = not (finite x)
 
-isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
-isNotEqual y x = not (equal y x)
-
 isOdd :: Int -> Boolean
 isOdd x = not (even x)
 
@@ -123,6 +120,9 @@ minimum xs = reduce
 
 negate :: forall a. (Subtract a, Zero a) => a -> a
 negate x = subtract x zero
+
+notEqual :: forall a. (Equal a) => a -> a -> Boolean
+notEqual y x = not (equal y x)
 
 reciprocal :: forall a. (Divide a, One a) => a -> a
 reciprocal x = divide x one

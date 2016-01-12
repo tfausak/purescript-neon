@@ -284,10 +284,6 @@ main = run [consoleReporter] do
           infinite (-infinity) ?= true
           infinite nan ?= true
           infinite 0.0 ?= false
-      describe "isNotEqual" do
-        it "is not equal" do
-          isNotEqual 1 1 ?= false
-          isNotEqual 1 0 ?= true
       describe "isOdd" do
         it "returns true when the int is even" do
           isOdd 2 ?= false
@@ -318,6 +314,10 @@ main = run [consoleReporter] do
       describe "negate" do
         it "subtracts from zero" do
           negate 1 ?= -1
+      describe "notEqual" do
+        it "is not equal" do
+          notEqual 1 1 ?= false
+          notEqual 1 0 ?= true
       describe "print" do
         pending ""
       describe "product" do
@@ -408,7 +408,7 @@ main = run [consoleReporter] do
         it "is equal" do
           false == false ?= true
       describe "!=" do
-        it "is isNotEqual" do
+        it "is notEqual" do
           false != true ?= true
       describe ">" do
         it "is greater" do

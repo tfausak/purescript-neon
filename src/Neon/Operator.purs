@@ -11,7 +11,7 @@ import Neon.Class.Or (Or, or)
 import Neon.Class.Power (Power, power)
 import Neon.Class.Remainder (Remainder, remainder)
 import Neon.Class.Subtract (Subtract, subtract)
-import Neon.Helper (greaterOrEqual, lessOrEqual, isNotEqual)
+import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
 
 infixr 7 ^
 infixl 6 *
@@ -51,7 +51,7 @@ infixl 1 ..
 (==) x y = equal y x
 
 (!=) :: forall a. (Equal a) => a -> a -> Boolean
-(!=) x y = isNotEqual y x
+(!=) x y = notEqual y x
 
 (>) :: forall a. (Greater a) => a -> a -> Boolean
 (>) x y = greater y x
