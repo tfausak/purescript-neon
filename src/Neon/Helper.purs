@@ -90,14 +90,14 @@ increment x = fromInt (add 1 (toInt x))
 infinite :: Number -> Boolean
 infinite x = not (finite x)
 
-isLessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
-isLessOrEqual y x = or (less y x) (equal y x)
-
 isNotEqual :: forall a. (Equal a) => a -> a -> Boolean
 isNotEqual y x = not (equal y x)
 
 isOdd :: Int -> Boolean
 isOdd x = not (even x)
+
+lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
+lessOrEqual y x = or (less y x) (equal y x)
 
 max :: forall a. (Greater a) => a -> a -> a
 max y x = if greater y x then x else y

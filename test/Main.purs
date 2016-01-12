@@ -284,11 +284,6 @@ main = run [consoleReporter] do
           infinite (-infinity) ?= true
           infinite nan ?= true
           infinite 0.0 ?= false
-      describe "isLessOrEqual" do
-        it "is less or equal" do
-          isLessOrEqual 1 0 ?= true
-          isLessOrEqual 1 1 ?= true
-          isLessOrEqual 1 2 ?= false
       describe "isNotEqual" do
         it "is not equal" do
           isNotEqual 1 1 ?= false
@@ -297,6 +292,11 @@ main = run [consoleReporter] do
         it "returns true when the int is even" do
           isOdd 2 ?= false
           isOdd 3 ?= true
+      describe "lessOrEqual" do
+        it "is less or equal" do
+          lessOrEqual 1 0 ?= true
+          lessOrEqual 1 1 ?= true
+          lessOrEqual 1 2 ?= false
       describe "max" do
         it "returns the max" do
           max 1 2 ?= 2
@@ -420,7 +420,7 @@ main = run [consoleReporter] do
         it "is less" do
           1 < 2 ?= true
       describe "<=" do
-        it "is isLessOrEqual" do
+        it "is lessOrEqual" do
           1 <= 1 ?= true
       describe "&&" do
         it "is and" do
