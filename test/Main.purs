@@ -278,12 +278,12 @@ main = run [consoleReporter] do
         it "increments the argument" do
           increment 'a' ?= Just 'b'
           increment '\65535' ?= Nothing
-      describe "isInfinite" do
+      describe "infinite" do
         it "returns true when the number is infinite" do
-          isInfinite infinity ?= true
-          isInfinite (-infinity) ?= true
-          isInfinite nan ?= true
-          isInfinite 0.0 ?= false
+          infinite infinity ?= true
+          infinite (-infinity) ?= true
+          infinite nan ?= true
+          infinite 0.0 ?= false
       describe "isLessOrEqual" do
         it "is less or equal" do
           isLessOrEqual 1 0 ?= true

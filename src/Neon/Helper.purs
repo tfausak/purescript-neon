@@ -87,8 +87,8 @@ greaterOrEqual y x = or (greater y x) (equal y x)
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
 
-isInfinite :: Number -> Boolean
-isInfinite x = not (finite x)
+infinite :: Number -> Boolean
+infinite x = not (finite x)
 
 isLessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
 isLessOrEqual y x = or (less y x) (equal y x)
