@@ -32,6 +32,9 @@ import Unsafe.Coerce as Coerce
 absoluteValue :: forall a. (Less a, Subtract a, Zero a) => a -> a
 absoluteValue x = if less zero x then negate x else x
 
+any :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
+any p xs = reduce (\ a x -> or a (p x)) false xs
+
 asTypeOf :: forall a. a -> a -> a
 asTypeOf y x = always x y
 
@@ -45,7 +48,7 @@ clamp l h x =
   else max l (min h x)
 
 contains :: forall a b. (Equal b, Reduce a) => b -> a b -> Boolean
-contains x xs = isAny (equal x) xs
+contains x xs = any (equal x) xs
 
 curry :: forall a b c. (Tuple a b -> c) -> (a -> b -> c)
 curry f = \ x y -> f (Tuple x y)
@@ -68,9 +71,6 @@ flatten xss = chain identity xss
 
 increment :: forall a. (FromInt a, ToInt a) => a -> Maybe a
 increment x = fromInt (add 1 (toInt x))
-
-isAny :: forall a b. (Reduce a) => (b -> Boolean) -> a b -> Boolean
-isAny p xs = reduce (\ a x -> or a (p x)) false xs
 
 isDivisibleBy :: forall a. (Equal a, Remainder a, Zero a) => a -> a -> Boolean
 isDivisibleBy y x = equal zero (remainder y x)
