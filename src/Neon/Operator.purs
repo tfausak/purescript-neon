@@ -27,7 +27,7 @@ infix  4 _less           as <
 infix  4 _lessOrEqual    as <=
 infixr 3 _and            as &&
 infixr 2 _or             as ||
-infixl 1 _apply          as ..
+infixl 1 _apply          as :
 
 _power :: forall a. (Power a) => a -> a -> a
 _power y x = power x y
