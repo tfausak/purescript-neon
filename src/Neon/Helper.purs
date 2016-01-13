@@ -3,7 +3,6 @@ module Neon.Helper
   , all
   , any
   , asTypeOf
-  , bind
   , clamp
   , contains
   , curry
@@ -70,6 +69,7 @@ import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Tuple(Tuple), Unit(), u
 import Neon.Effect (Eff(), CONSOLE(), log, unsafePerformEff)
 import Neon.Primitive.Function (always, identity)
 import Neon.Primitive.Number (finite)
+import Prelude (bind)
 import Unsafe.Coerce as Coerce
 
 -- | Returns the absolute value of a number.
@@ -110,10 +110,6 @@ any p xs = reduce (\ a x -> or a (p x)) false xs
 -- | ```
 asTypeOf :: forall a. a -> a -> a
 asTypeOf y x = always x y
-
--- TODO: Move to Neon.Syntax.
-bind :: forall a b c. (Chain a) => a b -> (b -> a c) -> a c
-bind x f = chain f x
 
 -- | Clamps a value between some bounds. If the lower bound is greater than the
 -- | upper bound, they will be swapped.

@@ -5,6 +5,7 @@ module Neon
   , module Neon.Helper
   , module Neon.Operator
   , module Neon.Primitive
+  , module Neon.Syntax
   ) where
 
 import Neon.Class
@@ -13,3 +14,4 @@ import Neon.Effect
 import Neon.Helper
 import Neon.Operator
 import Neon.Primitive
+import Neon.Syntax
