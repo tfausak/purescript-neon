@@ -2,7 +2,7 @@ module Neon.Class.ToArray (class ToArray, toArray) where
 
 import Data.List (..) as List
 import Data.String (..) as String
-import Neon.Data(List(), Maybe(Nothing, Just))
+import Neon.Data(List, Maybe(Nothing, Just))
 
 -- | Represents types that can be converted to an array.
 -- |

@@ -3,7 +3,7 @@ module Neon.Class.And (class And, and) where
 import Data.Array (..) as Array
 import Data.List (..) as List
 import Neon.Class.Equal (class Equal, equal)
-import Neon.Data (List())
+import Neon.Data (List)
 import Prelude (..) as Prelude
 
 -- | Represents types that can be conjoined. This is also known as [logical

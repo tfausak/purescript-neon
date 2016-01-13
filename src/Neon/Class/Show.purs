@@ -2,7 +2,7 @@ module Neon.Class.Show (class Show, show) where
 
 import Neon.Class.Add (add)
 import Neon.Class.FromArray (fromArray)
-import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
+import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit)
 import Prelude (..) as Prelude
 
 -- | Represents types that can be converting to a string. This is typically

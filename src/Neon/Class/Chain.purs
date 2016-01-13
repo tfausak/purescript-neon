@@ -1,7 +1,7 @@
 module Neon.Class.Chain (class Chain, chain) where
 
-import Neon.Data (List(), Maybe())
-import Neon.Effect (Eff())
+import Neon.Data (List, Maybe)
+import Neon.Effect (Eff)
 import Prelude (..) as Prelude
 
 -- | Represents types that can express sequential actions. This is also known

@@ -1,7 +1,7 @@
 module Neon.Class.Apply (class Apply, apply) where
 
-import Neon.Data (List(), Maybe())
-import Neon.Effect (Eff())
+import Neon.Data (List, Maybe)
+import Neon.Effect (Eff)
 import Prelude (..) as Prelude
 
 -- | Represents types that can be applied from within a container. In other
