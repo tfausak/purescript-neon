@@ -161,7 +161,9 @@ main = run [consoleReporter] do
         it "can remainder ints" do
           remainder 2 5 ?= 1
       describe "Show" do
-        pending "can show arrays"
+        it "can show arrays" do
+          show [1, 2] ?= "[1, 2]"
+          show ([] :: Array Int) ?= "[]"
         it "can show booleans" do
           show false ?= "false"
         it "can show chars" do

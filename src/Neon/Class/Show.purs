@@ -1,6 +1,7 @@
 module Neon.Class.Show (Show, show) where
 
 import Neon.Class.Add (add)
+import Neon.Class.FromArray (fromArray)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
 import Prelude as Prelude
 
@@ -16,7 +17,16 @@ import Prelude as Prelude
 class Show a where
   show :: a -> String
 
--- TODO: instance showArray :: (Show a) => Show (Array a) where
+instance showArray :: (Show a) => Show (Array a) where
+  show xs = add (go (fromArray xs)) "[" where
+    go :: List a -> String
+    go l = case l of
+      Nil -> "]"
+      Cons h t -> add
+        (add (go t) (case t of
+          Nil -> ""
+          Cons _ _ -> ", "))
+        (show h)
 
 instance showBoolean :: Show Boolean where
   show x = Prelude.show x
