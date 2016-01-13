@@ -10,9 +10,6 @@ import Neon.Data(List(), Maybe(Nothing, Just))
 -- | ``` purescript
 -- | toArray (Cons 1 Nil) -- [1]
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class ToArray a b where
   toArray :: a -> Array b
 

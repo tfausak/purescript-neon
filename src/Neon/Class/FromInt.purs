@@ -11,9 +11,6 @@ import Data.Maybe as Maybe
 -- | fromInt 1 :: Maybe Bool -- Just true
 -- | fromInt 2 :: Maybe Bool -- Nothing
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class FromInt a where
   fromInt :: Int -> Maybe.Maybe a
 

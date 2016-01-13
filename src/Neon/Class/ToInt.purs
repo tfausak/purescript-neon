@@ -2,7 +2,8 @@ module Neon.Class.ToInt (ToInt, toInt) where
 
 import Data.Enum as Enum
 
--- | TODO
+-- | Represents types that can be converted to integers. This is typically used
+-- | for enumerations.
 -- |
 -- | Examples:
 -- | ``` purescript

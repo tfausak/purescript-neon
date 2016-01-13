@@ -11,9 +11,6 @@ import Neon.Data (List(), Maybe())
 -- | ``` purescript
 -- | fromArray [1] -- Cons 1 Nil
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class FromArray a b where
   fromArray :: Array a -> b
 

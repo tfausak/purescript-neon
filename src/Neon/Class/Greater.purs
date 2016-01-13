@@ -9,9 +9,6 @@ import Prelude as Prelude
 -- | greater 1 2 -- true
 -- | greater 2 1 -- false
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class Greater a where
   greater :: a -> a -> Boolean
 

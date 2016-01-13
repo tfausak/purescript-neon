@@ -9,9 +9,6 @@ import Neon.Data (List(Nil, Cons))
 -- | ``` purescript
 -- | filter (> 2) [1, 2, 3, 4] -- [3, 4]
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class Filter a where
   filter :: forall b. (b -> Boolean) -> a b -> a b
 

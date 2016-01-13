@@ -10,9 +10,6 @@ import Neon.Data (List(), Maybe())
 -- | ``` purescript
 -- | reduce (+) "hello" ["wo", "rl", "d!"] -- "helloworld!"
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class Reduce a where
   reduce :: forall b c. (c -> b -> c) -> c -> a b -> c
 

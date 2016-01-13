@@ -13,9 +13,6 @@ import Prelude as Prelude
 -- | show 123 -- "123"
 -- | show (Just 123) -- "Just (123)"
 -- | ```
--- |
--- | Laws:
--- | - TODO
 class Show a where
   show :: a -> String
 
