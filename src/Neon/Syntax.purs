@@ -3,7 +3,7 @@ module Neon.Syntax
   , bind
   ) where
 
-import Neon.Class.Chain (Chain, chain)
+import Neon.Class.Chain (class Chain, chain)
 import Neon.Helper (negate)
 
 bind :: forall a b c. (Chain a) => a b -> (b -> a c) -> a c

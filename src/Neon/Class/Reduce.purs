@@ -1,6 +1,6 @@
-module Neon.Class.Reduce (Reduce, reduce) where
+module Neon.Class.Reduce (class Reduce, reduce) where
 
-import Data.Foldable as Foldable
+import Data.Foldable (..) as Foldable
 import Neon.Data (List(), Maybe())
 
 -- | Represents types that can be reduced to a single value. This is also known

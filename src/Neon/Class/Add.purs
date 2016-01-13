@@ -1,7 +1,7 @@
-module Neon.Class.Add (Add, add) where
+module Neon.Class.Add (class Add, add) where
 
 import Neon.Data (List(Nil, Cons))
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that can be added together. This is also known as a
 -- | [semigroup](https://en.wikipedia.org/wiki/Semigroup).

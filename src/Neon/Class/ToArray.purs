@@ -1,7 +1,7 @@
-module Neon.Class.ToArray (ToArray, toArray) where
+module Neon.Class.ToArray (class ToArray, toArray) where
 
-import Data.List as List
-import Data.String as String
+import Data.List (..) as List
+import Data.String (..) as String
 import Neon.Data(List(), Maybe(Nothing, Just))
 
 -- | Represents types that can be converted to an array.

@@ -1,7 +1,7 @@
-module Neon.Class.Top (Top, top) where
+module Neon.Class.Top (class Top, top) where
 
 import Neon.Primitive.Number (infinity)
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that have an upper bound.
 -- |

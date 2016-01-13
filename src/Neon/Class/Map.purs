@@ -1,8 +1,8 @@
-module Neon.Class.Map (Map, map) where
+module Neon.Class.Map (class Map, map) where
 
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 import Neon.Effect (Eff())
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that can be mapped over. This is also know as a
 -- | [functor](https://en.wikipedia.org/wiki/Functor).

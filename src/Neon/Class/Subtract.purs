@@ -1,6 +1,6 @@
-module Neon.Class.Subtract (Subtract, subtract) where
+module Neon.Class.Subtract (class Subtract, subtract) where
 
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that can be subtracted from each other.
 -- |

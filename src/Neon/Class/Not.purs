@@ -1,6 +1,6 @@
-module Neon.Class.Not (Not, not) where
+module Neon.Class.Not (class Not, not) where
 
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types can be negated. This is known as
 -- | [negation](https://en.wikipedia.org/wiki/Negation).

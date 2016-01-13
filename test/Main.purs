@@ -1,20 +1,19 @@
 module Test.Main where
 
-import Control.Monad.Aff as Aff
-import Control.Monad.Eff as Eff
-import Control.Monad.Eff.Console as Console
+import Control.Monad.Aff (..) as Aff
+import Control.Monad.Eff (..) as Eff
+import Control.Monad.Eff.Console (..) as Console
 import Neon hiding (bind)
-import Neon.Data -- HACK
 import Prelude (bind)
-import Prelude as Prelude
+import Prelude (..) as Prelude
 import Test.Spec (describe, it, pending)
 import Test.Spec.Assertions (shouldEqual)
 import Test.Spec.Reporter.Console (consoleReporter)
 import Test.Spec.Runner (Process(), run)
 
-(?=) :: forall a b. (Prelude.Eq a, Prelude.Show a) => a -> a -> Aff.Aff b Unit
-(?=) = shouldEqual
-infix 0 ?=
+_shouldEqual :: forall a b. (Prelude.Eq a, Prelude.Show a) => a -> a -> Aff.Aff b Unit
+_shouldEqual = shouldEqual
+infix 0 _shouldEqual as ?=
 
 main :: Eff.Eff (console :: Console.CONSOLE, process :: Process) Unit
 main = run [consoleReporter] do

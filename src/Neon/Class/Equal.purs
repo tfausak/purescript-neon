@@ -1,8 +1,8 @@
-module Neon.Class.Equal (Equal, equal) where
+module Neon.Class.Equal (class Equal, equal) where
 
 import Neon.Class.FromArray (fromArray)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit())
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that can be equal to each other.
 -- |

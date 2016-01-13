@@ -1,6 +1,6 @@
-module Neon.Class.Multiply (Multiply, multiply) where
+module Neon.Class.Multiply (class Multiply, multiply) where
 
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents values that can be multiplied together. This is also known as
 -- | a [near-ring](https://en.wikipedia.org/wiki/Near-ring).

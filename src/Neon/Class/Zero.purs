@@ -1,7 +1,7 @@
-module Neon.Class.Zero (Zero, zero) where
+module Neon.Class.Zero (class Zero, zero) where
 
 import Neon.Data (List(Nil))
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that have an additive identity. This is also known as a
 -- | [monoid](https://en.wikipedia.org/wiki/Monoid).

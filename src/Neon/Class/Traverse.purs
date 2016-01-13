@@ -1,9 +1,9 @@
-module Neon.Class.Traverse (Traverse, traverse) where
+module Neon.Class.Traverse (class Traverse, traverse) where
 
-import Neon.Class.Apply (Apply, apply)
+import Neon.Class.Apply (class Apply, apply)
 import Neon.Class.FromArray (fromArray)
-import Neon.Class.Map (Map, map)
-import Neon.Class.Wrap (Wrap, wrap)
+import Neon.Class.Map (class Map, map)
+import Neon.Class.Wrap (class Wrap, wrap)
 import Neon.Class.ToArray (toArray)
 import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 

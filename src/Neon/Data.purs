@@ -9,7 +9,7 @@ import Data.Maybe (Maybe(Nothing, Just)) as X
 import Data.Tuple (Tuple(Tuple)) as X
 import Prelude (Unit(), unit) as X
 
-import Control.Monad.Eff.Exception as Exception
+import Control.Monad.Eff.Exception (..) as Exception
 
 exception :: String -> Exception.Error
 exception = Exception.error

@@ -2,7 +2,7 @@
   "dependencies": {
     "bower": "1.7.2",
     "pulp": "7.0.0",
-    "purescript": "0.7.6"
+    "purescript": "0.8.0-rc.1"
   },
   "engines": {
     "node": "5.4.0",

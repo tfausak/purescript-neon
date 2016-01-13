@@ -1,6 +1,6 @@
-module Neon.Class.One (One, one) where
+module Neon.Class.One (class One, one) where
 
-import Prelude as Prelude
+import Prelude (..) as Prelude
 
 -- | Represents types that have an multiplicative identity. This is also known
 -- | as a [semiring](https://en.wikipedia.org/wiki/Semiring).

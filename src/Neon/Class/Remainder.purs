@@ -1,7 +1,7 @@
-module Neon.Class.Remainder (Remainder, remainder) where
+module Neon.Class.Remainder (class Remainder, remainder) where
 
-import Prelude as Prelude
-import Unsafe.Coerce as Coerce
+import Prelude (..) as Prelude
+import Unsafe.Coerce (..) as Coerce
 
 -- | Represents types that are divisible.
 -- |
