@@ -3,7 +3,7 @@ module Test.Neon.OperatorSpec where
 import Test.Helper (..)
 
 spec :: Spec
-spec = describe "Neon.Operator" do
+spec = describe "Operator" do
   describe "^" do
     it "is power" do
       2 ^ 3 ?= 8

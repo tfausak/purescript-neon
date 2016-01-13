@@ -3,7 +3,7 @@ module Test.Neon.PrimitiveSpec where
 import Test.Helper (..)
 
 spec :: Spec
-spec = describe "Neon.Primitive" do
+spec = describe "Primitive" do
   describe "Array" do
     pending ""
   describe "Boolean" do

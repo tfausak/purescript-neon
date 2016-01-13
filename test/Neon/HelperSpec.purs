@@ -3,7 +3,7 @@ module Test.Neon.HelperSpec where
 import Test.Helper (..)
 
 spec :: Spec
-spec = describe "Neon.Helper" do
+spec = describe "Helper" do
   describe "absoluteValue" do
     it "returns the absolute value" do
       absoluteValue 1 ?= 1

@@ -3,7 +3,7 @@ module Test.Neon.ClassSpec where
 import Test.Helper (..)
 
 spec :: Spec
-spec = describe "Neon.Class" do
+spec = describe "Class" do
   describe "Add" do
     it "can add arrays" do
       add [2] [1] ?= [1, 2]
