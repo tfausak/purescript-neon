@@ -2,6 +2,16 @@ module Neon.Class.Greater (Greater, greater) where
 
 import Prelude as Prelude
 
+-- | Represents types that can be compared.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | greater 1 2 -- true
+-- | greater 2 1 -- false
+-- | ```
+-- |
+-- | Laws:
+-- | - TODO
 class Greater a where
   greater :: a -> a -> Boolean
 

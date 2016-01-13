@@ -2,6 +2,16 @@ module Neon.Class.Less (Less, less) where
 
 import Prelude as Prelude
 
+-- | Represents types that can be compared.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | less 2 1 -- true
+-- | less 1 2 -- false
+-- | ```
+-- |
+-- | Laws:
+-- | - TODO
 class Less a where
   less :: a -> a -> Boolean
 

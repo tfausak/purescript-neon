@@ -4,6 +4,15 @@ import Data.List as List
 import Data.String as String
 import Neon.Data(List(), Maybe(Nothing, Just))
 
+-- | Represents types that can be converted to an array.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | toArray (Cons 1 Nil) -- [1]
+-- | ```
+-- |
+-- | Laws:
+-- | - TODO
 class ToArray a b where
   toArray :: a -> Array b
 

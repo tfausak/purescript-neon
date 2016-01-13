@@ -15,7 +15,7 @@ import Prelude as Prelude
 -- | ```
 -- |
 -- | Laws:
--- | - none
+-- | - TODO
 class Show a where
   show :: a -> String
 

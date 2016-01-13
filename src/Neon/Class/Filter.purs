@@ -3,6 +3,15 @@ module Neon.Class.Filter (Filter, filter) where
 import Data.Array as Array
 import Neon.Data (List(Nil, Cons))
 
+-- | Represents types than can have elements filtered out of them.
+-- |
+-- | Examples:
+-- | ``` purescript
+-- | filter (> 2) [1, 2, 3, 4] -- [3, 4]
+-- | ```
+-- |
+-- | Laws:
+-- | - TODO
 class Filter a where
   filter :: forall b. (b -> Boolean) -> a b -> a b
 
