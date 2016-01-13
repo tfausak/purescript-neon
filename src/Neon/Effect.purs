@@ -4,7 +4,7 @@ module Neon.Effect
   ) where
 
 import Control.Monad.Eff (Eff(), runPure) as X
-import Control.Monad.Eff.Console (CONSOLE(), log) as X
+import Control.Monad.Eff.Console (CONSOLE(), error, log) as X
 import Control.Monad.Eff.Exception (EXCEPTION()) as X
 import Control.Monad.Eff.Unsafe (unsafePerformEff) as X
 
