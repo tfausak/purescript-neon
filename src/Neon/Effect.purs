@@ -1,11 +1,18 @@
 module Neon.Effect
-  ( module Control.Monad.Eff
-  , module Control.Monad.Eff.Console
-  , module Control.Monad.Eff.Exception
-  , module Control.Monad.Eff.Unsafe
+  ( module Neon.Effect
+  , module X
   ) where
 
-import Control.Monad.Eff (Eff(), runPure)
-import Control.Monad.Eff.Console (CONSOLE(), log)
-import Control.Monad.Eff.Exception (EXCEPTION(), catchException, throwException)
-import Control.Monad.Eff.Unsafe (unsafePerformEff)
+import Control.Monad.Eff (Eff(), runPure) as X
+import Control.Monad.Eff.Console (CONSOLE(), log) as X
+import Control.Monad.Eff.Exception (EXCEPTION()) as X
+import Control.Monad.Eff.Unsafe (unsafePerformEff) as X
+
+import Control.Monad.Eff as Eff
+import Control.Monad.Eff.Exception as Exception
+
+catch :: forall a b. (Exception.Error -> Eff.Eff b a) -> Eff.Eff (err :: Exception.EXCEPTION | b) a -> Eff.Eff b a
+catch = Exception.catchException
+
+throw :: forall a b. Exception.Error -> Eff.Eff (err :: Exception.EXCEPTION | b) a
+throw = Exception.throwException
