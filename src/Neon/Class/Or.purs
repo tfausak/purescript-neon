@@ -9,7 +9,6 @@ import Prelude as Prelude
 -- | Represents types than can be disjoined. This is also known as
 -- | [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | or false true -- true
 -- | ```

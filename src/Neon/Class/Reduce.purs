@@ -6,7 +6,6 @@ import Neon.Data (List(), Maybe())
 -- | Represents types that can be reduced to a single value. This is also known
 -- | as a [fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function)).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | reduce (+) "hello" ["wo", "rl", "d!"] -- "helloworld!"
 -- | ```

@@ -6,7 +6,6 @@ import Neon.Primitive.Number (floor)
 
 -- | Represents types that can be exponentiated.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | power 3 2 -- 8
 -- | ```

@@ -5,7 +5,6 @@ import Prelude as Prelude
 
 -- | Represents types that have a lower bound.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | bottom :: Boolean -- false
 -- | bottom :: Char -- '\0'

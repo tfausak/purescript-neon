@@ -9,7 +9,6 @@ import Prelude as Prelude
 -- | function to the value and return the result in a container. This is also
 -- | known as an applicative functor.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | apply [(+ 2), (* 2)] [3, 4] -- [5, 6, 6, 8]
 -- | apply (Just (+ 1)) (Just 2) -- Just 3

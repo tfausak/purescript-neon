@@ -4,7 +4,6 @@ import Prelude as Prelude
 
 -- | Represents types that can be subtracted from each other.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | subtract 2 3 -- 1
 -- | ```

@@ -5,7 +5,6 @@ import Data.Enum as Enum
 -- | Represents types that can be converted to integers. This is typically used
 -- | for enumerations.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | toInt false -- 0
 -- | ```

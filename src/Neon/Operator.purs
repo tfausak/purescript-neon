@@ -87,7 +87,6 @@ infixl 1 ..
 
 -- | Function application.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | 1 .. add 2 .. multiply 3 -- 9
 -- | ```

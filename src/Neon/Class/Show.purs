@@ -9,7 +9,6 @@ import Prelude as Prelude
 -- | used for debugging. The result of `show x` should be a valid PureScript
 -- | expressions.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | show 123 -- "123"
 -- | show (Just 123) -- "Just (123)"

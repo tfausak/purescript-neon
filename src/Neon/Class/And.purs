@@ -9,7 +9,6 @@ import Prelude as Prelude
 -- | Represents types that can be conjoined. This is also known as [logical
 -- | conjunction](https://en.wikipedia.org/wiki/Logical_conjunction).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | and false true -- false
 -- | add [1, 2] [2, 3] -- [2]

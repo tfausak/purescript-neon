@@ -4,7 +4,6 @@ import Prelude as Prelude
 
 -- | Represents types that are divisible.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | divide 2 7 -- 3
 -- | divide 2.0 7.0 -- 3.5

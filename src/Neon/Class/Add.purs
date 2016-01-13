@@ -6,7 +6,6 @@ import Prelude as Prelude
 -- | Represents types that can be added together. This is also known as a
 -- | [semigroup](https://en.wikipedia.org/wiki/Semigroup).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | add 1 2 -- 3
 -- | add "b" "a" -- "ab"

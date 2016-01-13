@@ -6,7 +6,6 @@ import Data.Int as Int
 
 -- | Converts an integer into a number.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | toNumber 1 -- 1.0
 -- | ```

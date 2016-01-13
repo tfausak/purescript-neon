@@ -11,7 +11,6 @@ import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 -- | Unlike `Reduce`, these structures can be traversed while keeping their
 -- | shape.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | traverse (compose Just show) [1, 2] -- Just ["1", "2"]
 -- | ```

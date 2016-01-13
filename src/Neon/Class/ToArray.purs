@@ -6,7 +6,6 @@ import Neon.Data(List(), Maybe(Nothing, Just))
 
 -- | Represents types that can be converted to an array.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | toArray (Cons 1 Nil) -- [1]
 -- | ```

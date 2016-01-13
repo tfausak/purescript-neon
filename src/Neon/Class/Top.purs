@@ -5,7 +5,6 @@ import Prelude as Prelude
 
 -- | Represents types that have an upper bound.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | top :: Boolean -- true
 -- | top :: Char -- '\65535'

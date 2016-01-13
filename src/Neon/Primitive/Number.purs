@@ -13,7 +13,6 @@ import Global as Global
 
 -- | Rounds a number up.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | ceiling 1.1 -- 2
 -- | ```
@@ -22,7 +21,6 @@ ceiling x = Int.ceil x
 
 -- | Tests whether a number is finite or not.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | finite 1.0 -- true
 -- | finite infinity -- false
@@ -32,7 +30,6 @@ finite x = Global.isFinite x
 
 -- | Rounds a number down.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | floor 1.9 -- 1
 -- | ```
@@ -46,7 +43,6 @@ infinity = Global.infinity
 -- | Tests whether a number is `nan` or not. This is necessary because `nan`
 -- | does not equal `nan`.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | isNaN nan -- true
 -- | isNaN 1.0 -- false
@@ -60,7 +56,6 @@ nan = Global.nan
 
 -- | Rounds a number to the nearest integer.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | round 1.4 -- 1
 -- | ```

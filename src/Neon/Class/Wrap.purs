@@ -6,7 +6,6 @@ import Prelude as Prelude
 
 -- | Represents types that allow wrapping values into a container.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | wrap 1 :: Maybe Int -- Just 1
 -- | wrap 1 :: Array Int -- [1]

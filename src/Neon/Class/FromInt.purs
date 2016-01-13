@@ -6,7 +6,6 @@ import Data.Maybe as Maybe
 -- | Represents types that can be converted from integers. This is typically
 -- | used for enumerations.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | fromInt 1 :: Maybe Bool -- Just true
 -- | fromInt 2 :: Maybe Bool -- Nothing

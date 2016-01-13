@@ -6,7 +6,6 @@ import Prelude as Prelude
 
 -- | Represents types that can be equal to each other.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | equal 1 2 -- false
 -- | equal 3 3 -- true

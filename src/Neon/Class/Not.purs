@@ -5,7 +5,6 @@ import Prelude as Prelude
 -- | Represents types can be negated. This is known as
 -- | [negation](https://en.wikipedia.org/wiki/Negation).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | not false -- true
 -- | ```

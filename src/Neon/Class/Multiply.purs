@@ -5,7 +5,6 @@ import Prelude as Prelude
 -- | Represents values that can be multiplied together. This is also known as
 -- | a [near-ring](https://en.wikipedia.org/wiki/Near-ring).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | multiply 3 2 -- 6
 -- | ```

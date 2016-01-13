@@ -5,7 +5,6 @@ import Prelude as Prelude
 -- | Represents types that have an multiplicative identity. This is also known
 -- | as a [semiring](https://en.wikipedia.org/wiki/Semiring).
 -- |
--- | Examples:
 -- | ``` purescript
 -- | one :: Int -- 1
 -- | one :: Number -- 1.0

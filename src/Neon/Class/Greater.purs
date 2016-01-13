@@ -4,7 +4,6 @@ import Prelude as Prelude
 
 -- | Represents types that can be compared.
 -- |
--- | Examples:
 -- | ``` purescript
 -- | greater 1 2 -- true
 -- | greater 2 1 -- false
