@@ -6,6 +6,7 @@ import Control.Monad.Eff.Console as Console
 import Neon hiding (bind)
 import Neon.Data -- HACK
 import Prelude (bind)
+import Prelude as Prelude
 import Test.Spec (describe, it, pending)
 import Test.Spec.Assertions (shouldEqual)
 import Test.Spec.Reporter.Console (consoleReporter)
@@ -56,7 +57,7 @@ main = run [consoleReporter] do
         it "has a bottom for chars" do
           bottom ?= '\0'
         it "has a bottom for ints" do
-          bottom ?= -2147483648
+          bottom ?= Prelude.bottom :: Int
         it "has a bottom for numbers" do
           bottom ?= -infinity
       describe "Chain" do
