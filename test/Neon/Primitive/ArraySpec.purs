@@ -4,4 +4,5 @@ import Test.Helper (..)
 
 spec :: Spec
 spec = describe "Array" do
-  pending ""
+  it "has no exports" do
+    true ?= true

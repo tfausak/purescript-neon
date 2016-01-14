@@ -4,4 +4,5 @@ import Test.Helper (..)
 
 spec :: Spec
 spec = describe "Boolean" do
-  pending ""
+  it "has no exports" do
+    true ?= true
