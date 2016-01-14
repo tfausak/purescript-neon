@@ -1,5 +1,9 @@
 module Test.Neon.HelperSpec where
 
+import Data.Foldable (..) as Foldable
+import Data.Ord (..) as Ord
+import Math (..) as Math
+import Prelude (..) as Prelude
 import Test.Helper (..)
 
 spec :: Spec
@@ -9,28 +13,44 @@ spec = describe "Helper" do
       absoluteValue 1 ?= 1
       absoluteValue 0.0 ?= 0.0
       absoluteValue (-1) ?= 1
+    it "is the same as Math.abs" do
+      quickCheck \ x -> absoluteValue x === Math.abs x
   describe "all" do
     it "returns true when every element passes the predicate" do
       all (greater 1) [] ?= true
       all (greater 1) [2, 3] ?= true
       all (greater 1) [1, 2] ?= false
+    it "is the same as Data.Foldable.all" do
+      quickCheck \ (x :: Array Int) -> all (greater 1) x === Foldable.all (greater 1) x
   describe "any" do
     it "returns true when any element passes the predicate" do
       any (greater 1) [] ?= false
       any (greater 1) [1, 2] ?= true
       any (greater 1) [0, 1] ?= false
+    it "is the same as Data.Foldable.any" do
+      quickCheck \ (x :: Array Int) -> any (greater 1) x === Foldable.any (greater 1) x
   describe "asTypeOf" do
     it "is always" do
       asTypeOf [1] [] ?= ([] :: Array Int)
+    it "is the same as Prelude.asTypeOf" do
+      quickCheck \ (x :: Array Int) -> asTypeOf x [] === Prelude.asTypeOf [] x
   describe "bind" do
     it "is chain flipped" do
       bind [3, 5] (\ x -> [x, x * 2]) ?= [3, 6, 5, 10]
+    it "is the same as Prelude.bind" do
+      let f x = [x, x * 2]
+      quickCheck \ x -> bind x f === Prelude.bind x f
   describe "clamp" do
     it "clamps the value between the bounds" do
       clamp 3 5 2 ?= 3
       clamp 3 5 4 ?= 4
       clamp 3 5 6 ?= 5
       clamp 5 3 4 ?= 4
+    it "is the same as Data.Ord.clamp" do
+      quickCheck \ (x :: Int) l h ->
+        if less h l
+        then clamp l h x === Ord.clamp l h x
+        else todo
   describe "contains" do
     it "returns true when the container contains the element" do
       contains 1 [0, 1, 2] ?= true
