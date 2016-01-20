@@ -90,27 +90,27 @@ spec = describe "Class" do
     it "can filter lists" do
       filter (greater 1) (Cons 0 (Cons 2 (Cons 1 Nil))) ?= Cons 2 Nil
   describe "Greater" do
-    pending "can compare arrays"
+    pending "can compare arrays" -- TODO
     it "can compare booleans" do
       greater false true ?= true
     it "can compare chars" do
       greater 'a' 'b' ?= true
     it "can compare ints" do
       greater 1 2 ?= true
-    pending "can compare lists"
+    pending "can compare lists" -- TODO
     it "can compare numbers" do
       greater 1.0 2.0 ?= true
     it "can compare strings" do
       greater "a" "b" ?= true
   describe "Less" do
-    pending "can compare arrays"
+    pending "can compare arrays" -- TODO
     it "can compare booleans" do
       less true false ?= true
     it "can compare chars" do
       less 'b' 'a' ?= true
     it "can compare ints" do
       less 2 1 ?= true
-    pending "can compare lists"
+    pending "can compare lists" -- TODO
     it "can compare numbers" do
       less 2.0 1.0 ?= true
     it "can compare strings" do
@@ -178,10 +178,10 @@ spec = describe "Class" do
     it "can show strings" do
       show "a" ?= "\"a\""
   describe "Subtract" do
-    pending "can subtract arrays"
+    pending "can subtract arrays" -- TODO
     it "can subtract ints" do
       subtract 1 2 ?= 1
-    pending "can subtract lists"
+    pending "can subtract lists" -- TODO
     it "can subtract numbers" do
       subtract 1.0 2.0 ?= 1.0
   describe "Top" do
