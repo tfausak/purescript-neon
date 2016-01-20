@@ -39,7 +39,7 @@ spec = describe "Number" do
     it "is the same as Global.isNaN" do
       quickCheck \ x -> isNaN x === Global.isNaN x
   describe "nan" do
-    pending "TODO"
+    pending "is the same as Global.nan"
   describe "round" do
     it "returns the integer closest to the number" do
       round 1.2 ?= 1

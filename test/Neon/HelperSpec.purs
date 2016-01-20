@@ -135,7 +135,7 @@ spec = describe "Helper" do
       odd 2 ?= false
       odd 3 ?= true
   describe "print" do
-    pending ""
+    pending "shows the value and logs it"
   describe "product" do
     it "multiplies the elements in the container together" do
       product [] ?= 1
@@ -180,7 +180,7 @@ spec = describe "Helper" do
     it "convinces the type system" do
       unsafeCoerce 1 ?= 1.0
   describe "unsafeLog" do
-    pending ""
+    pending "unsafely logs the value"
   describe "upTo" do
     it "returns an array of values from low to high" do
       upTo 3 1 ?= [1, 2, 3]

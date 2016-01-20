@@ -70,14 +70,16 @@ spec = describe "Class" do
     it "can divide numbers" do
       divide 2.0 5.0 ?= 2.5
   describe "Equal" do
-    pending "can equal arrays"
+    it "can equal arrays" do
+      equal [1] [1] ?= true
     it "can equal booleans" do
       equal false false ?= true
     it "can equal chars" do
       equal 'a' 'a' ?= true
     it "can equal ints" do
       equal 1 1 ?= true
-    pending "can equal lists"
+    it "can equal lists" do
+      equal (Cons 1 Nil) (Cons 1 Nil) ?= true
     it "can equal numbers" do
       equal 1.0 1.0 ?= true
     it "can equal strings" do
@@ -169,7 +171,8 @@ spec = describe "Class" do
       show '\'' ?= "'\\''"
     it "can show ints" do
       show 1 ?= "1"
-    pending "can show lists"
+    it "can show lists" do
+      show (Cons 1 (Cons 2 Nil)) ?= "Cons (1) (Cons (2) (Nil))"
     it "can show numbers" do
       show 1.0 ?= "1.0"
     it "can show strings" do
