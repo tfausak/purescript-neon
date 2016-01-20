@@ -1,4 +1,36 @@
-module Neon.Operator where
+module Neon.Operator
+  ( (^)
+  , (*)
+  , (/)
+  , (%)
+  , (+)
+  , (-)
+  , (==)
+  , (!=)
+  , (>)
+  , (>=)
+  , (<)
+  , (<=)
+  , (&&)
+  , (||)
+  , (:)
+
+  , _power
+  , _multiply
+  , _divide
+  , _remainder
+  , _add
+  , _subtract
+  , _equal
+  , _notEqual
+  , _greater
+  , _greaterOrEqual
+  , _less
+  , _lessOrEqual
+  , _and
+  , _or
+  , _apply
+  ) where
 
 import Neon.Class.Add (class Add, add)
 import Neon.Class.And (class And, and)
