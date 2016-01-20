@@ -7,7 +7,7 @@
     }
   ],
   "dependencies": {
-    "purescript-batteries": "0.4.0"
+    "purescript-batteries": "0.5.1"
   },
   "description": "An experimental standard library for PureScript.",
   "devDependencies": {
@@ -44,9 +44,9 @@
     "url": "git://github.com/tfausak/purescript-neon.git"
   },
   "resolutions": {
-    "purescript-aff": "~0.13.0",
-    "purescript-spec": "~0.7.2",
-    "purescript-strings": "~0.7.1",
-    "purescript-transformers": "~0.8.2"
+    "purescript-aff": "0.14.0",
+    "purescript-spec": "0.7.2",
+    "purescript-strings": "0.7.1",
+    "purescript-transformers": "0.8.4"
   }
 }
