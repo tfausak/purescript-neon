@@ -5,7 +5,7 @@
     "purescript": "0.8.0-rc.1"
   },
   "engines": {
-    "node": "5.4.1",
+    "node": "5.5.0",
     "npm": "3.5.3"
   },
   "license": "MIT",
