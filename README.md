@@ -5,6 +5,18 @@
 
 Neon is an experimental standard library for [PureScript][].
 
+``` purescript
+-- Find the sum of all the multiples of 3 or 5 below 1000.
+-- <https://projecteuler.net/problem=1>
+import Neon (..)
+main :: Eff (console :: CONSOLE) Unit
+main = 1
+  :upTo 999
+  :filter (divisibleBy 3 || divisibleBy 5)
+  :sum
+  :print
+```
+
 Neon is written from the ground up to be useful and coherent. It has some
 guiding principles:
 
