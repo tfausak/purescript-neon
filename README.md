@@ -14,14 +14,14 @@ guiding principles:
 - Type classes should be lawless. This means `zero` doesn't have to be the
   additive identity. That's recommended, but not necessary.
 
-- There should be no type class hierarchy. This means `Bind` does not imply
-  `Pure`. If you need both, add both to your type signature.
+- There should be no type class hierarchy. This means `Zero` does not imply
+  `Add`. If you need both, add both to your type signature.
 
-- There should be as few operators as possible. This means `>>=` does not
-  exist. Use `bind` instead.
+- There should be as few operators as possible. This means `<$>` does not
+  exist. Use `map` instead.
 
 - There should be one obvious way to do things. This means `return` is not an
-  alias for `pure`. In fact, it doesn't exist at all.
+  alias for `wrap`. In fact, it doesn't exist at all.
 
 - Functions should be defined in type classes. This means `add` can be used for
   both numbers and strings.
