@@ -9,3 +9,6 @@ spec = describe "Syntax" do
     it "is the same as Prelude.bind" do
       let f x = [x - 1, x, x + 1]
       quickCheck \ x -> bind [x] f === Prelude.bind [x] f
+  describe "negate" do
+    it "is the same as Prelude.negate" do
+      quickCheck \ (x :: Int) -> negate x === Prelude.negate x

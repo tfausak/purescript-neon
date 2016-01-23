@@ -50,7 +50,7 @@ spec = describe "Helper" do
       quickCheck \ (x :: Int) l h ->
         if less h l
         then clamp l h x === Ord.clamp l h x
-        else todo
+        else clamp l h x === Ord.clamp h l x
   describe "contains" do
     it "returns true when the container contains the element" do
       contains 1 [0, 1, 2] ?= true
