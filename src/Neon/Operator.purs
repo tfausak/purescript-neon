@@ -1,5 +1,6 @@
 module Neon.Operator
-  ( (^)
+  ( (:)
+  , (^)
   , (*)
   , (/)
   , (%)
@@ -13,8 +14,8 @@ module Neon.Operator
   , (<=)
   , (&&)
   , (||)
-  , (:)
 
+  , _apply
   , _power
   , _multiply
   , _divide
@@ -29,7 +30,6 @@ module Neon.Operator
   , _lessOrEqual
   , _and
   , _or
-  , _apply
   ) where
 
 import Neon.Class.Add (class Add, add)
@@ -45,6 +45,7 @@ import Neon.Class.Remainder (class Remainder, remainder)
 import Neon.Class.Subtract (class Subtract, subtract)
 import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
 
+infixl 8 _apply          as :
 infixr 7 _power          as ^
 infixl 6 _multiply       as *
 infixl 6 _divide         as /
@@ -59,7 +60,9 @@ infix  4 _less           as <
 infix  4 _lessOrEqual    as <=
 infixr 3 _and            as &&
 infixr 2 _or             as ||
-infixl 1 _apply          as :
+
+_apply :: forall a b. a -> (a -> b) -> b
+_apply x f = f x
 
 _power :: forall a. (Power a) => a -> a -> a
 _power y x = power x y
@@ -102,6 +105,3 @@ _and x y = and y x
 
 _or :: forall a. (Or a) => a -> a -> a
 _or x y = or y x
-
-_apply :: forall a b. a -> (a -> b) -> b
-_apply x f = f x
