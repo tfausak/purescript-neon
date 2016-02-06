@@ -11,7 +11,7 @@ spec = describe "Show" do
     show false ?= "false"
   it "can show chars" do
     show 'a' ?= "'a'"
-    show '\0' ?= "'\0'"
+    show '\0' ?= "'\\0'"
     show '\'' ?= "'\\''"
   it "can show ints" do
     show 1 ?= "1"
