@@ -16,7 +16,8 @@
     "url": "git://github.com/tfausak/purescript-neon.git"
   },
   "scripts": {
-    "postinstall": "pulp dep install",
+    "bower": "bower",
+    "postinstall": "bower install",
     "psc-publish": "psc-publish",
     "pulp": "pulp",
     "test": "pulp test --force && psc-publish --dry-run"
