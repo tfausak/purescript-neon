@@ -1,8 +1,7 @@
-module Neon.Class.Power (class Power, power) where
+module Neon.Class.Power where
 
 import Math as Math
-import Neon.Primitive.Int (toNumber)
-import Neon.Primitive.Number (floor)
+import Neon.Primitive as Primitive
 
 -- | Represents types that can be exponentiated.
 -- |
@@ -18,7 +17,8 @@ class Power a where
   power :: a -> a -> a
 
 instance powerInt :: Power Int where
-  power y x = floor (power (toNumber y) (toNumber x))
+  power y x = Primitive.floor
+    (power (Primitive.toNumber y) (Primitive.toNumber x))
 
 instance powerNumber :: Power Number where
   power y x = Math.pow x y

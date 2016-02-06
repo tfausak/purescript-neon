@@ -1,6 +1,6 @@
-module Neon.Class.Zero (class Zero, zero) where
+module Neon.Class.Zero where
 
-import Neon.Data (List(Nil))
+import Neon.Data as Data
 import Prelude as Prelude
 
 -- | Represents types that have an additive identity. This is also known as a
@@ -22,8 +22,8 @@ instance zeroArray :: Zero (Array a) where
 instance zeroInt :: Zero Int where
   zero = Prelude.zero
 
-instance zeroList :: Zero (List a) where
-  zero = Nil
+instance zeroList :: Zero (Data.List a) where
+  zero = Data.Nil
 
 instance zeroNumber :: Zero Number where
   zero = Prelude.zero

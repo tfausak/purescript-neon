@@ -1,9 +1,9 @@
-module Neon.Class.Or (class Or, or) where
+module Neon.Class.Or where
 
 import Data.Array as Array
 import Data.List as List
-import Neon.Class.Equal (class Equal, equal)
-import Neon.Data (List)
+import Neon.Class.Equal as Equal
+import Neon.Data as Data
 import Prelude as Prelude
 
 -- | Represents types than can be disjoined. This is also known as
@@ -22,8 +22,8 @@ import Prelude as Prelude
 class Or a where
   or :: a -> a -> a
 
-instance orArray :: (Equal a) => Or (Array a) where
-  or ys xs = Array.unionBy (\ x y -> equal x y) xs ys
+instance orArray :: (Equal.Equal a) => Or (Array a) where
+  or ys xs = Array.unionBy (\ x y -> Equal.equal x y) xs ys
 
 instance orBoolean :: Or Boolean where
   or y x = Prelude.disj x y
@@ -31,5 +31,5 @@ instance orBoolean :: Or Boolean where
 instance orFunction :: (Or b) => Or (a -> b) where
   or g f = \ x -> or (g x) (f x)
 
-instance andList :: (Equal a) => Or (List a) where
-  or ys xs = List.unionBy (\ x y -> equal y x) xs ys
+instance andList :: (Equal.Equal a) => Or (Data.List a) where
+  or ys xs = List.unionBy (\ x y -> Equal.equal y x) xs ys

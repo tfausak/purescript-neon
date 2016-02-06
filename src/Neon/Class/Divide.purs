@@ -1,4 +1,4 @@
-module Neon.Class.Divide (class Divide, divide) where
+module Neon.Class.Divide where
 
 import Prelude as Prelude
 

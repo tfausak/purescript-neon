@@ -1,9 +1,4 @@
-module Neon.Primitive.Function
-  ( always
-  , compose
-  , flip
-  , identity
-  ) where
+module Neon.Primitive.Function where
 
 -- | Always returns the first argument. This is the [constant
 -- | function](https://en.wikipedia.org/wiki/Constant_function).

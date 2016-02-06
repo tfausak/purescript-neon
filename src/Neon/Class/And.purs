@@ -1,9 +1,9 @@
-module Neon.Class.And (class And, and) where
+module Neon.Class.And where
 
 import Data.Array as Array
 import Data.List as List
-import Neon.Class.Equal (class Equal, equal)
-import Neon.Data (List)
+import Neon.Class.Equal as Equal
+import Neon.Data as Data
 import Prelude as Prelude
 
 -- | Represents types that can be conjoined. This is also known as [logical
@@ -23,8 +23,8 @@ import Prelude as Prelude
 class And a where
   and :: a -> a -> a
 
-instance andArray :: (Equal a) => And (Array a) where
-  and ys xs = Array.intersectBy (\ x y -> equal y x) xs ys
+instance andArray :: (Equal.Equal a) => And (Array a) where
+  and ys xs = Array.intersectBy (\ x y -> Equal.equal y x) xs ys
 
 instance andBoolean :: And Boolean where
   and y x = Prelude.conj x y
@@ -32,5 +32,5 @@ instance andBoolean :: And Boolean where
 instance andFunction :: (And b) => And (a -> b) where
   and g f = \ x -> and (g x) (f x)
 
-instance andList :: (Equal a) => And (List a) where
-  and ys xs = List.intersectBy (\ x y -> equal y x) xs ys
+instance andList :: (Equal.Equal a) => And (Data.List a) where
+  and ys xs = List.intersectBy (\ x y -> Equal.equal y x) xs ys

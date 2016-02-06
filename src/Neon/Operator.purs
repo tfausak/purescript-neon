@@ -1,51 +1,9 @@
-module Neon.Operator
-  ( (:)
-  , (^)
-  , (*)
-  , (/)
-  , (%)
-  , (+)
-  , (-)
-  , (==)
-  , (!=)
-  , (>)
-  , (>=)
-  , (<)
-  , (<=)
-  , (&&)
-  , (||)
+module Neon.Operator where
 
-  , _apply
-  , _power
-  , _multiply
-  , _divide
-  , _remainder
-  , _add
-  , _subtract
-  , _equal
-  , _notEqual
-  , _greater
-  , _greaterOrEqual
-  , _less
-  , _lessOrEqual
-  , _and
-  , _or
-  ) where
+import Neon.Class as Class
+import Neon.Helper as Helper
 
-import Neon.Class.Add (class Add, add)
-import Neon.Class.And (class And, and)
-import Neon.Class.Divide (class Divide, divide)
-import Neon.Class.Equal (class Equal, equal)
-import Neon.Class.Greater (class Greater, greater)
-import Neon.Class.Less (class Less, less)
-import Neon.Class.Multiply (class Multiply, multiply)
-import Neon.Class.Or (class Or, or)
-import Neon.Class.Power (class Power, power)
-import Neon.Class.Remainder (class Remainder, remainder)
-import Neon.Class.Subtract (class Subtract, subtract)
-import Neon.Helper (greaterOrEqual, lessOrEqual, notEqual)
-
-infixl 8 _apply          as :
+infixl 8 _dot            as :
 infixr 7 _power          as ^
 infixl 6 _multiply       as *
 infixl 6 _divide         as /
@@ -61,47 +19,47 @@ infix  4 _lessOrEqual    as <=
 infixr 3 _and            as &&
 infixr 2 _or             as ||
 
-_apply :: forall a b. a -> (a -> b) -> b
-_apply x f = f x
+_dot :: forall a b. a -> (a -> b) -> b
+_dot x f = f x
 
-_power :: forall a. (Power a) => a -> a -> a
-_power y x = power x y
+_power :: forall a. (Class.Power a) => a -> a -> a
+_power y x = Class.power x y
 
-_multiply :: forall a. (Multiply a) => a -> a -> a
-_multiply x y = multiply y x
+_multiply :: forall a. (Class.Multiply a) => a -> a -> a
+_multiply x y = Class.multiply y x
 
-_divide :: forall a. (Divide a) => a -> a -> a
-_divide x y = divide y x
+_divide :: forall a. (Class.Divide a) => a -> a -> a
+_divide x y = Class.divide y x
 
-_remainder :: forall a. (Remainder a) => a -> a -> a
-_remainder x y = remainder y x
+_remainder :: forall a. (Class.Remainder a) => a -> a -> a
+_remainder x y = Class.remainder y x
 
-_add :: forall a. (Add a) => a -> a -> a
-_add x y = add y x
+_add :: forall a. (Class.Add a) => a -> a -> a
+_add x y = Class.add y x
 
-_subtract :: forall a. (Subtract a) => a -> a -> a
-_subtract x y = subtract y x
+_subtract :: forall a. (Class.Subtract a) => a -> a -> a
+_subtract x y = Class.subtract y x
 
-_equal :: forall a. (Equal a) => a -> a -> Boolean
-_equal x y = equal y x
+_equal :: forall a. (Class.Equal a) => a -> a -> Boolean
+_equal x y = Class.equal y x
 
-_notEqual :: forall a. (Equal a) => a -> a -> Boolean
-_notEqual x y = notEqual y x
+_notEqual :: forall a. (Class.Equal a) => a -> a -> Boolean
+_notEqual x y = Helper.notEqual y x
 
-_greater :: forall a. (Greater a) => a -> a -> Boolean
-_greater x y = greater y x
+_greater :: forall a. (Class.Greater a) => a -> a -> Boolean
+_greater x y = Class.greater y x
 
-_greaterOrEqual :: forall a. (Equal a, Greater a) => a -> a -> Boolean
-_greaterOrEqual x y = greaterOrEqual y x
+_greaterOrEqual :: forall a. (Class.Equal a, Class.Greater a) => a -> a -> Boolean
+_greaterOrEqual x y = Helper.greaterOrEqual y x
 
-_less :: forall a. (Less a) => a -> a -> Boolean
-_less x y = less y x
+_less :: forall a. (Class.Less a) => a -> a -> Boolean
+_less x y = Class.less y x
 
-_lessOrEqual :: forall a. (Equal a, Less a) => a -> a -> Boolean
-_lessOrEqual x y = lessOrEqual y x
+_lessOrEqual :: forall a. (Class.Equal a, Class.Less a) => a -> a -> Boolean
+_lessOrEqual x y = Helper.lessOrEqual y x
 
-_and :: forall a. (And a) => a -> a -> a
-_and x y = and y x
+_and :: forall a. (Class.And a) => a -> a -> a
+_and x y = Class.and y x
 
-_or :: forall a. (Or a) => a -> a -> a
-_or x y = or y x
+_or :: forall a. (Class.Or a) => a -> a -> a
+_or x y = Class.or y x

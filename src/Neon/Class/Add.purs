@@ -1,6 +1,6 @@
-module Neon.Class.Add (class Add, add) where
+module Neon.Class.Add where
 
-import Neon.Data (List(Nil, Cons))
+import Neon.Data as Data
 import Prelude as Prelude
 
 -- | Represents types that can be added together. This is also known as a
@@ -22,10 +22,10 @@ instance addArray :: Add (Array a) where
 instance addInt :: Add Int where
   add y x = Prelude.add x y
 
-instance addList :: Add (List a) where
+instance addList :: Add (Data.List a) where
   add y x = case x of
-    Nil -> y
-    Cons h t -> Cons h (add y t)
+    Data.Nil -> y
+    Data.Cons h t -> Data.Cons h (add y t)
 
 instance addNumber :: Add Number where
   add y x = Prelude.add x y

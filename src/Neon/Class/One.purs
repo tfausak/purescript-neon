@@ -1,4 +1,4 @@
-module Neon.Class.One (class One, one) where
+module Neon.Class.One where
 
 import Prelude as Prelude
 

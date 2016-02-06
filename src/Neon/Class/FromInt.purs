@@ -1,4 +1,4 @@
-module Neon.Class.FromInt (class FromInt, fromInt) where
+module Neon.Class.FromInt where
 
 import Data.Enum as Enum
 import Data.Maybe as Maybe

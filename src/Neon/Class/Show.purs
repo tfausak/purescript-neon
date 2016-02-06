@@ -1,8 +1,8 @@
-module Neon.Class.Show (class Show, show) where
+module Neon.Class.Show where
 
-import Neon.Class.Add (add)
-import Neon.Class.FromArray (fromArray)
-import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit)
+import Neon.Class.Add as Add
+import Neon.Class.FromArray as FromArray
+import Neon.Data as Data
 import Prelude as Prelude
 
 -- | Represents types that can be converting to a string. This is typically
@@ -17,14 +17,14 @@ class Show a where
   show :: a -> String
 
 instance showArray :: (Show a) => Show (Array a) where
-  show xs = add (go (fromArray xs)) "[" where
-    go :: List a -> String
+  show xs = Add.add (go (FromArray.fromArray xs)) "[" where
+    go :: Data.List a -> String
     go l = case l of
-      Nil -> "]"
-      Cons h t -> add
-        (add (go t) (case t of
-          Nil -> ""
-          Cons _ _ -> ", "))
+      Data.Nil -> "]"
+      Data.Cons h t -> Add.add
+        (Add.add (go t) (case t of
+          Data.Nil -> ""
+          Data.Cons _ _ -> ", "))
         (show h)
 
 instance showBoolean :: Show Boolean where
@@ -36,15 +36,15 @@ instance showChar :: Show Char where
 instance showInt :: Show Int where
   show x = Prelude.show x
 
-instance showList :: (Show a) => Show (List a) where
+instance showList :: (Show a) => Show (Data.List a) where
   show xs = case xs of
-    Nil -> "Nil"
-    Cons h t -> add ")" (add (show t) (add ") (" (add (show h) "Cons (")))
+    Data.Nil -> "Nil"
+    Data.Cons h t -> Add.add ")" (Add.add (show t) (Add.add ") (" (Add.add (show h) "Cons (")))
 
-instance showMaybe :: (Show a) => Show (Maybe a) where
+instance showMaybe :: (Show a) => Show (Data.Maybe a) where
   show mx = case mx of
-    Nothing -> "Nothing"
-    Just x -> add (add ")" (show x)) "Just ("
+    Data.Nothing -> "Nothing"
+    Data.Just x -> Add.add (Add.add ")" (show x)) "Just ("
 
 instance showNumber :: Show Number where
   show x = Prelude.show x
@@ -52,5 +52,5 @@ instance showNumber :: Show Number where
 instance showString :: Show String where
   show x = Prelude.show x
 
-instance showUnit :: Show Unit where
+instance showUnit :: Show Data.Unit where
   show _ = "unit"

@@ -1,7 +1,7 @@
-module Neon.Class.Map (class Map, map) where
+module Neon.Class.Map where
 
-import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
-import Neon.Effect (Eff)
+import Neon.Data as Data
+import Neon.Effect as Effect
 import Prelude as Prelude
 
 -- | Represents types that can be mapped over. This is also know as a
@@ -20,15 +20,15 @@ class Map a where
 instance mapArray :: Map Array where
   map f xs = Prelude.map f xs
 
-instance mapEff :: Map (Eff a) where
+instance mapEff :: Map (Effect.Eff a) where
   map f x = Prelude.map f x
 
-instance mapList :: Map List where
+instance mapList :: Map Data.List where
   map f xs = case xs of
-    Nil -> Nil
-    Cons h t -> Cons (f h) (map f t)
+    Data.Nil -> Data.Nil
+    Data.Cons h t -> Data.Cons (f h) (map f t)
 
-instance mapMaybe :: Map Maybe where
+instance mapMaybe :: Map Data.Maybe where
   map f mx = case mx of
-    Nothing -> Nothing
-    Just x -> Just (f x)
+    Data.Nothing -> Data.Nothing
+    Data.Just x -> Data.Just (f x)

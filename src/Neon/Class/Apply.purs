@@ -1,7 +1,7 @@
-module Neon.Class.Apply (class Apply, apply) where
+module Neon.Class.Apply where
 
-import Neon.Data (List, Maybe)
-import Neon.Effect (Eff)
+import Neon.Data as Data
+import Neon.Effect as Effect
 import Prelude as Prelude
 
 -- | Represents types that can be applied from within a container. In other
@@ -22,11 +22,11 @@ class Apply a where
 instance applyArray :: Apply Array where
   apply fs xs = Prelude.apply fs xs
 
-instance applyEff :: Apply (Eff a) where
+instance applyEff :: Apply (Effect.Eff a) where
   apply f x = Prelude.apply f x
 
-instance applyList :: Apply List where
+instance applyList :: Apply Data.List where
   apply fs xs = Prelude.apply fs xs
 
-instance applyMaybe :: Apply Maybe where
+instance applyMaybe :: Apply Data.Maybe where
   apply mf mx = Prelude.apply mf mx

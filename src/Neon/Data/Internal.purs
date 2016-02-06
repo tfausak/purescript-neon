@@ -1,6 +1,4 @@
-module Neon.Data.Internal
-  ( exception
-  ) where
+module Neon.Data.Internal where
 
 import Control.Monad.Eff.Exception as Exception
 

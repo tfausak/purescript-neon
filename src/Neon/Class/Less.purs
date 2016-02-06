@@ -1,4 +1,4 @@
-module Neon.Class.Less (class Less, less) where
+module Neon.Class.Less where
 
 import Prelude as Prelude
 

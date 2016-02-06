@@ -1,7 +1,7 @@
-module Neon.Class.Wrap (class Wrap, wrap) where
+module Neon.Class.Wrap where
 
-import Neon.Data (List(Nil, Cons), Maybe(Just))
-import Neon.Effect (Eff)
+import Neon.Data as Data
+import Neon.Effect as Effect
 import Prelude as Prelude
 
 -- | Represents types that allow wrapping values into a container.
@@ -22,11 +22,11 @@ class Wrap a where
 instance wrapArray :: Wrap Array where
   wrap x = [x]
 
-instance wrapEff :: Wrap (Eff a) where
+instance wrapEff :: Wrap (Effect.Eff a) where
   wrap x = Prelude.pure x
 
-instance wrapList :: Wrap List where
-  wrap x = Cons x Nil
+instance wrapList :: Wrap Data.List where
+  wrap x = Data.Cons x Data.Nil
 
-instance wrapMaybe :: Wrap Maybe where
-  wrap x = Just x
+instance wrapMaybe :: Wrap Data.Maybe where
+  wrap x = Data.Just x

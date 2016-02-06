@@ -12,4 +12,4 @@ import Control.Monad.Eff.Console (CONSOLE, error, log)
 import Control.Monad.Eff.Exception (EXCEPTION)
 import Control.Monad.Eff.Random (RANDOM)
 import Control.Monad.Eff.Unsafe (unsafePerformEff)
-import Neon.Effect.Internal
+import Neon.Effect.Internal as Neon.Effect.Internal

@@ -1,4 +1,4 @@
-module Neon.Class.Subtract (class Subtract, subtract) where
+module Neon.Class.Subtract where
 
 import Prelude as Prelude
 

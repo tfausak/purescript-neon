@@ -1,12 +1,4 @@
-module Neon.Primitive.Number
-  ( ceiling
-  , finite
-  , floor
-  , infinity
-  , isNaN
-  , nan
-  , round
-  ) where
+module Neon.Primitive.Number where
 
 import Data.Int as Int
 import Global as Global

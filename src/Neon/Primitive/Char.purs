@@ -1,8 +1,4 @@
-module Neon.Primitive.Char
-  ( toLower
-  , toString
-  , toUpper
-  ) where
+module Neon.Primitive.Char where
 
 import Data.Char as Char
 

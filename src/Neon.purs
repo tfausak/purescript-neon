@@ -5,13 +5,11 @@ module Neon
   , module Neon.Helper
   , module Neon.Operator
   , module Neon.Primitive
-  , module Neon.Syntax
   ) where
 
-import Neon.Class
-import Neon.Data
-import Neon.Effect
-import Neon.Helper
-import Neon.Operator
-import Neon.Primitive
-import Neon.Syntax
+import Neon.Class as Neon.Class
+import Neon.Data as Neon.Data
+import Neon.Effect as Neon.Effect
+import Neon.Helper as Neon.Helper
+import Neon.Operator as Neon.Operator
+import Neon.Primitive as Neon.Primitive

@@ -1,4 +1,4 @@
-module Neon.Class.ToInt (class ToInt, toInt) where
+module Neon.Class.ToInt where
 
 import Data.Enum as Enum
 

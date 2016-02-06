@@ -1,4 +1,4 @@
-module Neon.Class.Not (class Not, not) where
+module Neon.Class.Not where
 
 import Prelude as Prelude
 

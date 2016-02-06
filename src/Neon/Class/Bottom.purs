@@ -1,6 +1,6 @@
-module Neon.Class.Bottom (class Bottom, bottom) where
+module Neon.Class.Bottom where
 
-import Neon.Primitive.Number (infinity)
+import Neon.Primitive as Primitive
 import Prelude as Prelude
 
 -- | Represents types that have a lower bound.
@@ -25,4 +25,4 @@ instance bottomInt :: Bottom Int where
   bottom = Prelude.bottom
 
 instance bottomNumber :: Bottom Number where
-  bottom = Prelude.negate infinity
+  bottom = Prelude.negate Primitive.infinity

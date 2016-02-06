@@ -1,7 +1,7 @@
-module Neon.Class.Equal (class Equal, equal) where
+module Neon.Class.Equal where
 
-import Neon.Class.FromArray (fromArray)
-import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just), Unit)
+import Neon.Class.FromArray as FromArray
+import Neon.Data as Data
 import Prelude as Prelude
 
 -- | Represents types that can be equal to each other.
@@ -20,8 +20,8 @@ class Equal a where
 
 instance equalArray :: (Equal a) => Equal (Array a) where
   equal y x =
-    let toList :: Array a -> List a
-        toList xs = fromArray xs
+    let toList :: Array a -> Data.List a
+        toList xs = FromArray.fromArray xs
     in  equal (toList y) (toList x)
 
 instance equalBoolean :: Equal Boolean where
@@ -33,18 +33,18 @@ instance equalChar :: Equal Char where
 instance equalInt :: Equal Int where
   equal y x = Prelude.eq x y
 
-instance equalList :: (Equal a) => Equal (List a) where
+instance equalList :: (Equal a) => Equal (Data.List a) where
   equal y x = case { x: x, y: y } of
-    { x: Nil, y: Nil } -> true
-    { x: Cons xh xt, y: Cons yh yt } -> if equal yh xh
+    { x: Data.Nil, y: Data.Nil } -> true
+    { x: Data.Cons xh xt, y: Data.Cons yh yt } -> if equal yh xh
       then equal yt xt
       else false
     _ -> false
 
-instance equalMaybe :: (Equal a) => Equal (Maybe a) where
+instance equalMaybe :: (Equal a) => Equal (Data.Maybe a) where
   equal y x = case { x: x, y: y } of
-    { x: Nothing, y: Nothing } -> true
-    { x: Just xj, y: Just yj } -> equal yj xj
+    { x: Data.Nothing, y: Data.Nothing } -> true
+    { x: Data.Just xj, y: Data.Just yj } -> equal yj xj
     _ -> false
 
 instance equalNumber :: Equal Number where
@@ -53,5 +53,5 @@ instance equalNumber :: Equal Number where
 instance equalString :: Equal String where
   equal y x = Prelude.eq x y
 
-instance equalUnit :: Equal Unit where
+instance equalUnit :: Equal Data.Unit where
   equal _ _ = true

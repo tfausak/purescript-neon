@@ -1,4 +1,4 @@
-module Neon.Class.Multiply (class Multiply, multiply) where
+module Neon.Class.Multiply where
 
 import Prelude as Prelude
 

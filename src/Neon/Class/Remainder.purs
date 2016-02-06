@@ -1,4 +1,4 @@
-module Neon.Class.Remainder (class Remainder, remainder) where
+module Neon.Class.Remainder where
 
 import Prelude as Prelude
 import Unsafe.Coerce as Coerce
@@ -20,6 +20,10 @@ instance remainderInt :: Remainder Int where
 
 instance remainderNumber :: Remainder Number where
   remainder y x =
-    let toInt = Coerce.unsafeCoerce :: Number -> Int
-        toNumber = Coerce.unsafeCoerce :: Int -> Number
+    let toInt :: Number -> Int
+        toInt = Coerce.unsafeCoerce
+
+        toNumber :: Int -> Number
+        toNumber = Coerce.unsafeCoerce
+
     in  toNumber (Prelude.mod (toInt x) (toInt y))

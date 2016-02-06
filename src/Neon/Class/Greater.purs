@@ -1,4 +1,4 @@
-module Neon.Class.Greater (class Greater, greater) where
+module Neon.Class.Greater where
 
 import Prelude as Prelude
 

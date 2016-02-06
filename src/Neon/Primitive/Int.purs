@@ -1,6 +1,4 @@
-module Neon.Primitive.Int
-  ( toNumber
-  ) where
+module Neon.Primitive.Int where
 
 import Data.Int as Int
 

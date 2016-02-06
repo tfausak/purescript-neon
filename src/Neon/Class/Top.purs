@@ -1,6 +1,6 @@
-module Neon.Class.Top (class Top, top) where
+module Neon.Class.Top where
 
-import Neon.Primitive.Number (infinity)
+import Neon.Primitive as Primitive
 import Prelude as Prelude
 
 -- | Represents types that have an upper bound.
@@ -25,4 +25,4 @@ instance topInt :: Top Int where
   top = Prelude.top
 
 instance topNumber :: Top Number where
-  top = infinity
+  top = Primitive.infinity

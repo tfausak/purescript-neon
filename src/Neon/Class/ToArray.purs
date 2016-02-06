@@ -1,8 +1,8 @@
-module Neon.Class.ToArray (class ToArray, toArray) where
+module Neon.Class.ToArray where
 
 import Data.List as List
 import Data.String as String
-import Neon.Data(List, Maybe(Nothing, Just))
+import Neon.Data as Data
 
 -- | Represents types that can be converted to an array.
 -- |
@@ -12,13 +12,13 @@ import Neon.Data(List, Maybe(Nothing, Just))
 class ToArray a b where
   toArray :: a -> Array b
 
-instance toArrayList :: ToArray (List a) a where
+instance toArrayList :: ToArray (Data.List a) a where
   toArray x = List.fromList x
 
-instance toArrayMaybe :: ToArray (Maybe a) a where
+instance toArrayMaybe :: ToArray (Data.Maybe a) a where
   toArray mx = case mx of
-    Nothing -> []
-    Just x -> [x]
+    Data.Nothing -> []
+    Data.Just x -> [x]
 
 instance toArrayString :: ToArray String Char where
   toArray x = String.toCharArray x

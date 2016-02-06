@@ -1,11 +1,11 @@
-module Neon.Class.Traverse (class Traverse, traverse) where
+module Neon.Class.Traverse where
 
-import Neon.Class.Apply (class Apply, apply)
-import Neon.Class.FromArray (fromArray)
-import Neon.Class.Map (class Map, map)
-import Neon.Class.Wrap (class Wrap, wrap)
-import Neon.Class.ToArray (toArray)
-import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
+import Neon.Class.Apply as Apply
+import Neon.Class.FromArray as FromArray
+import Neon.Class.Map as Map
+import Neon.Class.Wrap as Wrap
+import Neon.Class.ToArray as ToArray
+import Neon.Data as Data
 
 -- | Represents data structures that can be traversed from left to right.
 -- | Unlike `Reduce`, these structures can be traversed while keeping their
@@ -18,18 +18,18 @@ import Neon.Data (List(Nil, Cons), Maybe(Nothing, Just))
 -- | Laws:
 -- | - `compose t (traverse f) = traverse (compose t f)`
 class Traverse t where
-  traverse :: forall a b m. (Apply m, Map m, Wrap m) => (a -> m b) -> t a -> m (t b)
+  traverse :: forall a b m. (Apply.Apply m, Map.Map m, Wrap.Wrap m) => (a -> m b) -> t a -> m (t b)
 
 instance traverseArray :: Traverse Array where
-  traverse f x = map toArray
-    (traverse f ((fromArray :: forall a. Array a -> List a) x))
+  traverse f x = Map.map ToArray.toArray
+    (traverse f ((FromArray.fromArray :: forall a. Array a -> Data.List a) x))
 
-instance traverseList :: Traverse List where
+instance traverseList :: Traverse Data.List where
   traverse f xs = case xs of
-    Nil -> wrap Nil
-    Cons x l -> apply (map Cons (f x)) (traverse f l)
+    Data.Nil -> Wrap.wrap Data.Nil
+    Data.Cons x l -> Apply.apply (Map.map Data.Cons (f x)) (traverse f l)
 
-instance traverseMaybe :: Traverse Maybe where
+instance traverseMaybe :: Traverse Data.Maybe where
   traverse f mx = case mx of
-    Nothing -> wrap Nothing
-    Just x -> map Just (f x)
+    Data.Nothing -> Wrap.wrap Data.Nothing
+    Data.Just x -> Map.map Data.Just (f x)

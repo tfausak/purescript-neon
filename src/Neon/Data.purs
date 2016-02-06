@@ -11,5 +11,5 @@ import Control.Monad.Eff.Exception (Error)
 import Data.List (List(Nil, Cons))
 import Data.Maybe (Maybe(Nothing, Just))
 import Data.Tuple (Tuple(Tuple))
-import Neon.Data.Internal
+import Neon.Data.Internal as Neon.Data.Internal
 import Prelude (Unit, unit)

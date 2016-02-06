@@ -1,7 +1,4 @@
-module Neon.Effect.Internal
-  ( catch
-  , throw
-  ) where
+module Neon.Effect.Internal where
 
 import Control.Monad.Eff as Eff
 import Control.Monad.Eff.Exception as Exception
