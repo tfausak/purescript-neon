@@ -1,8 +1,8 @@
 module Test.Neon.Primitive.NumberSpec where
 
-import Data.Int (..) as Int
-import Global (..) as Global
-import Test.Helper (..)
+import Data.Int as Int
+import Global as Global
+import Test.Helper
 
 spec :: Spec
 spec = describe "Number" do

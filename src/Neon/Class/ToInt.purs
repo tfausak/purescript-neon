@@ -1,6 +1,6 @@
 module Neon.Class.ToInt (class ToInt, toInt) where
 
-import Data.Enum (..) as Enum
+import Data.Enum as Enum
 
 -- | Represents types that can be converted to integers. This is typically used
 -- | for enumerations.

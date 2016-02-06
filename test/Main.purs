@@ -1,7 +1,7 @@
 module Test.Main where
 
-import Neon (..)
-import Test.NeonSpec (..) as Neon
+import Neon
+import Test.NeonSpec as Neon
 import Test.Spec.Reporter.Console (consoleReporter)
 import Test.Spec.Runner (Process, run)
 

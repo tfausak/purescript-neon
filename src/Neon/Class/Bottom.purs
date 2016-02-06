@@ -1,7 +1,7 @@
 module Neon.Class.Bottom (class Bottom, bottom) where
 
 import Neon.Primitive.Number (infinity)
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types that have a lower bound.
 -- |

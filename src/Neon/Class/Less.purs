@@ -1,6 +1,6 @@
 module Neon.Class.Less (class Less, less) where
 
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types that can be compared.
 -- |

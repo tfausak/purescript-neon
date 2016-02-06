@@ -1,7 +1,7 @@
 module Test.Neon.Class.AddSpec where
 
-import Prelude (..) as Prelude
-import Test.Helper (..)
+import Prelude as Prelude
+import Test.Helper
 
 spec :: Spec
 spec = describe "Add" do

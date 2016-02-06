@@ -1,7 +1,7 @@
 module Test.Neon.Class.BottomSpec where
 
-import Prelude (..) as Prelude
-import Test.Helper (..)
+import Prelude as Prelude
+import Test.Helper
 
 spec :: Spec
 spec = describe "Bottom" do

@@ -4,7 +4,7 @@ module Neon.Primitive.Char
   , toUpper
   ) where
 
-import Data.Char (..) as Char
+import Data.Char as Char
 
 -- | Converts a character to lower case.
 -- |

@@ -2,7 +2,7 @@ module Neon.Class.Wrap (class Wrap, wrap) where
 
 import Neon.Data (List(Nil, Cons), Maybe(Just))
 import Neon.Effect (Eff)
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types that allow wrapping values into a container.
 -- |

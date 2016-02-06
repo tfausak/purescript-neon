@@ -1,6 +1,6 @@
 module Test.Neon.OperatorSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Operator" do

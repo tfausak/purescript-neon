@@ -1,7 +1,7 @@
 module Neon.Class.FromInt (class FromInt, fromInt) where
 
-import Data.Enum (..) as Enum
-import Data.Maybe (..) as Maybe
+import Data.Enum as Enum
+import Data.Maybe as Maybe
 
 -- | Represents types that can be converted from integers. This is typically
 -- | used for enumerations.

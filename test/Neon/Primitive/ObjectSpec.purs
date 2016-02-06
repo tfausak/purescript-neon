@@ -1,6 +1,6 @@
 module Test.Neon.Primitive.ObjectSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Object" do

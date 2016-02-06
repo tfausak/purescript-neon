@@ -1,6 +1,6 @@
 module Test.Neon.Class.SubtractSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Subtract" do

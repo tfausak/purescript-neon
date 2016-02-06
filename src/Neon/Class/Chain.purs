@@ -2,7 +2,7 @@ module Neon.Class.Chain (class Chain, chain) where
 
 import Neon.Data (List, Maybe)
 import Neon.Effect (Eff)
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types that can express sequential actions. This is also known
 -- | as a [monad](https://en.wikipedia.org/wiki/Monad_(functional_programming)).

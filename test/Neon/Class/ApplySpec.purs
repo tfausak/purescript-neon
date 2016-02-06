@@ -1,6 +1,6 @@
 module Test.Neon.Class.ApplySpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Apply" do

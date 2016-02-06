@@ -1,6 +1,6 @@
 module Neon.Class.Power (class Power, power) where
 
-import Math (..) as Math
+import Math as Math
 import Neon.Primitive.Int (toNumber)
 import Neon.Primitive.Number (floor)
 

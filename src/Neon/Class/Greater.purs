@@ -1,6 +1,6 @@
 module Neon.Class.Greater (class Greater, greater) where
 
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types that can be compared.
 -- |

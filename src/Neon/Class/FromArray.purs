@@ -1,8 +1,8 @@
 module Neon.Class.FromArray (class FromArray, fromArray) where
 
-import Data.Array (..) as Array
-import Data.List (..) as List
-import Data.String (..) as String
+import Data.Array as Array
+import Data.List as List
+import Data.String as String
 import Neon.Data (List, Maybe)
 
 -- | Represents types that can be converted from an array.

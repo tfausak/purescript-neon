@@ -1,19 +1,19 @@
 module Test.Neon.HelperSpec where
 
-import Control.Bind (..) as Bind
-import Control.Monad (..) as Monad
-import Data.Array (..) as Array
-import Data.Enum (..) as Enum
-import Data.Foldable (..) as Foldable
-import Data.Int (..) as Int
-import Data.Maybe (..) as Maybe
-import Data.Ord (..) as Ord
-import Data.Traversable (..) as Traversable
-import Data.Tuple (..) as Tuple
-import Global (..) as Global
-import Math (..) as Math
-import Prelude (..) as Prelude
-import Test.Helper (..)
+import Control.Bind as Bind
+import Control.Monad as Monad
+import Data.Array as Array
+import Data.Enum as Enum
+import Data.Foldable as Foldable
+import Data.Int as Int
+import Data.Maybe as Maybe
+import Data.Ord as Ord
+import Data.Traversable as Traversable
+import Data.Tuple as Tuple
+import Global as Global
+import Math as Math
+import Prelude as Prelude
+import Test.Helper
 
 spec :: Spec
 spec = describe "Helper" do

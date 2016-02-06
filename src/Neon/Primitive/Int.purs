@@ -2,7 +2,7 @@ module Neon.Primitive.Int
   ( toNumber
   ) where
 
-import Data.Int (..) as Int
+import Data.Int as Int
 
 -- | Converts an integer into a number.
 -- |

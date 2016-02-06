@@ -1,10 +1,10 @@
 module Neon.Class.Or (class Or, or) where
 
-import Data.Array (..) as Array
-import Data.List (..) as List
+import Data.Array as Array
+import Data.List as List
 import Neon.Class.Equal (class Equal, equal)
 import Neon.Data (List)
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types than can be disjoined. This is also known as
 -- | [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction).

@@ -1,6 +1,6 @@
 module Test.Neon.Class.PowerSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Power" do

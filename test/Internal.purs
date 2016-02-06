@@ -1,12 +1,12 @@
 module Test.Internal where
 
-import Control.Monad.Aff (..) as Aff
-import Control.Monad.Eff.Random (..) as Random
-import Neon (..) as Neon
-import Prelude (..) as Prelude
-import Test.Spec (..) as Spec
-import Test.Spec.Runner (..) as Runner
-import Test.Spec.Assertions (..) as Assertions
+import Control.Monad.Aff as Aff
+import Control.Monad.Eff.Random as Random
+import Neon as Neon
+import Prelude as Prelude
+import Test.Spec as Spec
+import Test.Spec.Runner as Runner
+import Test.Spec.Assertions as Assertions
 
 type Spec = Spec.Spec
   ( console :: Neon.CONSOLE

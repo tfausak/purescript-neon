@@ -70,7 +70,7 @@ import Neon.Effect (Eff, CONSOLE, log, unsafePerformEff)
 import Neon.Primitive.Function (always, identity)
 import Neon.Primitive.Number (finite)
 import Prelude (bind)
-import Unsafe.Coerce (..) as Coerce
+import Unsafe.Coerce as Coerce
 
 -- | Returns the absolute value of a number.
 -- |

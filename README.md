@@ -8,7 +8,7 @@ Neon is an experimental standard library for [PureScript][].
 ``` purescript
 -- Find the sum of all the multiples of 3 or 5 below 1000.
 -- <https://projecteuler.net/problem=1>
-import Neon (..)
+import Neon
 main :: Eff (console :: CONSOLE) Unit
 main = 1
   :upTo 999

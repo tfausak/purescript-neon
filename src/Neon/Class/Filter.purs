@@ -1,6 +1,6 @@
 module Neon.Class.Filter (class Filter, filter) where
 
-import Data.Array (..) as Array
+import Data.Array as Array
 import Neon.Data (List(Nil, Cons))
 
 -- | Represents types than can have elements filtered out of them.

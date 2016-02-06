@@ -1,6 +1,6 @@
 module Neon.Class.Divide (class Divide, divide) where
 
-import Prelude (..) as Prelude
+import Prelude as Prelude
 
 -- | Represents types that are divisible.
 -- |

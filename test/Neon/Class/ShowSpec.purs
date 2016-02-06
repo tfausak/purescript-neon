@@ -1,6 +1,6 @@
 module Test.Neon.Class.ShowSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Show" do

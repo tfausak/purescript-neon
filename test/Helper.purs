@@ -10,7 +10,7 @@ module Test.Helper
 
 import Neon hiding (bind)
 import Prelude (bind) -- HACK
-import Test.Internal (..)
+import Test.Internal
 import Test.QuickCheck ((===), (/==))
 import Test.Spec (describe, it, pending)
 import Test.Spec.Assertions (shouldEqual)

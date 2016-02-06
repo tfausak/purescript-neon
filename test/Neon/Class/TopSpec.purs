@@ -1,6 +1,6 @@
 module Test.Neon.Class.TopSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Top" do

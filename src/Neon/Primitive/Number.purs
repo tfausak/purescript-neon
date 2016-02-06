@@ -8,8 +8,8 @@ module Neon.Primitive.Number
   , round
   ) where
 
-import Data.Int (..) as Int
-import Global (..) as Global
+import Data.Int as Int
+import Global as Global
 
 -- | Rounds a number up.
 -- |

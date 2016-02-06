@@ -1,6 +1,6 @@
 module Test.Neon.Class.NotSpec where
 
-import Test.Helper (..)
+import Test.Helper
 
 spec :: Spec
 spec = describe "Not" do
