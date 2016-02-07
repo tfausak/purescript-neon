@@ -1,16 +1,14 @@
 module Neon.Primitive.Function where
 
--- | Always returns the first argument. This is the [constant
--- | function](https://en.wikipedia.org/wiki/Constant_function).
+-- | Always returns the first argument. This is the [constant function](https://en.wikipedia.org/wiki/Constant_function).
 -- |
 -- | ``` purescript
--- | always 1 "anything" -- 1
+-- | always "anything" 1 -- 1
 -- | ```
-always :: forall a b. a -> b -> a
-always x = \ _ -> x
+always :: forall a b. b -> a -> a
+always _ = \ x -> x
 
--- | Returns a new function that calls the first function with the result of
--- | the second. This is [function composition](https://en.wikipedia.org/wiki/Function_composition_(computer_science)).
+-- | Returns a new function that calls the first function with the result of the second. This is [function composition](https://en.wikipedia.org/wiki/Function_composition_(computer_science)).
 -- |
 -- | ``` purescript
 -- | compose (* 2) (+ 2) 3 -- 10
@@ -21,14 +19,12 @@ compose g f = \ x -> g (f x)
 -- | Flips the first two arguments of a function.
 -- |
 -- | ``` purescript
--- | add "a" "b" -- "ba"
--- | flip add "a" "b" -- "ab"
+-- | flip compose (* 2) (+ 2) 3 -- 8
 -- | ```
 flip :: forall a b c. (a -> b -> c) -> (b -> a -> c)
 flip f = \ x y -> f y x
 
--- | Returns the argument. This is the [identity
--- | function](https://en.wikipedia.org/wiki/Identity_function).
+-- | Returns the argument. This is the [identity function](https://en.wikipedia.org/wiki/Identity_function).
 -- |
 -- | ``` purescript
 -- | identity 1 -- 1

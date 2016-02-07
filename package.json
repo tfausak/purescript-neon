@@ -8,19 +8,10 @@
     "node": "5.5.0",
     "npm": "3.5.3"
   },
-  "license": "MIT",
-  "name": "purescript-neon",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/tfausak/purescript-neon.git"
-  },
   "scripts": {
-    "bower": "bower",
     "postinstall": "bower install",
     "psc-publish": "psc-publish",
-    "pulp": "pulp",
     "test": "pulp test && psc-publish --dry-run"
-  },
-  "version": "0.0.0-private"
+  }
 }

@@ -7,13 +7,13 @@
     }
   ],
   "dependencies": {
-    "purescript-batteries": "0.5.1"
+    "purescript-eff": "0.1.2",
+    "purescript-prelude": "0.1.4"
   },
   "description": "An experimental standard library for PureScript.",
   "devDependencies": {
-    "purescript-quickcheck": "0.6.0",
-    "purescript-spec": "0.7.2",
-    "purescript-spec-quickcheck": "0.3.0"
+    "purescript-quickcheck": "0.12.2",
+    "purescript-test-unit": "4.1.0"
   },
   "homepage": "https://github.com/tfausak/purescript-neon",
   "ignore": [
@@ -42,11 +42,5 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/tfausak/purescript-neon.git"
-  },
-  "resolutions": {
-    "purescript-aff": "0.14.0",
-    "purescript-spec": "0.7.2",
-    "purescript-strings": "0.7.1",
-    "purescript-transformers": "0.8.4"
   }
 }
