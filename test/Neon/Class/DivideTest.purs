@@ -1,14 +1,14 @@
-module Test.Neon.Class.MultiplyTest where
+module Test.Neon.Class.DivideTest where
 
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Multiply" do
+suite = test "Divide" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
-      Neon.multiply y x === Prelude.mul x y
+      Neon.divide y x === Prelude.div x y
   test "Number" do
     quickCheck \ (x :: Number) y ->
-      Neon.multiply y x === Prelude.mul x y
+      Neon.divide y x === Prelude.div x y

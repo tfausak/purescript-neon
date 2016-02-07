@@ -2,9 +2,8 @@ module Test.Neon.DataTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Core (Tests, test)
+import Test.Helper (Suite, test)
 
-tests :: Tests
-tests = test "Data" do
-  test "Unit" do
-    Prelude.pure Neon.unit
+suite :: Suite
+suite = test "Data" do
+  Prelude.pure Neon.unit

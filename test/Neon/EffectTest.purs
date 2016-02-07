@@ -2,9 +2,8 @@ module Test.Neon.EffectTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Core (Tests, test)
+import Test.Helper (Suite, test)
 
-tests :: Tests
-tests = test "Effect" do
-  test "Eff" do
-    Prelude.pure Neon.unit
+suite :: Suite
+suite = test "Effect" do
+  Prelude.pure Neon.unit

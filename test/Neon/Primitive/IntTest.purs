@@ -1,11 +1,11 @@
 module Test.Neon.Primitive.IntTest where
 
-import Data.Int as Int
 import Neon as Neon
-import Test.Core (Tests, quickCheck, test, (===))
+import Data.Int as Int
+import Test.Helper (Suite, quickCheck, test, (===))
 
-tests :: Tests
-tests = test "Int" do
+suite :: Suite
+suite = test "Int" do
   test "toNumber" do
     quickCheck \ x ->
       Neon.toNumber x === Int.toNumber x
