@@ -9,10 +9,14 @@
   "dependencies": {
     "purescript-eff": "0.1.2",
     "purescript-globals": "0.2.2",
-    "purescript-prelude": "0.1.4"
+    "purescript-integers": "0.2.1",
+    "purescript-prelude": "0.1.4",
+    "purescript-random": "0.2.3",
+    "purescript-strings": "0.7.1"
   },
   "description": "An experimental standard library for PureScript.",
   "devDependencies": {
+    "purescript-aff": "0.14.0",
     "purescript-quickcheck": "0.12.2",
     "purescript-test-unit": "4.1.0"
   },
