@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "purescript-eff": "0.1.2",
+    "purescript-globals": "0.2.2",
     "purescript-prelude": "0.1.4"
   },
   "description": "An experimental standard library for PureScript.",
