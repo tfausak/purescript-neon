@@ -4,6 +4,7 @@ module Neon.Data
   ) where
 
 import Control.Monad.Eff.Exception (Error) as Export
+import Data.List (List(Nil, Cons)) as Export
 import Data.Maybe (Maybe(Nothing, Just)) as Export
 import Data.Tuple (Tuple(Tuple)) as Export
 import Prelude (Unit, unit) as Export
