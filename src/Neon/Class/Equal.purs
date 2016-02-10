@@ -33,3 +33,6 @@ instance equalNumber :: Equal Number where
 
 instance equalString :: Equal String where
   equal y x = Prelude.eq x y
+
+instance equalUnit :: Equal Data.Unit where
+  equal y x = Prelude.eq x y

@@ -27,3 +27,6 @@ suite = test "Equal" do
   test "String" do
     quickCheck \ (x :: String) y ->
       Neon.equal y x === Prelude.eq x y
+  test "Unit" do
+    quickCheck \ (x :: Neon.Unit) y ->
+      Neon.equal y x === Prelude.eq x y

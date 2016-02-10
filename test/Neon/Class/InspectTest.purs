@@ -21,3 +21,6 @@ suite = test "Inspect" do
   test "String" do
     quickCheck \ (x :: String) ->
       Neon.inspect x === Prelude.show x
+  test "Unit" do
+    quickCheck \ (x :: Neon.Unit) ->
+      Neon.inspect x === Prelude.show x
