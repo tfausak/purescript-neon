@@ -15,6 +15,9 @@ instance inspectBoolean :: Inspect Boolean where
 instance inspectChar :: Inspect Char where
   inspect x = Prelude.show x
 
+instance inspectError :: Inspect Data.Error where
+  inspect x = Prelude.show x
+
 instance inspectInt :: Inspect Int where
   inspect x = Prelude.show x
 

@@ -12,6 +12,7 @@ suite = test "Inspect" do
   test "Char" do
     quickCheck \ (x :: Char) ->
       Neon.inspect x === Prelude.show x
+  -- test "Error" do
   test "Int" do
     quickCheck \ (x :: Int) ->
       Neon.inspect x === Prelude.show x
