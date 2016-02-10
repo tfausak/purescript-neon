@@ -6,6 +6,9 @@ import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
 suite = test "Greater" do
+  test "Array" do
+    quickCheck \ (x :: Array Int) y ->
+      Neon.greater y x === x Prelude.> y
   test "Boolean" do
     quickCheck \ (x :: Boolean) y ->
       Neon.greater y x === x Prelude.> y
@@ -14,6 +17,9 @@ suite = test "Greater" do
       Neon.greater y x === x Prelude.> y
   test "Int" do
     quickCheck \ (x :: Int) y ->
+      Neon.greater y x === x Prelude.> y
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) y ->
       Neon.greater y x === x Prelude.> y
   test "Number" do
     quickCheck \ (x :: Number) y ->
