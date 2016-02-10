@@ -3,6 +3,7 @@ module Test.Neon.ClassTest where
 import Test.Neon.Class.AddTest as AddTest
 import Test.Neon.Class.AndTest as AndTest
 import Test.Neon.Class.ApplyTest as ApplyTest
+import Test.Neon.Class.AtTest as AtTest
 import Test.Neon.Class.BottomTest as BottomTest
 import Test.Neon.Class.ChainTest as ChainTest
 import Test.Neon.Class.DivideTest as DivideTest
@@ -35,6 +36,7 @@ suite = test "Class" do
   AddTest.suite
   AndTest.suite
   ApplyTest.suite
+  AtTest.suite
   BottomTest.suite
   ChainTest.suite
   DivideTest.suite

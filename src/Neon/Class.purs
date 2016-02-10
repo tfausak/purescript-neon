@@ -2,6 +2,7 @@ module Neon.Class
   ( module Neon.Class.Add
   , module Neon.Class.And
   , module Neon.Class.Apply
+  , module Neon.Class.At
   , module Neon.Class.Bottom
   , module Neon.Class.Chain
   , module Neon.Class.Divide
@@ -32,6 +33,7 @@ module Neon.Class
 import Neon.Class.Add as Neon.Class.Add
 import Neon.Class.And as Neon.Class.And
 import Neon.Class.Apply as Neon.Class.Apply
+import Neon.Class.At as Neon.Class.At
 import Neon.Class.Bottom as Neon.Class.Bottom
 import Neon.Class.Chain as Neon.Class.Chain
 import Neon.Class.Divide as Neon.Class.Divide
