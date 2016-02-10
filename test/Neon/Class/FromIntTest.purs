@@ -14,6 +14,3 @@ suite = test "FromInt" do
   test "Char" do
     quickCheck \ x ->
       Neon.fromInt x :: Maybe.Maybe Char === Enum.toEnum x
-  test "Int" do
-    quickCheck \ x ->
-      Neon.fromInt x :: Maybe.Maybe Int === Maybe.Just x

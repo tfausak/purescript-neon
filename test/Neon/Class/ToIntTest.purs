@@ -12,6 +12,3 @@ suite = test "ToInt" do
   test "Char" do
     quickCheck \ (x :: Char) ->
       Neon.toInt x === Enum.fromEnum x
-  test "Int" do
-    quickCheck \ (x :: Int) ->
-      Neon.toInt x === x
