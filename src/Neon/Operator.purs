@@ -3,7 +3,7 @@ module Neon.Operator where
 import Neon.Class as Class
 import Neon.Helper as Helper
 
-infixl 8 _dot            as :
+infixl 8 _call           as :
 infixr 7 _power          as ^
 infixl 6 _multiply       as *
 infixl 6 _divide         as /
@@ -19,11 +19,11 @@ infix  4 _lessOrEqual    as <=
 infixr 3 _and            as &&
 infixr 2 _or             as ||
 
-_dot :: forall a b. a -> (a -> b) -> b
-_dot x f = f x
+_call :: forall a b. a -> (a -> b) -> b
+_call x f = f x
 
 _power :: forall a. (Class.Power a) => a -> a -> a
-_power y x = Class.power x y
+_power x y = Class.power y x
 
 _multiply :: forall a. (Class.Multiply a) => a -> a -> a
 _multiply x y = Class.multiply y x

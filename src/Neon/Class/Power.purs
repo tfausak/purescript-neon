@@ -1,18 +1,8 @@
 module Neon.Class.Power where
 
-import Math as Math
 import Neon.Primitive as Primitive
+import Math as Math
 
--- | Represents types that can be exponentiated.
--- |
--- | ``` purescript
--- | power 3 2 -- 8
--- | ```
--- |
--- | Laws:
--- | - `(b ^ n) * (b ^ m) = b ^ (n + m)`
--- | - `(b ^ n) ^ m = b ^ (n * m)`
--- | - `(b * y) ^ n = (b ^ n) * (y ^ n)`
 class Power a where
   power :: a -> a -> a
 

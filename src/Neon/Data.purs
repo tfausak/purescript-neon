@@ -1,15 +1,15 @@
 module Neon.Data
-  ( module Control.Monad.Eff.Exception
-  , module Data.List
-  , module Data.Maybe
-  , module Data.Tuple
-  , module Neon.Data.Internal
-  , module Prelude
+  ( module Neon.Data
+  , module Export
   ) where
 
-import Control.Monad.Eff.Exception (Error)
-import Data.List (List(Nil, Cons))
-import Data.Maybe (Maybe(Nothing, Just))
-import Data.Tuple (Tuple(Tuple))
-import Neon.Data.Internal as Neon.Data.Internal
-import Prelude (Unit, unit)
+import Control.Monad.Eff.Exception (Error) as Export
+import Data.List (List(Nil, Cons)) as Export
+import Data.Maybe (Maybe(Nothing, Just)) as Export
+import Data.Tuple (Tuple(Tuple)) as Export
+import Prelude (Unit, unit) as Export
+
+import Control.Monad.Eff.Exception as Exception
+
+exception :: String -> Exception.Error
+exception x = Exception.error x

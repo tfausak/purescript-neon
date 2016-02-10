@@ -2,15 +2,6 @@ module Neon.Class.ToInt where
 
 import Data.Enum as Enum
 
--- | Represents types that can be converted to integers. This is typically used
--- | for enumerations.
--- |
--- | ``` purescript
--- | toInt false -- 0
--- | ```
--- |
--- | Laws:
--- | - none
 class ToInt a where
   toInt :: a -> Int
 

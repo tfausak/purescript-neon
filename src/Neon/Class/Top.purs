@@ -1,17 +1,8 @@
 module Neon.Class.Top where
 
-import Neon.Primitive as Primitive
+import Global as Global
 import Prelude as Prelude
 
--- | Represents types that have an upper bound.
--- |
--- | ``` purescript
--- | top :: Boolean -- true
--- | top :: Char -- '\65535'
--- | ```
--- |
--- | Laws:
--- | - `top >= x`
 class Top a where
   top :: a
 
@@ -25,4 +16,4 @@ instance topInt :: Top Int where
   top = Prelude.top
 
 instance topNumber :: Top Number where
-  top = Primitive.infinity
+  top = Global.infinity

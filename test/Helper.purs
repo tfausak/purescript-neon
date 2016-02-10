@@ -1,17 +1,32 @@
 module Test.Helper
-  ( module Neon
-  , module Prelude
-  , module Test.Internal
-  , module Test.QuickCheck
-  , module Test.Spec
-  , module Test.Spec.Assertions
-  , module Test.Spec.QuickCheck
+  ( module Test.Helper
+  , module Export
   ) where
 
-import Neon hiding (bind)
-import Prelude (bind) -- HACK
-import Test.Internal
-import Test.QuickCheck ((===), (/==))
-import Test.Spec (describe, it, pending)
-import Test.Spec.Assertions (shouldEqual)
-import Test.Spec.QuickCheck (quickCheck)
+import Prelude (bind) as Export
+import Test.QuickCheck ((===)) as Export
+import Test.Unit (runTest, test) as Export
+import Test.Unit.Assert (assert) as Export
+import Test.Unit.QuickCheck (quickCheck) as Export
+
+import Control.Monad.Aff (Aff)
+import Control.Monad.Aff.AVar (AVAR)
+import Control.Monad.Eff (Eff)
+import Control.Monad.Eff.Random (RANDOM)
+import Prelude (Unit, bind)
+import Test.QuickCheck ((===))
+import Test.Unit (TIMER, runTest, test)
+import Test.Unit.Assert (assert)
+import Test.Unit.Console (TESTOUTPUT)
+import Test.Unit.QuickCheck (quickCheck)
+
+type Test a = a
+  ( avar :: AVAR
+  , random :: RANDOM
+  , testOutput :: TESTOUTPUT
+  , timer :: TIMER
+  ) Unit
+
+type Main = Test Eff
+
+type Suite = Test Aff

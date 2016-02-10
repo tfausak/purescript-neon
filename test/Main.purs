@@ -1,9 +1,8 @@
 module Test.Main where
 
-import Neon
-import Test.NeonSpec as Neon
-import Test.Spec.Reporter.Console (consoleReporter)
-import Test.Spec.Runner (Process, run)
+import Test.Helper (Main, runTest)
+import Test.NeonTest as NeonTest
 
-main :: Eff (console :: CONSOLE, process :: Process, random :: RANDOM) Unit
-main = run [consoleReporter] Neon.spec
+main :: Main
+main = runTest do
+  NeonTest.suite

@@ -10,6 +10,7 @@ module Neon.Class
   , module Neon.Class.FromArray
   , module Neon.Class.FromInt
   , module Neon.Class.Greater
+  , module Neon.Class.Inspect
   , module Neon.Class.Less
   , module Neon.Class.Map
   , module Neon.Class.Multiply
@@ -19,7 +20,6 @@ module Neon.Class
   , module Neon.Class.Power
   , module Neon.Class.Reduce
   , module Neon.Class.Remainder
-  , module Neon.Class.Show
   , module Neon.Class.Subtract
   , module Neon.Class.ToArray
   , module Neon.Class.ToInt
@@ -40,6 +40,7 @@ import Neon.Class.Filter as Neon.Class.Filter
 import Neon.Class.FromArray as Neon.Class.FromArray
 import Neon.Class.FromInt as Neon.Class.FromInt
 import Neon.Class.Greater as Neon.Class.Greater
+import Neon.Class.Inspect as Neon.Class.Inspect
 import Neon.Class.Less as Neon.Class.Less
 import Neon.Class.Map as Neon.Class.Map
 import Neon.Class.Multiply as Neon.Class.Multiply
@@ -49,7 +50,6 @@ import Neon.Class.Or as Neon.Class.Or
 import Neon.Class.Power as Neon.Class.Power
 import Neon.Class.Reduce as Neon.Class.Reduce
 import Neon.Class.Remainder as Neon.Class.Remainder
-import Neon.Class.Show as Neon.Class.Show
 import Neon.Class.Subtract as Neon.Class.Subtract
 import Neon.Class.ToArray as Neon.Class.ToArray
 import Neon.Class.ToInt as Neon.Class.ToInt

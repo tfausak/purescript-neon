@@ -4,29 +4,14 @@ import Neon.Data as Data
 import Neon.Effect as Effect
 import Prelude as Prelude
 
--- | Represents types that can be applied from within a container. In other
--- | words, given both a function and a value in a container, apply the
--- | function to the value and return the result in a container. This is also
--- | known as an applicative functor.
--- |
--- | ``` purescript
--- | apply [(+ 2), (* 2)] [3, 4] -- [5, 6, 6, 8]
--- | apply (Just (+ 1)) (Just 2) -- Just 3
--- | ```
--- |
--- | Laws:
--- | - `apply (apply (map compose f) g) h = apply f (apply g h)`
 class Apply a where
   apply :: forall b c. a (b -> c) -> a b -> a c
 
 instance applyArray :: Apply Array where
-  apply fs xs = Prelude.apply fs xs
+  apply f x = Prelude.apply f x
 
 instance applyEff :: Apply (Effect.Eff a) where
   apply f x = Prelude.apply f x
 
-instance applyList :: Apply Data.List where
-  apply fs xs = Prelude.apply fs xs
-
 instance applyMaybe :: Apply Data.Maybe where
-  apply mf mx = Prelude.apply mf mx
+  apply f x = Prelude.apply f x

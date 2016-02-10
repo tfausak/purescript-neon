@@ -2,16 +2,6 @@ module Neon.Class.Not where
 
 import Prelude as Prelude
 
--- | Represents types can be negated. This is known as
--- | [negation](https://en.wikipedia.org/wiki/Negation).
--- |
--- | ``` purescript
--- | not false -- true
--- | ```
--- |
--- | Laws:
--- | - `not top = bottom`
--- | - `not bottom = top`
 class Not a where
   not :: a -> a
 
