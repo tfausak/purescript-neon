@@ -12,5 +12,4 @@ instance remainderInt :: Remainder Int where
 instance remainderNumber :: Remainder Number where
   remainder y x =
     let toInt = Coerce.unsafeCoerce :: Number -> Int
-        toNumber = Coerce.unsafeCoerce :: Int -> Number
-    in  toNumber (Prelude.mod (toInt x) (toInt y))
+    in  Coerce.unsafeCoerce (Prelude.mod (toInt x) (toInt y))

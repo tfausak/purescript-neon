@@ -1,6 +1,6 @@
 module Neon.Class.Top where
 
-import Global as Global
+import Neon.Primitive as Primitive
 import Prelude as Prelude
 
 class Top a where
@@ -16,4 +16,4 @@ instance topInt :: Top Int where
   top = Prelude.top
 
 instance topNumber :: Top Number where
-  top = Global.infinity
+  top = Primitive.infinity
