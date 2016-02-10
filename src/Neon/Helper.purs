@@ -27,6 +27,9 @@ clamp b t x =
   then clamp t b x
   else max b (min t x)
 
+concat :: forall a b. (Class.Add b, Class.Reduce a, Class.Zero b) => a b -> b
+concat xs = Class.reduce Class.add Class.zero xs
+
 contains :: forall a b. (Class.Equal b, Class.Reduce a) => b -> a b -> Boolean
 contains x xs = any (Class.equal x) xs
 
@@ -135,6 +138,11 @@ swap (Data.Tuple x y) = Data.Tuple y x
 
 todo :: forall a. a
 todo = unsafeCoerce Data.unit
+
+truncate :: Number -> Int
+truncate x = if Class.greater 0.0 x
+  then Primitive.floor x
+  else Primitive.ceiling x
 
 uncurry :: forall a b c. (a -> b -> c) -> (Data.Tuple a b -> c)
 uncurry f = \ (Data.Tuple x y) -> f x y
