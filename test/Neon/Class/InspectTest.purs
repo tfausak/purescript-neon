@@ -6,6 +6,9 @@ import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
 suite = test "Inspect" do
+  test "List" do
+    quickCheck \ (x :: Array Int) ->
+      Neon.inspect x === Prelude.show x
   test "Boolean" do
     quickCheck \ (x :: Boolean) ->
       Neon.inspect x === Prelude.show x
@@ -15,6 +18,9 @@ suite = test "Inspect" do
   -- test "Error" do
   test "Int" do
     quickCheck \ (x :: Int) ->
+      Neon.inspect x === Prelude.show x
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) ->
       Neon.inspect x === Prelude.show x
   test "Number" do
     quickCheck \ (x :: Number) ->
