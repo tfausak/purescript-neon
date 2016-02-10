@@ -1,8 +1,9 @@
 module Test.Neon.Class.AndTest where
 
-import Neon as Neon
 import Data.Array as Array
 import Data.Int.Bits as Bits
+import Data.List as List
+import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
@@ -22,3 +23,6 @@ suite = test "And" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.and y x === x Bits..&. y
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) y ->
+      Neon.and y x === List.intersect x y

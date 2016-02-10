@@ -13,5 +13,8 @@ instance mapArray :: Map Array where
 instance mapEff :: Map (Effect.Eff a) where
   map f x = Prelude.map f x
 
+instance mapList :: Map Data.List where
+  map f x = Prelude.map f x
+
 instance mapMaybe :: Map Data.Maybe where
   map f x = Prelude.map f x

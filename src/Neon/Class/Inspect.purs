@@ -17,6 +17,9 @@ instance inspectChar :: Inspect Char where
 instance inspectInt :: Inspect Int where
   inspect x = Prelude.show x
 
+-- instance inspectList :: (Inspect a) => Inspect (Data.List a) where
+--   inspect xs = "" -- TODO
+
 instance inspectNumber :: Inspect Number where
   inspect x = Prelude.show x
 

@@ -11,6 +11,10 @@ suite = test "Chain" do
     quickCheck \ (x :: Array Int) ->
       Neon.chain f x === Prelude.bind x f
   -- test "Eff" do
+  test "List" do
+    let f x = Neon.Cons x (Neon.Cons x Neon.Nil)
+    quickCheck \ (x :: Neon.List Int) ->
+      Neon.chain f x === Prelude.bind x f
   test "Maybe" do
     let f x = Neon.Just x
     quickCheck \ (x :: Neon.Maybe Int) ->

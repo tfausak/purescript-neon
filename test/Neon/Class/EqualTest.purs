@@ -18,6 +18,9 @@ suite = test "Equal" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.equal y x === Prelude.eq x y
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) y ->
+      Neon.equal y x === Prelude.eq x y
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.equal y x === Prelude.eq x y

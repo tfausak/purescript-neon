@@ -1,12 +1,17 @@
 module Test.Neon.Class.OrTest where
 
-import Neon as Neon
+import Data.Array as Array
 import Data.Int.Bits as Bits
+import Data.List as List
+import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
 suite = test "Or" do
+  test "Array" do
+    quickCheck \ (x :: Array Int) y ->
+      Neon.or y x === Array.union x y
   test "Boolean" do
     quickCheck \ (x :: Boolean) y ->
       Neon.or y x === Prelude.disj x y
@@ -18,3 +23,6 @@ suite = test "Or" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.or y x === x Bits..|. y
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) y ->
+      Neon.or y x === List.union x y

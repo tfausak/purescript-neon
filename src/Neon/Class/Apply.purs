@@ -13,5 +13,8 @@ instance applyArray :: Apply Array where
 instance applyEff :: Apply (Effect.Eff a) where
   apply f x = Prelude.apply f x
 
+instance applyList :: Apply Data.List where
+  apply f x = Prelude.apply f x
+
 instance applyMaybe :: Apply Data.Maybe where
   apply f x = Prelude.apply f x

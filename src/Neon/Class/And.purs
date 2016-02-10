@@ -1,8 +1,10 @@
 module Neon.Class.And where
 
-import Neon.Class.Equal as Equal
 import Data.Array as Array
 import Data.Int.Bits as Bits
+import Data.List as List
+import Neon.Class.Equal as Equal
+import Neon.Data as Data
 import Prelude as Prelude
 
 class And a where
@@ -19,3 +21,6 @@ instance andFunction :: (And b) => And (a -> b) where
 
 instance andInt :: And Int where
   and y x = x Bits..&. y
+
+instance andList :: (Equal.Equal a) => And (Data.List a) where
+  and ys xs = List.intersectBy (\ x y -> Equal.equal y x) xs ys

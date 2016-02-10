@@ -11,6 +11,9 @@ suite = test "Reduce" do
     quickCheck \ (x :: Int) (xs :: Array Int) ->
       Neon.reduce f x xs === Foldable.foldl f x xs
   -- test "Eff" do
+  test "List" do
+    quickCheck \ (x :: Int) (xs :: Neon.List Int) ->
+      Neon.reduce f x xs === Foldable.foldl f x xs
   test "Maybe" do
     quickCheck \ (x :: Int) (mx :: Neon.Maybe Int) ->
       Neon.reduce f x mx === Foldable.foldl f x mx

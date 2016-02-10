@@ -12,6 +12,9 @@ suite = test "Add" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.add y x === Prelude.add x y
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) y ->
+      Neon.add y x === Prelude.append x y
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.add y x === Prelude.add x y

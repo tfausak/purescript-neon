@@ -17,6 +17,9 @@ instance lessChar :: Less Char where
 instance lessInt :: Less Int where
   less y x = x Prelude.< y
 
+-- instance lessList :: (Equal.Equal a, Less a) => Less (Data.List a) where
+--   less ys xs = false -- TODO
+
 instance lessNumber :: Less Number where
   less y x = x Prelude.< y
 

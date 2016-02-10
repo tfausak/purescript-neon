@@ -11,6 +11,9 @@ suite = test "Map" do
     quickCheck \ (x :: Array Int) ->
       Neon.map f x === Prelude.map f x
   -- test "Eff" do
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) ->
+      Neon.map f x === Prelude.map f x
   test "Maybe" do
     quickCheck \ (x :: Neon.Maybe Int) ->
       Neon.map f x === Prelude.map f x

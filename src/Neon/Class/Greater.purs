@@ -18,6 +18,9 @@ instance greaterChar :: Greater Char where
 instance greaterInt :: Greater Int where
   greater y x = x Prelude.> y
 
+-- instance greaterList :: (Equal.Equal a, Greater a) => Greater (Data.List a) where
+--   greater ys xs = false -- TODO
+
 instance greaterNumber :: Greater Number where
   greater y x = x Prelude.> y
 

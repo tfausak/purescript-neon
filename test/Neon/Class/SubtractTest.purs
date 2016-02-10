@@ -1,7 +1,8 @@
 module Test.Neon.Class.SubtractTest where
 
-import Neon as Neon
 import Data.Array as Array
+import Data.List as List
+import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
@@ -13,6 +14,9 @@ suite = test "Subtract" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.subtract y x === Prelude.sub x y
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) y ->
+      Neon.subtract y x === x List.\\ y
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.subtract y x === Prelude.sub x y

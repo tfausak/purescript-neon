@@ -12,6 +12,9 @@ suite = test "Zero" do
   test "Int" do
     assert "Prelude.zero"
       (Neon.equal (Neon.zero :: Int) Prelude.zero)
+  test "List" do
+    assert "Nil"
+      (Neon.equal (Neon.zero :: Neon.List Int) Neon.Nil)
   test "Number" do
     assert "Prelude.zero"
       (Neon.equal (Neon.zero :: Number) Prelude.zero)

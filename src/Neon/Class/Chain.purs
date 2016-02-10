@@ -13,5 +13,8 @@ instance chainArray :: Chain Array where
 instance chainEff :: Chain (Effect.Eff a) where
   chain f xs = Prelude.bind xs f
 
+instance chainList :: Chain Data.List where
+  chain f xs = Prelude.bind xs f
+
 instance chainMaybe :: Chain Data.Maybe where
   chain f mx = Prelude.bind mx f

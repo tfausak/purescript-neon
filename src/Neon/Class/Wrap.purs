@@ -13,5 +13,8 @@ instance wrapArray :: Wrap Array where
 instance wrapEff :: Wrap (Effect.Eff a) where
   wrap x = Prelude.pure x
 
+instance wrapList :: Wrap Data.List where
+  wrap x = Prelude.pure x
+
 instance wrapMaybe :: Wrap Data.Maybe where
   wrap x = Prelude.pure x

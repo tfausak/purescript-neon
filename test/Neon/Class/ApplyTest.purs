@@ -13,6 +13,12 @@ suite = test "Apply" do
     quickCheck \ (x :: Array Int) ->
       Neon.apply fs x === Prelude.apply fs x
   -- test "Eff" do
+  test "List" do
+    let f x = Neon.add 2 x
+        g x = Neon.multiply 2 x
+        fs = Neon.Cons f (Neon.Cons g Neon.Nil)
+    quickCheck \ (x :: Neon.List Int) ->
+      Neon.apply fs x === Prelude.apply fs x
   test "Maybe" do
     let f x = Neon.add 2 x
         mf = Neon.Just f
