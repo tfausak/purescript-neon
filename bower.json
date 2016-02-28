@@ -12,6 +12,6 @@
     "url": "git://github.com/tfausak/purescript-neon.git"
   },
   "resolutions": {
-    "purescript-aff": "0.14.0"
+    "purescript-aff": "~0.14.0"
   }
 }
