@@ -4,6 +4,10 @@
     "pulp": "8.0.0",
     "purescript": "0.8.0"
   },
+  "engines": {
+    "node": "5.7.0",
+    "npm": "3.6.0"
+  },
   "private": true,
   "scripts": {
     "bower": "bower",
