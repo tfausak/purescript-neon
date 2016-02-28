@@ -10,3 +10,6 @@ instance toIntBoolean :: ToInt Boolean where
 
 instance toIntChar :: ToInt Char where
   toInt x = Enum.fromEnum x
+
+instance toIntInt :: ToInt Int where
+  toInt x = x
