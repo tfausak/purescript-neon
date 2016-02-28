@@ -6,11 +6,13 @@ after_success:
   test $TRAVIS_TAG &&
   npm run psc-publish \
     | tail -n 1 \
-    > output/purescript-neon-${TRAVIS_TAG}.json &&
+    | gzip \
+    > output/purescript-neon-${TRAVIS_TAG}.json.gz &&
   curl -X POST http://pursuit.purescript.org/packages \
     -d @output/purescript-neon-${TRAVIS_TAG}.json \
     -H 'Accept: application/json' \
-    -H "Authorization: token ${GITHUB_TOKEN}"
+    -H "Authorization: token ${GITHUB_TOKEN}" \
+    -H 'Content-Encoding: gzip'
 cache:
   directories:
   - node_modules
