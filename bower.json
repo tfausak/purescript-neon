@@ -6,6 +6,7 @@
     "purescript-quickcheck": "0.12.2",
     "purescript-test-unit": "4.1.0"
   },
+  "license": "MIT",
   "name": "purescript-neon",
   "repository": {
     "type": "git",
