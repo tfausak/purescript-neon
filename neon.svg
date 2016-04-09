@@ -1,0 +1,9 @@
+<svg viewBox="0 0 17 17" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+ <g fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="miter" stroke-width="1">
+  <path d="M3,3l11,11" opacity="0.5" />
+  <path d="M2,7v-5l5 5v-5" />
+  <path d="M15,2h-5v2.5h5h-5v2.5h5" />
+  <path d="M2,10h5v5h-5z" />
+  <path d="M10,15v-5l5 5v-5" />
+ </g>
+</svg>
