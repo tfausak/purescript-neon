@@ -1,7 +1,7 @@
 after_success:
 - npm run psc-publish | tail -n 1 | gzip > output/docs.json.gz
 - >-
-  if test $TRAVIS_TAG
+  if test $TRAVIS_TAG -a $GITHUB_TOKEN
   then
     curl -X POST http://pursuit.purescript.org/packages \
       -d @output/docs.json \
