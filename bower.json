@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "purescript-batteries": "0.5.1"
+    "purescript-batteries": "0.5.3"
   },
   "devDependencies": {
     "purescript-quickcheck": "0.12.2",
