@@ -55,4 +55,4 @@ guiding principles:
 [version]: https://github.com/tfausak/purescript-neon/releases
 [Build status]: https://img.shields.io/travis/tfausak/purescript-neon/master.svg
 [build]: https://travis-ci.org/tfausak/purescript-neon
-[PureScript]: http://www.purescript.org
+[PureScript]: https://github.com/purescript/purescript
