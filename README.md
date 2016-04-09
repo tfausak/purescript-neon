@@ -50,9 +50,9 @@ guiding principles:
 - Qualified imports are annoying, and fewer imports are better. This mean
   `import Neon` is enough. No need for tens of lines of imports.
 
-[neon]: https://github.com/tfausak/purescript-neon
-[package version]: https://img.shields.io/bower/v/purescript-neon.svg?label=version
+[Neon]: https://github.com/tfausak/purescript-neon
+[Package version]: https://img.shields.io/bower/v/purescript-neon.svg?label=version
 [version]: https://github.com/tfausak/purescript-neon/releases
-[build status]: https://img.shields.io/travis/tfausak/purescript-neon/master.svg
+[Build status]: https://img.shields.io/travis/tfausak/purescript-neon/master.svg
 [build]: https://travis-ci.org/tfausak/purescript-neon
-[purescript]: http://www.purescript.org
+[PureScript]: http://www.purescript.org
