@@ -34,7 +34,7 @@ _divide x y = Class.divide y x
 _remainder :: forall a. (Class.Remainder a) => a -> a -> a
 _remainder x y = Class.remainder y x
 
-_add :: forall a. (Class.Add a) => a -> a -> a
+_add :: forall a. (Class.HasAdd a) => a -> a -> a
 _add x y = Class.add y x
 
 _subtract :: forall a. (Class.Subtract a) => a -> a -> a

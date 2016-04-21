@@ -1,5 +1,5 @@
 module Neon.Class
-  ( module Neon.Class.Add
+  ( module Neon.Class.HasAdd
   , module Neon.Class.And
   , module Neon.Class.Apply
   , module Neon.Class.Bottom
@@ -29,7 +29,7 @@ module Neon.Class
   , module Neon.Class.Zero
   ) where
 
-import Neon.Class.Add as Neon.Class.Add
+import Neon.Class.HasAdd as Neon.Class.HasAdd
 import Neon.Class.And as Neon.Class.And
 import Neon.Class.Apply as Neon.Class.Apply
 import Neon.Class.Bottom as Neon.Class.Bottom

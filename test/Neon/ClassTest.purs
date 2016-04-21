@@ -1,6 +1,6 @@
 module Test.Neon.ClassTest where
 
-import Test.Neon.Class.AddTest as AddTest
+import Test.Neon.Class.HasAddTest as HasAddTest
 import Test.Neon.Class.AndTest as AndTest
 import Test.Neon.Class.ApplyTest as ApplyTest
 import Test.Neon.Class.BottomTest as BottomTest
@@ -32,7 +32,7 @@ import Test.Helper (Suite, bind, test)
 
 suite :: Suite
 suite = test "Class" do
-  AddTest.suite
+  HasAddTest.suite
   AndTest.suite
   ApplyTest.suite
   BottomTest.suite

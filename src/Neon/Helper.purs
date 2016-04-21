@@ -27,7 +27,7 @@ clamp b t x =
   then clamp t b x
   else max b (min t x)
 
-concat :: forall a b. (Class.Add b, Class.Reduce a, Class.Zero b) => a b -> b
+concat :: forall a b. (Class.HasAdd b, Class.Reduce a, Class.Zero b) => a b -> b
 concat xs = Class.reduce Class.add Class.zero xs
 
 contains :: forall a b. (Class.Equal b, Class.Reduce a) => b -> a b -> Boolean
@@ -130,7 +130,7 @@ sign x =
 size :: forall a b. (Class.Reduce a) => a b -> Int
 size xs = Class.reduce (\ a _ -> Class.add 1 a) 0 xs
 
-sum :: forall a b. (Class.Add b, Class.Reduce a, Class.Zero b) => a b -> b
+sum :: forall a b. (Class.HasAdd b, Class.Reduce a, Class.Zero b) => a b -> b
 sum xs = Class.reduce (\ a x -> Class.add x a) Class.zero xs
 
 swap :: forall a b. Data.Tuple a b -> Data.Tuple b a
