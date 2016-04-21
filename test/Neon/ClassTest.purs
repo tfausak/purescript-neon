@@ -27,7 +27,7 @@ import Test.Neon.Class.ToArrayTest as ToArrayTest
 import Test.Neon.Class.ToIntTest as ToIntTest
 import Test.Neon.Class.TopTest as TopTest
 import Test.Neon.Class.TraverseTest as TraverseTest
-import Test.Neon.Class.WrapTest as WrapTest
+import Test.Neon.Class.PureTest as PureTest
 import Test.Neon.Class.ZeroTest as ZeroTest
 import Test.Helper (Suite, bind, test)
 
@@ -60,5 +60,5 @@ suite = test "Class" do
   ToIntTest.suite
   TopTest.suite
   TraverseTest.suite
-  WrapTest.suite
+  PureTest.suite
   ZeroTest.suite

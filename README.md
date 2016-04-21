@@ -33,7 +33,7 @@ guiding principles:
   exist. Use `map` instead.
 
 - There should be one obvious way to do things. This means `return` is not an
-  alias for `wrap`. In fact, it doesn't exist at all.
+  alias for `pure`. In fact, it doesn't exist at all.
 
 - Functions should be defined in type classes. This means `add` can be used for
   both numbers and strings.

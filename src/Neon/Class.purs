@@ -19,6 +19,7 @@ module Neon.Class
   , module Neon.Class.One
   , module Neon.Class.Or
   , module Neon.Class.Power
+  , module Neon.Class.Pure
   , module Neon.Class.Reduce
   , module Neon.Class.Remainder
   , module Neon.Class.Subtract
@@ -26,7 +27,6 @@ module Neon.Class
   , module Neon.Class.ToInt
   , module Neon.Class.Top
   , module Neon.Class.Traverse
-  , module Neon.Class.Wrap
   , module Neon.Class.Zero
   ) where
 
@@ -50,6 +50,7 @@ import Neon.Class.Not as Neon.Class.Not
 import Neon.Class.One as Neon.Class.One
 import Neon.Class.Or as Neon.Class.Or
 import Neon.Class.Power as Neon.Class.Power
+import Neon.Class.Pure as Neon.Class.Pure
 import Neon.Class.Reduce as Neon.Class.Reduce
 import Neon.Class.Remainder as Neon.Class.Remainder
 import Neon.Class.Subtract as Neon.Class.Subtract
@@ -57,5 +58,4 @@ import Neon.Class.ToArray as Neon.Class.ToArray
 import Neon.Class.ToInt as Neon.Class.ToInt
 import Neon.Class.Top as Neon.Class.Top
 import Neon.Class.Traverse as Neon.Class.Traverse
-import Neon.Class.Wrap as Neon.Class.Wrap
 import Neon.Class.Zero as Neon.Class.Zero
