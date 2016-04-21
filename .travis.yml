@@ -15,3 +15,5 @@ cache:
 language: node_js
 node_js:
 - '5'
+script:
+- travis_wait npm test
