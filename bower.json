@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "purescript-batteries": "0.5.3"
+    "purescript-batteries": "0.5.4"
   },
   "devDependencies": {
     "purescript-quickcheck": "0.12.2",
-    "purescript-test-unit": "4.1.0"
+    "purescript-test-unit": "5.0.0"
   },
   "license": "MIT",
   "name": "purescript-neon",
@@ -13,6 +13,7 @@
     "url": "git://github.com/tfausak/purescript-neon.git"
   },
   "resolutions": {
-    "purescript-aff": "~0.14.0"
+    "purescript-math": "~1.0.0",
+    "purescript-proxy": "~1.0.0"
   }
 }
