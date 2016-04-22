@@ -1,11 +1,11 @@
-module Test.Neon.Class.NotTest where
+module Test.Neon.Class.HasNotTest where
 
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Not" do
+suite = test "HasNot" do
   test "Boolean" do
     quickCheck \ (x :: Boolean) ->
       Neon.not x === Prelude.not x

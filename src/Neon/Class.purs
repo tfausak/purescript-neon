@@ -14,7 +14,7 @@ module Neon.Class
   , module Neon.Class.HasLess
   , module Neon.Class.HasMap
   , module Neon.Class.HasMultiply
-  , module Neon.Class.Not
+  , module Neon.Class.HasNot
   , module Neon.Class.One
   , module Neon.Class.Or
   , module Neon.Class.Power
@@ -44,7 +44,7 @@ import Neon.Class.HasInspect as Neon.Class.HasInspect
 import Neon.Class.HasLess as Neon.Class.HasLess
 import Neon.Class.HasMap as Neon.Class.HasMap
 import Neon.Class.HasMultiply as Neon.Class.HasMultiply
-import Neon.Class.Not as Neon.Class.Not
+import Neon.Class.HasNot as Neon.Class.HasNot
 import Neon.Class.One as Neon.Class.One
 import Neon.Class.Or as Neon.Class.Or
 import Neon.Class.Power as Neon.Class.Power
