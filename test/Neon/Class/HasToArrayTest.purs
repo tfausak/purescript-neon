@@ -1,4 +1,4 @@
-module Test.Neon.Class.ToArrayTest where
+module Test.Neon.Class.HasToArrayTest where
 
 import Data.Maybe as Maybe
 import Data.String as String
@@ -6,7 +6,7 @@ import Neon as Neon
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "ToArray" do
+suite = test "HasToArray" do
   test "Maybe" do
     quickCheck \ (mx :: Neon.Maybe Int) ->
       Neon.toArray mx === Maybe.maybe [] (\ x -> [x]) mx

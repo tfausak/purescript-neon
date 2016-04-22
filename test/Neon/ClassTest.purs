@@ -22,7 +22,7 @@ import Test.Neon.Class.HasPowerTest as HasPowerTest
 import Test.Neon.Class.HasReduceTest as HasReduceTest
 import Test.Neon.Class.HasRemainderTest as HasRemainderTest
 import Test.Neon.Class.HasSubtractTest as HasSubtractTest
-import Test.Neon.Class.ToArrayTest as ToArrayTest
+import Test.Neon.Class.HasToArrayTest as HasToArrayTest
 import Test.Neon.Class.ToIntTest as ToIntTest
 import Test.Neon.Class.TopTest as TopTest
 import Test.Neon.Class.TraverseTest as TraverseTest
@@ -54,7 +54,7 @@ suite = test "Class" do
   HasReduceTest.suite
   HasRemainderTest.suite
   HasSubtractTest.suite
-  ToArrayTest.suite
+  HasToArrayTest.suite
   ToIntTest.suite
   TopTest.suite
   TraverseTest.suite

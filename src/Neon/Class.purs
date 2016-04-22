@@ -22,7 +22,7 @@ module Neon.Class
   , module Neon.Class.HasReduce
   , module Neon.Class.HasRemainder
   , module Neon.Class.HasSubtract
-  , module Neon.Class.ToArray
+  , module Neon.Class.HasToArray
   , module Neon.Class.ToInt
   , module Neon.Class.Top
   , module Neon.Class.Traverse
@@ -52,7 +52,7 @@ import Neon.Class.HasPure as Neon.Class.HasPure
 import Neon.Class.HasReduce as Neon.Class.HasReduce
 import Neon.Class.HasRemainder as Neon.Class.HasRemainder
 import Neon.Class.HasSubtract as Neon.Class.HasSubtract
-import Neon.Class.ToArray as Neon.Class.ToArray
+import Neon.Class.HasToArray as Neon.Class.HasToArray
 import Neon.Class.ToInt as Neon.Class.ToInt
 import Neon.Class.Top as Neon.Class.Top
 import Neon.Class.Traverse as Neon.Class.Traverse
