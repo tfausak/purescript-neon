@@ -22,7 +22,7 @@ infixr 2 _or             as ||
 _call :: forall a b. a -> (a -> b) -> b
 _call x f = f x
 
-_power :: forall a. (Class.Power a) => a -> a -> a
+_power :: forall a. (Class.HasPower a) => a -> a -> a
 _power x y = Class.power y x
 
 _multiply :: forall a. (Class.HasMultiply a) => a -> a -> a

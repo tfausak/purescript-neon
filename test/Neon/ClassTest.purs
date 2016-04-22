@@ -18,7 +18,7 @@ import Test.Neon.Class.HasMultiplyTest as HasMultiplyTest
 import Test.Neon.Class.HasNotTest as HasNotTest
 import Test.Neon.Class.HasOneTest as HasOneTest
 import Test.Neon.Class.HasOrTest as HasOrTest
-import Test.Neon.Class.PowerTest as PowerTest
+import Test.Neon.Class.HasPowerTest as HasPowerTest
 import Test.Neon.Class.ReduceTest as ReduceTest
 import Test.Neon.Class.RemainderTest as RemainderTest
 import Test.Neon.Class.SubtractTest as SubtractTest
@@ -50,7 +50,7 @@ suite = test "Class" do
   HasNotTest.suite
   HasOneTest.suite
   HasOrTest.suite
-  PowerTest.suite
+  HasPowerTest.suite
   ReduceTest.suite
   RemainderTest.suite
   SubtractTest.suite

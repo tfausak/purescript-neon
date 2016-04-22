@@ -17,7 +17,7 @@ module Neon.Class
   , module Neon.Class.HasNot
   , module Neon.Class.HasOne
   , module Neon.Class.HasOr
-  , module Neon.Class.Power
+  , module Neon.Class.HasPower
   , module Neon.Class.Pure
   , module Neon.Class.Reduce
   , module Neon.Class.Remainder
@@ -47,7 +47,7 @@ import Neon.Class.HasMultiply as Neon.Class.HasMultiply
 import Neon.Class.HasNot as Neon.Class.HasNot
 import Neon.Class.HasOne as Neon.Class.HasOne
 import Neon.Class.HasOr as Neon.Class.HasOr
-import Neon.Class.Power as Neon.Class.Power
+import Neon.Class.HasPower as Neon.Class.HasPower
 import Neon.Class.Pure as Neon.Class.Pure
 import Neon.Class.Reduce as Neon.Class.Reduce
 import Neon.Class.Remainder as Neon.Class.Remainder

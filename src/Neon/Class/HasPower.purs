@@ -1,14 +1,14 @@
-module Neon.Class.Power where
+module Neon.Class.HasPower where
 
 import Neon.Primitive as Primitive
 import Math as Math
 
-class Power a where
+class HasPower a where
   power :: a -> a -> a
 
-instance powerInt :: Power Int where
+instance intHasPower :: HasPower Int where
   power y x = Primitive.floor
     (power (Primitive.toNumber y) (Primitive.toNumber x))
 
-instance powerNumber :: Power Number where
+instance numberHasPower :: HasPower Number where
   power y x = Math.pow x y
