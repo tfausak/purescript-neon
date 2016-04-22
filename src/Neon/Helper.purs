@@ -6,7 +6,7 @@ import Neon.Effect as Effect
 import Neon.Primitive as Primitive
 import Unsafe.Coerce as Coerce
 
-absoluteValue :: forall a. (Class.HasLess a, Class.Subtract a, Class.Zero a) => a -> a
+absoluteValue :: forall a. (Class.HasLess a, Class.HasSubtract a, Class.Zero a) => a -> a
 absoluteValue x = if Class.less Class.zero x then negate x else x
 
 all :: forall a b. (Class.HasReduce a) => (b -> Boolean) -> a b -> Boolean
@@ -95,7 +95,7 @@ minimum xs = Class.reduce
   Data.Nothing
   xs
 
-negate :: forall a. (Class.Subtract a, Class.Zero a) => a -> a
+negate :: forall a. (Class.HasSubtract a, Class.Zero a) => a -> a
 negate x = Class.subtract x Class.zero
 
 notANumber :: Number -> Boolean
@@ -119,7 +119,7 @@ reciprocal x = Class.divide x Class.one
 sequence :: forall a b c. (Class.HasApply b, Class.HasMap b, Class.Traverse a, Class.HasPure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
-sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.HasOne a, Class.Subtract a, Class.Zero a) => a -> a
+sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.HasOne a, Class.HasSubtract a, Class.Zero a) => a -> a
 sign x =
   if Class.less Class.zero x
   then negate Class.one

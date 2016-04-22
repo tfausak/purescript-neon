@@ -37,7 +37,7 @@ _remainder x y = Class.remainder y x
 _add :: forall a. (Class.HasAdd a) => a -> a -> a
 _add x y = Class.add y x
 
-_subtract :: forall a. (Class.Subtract a) => a -> a -> a
+_subtract :: forall a. (Class.HasSubtract a) => a -> a -> a
 _subtract x y = Class.subtract y x
 
 _equal :: forall a. (Class.HasEqual a) => a -> a -> Boolean

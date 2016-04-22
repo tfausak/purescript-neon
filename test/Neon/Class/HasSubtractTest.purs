@@ -1,4 +1,4 @@
-module Test.Neon.Class.SubtractTest where
+module Test.Neon.Class.HasSubtractTest where
 
 import Data.Array as Array
 import Data.List as List
@@ -7,7 +7,7 @@ import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Subtract" do
+suite = test "HasSubtract" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.subtract y x === x Array.\\ y
