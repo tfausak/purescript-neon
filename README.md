@@ -20,6 +20,10 @@ main = 1
 Neon is written from the ground up to be useful and coherent. It has some
 guiding principles:
 
+- If something is possible in JavaScript (and not a terrible idea), it should
+  be possible in Neon. This means you can do `"ab" + "cd"`, but you can't do
+  `"ab" + 3`.
+
 - Functions should take their subject last. This means `add x y` is really
   `y + x`. Consider calling functions with `:`, like `y :add x`.
 
