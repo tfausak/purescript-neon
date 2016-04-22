@@ -1,20 +1,20 @@
-module Neon.Class.Map where
+module Neon.Class.HasMap where
 
 import Neon.Data as Data
 import Neon.Effect as Effect
 import Prelude as Prelude
 
-class Map a where
+class HasMap a where
   map :: forall b c. (b -> c) -> a b -> a c
 
-instance mapArray :: Map Array where
+instance arrayHasMap :: HasMap Array where
   map f x = Prelude.map f x
 
-instance mapEff :: Map (Effect.Eff a) where
+instance effHasMap :: HasMap (Effect.Eff a) where
   map f x = Prelude.map f x
 
-instance mapList :: Map Data.List where
+instance listHasMap :: HasMap Data.List where
   map f x = Prelude.map f x
 
-instance mapMaybe :: Map Data.Maybe where
+instance maybeHasMap :: HasMap Data.Maybe where
   map f x = Prelude.map f x

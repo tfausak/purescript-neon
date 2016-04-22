@@ -13,7 +13,7 @@ import Test.Neon.Class.HasFromIntTest as HasFromIntTest
 import Test.Neon.Class.HasGreaterTest as HasGreaterTest
 import Test.Neon.Class.HasInspectTest as HasInspectTest
 import Test.Neon.Class.HasLessTest as HasLessTest
-import Test.Neon.Class.MapTest as MapTest
+import Test.Neon.Class.HasMapTest as HasMapTest
 import Test.Neon.Class.MultiplyTest as MultiplyTest
 import Test.Neon.Class.NotTest as NotTest
 import Test.Neon.Class.OneTest as OneTest
@@ -45,7 +45,7 @@ suite = test "Class" do
   HasGreaterTest.suite
   HasInspectTest.suite
   HasLessTest.suite
-  MapTest.suite
+  HasMapTest.suite
   MultiplyTest.suite
   NotTest.suite
   OneTest.suite

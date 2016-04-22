@@ -12,7 +12,7 @@ module Neon.Class
   , module Neon.Class.HasGreater
   , module Neon.Class.HasInspect
   , module Neon.Class.HasLess
-  , module Neon.Class.Map
+  , module Neon.Class.HasMap
   , module Neon.Class.Multiply
   , module Neon.Class.Not
   , module Neon.Class.One
@@ -42,7 +42,7 @@ import Neon.Class.HasFromInt as Neon.Class.HasFromInt
 import Neon.Class.HasGreater as Neon.Class.HasGreater
 import Neon.Class.HasInspect as Neon.Class.HasInspect
 import Neon.Class.HasLess as Neon.Class.HasLess
-import Neon.Class.Map as Neon.Class.Map
+import Neon.Class.HasMap as Neon.Class.HasMap
 import Neon.Class.Multiply as Neon.Class.Multiply
 import Neon.Class.Not as Neon.Class.Not
 import Neon.Class.One as Neon.Class.One
