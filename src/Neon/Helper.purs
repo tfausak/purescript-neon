@@ -107,7 +107,7 @@ notEqual y x = Class.not (Class.equal y x)
 odd :: Int -> Boolean
 odd x = Class.not (even x)
 
-print :: forall a b. (Class.Inspect a) => a -> Effect.Eff (console :: Effect.CONSOLE | b) Data.Unit
+print :: forall a b. (Class.HasInspect a) => a -> Effect.Eff (console :: Effect.CONSOLE | b) Data.Unit
 print x = Effect.log (Class.inspect x)
 
 product :: forall a b. (Class.Multiply b, Class.One b, Class.Reduce a) => a b -> b

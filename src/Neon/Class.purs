@@ -10,7 +10,7 @@ module Neon.Class
   , module Neon.Class.HasFromArray
   , module Neon.Class.HasFromInt
   , module Neon.Class.HasGreater
-  , module Neon.Class.Inspect
+  , module Neon.Class.HasInspect
   , module Neon.Class.Less
   , module Neon.Class.Map
   , module Neon.Class.Multiply
@@ -40,7 +40,7 @@ import Neon.Class.HasFilter as Neon.Class.HasFilter
 import Neon.Class.HasFromArray as Neon.Class.HasFromArray
 import Neon.Class.HasFromInt as Neon.Class.HasFromInt
 import Neon.Class.HasGreater as Neon.Class.HasGreater
-import Neon.Class.Inspect as Neon.Class.Inspect
+import Neon.Class.HasInspect as Neon.Class.HasInspect
 import Neon.Class.Less as Neon.Class.Less
 import Neon.Class.Map as Neon.Class.Map
 import Neon.Class.Multiply as Neon.Class.Multiply
