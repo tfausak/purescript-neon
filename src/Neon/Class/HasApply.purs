@@ -1,20 +1,20 @@
-module Neon.Class.Apply where
+module Neon.Class.HasApply where
 
 import Neon.Data as Data
 import Neon.Effect as Effect
 import Prelude as Prelude
 
-class Apply a where
+class HasApply a where
   apply :: forall b c. a (b -> c) -> a b -> a c
 
-instance applyArray :: Apply Array where
+instance arrayHasApply :: HasApply Array where
   apply f x = Prelude.apply f x
 
-instance applyEff :: Apply (Effect.Eff a) where
+instance effHasApply :: HasApply (Effect.Eff a) where
   apply f x = Prelude.apply f x
 
-instance applyList :: Apply Data.List where
+instance listHasApply :: HasApply Data.List where
   apply f x = Prelude.apply f x
 
-instance applyMaybe :: Apply Data.Maybe where
+instance maybeHasApply :: HasApply Data.Maybe where
   apply f x = Prelude.apply f x

@@ -116,7 +116,7 @@ product xs = Class.reduce Class.multiply Class.one xs
 reciprocal :: forall a. (Class.Divide a, Class.One a) => a -> a
 reciprocal x = Class.divide x Class.one
 
-sequence :: forall a b c. (Class.Apply b, Class.Map b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)
+sequence :: forall a b c. (Class.HasApply b, Class.Map b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
 sign :: forall a. (Class.Greater a, Class.Less a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
