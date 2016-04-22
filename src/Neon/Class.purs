@@ -19,7 +19,7 @@ module Neon.Class
   , module Neon.Class.HasOr
   , module Neon.Class.HasPower
   , module Neon.Class.HasPure
-  , module Neon.Class.Reduce
+  , module Neon.Class.HasReduce
   , module Neon.Class.Remainder
   , module Neon.Class.Subtract
   , module Neon.Class.ToArray
@@ -49,7 +49,7 @@ import Neon.Class.HasOne as Neon.Class.HasOne
 import Neon.Class.HasOr as Neon.Class.HasOr
 import Neon.Class.HasPower as Neon.Class.HasPower
 import Neon.Class.HasPure as Neon.Class.HasPure
-import Neon.Class.Reduce as Neon.Class.Reduce
+import Neon.Class.HasReduce as Neon.Class.HasReduce
 import Neon.Class.Remainder as Neon.Class.Remainder
 import Neon.Class.Subtract as Neon.Class.Subtract
 import Neon.Class.ToArray as Neon.Class.ToArray
