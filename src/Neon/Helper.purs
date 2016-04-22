@@ -18,7 +18,7 @@ any p xs = Class.reduce (\ a x -> Class.or a (p x)) false xs
 asTypeOf :: forall a. a -> a -> a
 asTypeOf y x = Primitive.always x y
 
-bind :: forall a b c. (Class.Chain a) => a b -> (b -> a c) -> a c
+bind :: forall a b c. (Class.HasChain a) => a b -> (b -> a c) -> a c
 bind x f = Class.chain f x
 
 clamp :: forall a. (Class.Greater a, Class.Less a) => a -> a -> a -> a
@@ -58,7 +58,7 @@ empty xs = all (Primitive.always false) xs
 even :: Int -> Boolean
 even x = divisibleBy 2 x
 
-flatten :: forall a b. (Class.Chain a) => a (a b) -> a b
+flatten :: forall a b. (Class.HasChain a) => a (a b) -> a b
 flatten xss = Class.chain Primitive.identity xss
 
 greaterOrEqual :: forall a. (Class.Equal a, Class.Greater a) => a -> a -> Boolean

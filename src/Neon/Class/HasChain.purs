@@ -1,20 +1,20 @@
-module Neon.Class.Chain where
+module Neon.Class.HasChain where
 
 import Neon.Data as Data
 import Neon.Effect as Effect
 import Prelude as Prelude
 
-class Chain a where
+class HasChain a where
   chain :: forall b c. (b -> a c) -> a b -> a c
 
-instance chainArray :: Chain Array where
+instance arrayHasChain :: HasChain Array where
   chain f xs = Prelude.bind xs f
 
-instance chainEff :: Chain (Effect.Eff a) where
+instance effHasChain :: HasChain (Effect.Eff a) where
   chain f xs = Prelude.bind xs f
 
-instance chainList :: Chain Data.List where
+instance listHasChain :: HasChain Data.List where
   chain f xs = Prelude.bind xs f
 
-instance chainMaybe :: Chain Data.Maybe where
+instance maybeHasChain :: HasChain Data.Maybe where
   chain f mx = Prelude.bind mx f
