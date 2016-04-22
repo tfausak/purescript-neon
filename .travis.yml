@@ -1,4 +1,5 @@
 after_success:
+- git status
 - npm run psc-publish | tail -n 1 | gzip > output/docs.json.gz
 - |
   if test $TRAVIS_TAG -a $GITHUB_TOKEN
