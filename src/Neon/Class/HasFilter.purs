@@ -1,14 +1,14 @@
-module Neon.Class.Filter where
+module Neon.Class.HasFilter where
 
 import Data.Array as Array
 import Data.List as List
 import Neon.Data as Data
 
-class Filter a where
+class HasFilter a where
   filter :: forall b. (b -> Boolean) -> a b -> a b
 
-instance filterArray :: Filter Array where
+instance arrayHasFilter :: HasFilter Array where
   filter f xs = Array.filter f xs
 
-instance filterList :: Filter Data.List where
+instance listHasFilter :: HasFilter Data.List where
   filter f xs = List.filter f xs
