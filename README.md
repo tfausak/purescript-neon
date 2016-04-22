@@ -26,7 +26,7 @@ guiding principles:
 - Type classes should be lawless. This means `zero` doesn't have to be the
   additive identity. That's recommended, but not necessary.
 
-- There should be no type class hierarchy. This means `Zero` does not imply
+- There should be no type class hierarchy. This means `HasZero` does not imply
   `HasAdd`. If you need both, add both to your type signature.
 
 - There should be as few operators as possible. This means `<$>` does not

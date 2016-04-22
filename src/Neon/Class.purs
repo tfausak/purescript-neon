@@ -26,7 +26,7 @@ module Neon.Class
   , module Neon.Class.HasToInt
   , module Neon.Class.HasTop
   , module Neon.Class.HasTraverse
-  , module Neon.Class.Zero
+  , module Neon.Class.HasZero
   ) where
 
 import Neon.Class.HasAdd as Neon.Class.HasAdd
@@ -56,4 +56,4 @@ import Neon.Class.HasToArray as Neon.Class.HasToArray
 import Neon.Class.HasToInt as Neon.Class.HasToInt
 import Neon.Class.HasTop as Neon.Class.HasTop
 import Neon.Class.HasTraverse as Neon.Class.HasTraverse
-import Neon.Class.Zero as Neon.Class.Zero
+import Neon.Class.HasZero as Neon.Class.HasZero

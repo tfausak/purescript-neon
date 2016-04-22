@@ -6,7 +6,7 @@ import Neon.Effect as Effect
 import Neon.Primitive as Primitive
 import Unsafe.Coerce as Coerce
 
-absoluteValue :: forall a. (Class.HasLess a, Class.HasSubtract a, Class.Zero a) => a -> a
+absoluteValue :: forall a. (Class.HasLess a, Class.HasSubtract a, Class.HasZero a) => a -> a
 absoluteValue x = if Class.less Class.zero x then negate x else x
 
 all :: forall a b. (Class.HasReduce a) => (b -> Boolean) -> a b -> Boolean
@@ -27,7 +27,7 @@ clamp b t x =
   then clamp t b x
   else max b (min t x)
 
-concat :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.Zero b) => a b -> b
+concat :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.HasZero b) => a b -> b
 concat xs = Class.reduce Class.add Class.zero xs
 
 contains :: forall a b. (Class.HasEqual b, Class.HasReduce a) => b -> a b -> Boolean
@@ -39,7 +39,7 @@ curry f = \ x y -> f (Data.Tuple x y)
 decrement :: forall a. (Class.HasFromInt a, Class.HasToInt a) => a -> Data.Maybe a
 decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 
-divisibleBy :: forall a. (Class.HasEqual a, Class.HasRemainder a, Class.Zero a) => a -> a -> Boolean
+divisibleBy :: forall a. (Class.HasEqual a, Class.HasRemainder a, Class.HasZero a) => a -> a -> Boolean
 divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 
 downTo :: forall a. (Class.HasFromInt a, Class.HasLess a, Class.HasToInt a) => a -> a -> Array a
@@ -95,7 +95,7 @@ minimum xs = Class.reduce
   Data.Nothing
   xs
 
-negate :: forall a. (Class.HasSubtract a, Class.Zero a) => a -> a
+negate :: forall a. (Class.HasSubtract a, Class.HasZero a) => a -> a
 negate x = Class.subtract x Class.zero
 
 notANumber :: Number -> Boolean
@@ -119,7 +119,7 @@ reciprocal x = Class.divide x Class.one
 sequence :: forall a b c. (Class.HasApply b, Class.HasMap b, Class.HasTraverse a, Class.HasPure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
-sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.HasOne a, Class.HasSubtract a, Class.Zero a) => a -> a
+sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.HasOne a, Class.HasSubtract a, Class.HasZero a) => a -> a
 sign x =
   if Class.less Class.zero x
   then negate Class.one
@@ -130,7 +130,7 @@ sign x =
 size :: forall a b. (Class.HasReduce a) => a b -> Int
 size xs = Class.reduce (\ a _ -> Class.add 1 a) 0 xs
 
-sum :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.Zero b) => a b -> b
+sum :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.HasZero b) => a b -> b
 sum xs = Class.reduce (\ a x -> Class.add x a) Class.zero xs
 
 swap :: forall a b. Data.Tuple a b -> Data.Tuple b a
