@@ -31,7 +31,7 @@ _multiply x y = Class.multiply y x
 _divide :: forall a. (Class.HasDivide a) => a -> a -> a
 _divide x y = Class.divide y x
 
-_remainder :: forall a. (Class.Remainder a) => a -> a -> a
+_remainder :: forall a. (Class.HasRemainder a) => a -> a -> a
 _remainder x y = Class.remainder y x
 
 _add :: forall a. (Class.HasAdd a) => a -> a -> a

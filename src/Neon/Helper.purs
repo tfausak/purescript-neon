@@ -39,7 +39,7 @@ curry f = \ x y -> f (Data.Tuple x y)
 decrement :: forall a. (Class.HasFromInt a, Class.ToInt a) => a -> Data.Maybe a
 decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 
-divisibleBy :: forall a. (Class.HasEqual a, Class.Remainder a, Class.Zero a) => a -> a -> Boolean
+divisibleBy :: forall a. (Class.HasEqual a, Class.HasRemainder a, Class.Zero a) => a -> a -> Boolean
 divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 
 downTo :: forall a. (Class.HasFromInt a, Class.HasLess a, Class.ToInt a) => a -> a -> Array a

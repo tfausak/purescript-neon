@@ -1,4 +1,4 @@
-module Test.Neon.Class.RemainderTest where
+module Test.Neon.Class.HasRemainderTest where
 
 import Neon as Neon
 import Prelude as Prelude
@@ -6,7 +6,7 @@ import Test.Helper (Suite, bind, quickCheck, test, (===))
 import Unsafe.Coerce as Coerce
 
 suite :: Suite
-suite = test "Remainder" do
+suite = test "HasRemainder" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.remainder y x === Prelude.mod x y
