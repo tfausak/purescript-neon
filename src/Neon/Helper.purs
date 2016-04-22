@@ -110,16 +110,16 @@ odd x = Class.not (even x)
 print :: forall a b. (Class.HasInspect a) => a -> Effect.Eff (console :: Effect.CONSOLE | b) Data.Unit
 print x = Effect.log (Class.inspect x)
 
-product :: forall a b. (Class.HasMultiply b, Class.One b, Class.Reduce a) => a b -> b
+product :: forall a b. (Class.HasMultiply b, Class.HasOne b, Class.Reduce a) => a b -> b
 product xs = Class.reduce Class.multiply Class.one xs
 
-reciprocal :: forall a. (Class.HasDivide a, Class.One a) => a -> a
+reciprocal :: forall a. (Class.HasDivide a, Class.HasOne a) => a -> a
 reciprocal x = Class.divide x Class.one
 
 sequence :: forall a b c. (Class.HasApply b, Class.HasMap b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
-sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
+sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.HasOne a, Class.Subtract a, Class.Zero a) => a -> a
 sign x =
   if Class.less Class.zero x
   then negate Class.one
