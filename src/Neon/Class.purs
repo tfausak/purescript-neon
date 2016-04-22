@@ -9,7 +9,7 @@ module Neon.Class
   , module Neon.Class.HasFilter
   , module Neon.Class.HasFromArray
   , module Neon.Class.HasFromInt
-  , module Neon.Class.Greater
+  , module Neon.Class.HasGreater
   , module Neon.Class.Inspect
   , module Neon.Class.Less
   , module Neon.Class.Map
@@ -39,7 +39,7 @@ import Neon.Class.HasEqual as Neon.Class.HasEqual
 import Neon.Class.HasFilter as Neon.Class.HasFilter
 import Neon.Class.HasFromArray as Neon.Class.HasFromArray
 import Neon.Class.HasFromInt as Neon.Class.HasFromInt
-import Neon.Class.Greater as Neon.Class.Greater
+import Neon.Class.HasGreater as Neon.Class.HasGreater
 import Neon.Class.Inspect as Neon.Class.Inspect
 import Neon.Class.Less as Neon.Class.Less
 import Neon.Class.Map as Neon.Class.Map

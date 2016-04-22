@@ -21,7 +21,7 @@ asTypeOf y x = Primitive.always x y
 bind :: forall a b c. (Class.HasChain a) => a b -> (b -> a c) -> a c
 bind x f = Class.chain f x
 
-clamp :: forall a. (Class.Greater a, Class.Less a) => a -> a -> a -> a
+clamp :: forall a. (Class.HasGreater a, Class.Less a) => a -> a -> a -> a
 clamp b t x =
   if Class.greater t b
   then clamp t b x
@@ -61,7 +61,7 @@ even x = divisibleBy 2 x
 flatten :: forall a b. (Class.HasChain a) => a (a b) -> a b
 flatten xss = Class.chain Primitive.identity xss
 
-greaterOrEqual :: forall a. (Class.HasEqual a, Class.Greater a) => a -> a -> Boolean
+greaterOrEqual :: forall a. (Class.HasEqual a, Class.HasGreater a) => a -> a -> Boolean
 greaterOrEqual y x = Class.or (Class.equal y x) (Class.greater y x)
 
 increment :: forall a. (Class.HasFromInt a, Class.ToInt a) => a -> Data.Maybe a
@@ -73,10 +73,10 @@ infinite x = Class.not (Primitive.finite x)
 lessOrEqual :: forall a. (Class.HasEqual a, Class.Less a) => a -> a -> Boolean
 lessOrEqual y x = Class.or (Class.equal y x) (Class.less y x)
 
-max :: forall a. (Class.Greater a) => a -> a -> a
+max :: forall a. (Class.HasGreater a) => a -> a -> a
 max y x = if Class.greater y x then x else y
 
-maximum :: forall a b. (Class.Greater b, Class.Reduce a) => a b -> Data.Maybe b
+maximum :: forall a b. (Class.HasGreater b, Class.Reduce a) => a b -> Data.Maybe b
 maximum xs = Class.reduce
   (\ a x -> case a of
     Data.Nothing -> Data.Just x
@@ -119,7 +119,7 @@ reciprocal x = Class.divide x Class.one
 sequence :: forall a b c. (Class.HasApply b, Class.Map b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
-sign :: forall a. (Class.Greater a, Class.Less a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
+sign :: forall a. (Class.HasGreater a, Class.Less a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
 sign x =
   if Class.less Class.zero x
   then negate Class.one
@@ -155,7 +155,7 @@ unsafeLog m x = Effect.unsafePerformEff do
   Effect.log m
   Class.pure x
 
-upTo :: forall a. (Class.HasFromInt a, Class.Greater a, Class.ToInt a) => a -> a -> Array a
+upTo :: forall a. (Class.HasFromInt a, Class.HasGreater a, Class.ToInt a) => a -> a -> Array a
 upTo h l =
   let upToList :: a -> a -> Data.List a
       upToList t b = if Class.greater t b

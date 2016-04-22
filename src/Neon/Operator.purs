@@ -46,10 +46,10 @@ _equal x y = Class.equal y x
 _notEqual :: forall a. (Class.HasEqual a) => a -> a -> Boolean
 _notEqual x y = Helper.notEqual y x
 
-_greater :: forall a. (Class.Greater a) => a -> a -> Boolean
+_greater :: forall a. (Class.HasGreater a) => a -> a -> Boolean
 _greater x y = Class.greater y x
 
-_greaterOrEqual :: forall a. (Class.HasEqual a, Class.Greater a) => a -> a -> Boolean
+_greaterOrEqual :: forall a. (Class.HasEqual a, Class.HasGreater a) => a -> a -> Boolean
 _greaterOrEqual x y = Helper.greaterOrEqual y x
 
 _less :: forall a. (Class.Less a) => a -> a -> Boolean

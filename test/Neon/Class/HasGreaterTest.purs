@@ -1,11 +1,11 @@
-module Test.Neon.Class.GreaterTest where
+module Test.Neon.Class.HasGreaterTest where
 
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Greater" do
+suite = test "HasGreater" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.greater y x === x Prelude.> y

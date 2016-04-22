@@ -1,28 +1,28 @@
-module Neon.Class.Greater where
+module Neon.Class.HasGreater where
 
 import Neon.Class.HasEqual as HasEqual
 import Neon.Class.HasFromArray as HasFromArray
 import Neon.Data as Data
 import Prelude as Prelude
 
-class Greater a where
+class HasGreater a where
   greater :: a -> a -> Boolean
 
-instance greaterArray :: (HasEqual.HasEqual a, Greater a) => Greater (Array a) where
+instance arrayHasGreater :: (HasEqual.HasEqual a, HasGreater a) => HasGreater (Array a) where
   greater ys xs =
     let toList = HasFromArray.fromArray :: Array a -> Data.List a
     in  greater (toList ys) (toList xs)
 
-instance greaterBoolean :: Greater Boolean where
+instance booleanHasGreater :: HasGreater Boolean where
   greater y x = x Prelude.> y
 
-instance greaterChar :: Greater Char where
+instance charHasGreater :: HasGreater Char where
   greater y x = x Prelude.> y
 
-instance greaterInt :: Greater Int where
+instance intHasGreater :: HasGreater Int where
   greater y x = x Prelude.> y
 
-instance greaterList :: (HasEqual.HasEqual a, Greater a) => Greater (Data.List a) where
+instance listHasGreater :: (HasEqual.HasEqual a, HasGreater a) => HasGreater (Data.List a) where
   greater ys xs = case { xs: xs, ys: ys } of
     { xs: Data.Cons _ _, ys: Data.Nil } -> true
     { xs: Data.Cons xh xt, ys: Data.Cons yh yt } -> if HasEqual.equal yh xh
@@ -30,8 +30,8 @@ instance greaterList :: (HasEqual.HasEqual a, Greater a) => Greater (Data.List a
       else greater yh xh
     _ -> false
 
-instance greaterNumber :: Greater Number where
+instance numberHasGreater :: HasGreater Number where
   greater y x = x Prelude.> y
 
-instance greaterString :: Greater String where
+instance stringHasGreater :: HasGreater String where
   greater y x = x Prelude.> y

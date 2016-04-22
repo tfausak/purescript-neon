@@ -10,7 +10,7 @@ import Test.Neon.Class.HasEqualTest as HasEqualTest
 import Test.Neon.Class.HasFilterTest as HasFilterTest
 import Test.Neon.Class.HasFromArrayTest as HasFromArrayTest
 import Test.Neon.Class.HasFromIntTest as HasFromIntTest
-import Test.Neon.Class.GreaterTest as GreaterTest
+import Test.Neon.Class.HasGreaterTest as HasGreaterTest
 import Test.Neon.Class.InspectTest as InspectTest
 import Test.Neon.Class.LessTest as LessTest
 import Test.Neon.Class.MapTest as MapTest
@@ -42,7 +42,7 @@ suite = test "Class" do
   HasFilterTest.suite
   HasFromArrayTest.suite
   HasFromIntTest.suite
-  GreaterTest.suite
+  HasGreaterTest.suite
   InspectTest.suite
   LessTest.suite
   MapTest.suite
