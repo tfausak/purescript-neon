@@ -1,11 +1,11 @@
-module Test.Neon.Class.EqualTest where
+module Test.Neon.Class.HasEqualTest where
 
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Equal" do
+suite = test "HasEqual" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.equal y x === Prelude.eq x y

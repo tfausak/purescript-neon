@@ -40,22 +40,22 @@ _add x y = Class.add y x
 _subtract :: forall a. (Class.Subtract a) => a -> a -> a
 _subtract x y = Class.subtract y x
 
-_equal :: forall a. (Class.Equal a) => a -> a -> Boolean
+_equal :: forall a. (Class.HasEqual a) => a -> a -> Boolean
 _equal x y = Class.equal y x
 
-_notEqual :: forall a. (Class.Equal a) => a -> a -> Boolean
+_notEqual :: forall a. (Class.HasEqual a) => a -> a -> Boolean
 _notEqual x y = Helper.notEqual y x
 
 _greater :: forall a. (Class.Greater a) => a -> a -> Boolean
 _greater x y = Class.greater y x
 
-_greaterOrEqual :: forall a. (Class.Equal a, Class.Greater a) => a -> a -> Boolean
+_greaterOrEqual :: forall a. (Class.HasEqual a, Class.Greater a) => a -> a -> Boolean
 _greaterOrEqual x y = Helper.greaterOrEqual y x
 
 _less :: forall a. (Class.Less a) => a -> a -> Boolean
 _less x y = Class.less y x
 
-_lessOrEqual :: forall a. (Class.Equal a, Class.Less a) => a -> a -> Boolean
+_lessOrEqual :: forall a. (Class.HasEqual a, Class.Less a) => a -> a -> Boolean
 _lessOrEqual x y = Helper.lessOrEqual y x
 
 _and :: forall a. (Class.HasAnd a) => a -> a -> a

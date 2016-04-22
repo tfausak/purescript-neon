@@ -1,6 +1,6 @@
 module Neon.Class.Less where
 
-import Neon.Class.Equal as Equal
+import Neon.Class.HasEqual as HasEqual
 import Neon.Class.FromArray as FromArray
 import Neon.Data as Data
 import Prelude as Prelude
@@ -8,7 +8,7 @@ import Prelude as Prelude
 class Less a where
   less :: a -> a -> Boolean
 
-instance lessArray :: (Equal.Equal a, Less a) => Less (Array a) where
+instance lessArray :: (HasEqual.HasEqual a, Less a) => Less (Array a) where
   less ys xs =
     let toList = FromArray.fromArray :: Array a -> Data.List a
     in  less (toList ys) (toList xs)
@@ -22,10 +22,10 @@ instance lessChar :: Less Char where
 instance lessInt :: Less Int where
   less y x = x Prelude.< y
 
-instance lessList :: (Equal.Equal a, Less a) => Less (Data.List a) where
+instance lessList :: (HasEqual.HasEqual a, Less a) => Less (Data.List a) where
   less ys xs = case { xs: xs, ys: ys } of
     { xs: Data.Nil, ys: Data.Cons _ _ } -> true
-    { xs: Data.Cons xh xt, ys: Data.Cons yh yt } -> if Equal.equal yh xh
+    { xs: Data.Cons xh xt, ys: Data.Cons yh yt } -> if HasEqual.equal yh xh
       then less yt xt
       else less yh xh
     _ -> false

@@ -30,7 +30,7 @@ clamp b t x =
 concat :: forall a b. (Class.HasAdd b, Class.Reduce a, Class.Zero b) => a b -> b
 concat xs = Class.reduce Class.add Class.zero xs
 
-contains :: forall a b. (Class.Equal b, Class.Reduce a) => b -> a b -> Boolean
+contains :: forall a b. (Class.HasEqual b, Class.Reduce a) => b -> a b -> Boolean
 contains x xs = any (Class.equal x) xs
 
 curry :: forall a b c. (Data.Tuple a b -> c) -> (a -> b -> c)
@@ -39,7 +39,7 @@ curry f = \ x y -> f (Data.Tuple x y)
 decrement :: forall a. (Class.FromInt a, Class.ToInt a) => a -> Data.Maybe a
 decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 
-divisibleBy :: forall a. (Class.Equal a, Class.Remainder a, Class.Zero a) => a -> a -> Boolean
+divisibleBy :: forall a. (Class.HasEqual a, Class.Remainder a, Class.Zero a) => a -> a -> Boolean
 divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 
 downTo :: forall a. (Class.FromInt a, Class.Less a, Class.ToInt a) => a -> a -> Array a
@@ -61,7 +61,7 @@ even x = divisibleBy 2 x
 flatten :: forall a b. (Class.HasChain a) => a (a b) -> a b
 flatten xss = Class.chain Primitive.identity xss
 
-greaterOrEqual :: forall a. (Class.Equal a, Class.Greater a) => a -> a -> Boolean
+greaterOrEqual :: forall a. (Class.HasEqual a, Class.Greater a) => a -> a -> Boolean
 greaterOrEqual y x = Class.or (Class.equal y x) (Class.greater y x)
 
 increment :: forall a. (Class.FromInt a, Class.ToInt a) => a -> Data.Maybe a
@@ -70,7 +70,7 @@ increment x = Class.fromInt (Class.add 1 (Class.toInt x))
 infinite :: Number -> Boolean
 infinite x = Class.not (Primitive.finite x)
 
-lessOrEqual :: forall a. (Class.Equal a, Class.Less a) => a -> a -> Boolean
+lessOrEqual :: forall a. (Class.HasEqual a, Class.Less a) => a -> a -> Boolean
 lessOrEqual y x = Class.or (Class.equal y x) (Class.less y x)
 
 max :: forall a. (Class.Greater a) => a -> a -> a
@@ -101,7 +101,7 @@ negate x = Class.subtract x Class.zero
 notANumber :: Number -> Boolean
 notANumber x = Class.not (Primitive.aNumber x)
 
-notEqual :: forall a. (Class.Equal a) => a -> a -> Boolean
+notEqual :: forall a. (Class.HasEqual a) => a -> a -> Boolean
 notEqual y x = Class.not (Class.equal y x)
 
 odd :: Int -> Boolean
