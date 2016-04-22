@@ -1,7 +1,7 @@
 module Neon.Class.Less where
 
 import Neon.Class.HasEqual as HasEqual
-import Neon.Class.FromArray as FromArray
+import Neon.Class.HasFromArray as HasFromArray
 import Neon.Data as Data
 import Prelude as Prelude
 
@@ -10,7 +10,7 @@ class Less a where
 
 instance lessArray :: (HasEqual.HasEqual a, Less a) => Less (Array a) where
   less ys xs =
-    let toList = FromArray.fromArray :: Array a -> Data.List a
+    let toList = HasFromArray.fromArray :: Array a -> Data.List a
     in  less (toList ys) (toList xs)
 
 instance lessBoolean :: Less Boolean where

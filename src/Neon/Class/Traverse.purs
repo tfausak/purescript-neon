@@ -1,7 +1,7 @@
 module Neon.Class.Traverse where
 
 import Neon.Class.HasApply as HasApply
-import Neon.Class.FromArray as FromArray
+import Neon.Class.HasFromArray as HasFromArray
 import Neon.Class.Map as Map
 import Neon.Class.Pure as Pure
 import Neon.Class.ToArray as ToArray
@@ -12,7 +12,7 @@ class Traverse t where
 
 instance traverseArray :: Traverse Array where
   traverse f x = Map.map ToArray.toArray
-    (traverse f ((FromArray.fromArray :: forall a. Array a -> Data.List a) x))
+    (traverse f ((HasFromArray.fromArray :: forall a. Array a -> Data.List a) x))
 
 instance traverseList :: Traverse Data.List where
   traverse f xs = case xs of

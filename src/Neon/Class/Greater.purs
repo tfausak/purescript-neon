@@ -1,7 +1,7 @@
 module Neon.Class.Greater where
 
 import Neon.Class.HasEqual as HasEqual
-import Neon.Class.FromArray as FromArray
+import Neon.Class.HasFromArray as HasFromArray
 import Neon.Data as Data
 import Prelude as Prelude
 
@@ -10,7 +10,7 @@ class Greater a where
 
 instance greaterArray :: (HasEqual.HasEqual a, Greater a) => Greater (Array a) where
   greater ys xs =
-    let toList = FromArray.fromArray :: Array a -> Data.List a
+    let toList = HasFromArray.fromArray :: Array a -> Data.List a
     in  greater (toList ys) (toList xs)
 
 instance greaterBoolean :: Greater Boolean where

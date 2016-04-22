@@ -1,4 +1,4 @@
-module Test.Neon.Class.FromArrayTest where
+module Test.Neon.Class.HasFromArrayTest where
 
 import Data.Array as Array
 import Data.String as String
@@ -6,7 +6,7 @@ import Neon as Neon
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "FromArray" do
+suite = test "HasFromArray" do
   test "Maybe" do
     quickCheck \ (x :: Array Int) ->
       (Neon.fromArray x :: Neon.Maybe Int) === Array.head x
