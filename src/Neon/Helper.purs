@@ -110,7 +110,7 @@ odd x = Class.not (even x)
 print :: forall a b. (Class.HasInspect a) => a -> Effect.Eff (console :: Effect.CONSOLE | b) Data.Unit
 print x = Effect.log (Class.inspect x)
 
-product :: forall a b. (Class.Multiply b, Class.One b, Class.Reduce a) => a b -> b
+product :: forall a b. (Class.HasMultiply b, Class.One b, Class.Reduce a) => a b -> b
 product xs = Class.reduce Class.multiply Class.one xs
 
 reciprocal :: forall a. (Class.HasDivide a, Class.One a) => a -> a

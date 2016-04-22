@@ -25,7 +25,7 @@ _call x f = f x
 _power :: forall a. (Class.Power a) => a -> a -> a
 _power x y = Class.power y x
 
-_multiply :: forall a. (Class.Multiply a) => a -> a -> a
+_multiply :: forall a. (Class.HasMultiply a) => a -> a -> a
 _multiply x y = Class.multiply y x
 
 _divide :: forall a. (Class.HasDivide a) => a -> a -> a
