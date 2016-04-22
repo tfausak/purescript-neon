@@ -61,5 +61,5 @@ _lessOrEqual x y = Helper.lessOrEqual y x
 _and :: forall a. (Class.HasAnd a) => a -> a -> a
 _and x y = Class.and y x
 
-_or :: forall a. (Class.Or a) => a -> a -> a
+_or :: forall a. (Class.HasOr a) => a -> a -> a
 _or x y = Class.or y x

@@ -1,4 +1,4 @@
-module Test.Neon.Class.OrTest where
+module Test.Neon.Class.HasOrTest where
 
 import Data.Array as Array
 import Data.Int.Bits as Bits
@@ -8,7 +8,7 @@ import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Or" do
+suite = test "HasOr" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.or y x === Array.union x y
