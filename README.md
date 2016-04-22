@@ -39,7 +39,7 @@ guiding principles:
   both numbers and strings.
 
 - Type classes should be as small as possible. This means the `Bounded` type
-  class is split into `Bottom` and `Top`.
+  class is split into `HasBottom` and `Top`.
 
 - Type classes should be designed for programmers, not mathematicians. This
   means `HasAdd` is a semigroup, but it's not called `Semigroup`.

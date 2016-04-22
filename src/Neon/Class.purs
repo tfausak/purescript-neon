@@ -2,7 +2,7 @@ module Neon.Class
   ( module Neon.Class.HasAdd
   , module Neon.Class.HasAnd
   , module Neon.Class.HasApply
-  , module Neon.Class.Bottom
+  , module Neon.Class.HasBottom
   , module Neon.Class.Chain
   , module Neon.Class.Divide
   , module Neon.Class.Equal
@@ -32,7 +32,7 @@ module Neon.Class
 import Neon.Class.HasAdd as Neon.Class.HasAdd
 import Neon.Class.HasAnd as Neon.Class.HasAnd
 import Neon.Class.HasApply as Neon.Class.HasApply
-import Neon.Class.Bottom as Neon.Class.Bottom
+import Neon.Class.HasBottom as Neon.Class.HasBottom
 import Neon.Class.Chain as Neon.Class.Chain
 import Neon.Class.Divide as Neon.Class.Divide
 import Neon.Class.Equal as Neon.Class.Equal

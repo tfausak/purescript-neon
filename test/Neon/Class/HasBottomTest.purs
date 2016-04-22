@@ -1,4 +1,4 @@
-module Test.Neon.Class.BottomTest where
+module Test.Neon.Class.HasBottomTest where
 
 import Neon as Neon
 import Global as Global
@@ -6,7 +6,7 @@ import Prelude as Prelude
 import Test.Helper (Suite, assert, bind, test)
 
 suite :: Suite
-suite = test "Bottom" do
+suite = test "HasBottom" do
   test "Boolean" do
     assert "Prelude.bottom"
       (Neon.equal (Neon.bottom :: Boolean) Prelude.bottom)
