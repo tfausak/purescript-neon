@@ -1,4 +1,4 @@
-module Neon.Class.And where
+module Neon.Class.HasAnd where
 
 import Data.Array as Array
 import Data.Int.Bits as Bits
@@ -7,20 +7,20 @@ import Neon.Class.Equal as Equal
 import Neon.Data as Data
 import Prelude as Prelude
 
-class And a where
+class HasAnd a where
   and :: a -> a -> a
 
-instance andArray :: (Equal.Equal a) => And (Array a) where
+instance arrayHasAnd :: (Equal.Equal a) => HasAnd (Array a) where
   and ys xs = Array.intersectBy (\ x y -> Equal.equal y x) xs ys
 
-instance andBoolean :: And Boolean where
+instance booleanHasAnd :: HasAnd Boolean where
   and y x = Prelude.conj x y
 
-instance andFunction :: (And b) => And (a -> b) where
+instance functionHasAnd :: (HasAnd b) => HasAnd (a -> b) where
   and g f = \ x -> and (g x) (f x)
 
-instance andInt :: And Int where
+instance intHasAnd :: HasAnd Int where
   and y x = x Bits..&. y
 
-instance andList :: (Equal.Equal a) => And (Data.List a) where
+instance listHasAnd :: (Equal.Equal a) => HasAnd (Data.List a) where
   and ys xs = List.intersectBy (\ x y -> Equal.equal y x) xs ys

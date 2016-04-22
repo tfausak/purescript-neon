@@ -1,4 +1,4 @@
-module Test.Neon.Class.AndTest where
+module Test.Neon.Class.HasAndTest where
 
 import Data.Array as Array
 import Data.Int.Bits as Bits
@@ -8,7 +8,7 @@ import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "And" do
+suite = test "HasAnd" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.and y x === Array.intersect x y
