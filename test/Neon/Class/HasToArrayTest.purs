@@ -1,5 +1,6 @@
 module Test.Neon.Class.HasToArrayTest where
 
+import Data.List as List
 import Data.Maybe as Maybe
 import Data.String as String
 import Neon as Neon
@@ -7,6 +8,12 @@ import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
 suite = test "HasToArray" do
+  test "Array" do
+    quickCheck \ (x :: Array Int) ->
+      Neon.toArray x === x
+  test "List" do
+    quickCheck \ (x :: Neon.List Int) ->
+      Neon.toArray x === List.toUnfoldable x
   test "Maybe" do
     quickCheck \ (mx :: Neon.Maybe Int) ->
       Neon.toArray mx === Maybe.maybe [] (\ x -> [x]) mx

@@ -7,6 +7,9 @@ import Neon.Data as Data
 class HasToArray a b where
   toArray :: a -> Array b
 
+instance arrayHasToArray :: HasToArray (Array a) a where
+  toArray xs = xs
+
 instance listHasToArray :: HasToArray (Data.List a) a where
   toArray xs = List.toUnfoldable xs
 

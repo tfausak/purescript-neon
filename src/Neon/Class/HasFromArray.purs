@@ -8,6 +8,9 @@ import Neon.Data as Data
 class HasFromArray a b where
   fromArray :: Array a -> b
 
+instance arrayHasFromArray :: HasFromArray a (Array a) where
+  fromArray xs = xs
+
 instance listHasFromArray :: HasFromArray a (Data.List a) where
   fromArray xs = List.fromFoldable xs
 
