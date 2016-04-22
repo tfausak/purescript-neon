@@ -113,7 +113,7 @@ print x = Effect.log (Class.inspect x)
 product :: forall a b. (Class.Multiply b, Class.One b, Class.Reduce a) => a b -> b
 product xs = Class.reduce Class.multiply Class.one xs
 
-reciprocal :: forall a. (Class.Divide a, Class.One a) => a -> a
+reciprocal :: forall a. (Class.HasDivide a, Class.One a) => a -> a
 reciprocal x = Class.divide x Class.one
 
 sequence :: forall a b c. (Class.HasApply b, Class.Map b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)

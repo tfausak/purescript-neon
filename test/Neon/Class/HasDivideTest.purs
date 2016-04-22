@@ -1,11 +1,11 @@
-module Test.Neon.Class.DivideTest where
+module Test.Neon.Class.HasDivideTest where
 
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Divide" do
+suite = test "HasDivide" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.divide y x === Prelude.div x y

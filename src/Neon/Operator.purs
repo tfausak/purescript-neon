@@ -28,7 +28,7 @@ _power x y = Class.power y x
 _multiply :: forall a. (Class.Multiply a) => a -> a -> a
 _multiply x y = Class.multiply y x
 
-_divide :: forall a. (Class.Divide a) => a -> a -> a
+_divide :: forall a. (Class.HasDivide a) => a -> a -> a
 _divide x y = Class.divide y x
 
 _remainder :: forall a. (Class.Remainder a) => a -> a -> a

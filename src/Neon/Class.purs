@@ -4,7 +4,7 @@ module Neon.Class
   , module Neon.Class.HasApply
   , module Neon.Class.HasBottom
   , module Neon.Class.HasChain
-  , module Neon.Class.Divide
+  , module Neon.Class.HasDivide
   , module Neon.Class.Equal
   , module Neon.Class.Filter
   , module Neon.Class.FromArray
@@ -34,7 +34,7 @@ import Neon.Class.HasAnd as Neon.Class.HasAnd
 import Neon.Class.HasApply as Neon.Class.HasApply
 import Neon.Class.HasBottom as Neon.Class.HasBottom
 import Neon.Class.HasChain as Neon.Class.HasChain
-import Neon.Class.Divide as Neon.Class.Divide
+import Neon.Class.HasDivide as Neon.Class.HasDivide
 import Neon.Class.Equal as Neon.Class.Equal
 import Neon.Class.Filter as Neon.Class.Filter
 import Neon.Class.FromArray as Neon.Class.FromArray
