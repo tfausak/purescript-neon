@@ -1,11 +1,11 @@
-module Test.Neon.Class.PureTest where
+module Test.Neon.Class.HasPureTest where
 
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Pure" do
+suite = test "HasPure" do
   test "Array" do
     quickCheck \ (x :: Int) ->
       (Neon.pure x :: Array Int) === Prelude.pure x
