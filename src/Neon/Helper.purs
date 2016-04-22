@@ -116,7 +116,7 @@ product xs = Class.reduce Class.multiply Class.one xs
 reciprocal :: forall a. (Class.Divide a, Class.One a) => a -> a
 reciprocal x = Class.divide x Class.one
 
-sequence :: forall a b c. (Class.Apply b, Class.Map b, Class.Traverse a, Class.Wrap b) => a (b c) -> b (a c)
+sequence :: forall a b c. (Class.Apply b, Class.Map b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
 sign :: forall a. (Class.Greater a, Class.Less a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
@@ -153,7 +153,7 @@ unsafeCoerce x = Coerce.unsafeCoerce x
 unsafeLog :: forall a. String -> a -> a
 unsafeLog m x = Effect.unsafePerformEff do
   Effect.log m
-  Class.wrap x
+  Class.pure x
 
 upTo :: forall a. (Class.FromInt a, Class.Greater a, Class.ToInt a) => a -> a -> Array a
 upTo h l =
@@ -168,8 +168,8 @@ upTo h l =
 void :: forall a b. (Class.Map a) => a b -> a Data.Unit
 void x = Class.map (Primitive.always Data.unit) x
 
-when :: forall a. (Class.Wrap a) => Boolean -> a Data.Unit -> a Data.Unit
-when p x = if p then x else Class.wrap Data.unit
+when :: forall a. (Class.Pure a) => Boolean -> a Data.Unit -> a Data.Unit
+when p x = if p then x else Class.pure Data.unit
 
 while :: forall a. (a -> Boolean) -> (a -> a) -> a -> a
 while p f x = if p x then while p f (f x) else x
