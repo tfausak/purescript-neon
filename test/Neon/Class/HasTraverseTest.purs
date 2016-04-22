@@ -1,11 +1,11 @@
-module Test.Neon.Class.TraverseTest where
+module Test.Neon.Class.HasTraverseTest where
 
 import Data.Traversable as Traversable
 import Neon as Neon
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
 suite :: Suite
-suite = test "Traverse" do
+suite = test "HasTraverse" do
   let f x = Neon.Just x
   test "Array" do
     quickCheck \ (x :: Array Int) ->
