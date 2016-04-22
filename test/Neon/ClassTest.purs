@@ -19,6 +19,7 @@ import Test.Neon.Class.HasNotTest as HasNotTest
 import Test.Neon.Class.HasOneTest as HasOneTest
 import Test.Neon.Class.HasOrTest as HasOrTest
 import Test.Neon.Class.HasPowerTest as HasPowerTest
+import Test.Neon.Class.HasPureTest as HasPureTest
 import Test.Neon.Class.HasReduceTest as HasReduceTest
 import Test.Neon.Class.HasRemainderTest as HasRemainderTest
 import Test.Neon.Class.HasSubtractTest as HasSubtractTest
@@ -26,7 +27,6 @@ import Test.Neon.Class.HasToArrayTest as HasToArrayTest
 import Test.Neon.Class.HasToIntTest as HasToIntTest
 import Test.Neon.Class.HasTopTest as HasTopTest
 import Test.Neon.Class.HasTraverseTest as HasTraverseTest
-import Test.Neon.Class.HasPureTest as HasPureTest
 import Test.Neon.Class.HasZeroTest as HasZeroTest
 import Test.Helper (Suite, bind, test)
 
