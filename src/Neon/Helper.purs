@@ -36,13 +36,13 @@ contains x xs = any (Class.equal x) xs
 curry :: forall a b c. (Data.Tuple a b -> c) -> (a -> b -> c)
 curry f = \ x y -> f (Data.Tuple x y)
 
-decrement :: forall a. (Class.HasFromInt a, Class.ToInt a) => a -> Data.Maybe a
+decrement :: forall a. (Class.HasFromInt a, Class.HasToInt a) => a -> Data.Maybe a
 decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 
 divisibleBy :: forall a. (Class.HasEqual a, Class.HasRemainder a, Class.Zero a) => a -> a -> Boolean
 divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 
-downTo :: forall a. (Class.HasFromInt a, Class.HasLess a, Class.ToInt a) => a -> a -> Array a
+downTo :: forall a. (Class.HasFromInt a, Class.HasLess a, Class.HasToInt a) => a -> a -> Array a
 downTo l h =
   let downToList :: a -> a -> Data.List a
       downToList b t = if Class.less b t
@@ -64,7 +64,7 @@ flatten xss = Class.chain Primitive.identity xss
 greaterOrEqual :: forall a. (Class.HasEqual a, Class.HasGreater a) => a -> a -> Boolean
 greaterOrEqual y x = Class.or (Class.equal y x) (Class.greater y x)
 
-increment :: forall a. (Class.HasFromInt a, Class.ToInt a) => a -> Data.Maybe a
+increment :: forall a. (Class.HasFromInt a, Class.HasToInt a) => a -> Data.Maybe a
 increment x = Class.fromInt (Class.add 1 (Class.toInt x))
 
 infinite :: Number -> Boolean
@@ -155,7 +155,7 @@ unsafeLog m x = Effect.unsafePerformEff do
   Effect.log m
   Class.pure x
 
-upTo :: forall a. (Class.HasFromInt a, Class.HasGreater a, Class.ToInt a) => a -> a -> Array a
+upTo :: forall a. (Class.HasFromInt a, Class.HasGreater a, Class.HasToInt a) => a -> a -> Array a
 upTo h l =
   let upToList :: a -> a -> Data.List a
       upToList t b = if Class.greater t b
