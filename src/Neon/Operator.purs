@@ -22,44 +22,44 @@ infixr 2 _or             as ||
 _call :: forall a b. a -> (a -> b) -> b
 _call x f = f x
 
-_power :: forall a. (Class.Power a) => a -> a -> a
+_power :: forall a. (Class.HasPower a) => a -> a -> a
 _power x y = Class.power y x
 
-_multiply :: forall a. (Class.Multiply a) => a -> a -> a
+_multiply :: forall a. (Class.HasMultiply a) => a -> a -> a
 _multiply x y = Class.multiply y x
 
-_divide :: forall a. (Class.Divide a) => a -> a -> a
+_divide :: forall a. (Class.HasDivide a) => a -> a -> a
 _divide x y = Class.divide y x
 
-_remainder :: forall a. (Class.Remainder a) => a -> a -> a
+_remainder :: forall a. (Class.HasRemainder a) => a -> a -> a
 _remainder x y = Class.remainder y x
 
-_add :: forall a. (Class.Add a) => a -> a -> a
+_add :: forall a. (Class.HasAdd a) => a -> a -> a
 _add x y = Class.add y x
 
-_subtract :: forall a. (Class.Subtract a) => a -> a -> a
+_subtract :: forall a. (Class.HasSubtract a) => a -> a -> a
 _subtract x y = Class.subtract y x
 
-_equal :: forall a. (Class.Equal a) => a -> a -> Boolean
+_equal :: forall a. (Class.HasEqual a) => a -> a -> Boolean
 _equal x y = Class.equal y x
 
-_notEqual :: forall a. (Class.Equal a) => a -> a -> Boolean
+_notEqual :: forall a. (Class.HasEqual a) => a -> a -> Boolean
 _notEqual x y = Helper.notEqual y x
 
-_greater :: forall a. (Class.Greater a) => a -> a -> Boolean
+_greater :: forall a. (Class.HasGreater a) => a -> a -> Boolean
 _greater x y = Class.greater y x
 
-_greaterOrEqual :: forall a. (Class.Equal a, Class.Greater a) => a -> a -> Boolean
+_greaterOrEqual :: forall a. (Class.HasEqual a, Class.HasGreater a) => a -> a -> Boolean
 _greaterOrEqual x y = Helper.greaterOrEqual y x
 
-_less :: forall a. (Class.Less a) => a -> a -> Boolean
+_less :: forall a. (Class.HasLess a) => a -> a -> Boolean
 _less x y = Class.less y x
 
-_lessOrEqual :: forall a. (Class.Equal a, Class.Less a) => a -> a -> Boolean
+_lessOrEqual :: forall a. (Class.HasEqual a, Class.HasLess a) => a -> a -> Boolean
 _lessOrEqual x y = Helper.lessOrEqual y x
 
-_and :: forall a. (Class.And a) => a -> a -> a
+_and :: forall a. (Class.HasAnd a) => a -> a -> a
 _and x y = Class.and y x
 
-_or :: forall a. (Class.Or a) => a -> a -> a
+_or :: forall a. (Class.HasOr a) => a -> a -> a
 _or x y = Class.or y x

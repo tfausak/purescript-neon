@@ -30,8 +30,8 @@ guiding principles:
 - Type classes should be lawless. This means `zero` doesn't have to be the
   additive identity. That's recommended, but not necessary.
 
-- There should be no type class hierarchy. This means `Zero` does not imply
-  `Add`. If you need both, add both to your type signature.
+- There should be no type class hierarchy. This means `HasZero` does not imply
+  `HasAdd`. If you need both, add both to your type signature.
 
 - There should be as few operators as possible. This means `<$>` does not
   exist. Use `map` instead.
@@ -43,10 +43,10 @@ guiding principles:
   both numbers and strings.
 
 - Type classes should be as small as possible. This means the `Bounded` type
-  class is split into `Bottom` and `Top`.
+  class is split into `HasBottom` and `HasTop`.
 
 - Type classes should be designed for programmers, not mathematicians. This
-  means `Add` is a semigroup, but it's not called `Semigroup`.
+  means `HasAdd` is a semigroup, but it's not called `Semigroup`.
 
 - Pure functions should not throw exceptions. This means `fromInt` returns a
   `Maybe` value. Pure functions that throw exceptions should be marked unsafe.
