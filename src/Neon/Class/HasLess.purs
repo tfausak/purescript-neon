@@ -1,28 +1,28 @@
-module Neon.Class.Less where
+module Neon.Class.HasLess where
 
 import Neon.Class.HasEqual as HasEqual
 import Neon.Class.HasFromArray as HasFromArray
 import Neon.Data as Data
 import Prelude as Prelude
 
-class Less a where
+class HasLess a where
   less :: a -> a -> Boolean
 
-instance lessArray :: (HasEqual.HasEqual a, Less a) => Less (Array a) where
+instance arrayHasLess :: (HasEqual.HasEqual a, HasLess a) => HasLess (Array a) where
   less ys xs =
     let toList = HasFromArray.fromArray :: Array a -> Data.List a
     in  less (toList ys) (toList xs)
 
-instance lessBoolean :: Less Boolean where
+instance booleanHasLess :: HasLess Boolean where
   less y x = x Prelude.< y
 
-instance lessChar :: Less Char where
+instance charHasLess :: HasLess Char where
   less y x = x Prelude.< y
 
-instance lessInt :: Less Int where
+instance intHasLess :: HasLess Int where
   less y x = x Prelude.< y
 
-instance lessList :: (HasEqual.HasEqual a, Less a) => Less (Data.List a) where
+instance listHasLess :: (HasEqual.HasEqual a, HasLess a) => HasLess (Data.List a) where
   less ys xs = case { xs: xs, ys: ys } of
     { xs: Data.Nil, ys: Data.Cons _ _ } -> true
     { xs: Data.Cons xh xt, ys: Data.Cons yh yt } -> if HasEqual.equal yh xh
@@ -30,8 +30,8 @@ instance lessList :: (HasEqual.HasEqual a, Less a) => Less (Data.List a) where
       else less yh xh
     _ -> false
 
-instance lessNumber :: Less Number where
+instance numberHasLess :: HasLess Number where
   less y x = x Prelude.< y
 
-instance lessString :: Less String where
+instance stringHasLess :: HasLess String where
   less y x = x Prelude.< y

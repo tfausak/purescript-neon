@@ -6,7 +6,7 @@ import Neon.Effect as Effect
 import Neon.Primitive as Primitive
 import Unsafe.Coerce as Coerce
 
-absoluteValue :: forall a. (Class.Less a, Class.Subtract a, Class.Zero a) => a -> a
+absoluteValue :: forall a. (Class.HasLess a, Class.Subtract a, Class.Zero a) => a -> a
 absoluteValue x = if Class.less Class.zero x then negate x else x
 
 all :: forall a b. (Class.Reduce a) => (b -> Boolean) -> a b -> Boolean
@@ -21,7 +21,7 @@ asTypeOf y x = Primitive.always x y
 bind :: forall a b c. (Class.HasChain a) => a b -> (b -> a c) -> a c
 bind x f = Class.chain f x
 
-clamp :: forall a. (Class.HasGreater a, Class.Less a) => a -> a -> a -> a
+clamp :: forall a. (Class.HasGreater a, Class.HasLess a) => a -> a -> a -> a
 clamp b t x =
   if Class.greater t b
   then clamp t b x
@@ -42,7 +42,7 @@ decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 divisibleBy :: forall a. (Class.HasEqual a, Class.Remainder a, Class.Zero a) => a -> a -> Boolean
 divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 
-downTo :: forall a. (Class.HasFromInt a, Class.Less a, Class.ToInt a) => a -> a -> Array a
+downTo :: forall a. (Class.HasFromInt a, Class.HasLess a, Class.ToInt a) => a -> a -> Array a
 downTo l h =
   let downToList :: a -> a -> Data.List a
       downToList b t = if Class.less b t
@@ -70,7 +70,7 @@ increment x = Class.fromInt (Class.add 1 (Class.toInt x))
 infinite :: Number -> Boolean
 infinite x = Class.not (Primitive.finite x)
 
-lessOrEqual :: forall a. (Class.HasEqual a, Class.Less a) => a -> a -> Boolean
+lessOrEqual :: forall a. (Class.HasEqual a, Class.HasLess a) => a -> a -> Boolean
 lessOrEqual y x = Class.or (Class.equal y x) (Class.less y x)
 
 max :: forall a. (Class.HasGreater a) => a -> a -> a
@@ -84,10 +84,10 @@ maximum xs = Class.reduce
   Data.Nothing
   xs
 
-min :: forall a. (Class.Less a) => a -> a -> a
+min :: forall a. (Class.HasLess a) => a -> a -> a
 min y x = if Class.less y x then x else y
 
-minimum :: forall a b. (Class.Less b, Class.Reduce a) => a b -> Data.Maybe b
+minimum :: forall a b. (Class.HasLess b, Class.Reduce a) => a b -> Data.Maybe b
 minimum xs = Class.reduce
   (\ a x -> case a of
     Data.Nothing -> Data.Just x
@@ -119,7 +119,7 @@ reciprocal x = Class.divide x Class.one
 sequence :: forall a b c. (Class.HasApply b, Class.Map b, Class.Traverse a, Class.Pure b) => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
-sign :: forall a. (Class.HasGreater a, Class.Less a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
+sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.One a, Class.Subtract a, Class.Zero a) => a -> a
 sign x =
   if Class.less Class.zero x
   then negate Class.one

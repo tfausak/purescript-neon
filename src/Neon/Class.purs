@@ -11,7 +11,7 @@ module Neon.Class
   , module Neon.Class.HasFromInt
   , module Neon.Class.HasGreater
   , module Neon.Class.HasInspect
-  , module Neon.Class.Less
+  , module Neon.Class.HasLess
   , module Neon.Class.Map
   , module Neon.Class.Multiply
   , module Neon.Class.Not
@@ -41,7 +41,7 @@ import Neon.Class.HasFromArray as Neon.Class.HasFromArray
 import Neon.Class.HasFromInt as Neon.Class.HasFromInt
 import Neon.Class.HasGreater as Neon.Class.HasGreater
 import Neon.Class.HasInspect as Neon.Class.HasInspect
-import Neon.Class.Less as Neon.Class.Less
+import Neon.Class.HasLess as Neon.Class.HasLess
 import Neon.Class.Map as Neon.Class.Map
 import Neon.Class.Multiply as Neon.Class.Multiply
 import Neon.Class.Not as Neon.Class.Not
