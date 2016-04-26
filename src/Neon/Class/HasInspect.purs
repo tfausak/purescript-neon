@@ -22,6 +22,9 @@ instance charHasInspect :: HasInspect Char where
 instance errorHasInspect :: HasInspect Data.Error where
   inspect x = Prelude.show x
 
+instance functionHasInspect :: HasInspect (a -> b) where
+  inspect _ = "{- Function -}"
+
 instance intHasInspect :: HasInspect Int where
   inspect x = Prelude.show x
 
@@ -33,6 +36,9 @@ instance listHasInspect :: (HasInspect a) => HasInspect (Data.List a) where
 
 instance numberHasInspect :: HasInspect Number where
   inspect x = Prelude.show x
+
+instance objectHasInspect :: HasInspect { | a } where
+  inspect _ = "{- Object -}"
 
 instance stringHasInspect :: HasInspect String where
   inspect x = Prelude.show x
