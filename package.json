@@ -6,7 +6,7 @@
   },
   "engines": {
     "node": "5.11.0",
-    "npm": "3.8.3"
+    "npm": "3.8.6"
   },
   "private": true,
   "scripts": {
