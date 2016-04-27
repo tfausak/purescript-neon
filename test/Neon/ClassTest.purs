@@ -5,6 +5,7 @@ import Test.Neon.Class.HasAndTest as HasAndTest
 import Test.Neon.Class.HasApplyTest as HasApplyTest
 import Test.Neon.Class.HasBottomTest as HasBottomTest
 import Test.Neon.Class.HasChainTest as HasChainTest
+import Test.Neon.Class.HasCompareTest as HasCompareTest
 import Test.Neon.Class.HasDivideTest as HasDivideTest
 import Test.Neon.Class.HasEqualTest as HasEqualTest
 import Test.Neon.Class.HasFilterTest as HasFilterTest
@@ -37,6 +38,7 @@ suite = test "Class" do
   HasApplyTest.suite
   HasBottomTest.suite
   HasChainTest.suite
+  HasCompareTest.suite
   HasDivideTest.suite
   HasEqualTest.suite
   HasFilterTest.suite
