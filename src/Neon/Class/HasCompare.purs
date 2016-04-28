@@ -1,4 +1,4 @@
-module Neon.Class.HasCompare where
+module Neon.Class.HasCompare (class HasCompare, compare) where
 
 import Neon.Class.HasEqual as HasEqual
 import Neon.Class.HasFromArray as HasFromArray
