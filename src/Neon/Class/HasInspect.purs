@@ -43,6 +43,9 @@ instance objectHasInspect :: HasInspect { | a } where
 instance orderingHasInspect :: HasInspect Data.Ordering where
   inspect x = Prelude.show x
 
+instance proxyHasInspect :: HasInspect (Data.Proxy a) where
+  inspect _ = "Proxy"
+
 instance stringHasInspect :: HasInspect String where
   inspect x = Prelude.show x
 
