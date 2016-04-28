@@ -1,5 +1,6 @@
 module Neon.Class.HasBottom where
 
+import Neon.Data as Data
 import Neon.Primitive as Primitive
 import Prelude as Prelude
 
@@ -17,3 +18,6 @@ instance intHasBottom :: HasBottom Int where
 
 instance numberHasBottom :: HasBottom Number where
   bottom = Prelude.negate Primitive.infinity
+
+instance orderingHasBottom :: HasBottom Data.Ordering where
+  bottom = Prelude.bottom

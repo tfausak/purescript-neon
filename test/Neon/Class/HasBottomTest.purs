@@ -19,3 +19,6 @@ suite = test "HasBottom" do
   test "Number" do
     assert "Prelude.negate Global.infinity"
       (Neon.equal (Neon.bottom :: Number) (Prelude.negate Global.infinity))
+  test "Ordering" do
+    assert "Prelude.bottom"
+      (Neon.equal (Neon.bottom :: Neon.Ordering) Prelude.bottom)

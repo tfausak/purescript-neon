@@ -24,6 +24,9 @@ suite = test "HasLess" do
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.less y x === x Prelude.< y
+  test "Ordering" do
+    quickCheck \ (x :: Neon.Ordering) y ->
+      Neon.less y x === x Prelude.< y
   test "String" do
     quickCheck \ (x :: String) y ->
       Neon.less y x === x Prelude.< y

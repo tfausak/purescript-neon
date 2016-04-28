@@ -31,6 +31,9 @@ instance listHasEqual :: (HasEqual a) => HasEqual (Data.List a) where
 instance numberHasEqual :: HasEqual Number where
   equal y x = Prelude.eq x y
 
+instance orderingHasEqual :: HasEqual Data.Ordering where
+  equal y x = Prelude.eq x y
+
 instance stringHasEqual :: HasEqual String where
   equal y x = Prelude.eq x y
 

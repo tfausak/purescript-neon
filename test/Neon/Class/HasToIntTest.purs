@@ -15,3 +15,4 @@ suite = test "HasToInt" do
   test "Int" do
     quickCheck \ (x :: Int) ->
       Neon.toInt x === x
+  -- test "Ordering"

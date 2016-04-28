@@ -33,5 +33,8 @@ instance listHasLess :: (HasEqual.HasEqual a, HasLess a) => HasLess (Data.List a
 instance numberHasLess :: HasLess Number where
   less y x = x Prelude.< y
 
+instance orderingHasLess :: HasLess Data.Ordering where
+  less y x = x Prelude.< y
+
 instance stringHasLess :: HasLess String where
   less y x = x Prelude.< y

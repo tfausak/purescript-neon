@@ -22,5 +22,7 @@ suite = test "HasCompare" do
     qc (Neon.Proxy :: Neon.Proxy (Neon.List Int))
   test "Number" do
     qc (Neon.Proxy :: Neon.Proxy Number)
+  test "Ordering" do
+    qc (Neon.Proxy :: Neon.Proxy Neon.Ordering)
   test "String" do
     qc (Neon.Proxy :: Neon.Proxy String)

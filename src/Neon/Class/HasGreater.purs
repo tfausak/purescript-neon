@@ -33,5 +33,8 @@ instance listHasGreater :: (HasEqual.HasEqual a, HasGreater a) => HasGreater (Da
 instance numberHasGreater :: HasGreater Number where
   greater y x = x Prelude.> y
 
+instance orderingHasGreater :: HasGreater Data.Ordering where
+  greater y x = x Prelude.> y
+
 instance stringHasGreater :: HasGreater String where
   greater y x = x Prelude.> y

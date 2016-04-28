@@ -36,6 +36,9 @@ instance listHasCompare :: (HasCompare a) => HasCompare (Data.List a) where
 instance numberHasCompare :: HasCompare Number where
   compare y x = defaultCompare y x
 
+instance orderingHasCompare :: HasCompare Data.Ordering where
+  compare y x = defaultCompare y x
+
 instance stringHasCompare :: HasCompare String where
   compare y x = defaultCompare y x
 
