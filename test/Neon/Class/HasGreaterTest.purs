@@ -24,6 +24,9 @@ suite = test "HasGreater" do
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.greater y x === x Prelude.> y
+  test "Ordering" do
+    quickCheck \ (x :: Neon.Ordering) y ->
+      Neon.greater y x === x Prelude.> y
   test "String" do
     quickCheck \ (x :: String) y ->
       Neon.greater y x === x Prelude.> y

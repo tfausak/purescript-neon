@@ -1,5 +1,6 @@
 module Neon.Class.HasTop where
 
+import Neon.Data as Data
 import Neon.Primitive as Primitive
 import Prelude as Prelude
 
@@ -17,3 +18,6 @@ instance intHasTop :: HasTop Int where
 
 instance numberHasTop :: HasTop Number where
   top = Primitive.infinity
+
+instance orderingHasTop :: HasTop Data.Ordering where
+  top = Prelude.top

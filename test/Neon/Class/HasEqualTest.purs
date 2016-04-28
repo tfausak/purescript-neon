@@ -24,6 +24,9 @@ suite = test "HasEqual" do
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.equal y x === Prelude.eq x y
+  test "Ordering" do
+    quickCheck \ (x :: Neon.Ordering) y ->
+      Neon.equal y x === Prelude.eq x y
   test "String" do
     quickCheck \ (x :: String) y ->
       Neon.equal y x === Prelude.eq x y

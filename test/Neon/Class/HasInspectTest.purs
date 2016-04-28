@@ -2,7 +2,7 @@ module Test.Neon.Class.HasInspectTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, assert, bind, quickCheck, test, (===))
 
 suite :: Suite
 suite = test "HasInspect" do
@@ -25,6 +25,12 @@ suite = test "HasInspect" do
   test "Number" do
     quickCheck \ (x :: Number) ->
       Neon.inspect x === Prelude.show x
+  test "Ordering" do
+    quickCheck \ (x :: Neon.Ordering) ->
+      Neon.inspect x === Prelude.show x
+  test "Proxy" do
+    assert "is \"Proxy\""
+      (Neon.equal (Neon.inspect (Neon.Proxy :: Neon.Proxy Int)) "Proxy")
   test "String" do
     quickCheck \ (x :: String) ->
       Neon.inspect x === Prelude.show x

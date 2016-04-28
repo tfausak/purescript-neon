@@ -16,3 +16,4 @@ suite = test "HasFromInt" do
   test "Int" do
     quickCheck \ x ->
       (Neon.fromInt x :: Neon.Maybe Int) === Neon.Just x
+  -- test "Ordering"

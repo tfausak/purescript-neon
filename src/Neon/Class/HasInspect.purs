@@ -40,6 +40,12 @@ instance numberHasInspect :: HasInspect Number where
 instance objectHasInspect :: HasInspect { | a } where
   inspect _ = "{- Object -}"
 
+instance orderingHasInspect :: HasInspect Data.Ordering where
+  inspect x = Prelude.show x
+
+instance proxyHasInspect :: HasInspect (Data.Proxy a) where
+  inspect _ = "Proxy"
+
 instance stringHasInspect :: HasInspect String where
   inspect x = Prelude.show x
 

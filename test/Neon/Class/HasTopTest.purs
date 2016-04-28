@@ -19,3 +19,6 @@ suite = test "HasTop" do
   test "Number" do
     assert "Prelude.negate Global.infinity"
       (Neon.equal (Neon.top :: Number) Global.infinity)
+  test "Ordering" do
+    assert "Prelude.top"
+      (Neon.equal (Neon.top :: Neon.Ordering) Prelude.top)
