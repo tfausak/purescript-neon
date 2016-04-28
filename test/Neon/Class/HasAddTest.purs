@@ -18,6 +18,9 @@ suite = test "HasAdd" do
   test "Number" do
     quickCheck \ (x :: Number) y ->
       Neon.add y x === Prelude.add x y
+  test "Ordering" do
+    quickCheck \ (x :: Neon.Ordering) y ->
+      Neon.add y x === Prelude.append x y
   test "String" do
     quickCheck \ (x :: String) y ->
       Neon.add y x === Prelude.append x y

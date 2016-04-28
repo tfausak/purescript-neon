@@ -18,5 +18,8 @@ instance listHasAdd :: HasAdd (Data.List a) where
 instance numberHasAdd :: HasAdd Number where
   add y x = Prelude.add x y
 
+instance orderingHasAdd :: HasAdd Data.Ordering where
+  add y x = Prelude.append x y
+
 instance stringHasAdd :: HasAdd String where
   add y x = Prelude.append x y
