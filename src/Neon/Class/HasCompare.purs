@@ -1,11 +1,12 @@
 module Neon.Class.HasCompare where
 
+import Neon.Class.HasEqual as HasEqual
 import Neon.Class.HasFromArray as HasFromArray
 import Neon.Class.HasGreater as HasGreater
 import Neon.Class.HasLess as HasLess
 import Neon.Data as Data
 
-class HasCompare a where
+class (HasEqual.HasEqual a, HasGreater.HasGreater a, HasLess.HasLess a) <= HasCompare a where
   compare :: a -> a -> Data.Ordering
 
 instance arrayHasCompare :: (HasCompare a) => HasCompare (Array a) where
