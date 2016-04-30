@@ -3,7 +3,7 @@
 [![Package version][]][version]
 [![Build status][]][build]
 
-Neon is an experimental standard library for [PureScript][].
+Neon is a practical standard library for [PureScript][].
 
 ``` purescript
 -- Find the sum of all the multiples of 3 or 5 below 1000.
