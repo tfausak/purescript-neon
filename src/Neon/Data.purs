@@ -1,3 +1,4 @@
+-- | Data types and constructors.
 module Neon.Data
   ( module Neon.Data
   , module Export
@@ -12,5 +13,10 @@ import Type.Proxy (Proxy(Proxy)) as Export
 
 import Control.Monad.Eff.Exception as Exception
 
+-- | Creates an exception with the given message.
+-- |
+-- | ``` purescript
+-- | exception "example"
+-- | ```
 exception :: String -> Exception.Error
 exception x = Exception.error x
