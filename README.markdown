@@ -27,6 +27,9 @@ guiding principles:
 - Functions should take their subject last. This means `add x y` is really
   `y + x`. Consider calling functions with `:`, like `y :add x`.
 
+- Everything should be documented with examples. Type signatures are not a
+  substitute for documentation.
+
 - Type classes should be lawless. This means `zero` doesn't have to be the
   additive identity. That's recommended, but not necessary.
 
