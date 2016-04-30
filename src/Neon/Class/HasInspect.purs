@@ -4,6 +4,14 @@ import Data.Foldable as Foldable
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types that can be converting to a string. This is typically
+-- | used for debugging. The result of `inspect x` should be a valid PureScript
+-- | expression.
+-- |
+-- | ``` purescript
+-- | inspect 123 -- "123"
+-- | inspect (Just 123) -- "Just (123)"
+-- | ```
 class HasInspect a where
   inspect :: a -> String
 

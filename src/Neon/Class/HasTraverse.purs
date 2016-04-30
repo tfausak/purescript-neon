@@ -7,6 +7,13 @@ import Neon.Class.HasPure as HasPure
 import Neon.Class.HasToArray as HasToArray
 import Neon.Data as Data
 
+-- | Represents data structures that can be traversed from left to right.
+-- | Unlike `Reduce`, these structures can be traversed while keeping their
+-- | shape.
+-- |
+-- | ``` purescript
+-- | [1, 2] :traverse (\ x -> x :inspect :Just) -- Just ["1", "2"]
+-- | ```
 class HasTraverse t where
   traverse :: forall a b m. (HasApply.HasApply m, HasMap.HasMap m, HasPure.HasPure m) => (a -> m b) -> t a -> m (t b)
 

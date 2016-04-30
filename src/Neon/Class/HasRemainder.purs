@@ -3,6 +3,12 @@ module Neon.Class.HasRemainder where
 import Prelude as Prelude
 import Unsafe.Coerce as Coerce
 
+-- | Represents types that are divisible.
+-- |
+-- | ``` purescript
+-- | 7 :remainder 2 -- 1
+-- | 7.0 :remainder 2.0 -- 1.0
+-- | ```
 class HasRemainder a where
   remainder :: a -> a -> a
 

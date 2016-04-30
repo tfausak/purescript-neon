@@ -1,3 +1,19 @@
+-- | Every type class in Neon starts with "Has". There are two reasons for
+-- | this:
+-- |
+-- | - It avoids collisions with data types. The `HasMap` type class is
+-- |   distinct from the `Map` data type.
+-- |
+-- | - Each type class has one function, so naming the class after that
+-- |   function results in better error messages.
+-- |
+-- |   ``` purescript
+-- |   newtype MyArray a = MyArray (Array a)
+-- |   MyArray [1, 2, 3] :map (_ + 1)
+-- |   -- Error found:
+-- |   --   No type class instance was found for
+-- |   --     Neon.Class.HasMap.HasMap MyArray
+-- |   ```
 module Neon.Class
   ( module Neon.Class.HasAdd
   , module Neon.Class.HasAnd

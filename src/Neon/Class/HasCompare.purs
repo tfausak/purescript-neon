@@ -6,6 +6,13 @@ import Neon.Class.HasGreater as HasGreater
 import Neon.Class.HasLess as HasLess
 import Neon.Data as Data
 
+-- | Represents type that have a [total order](https://en.wikipedia.org/wiki/Total_order).
+-- |
+-- | ``` purescript
+-- | 2 :compare 1 -- GT
+-- | 2 :compare 2 -- EQ
+-- | 2 :compare 3 -- LT
+-- | ```
 class (HasEqual.HasEqual a, HasGreater.HasGreater a, HasLess.HasLess a) <= HasCompare a where
   compare :: a -> a -> Data.Ordering
 

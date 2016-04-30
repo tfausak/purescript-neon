@@ -3,6 +3,12 @@ module Neon.Class.HasToInt where
 import Data.Enum as Enum
 import Neon.Data as Data
 
+-- | Represents types that can be converted to integers. This is typically used
+-- | for enumerations.
+-- |
+-- | ``` purescript
+-- | toInt false -- 0
+-- | ```
 class HasToInt a where
   toInt :: a -> Int
 

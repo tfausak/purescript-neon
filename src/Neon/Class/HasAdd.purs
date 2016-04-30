@@ -3,6 +3,13 @@ module Neon.Class.HasAdd where
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types that can be added together. This is also known as a
+-- | [semigroup](https://en.wikipedia.org/wiki/Semigroup).
+-- |
+-- | ``` purescript
+-- | 2 :add 1 -- 3
+-- | "a" :add "b" -- "ab"
+-- | ```
 class HasAdd a where
   add :: a -> a -> a
 

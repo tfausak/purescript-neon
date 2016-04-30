@@ -3,6 +3,13 @@ module Neon.Class.HasZero where
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types that have an additive identity. This is also known as a
+-- | [monoid](https://en.wikipedia.org/wiki/Monoid).
+-- |
+-- | ``` purescript
+-- | zero :: Int -- 0
+-- | zero :: Number -- 0.0
+-- | ```
 class HasZero a where
   zero :: a
 

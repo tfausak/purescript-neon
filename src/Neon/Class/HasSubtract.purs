@@ -7,6 +7,11 @@ import Neon.Class.HasEqual as HasEqual
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types that can be subtracted from each other.
+-- |
+-- | ``` purescript
+-- | 3 :subtract 2 -- 1
+-- | ```
 class HasSubtract a where
   subtract :: a -> a -> a
 

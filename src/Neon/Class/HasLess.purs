@@ -5,6 +5,12 @@ import Neon.Class.HasFromArray as HasFromArray
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types where one value can be less than another.
+-- |
+-- | ``` purescript
+-- | 1 :less 2 -- true
+-- | 2 :less 1 -- false
+-- | ```
 class HasLess a where
   less :: a -> a -> Boolean
 

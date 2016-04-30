@@ -4,6 +4,13 @@ import Data.List as List
 import Data.String as String
 import Neon.Data as Data
 
+-- | Represents types that can be converted to an array.
+-- |
+-- | ``` purescript
+-- | toArray (Cons 1 Nil) :: Array Int -- [1]
+-- | toArray (Just 1) :: Array Int -- [1]
+-- | toArray "ab" :: String -- ['a', 'b']
+-- | ```
 class HasToArray a b where
   toArray :: a -> Array b
 

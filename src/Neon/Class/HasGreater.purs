@@ -5,6 +5,12 @@ import Neon.Class.HasFromArray as HasFromArray
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types where one value can be greater than another.
+-- |
+-- | ``` purescript
+-- | 2 :greater 1 -- true
+-- | 1 :greater 2 -- false
+-- | ```
 class HasGreater a where
   greater :: a -> a -> Boolean
 

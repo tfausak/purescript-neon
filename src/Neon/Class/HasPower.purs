@@ -3,6 +3,11 @@ module Neon.Class.HasPower where
 import Neon.Primitive as Primitive
 import Math as Math
 
+-- | Represents types that can be exponentiated.
+-- |
+-- | ``` purescript
+-- | 2 :power 3 -- 8
+-- | ```
 class HasPower a where
   power :: a -> a -> a
 

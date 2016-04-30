@@ -3,6 +3,12 @@ module Neon.Class.HasReduce where
 import Data.Foldable as Foldable
 import Neon.Data as Data
 
+-- | Represents types that can be reduced to a single value. This is also known
+-- | as a [fold](https://en.wikipedia.org/wiki/Fold_(higher-order_function)).
+-- |
+-- | ``` purescript
+-- | ["wo", "rl", "d!"] :reduce (\ a e -> a + e) "hello" -- "helloworld!"
+-- | ```
 class HasReduce a where
   reduce :: forall b c. (c -> b -> c) -> c -> a b -> c
 

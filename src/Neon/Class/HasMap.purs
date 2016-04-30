@@ -4,6 +4,12 @@ import Neon.Data as Data
 import Neon.Effect as Effect
 import Prelude as Prelude
 
+-- | Represents types that can be mapped over. This is also know as a
+-- | [functor](https://en.wikipedia.org/wiki/Functor).
+-- |
+-- | ``` purescript
+-- | [1, 2, 3] :map (_ + 1) -- [2, 3, 4]
+-- | ```
 class HasMap a where
   map :: forall b c. (b -> c) -> a b -> a c
 

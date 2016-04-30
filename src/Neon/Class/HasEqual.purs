@@ -6,6 +6,12 @@ import Data.List as List
 import Neon.Data as Data
 import Prelude as Prelude
 
+-- | Represents types that can be equal to each other.
+-- |
+-- | ``` purescript
+-- | equal 1 2 -- false
+-- | equal 3 3 -- true
+-- | ```
 class HasEqual a where
   equal :: a -> a -> Boolean
 
