@@ -60,6 +60,6 @@ guiding principles:
 [Neon]: https://github.com/tfausak/purescript-neon
 [Package version]: https://img.shields.io/bower/v/purescript-neon.svg?label=version
 [version]: https://pursuit.purescript.org/packages/purescript-neon
-[Build status]: https://img.shields.io/travis/tfausak/purescript-neon/master.svg
+[Build status]: https://travis-ci.org/tfausak/purescript-neon.svg?branch=master
 [build]: https://travis-ci.org/tfausak/purescript-neon
 [PureScript]: https://github.com/purescript/purescript
