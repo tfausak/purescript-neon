@@ -4,7 +4,7 @@ after_success:
 - |
   if test $TRAVIS_TAG -a $GITHUB_TOKEN
   then
-    curl -X POST http://pursuit.purescript.org/packages \
+    curl -X POST https://pursuit.purescript.org/packages \
       -d @output/docs.json \
       -H 'Accept: application/json' \
       -H "Authorization: token ${GITHUB_TOKEN}"
