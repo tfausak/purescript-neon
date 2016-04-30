@@ -28,7 +28,7 @@ clamp b t x =
   else max b (min t x)
 
 concat :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.HasZero b) => a b -> b
-concat xs = Class.reduce Class.add Class.zero xs
+concat xs = Class.reduce (\ a e -> Class.add e a) Class.zero xs
 
 contains :: forall a b. (Class.HasEqual b, Class.HasReduce a) => b -> a b -> Boolean
 contains x xs = any (Class.equal x) xs
