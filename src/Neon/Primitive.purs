@@ -1,3 +1,7 @@
+-- | Functions that operate on primitve data types. Note that not all data
+-- | types are represented. That's either because there's no actions you can
+-- | take on them in general (like `Object`s) or because the actions are in
+-- | type classes instead (for `Array`s).
 module Neon.Primitive
   ( module Neon.Primitive.Char
   , module Neon.Primitive.Function
