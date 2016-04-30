@@ -1,14 +1,13 @@
 after_success:
 - rm -v travis_wait_*.log
-- npm run psc-publish | tail -n 1 | gzip > output/docs.json.gz
+- npm run psc-publish | tail -n 1 > output/docs.json
 - |
   if test $TRAVIS_TAG -a $GITHUB_TOKEN
   then
     curl -X POST http://pursuit.purescript.org/packages \
       -d @output/docs.json \
       -H 'Accept: application/json' \
-      -H "Authorization: token ${GITHUB_TOKEN}" \
-      -H 'Content-Encoding: gzip'
+      -H "Authorization: token ${GITHUB_TOKEN}"
   fi
 cache:
   directories:
