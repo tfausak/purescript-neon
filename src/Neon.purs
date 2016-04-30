@@ -28,6 +28,9 @@
 -- |   have but can be derived from simpler things.
 -- | - Operator: A handful of operators for doing common tasks. Neon doesn't go
 -- |   overboard with operators like many other PureScript libraries.
+-- |
+-- | All of Neon's documentation assumes you are familiar with the `:`
+-- | operator. If you aren't, you should start by reading its documentation.
 module Neon
   ( module Neon.Class
   , module Neon.Data
