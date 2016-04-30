@@ -30,8 +30,8 @@ guiding principles:
 - Everything should be documented with examples. Type signatures are not a
   substitute for documentation.
 
-- Type classes should be lawless. This means `zero` doesn't have to be the
-  additive identity. That's recommended, but not necessary.
+- Laws should not prohibit useful instances. This means you can use `or` on
+  booleans and arrays.
 
 - There should be no type class hierarchy. This means `HasZero` does not imply
   `HasAdd`. If you need both, add both to your type signature.
