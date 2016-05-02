@@ -8,6 +8,15 @@ import Prelude as Prelude
 -- | ``` purescript
 -- | not false -- true
 -- | ```
+-- |
+-- | The instance for functions is a little tricky. Calling `not` on a function
+-- | returns a new function that calls the original function and then `not`s
+-- | the result.
+-- |
+-- | ``` purescript
+-- | not even -- \ x -> not (even x)
+-- | (not even) 3 -- true
+-- | ```
 class HasNot a where
   not :: a -> a
 

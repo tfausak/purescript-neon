@@ -13,6 +13,29 @@ import Prelude as Prelude
 -- | ``` purescript
 -- | true :or false -- true
 -- | ```
+-- |
+-- | Some types can't be disjoined per se but it is still useful to be able to
+-- | use the `||` operator with them. For example, you can `or` two arrays
+-- | together to get their union.
+-- |
+-- | ``` purescript
+-- | [1, 2, 3] :or [2, 3, 4] -- [1, 2, 3, 4]
+-- | ```
+-- |
+-- | For integers, `or` is bitwise.
+-- |
+-- | ``` purescript
+-- | 5 :or 2 -- 7
+-- | ```
+-- |
+-- | The instance for functions is perhaps the hardest to understand. Combining
+-- | two functions with `or` returns a new function that calls each function
+-- | and then `or`s the results together.
+-- |
+-- | ``` purescript
+-- | even :or odd -- \ x -> (even x) :or (odd x)
+-- | (even :or odd) 3 -- true
+-- | ```
 class HasOr a where
   or :: a -> a -> a
 
