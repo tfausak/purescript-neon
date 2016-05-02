@@ -58,7 +58,7 @@ guiding principles:
   `import Neon` is enough. No need for tens of lines of imports.
 
 [Neon]: https://github.com/tfausak/purescript-neon
-[Package version]: https://img.shields.io/bower/v/purescript-neon.svg?label=version
+[Package version]: https://pursuit.purescript.org/packages/purescript-neon/badge
 [version]: https://pursuit.purescript.org/packages/purescript-neon
 [Build status]: https://travis-ci.org/tfausak/purescript-neon.svg?branch=master
 [build]: https://travis-ci.org/tfausak/purescript-neon
