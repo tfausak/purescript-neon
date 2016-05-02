@@ -7,12 +7,34 @@ import Neon.Class.HasEqual as HasEqual
 import Neon.Data as Data
 import Prelude as Prelude
 
--- | Represents types that can be conjoined. This is also known as [logical
--- | conjunction](https://en.wikipedia.org/wiki/Logical_conjunction).
+-- | Represents types than can be conjoined. This is also known as
+-- | [logical conjunction](https://en.wikipedia.org/wiki/Logical_conjunction).
 -- |
 -- | ``` purescript
 -- | true :and false -- false
--- | [2, 3] :add [1, 2] -- [2]
+-- | ```
+-- |
+-- | Some types can't be conjoined per se but it is still useful to be able to
+-- | use the `&&` operator with them. For example, you can `and` two arrays
+-- | together to get their intersection.
+-- |
+-- | ``` purescript
+-- | [1, 2, 3] :and [2, 3, 4] -- [2, 3]
+-- | ```
+-- |
+-- | For integers, `and` is bitwise.
+-- |
+-- | ``` purescript
+-- | 5 :and 3 -- 3
+-- | ```
+-- |
+-- | The instance for functions is perhaps the hardest to understand. Combining
+-- | two functions with `and` returns a new function that calls each function
+-- | and then `and`s the results together.
+-- |
+-- | ``` purescript
+-- | even :and odd -- \ x -> (even x) :and (odd x)
+-- | (even :and odd) 3 -- false
 -- | ```
 class HasAnd a where
   and :: a -> a -> a

@@ -12,6 +12,15 @@ import Prelude as Prelude
 -- | inspect 123 -- "123"
 -- | inspect (Just 123) -- "Just (123)"
 -- | ```
+-- |
+-- | The instance for functions and objects do not return valid expressions.
+-- | This is because there is no way in general to generate an expression for
+-- | them.
+-- |
+-- | ``` purescript
+-- | inspect identity -- "{- Function -}"
+-- | inspect {} -- "{- Object -}"
+-- | ```
 class HasInspect a where
   inspect :: a -> String
 
