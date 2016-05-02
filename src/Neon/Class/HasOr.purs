@@ -7,7 +7,7 @@ import Neon.Class.HasEqual as HasEqual
 import Neon.Data as Data
 import Prelude as Prelude
 
--- | Represents types than can be disjoined. This is also known as
+-- | Represents types that can be disjoined. This is also known as
 -- | [logical disjunction](https://en.wikipedia.org/wiki/Logical_disjunction).
 -- |
 -- | ``` purescript
