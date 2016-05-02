@@ -25,8 +25,8 @@ absoluteValue x = if Class.less Class.zero x then negate x else x
 -- | Returns true if all of the elements in the collection pass the predicate.
 -- |
 -- | ``` purescript
--- | [2, 3] :all (> 1) -- true
--- | [2, 1] :all (> 1) -- false
+-- | [2, 3] :all (_ > 1) -- true
+-- | [2, 1] :all (_ > 1) -- false
 -- | ```
 all :: forall a b. (Class.HasReduce a) => (b -> Boolean) -> a b -> Boolean
 all p xs = Class.reduce (\ a x -> Class.and a (p x)) true xs
@@ -34,8 +34,8 @@ all p xs = Class.reduce (\ a x -> Class.and a (p x)) true xs
 -- | Returns true if any of the elements in the collection pass the predicate.
 -- |
 -- | ``` purescript
--- | [1, 2] :any (> 1) -- true
--- | [1, 0] :any (> 1) -- false
+-- | [1, 2] :any (_ > 1) -- true
+-- | [1, 0] :any (_ > 1) -- false
 -- | ```
 any :: forall a b. (Class.HasReduce a) => (b -> Boolean) -> a b -> Boolean
 any p xs = Class.reduce (\ a x -> Class.or a (p x)) false xs
@@ -443,8 +443,8 @@ when p x = if p then x else Class.pure Data.unit
 -- | Keeps calling the function while the predicate is true.
 -- |
 -- | ``` purescript
--- | 1 :while (< 3) (+ 1) -- 3
--- | 9 :while (< 3) (+ 1) -- 9
+-- | 1 :while (_ < 3) (_ + 1) -- 3
+-- | 9 :while (_ < 3) (_ + 1) -- 9
 -- | ```
 while :: forall a. (a -> Boolean) -> (a -> a) -> a -> a
 while p f x = if p x then while p f (f x) else x
