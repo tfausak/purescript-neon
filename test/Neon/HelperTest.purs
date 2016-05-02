@@ -1,5 +1,6 @@
 module Test.Neon.HelperTest where
 
+import Data.Foldable as Foldable
 import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
@@ -17,7 +18,6 @@ suite = test "Helper" do
         if Neon.greater t b
         then Neon.max t (Neon.min b x)
         else Neon.max b (Neon.min t x)
-  -- test "concat" do
   -- test "contains" do
   -- test "curry" do
   -- test "decrement" do
@@ -56,7 +56,9 @@ suite = test "Helper" do
   -- test "sequence" do
   -- test "sign" do
   -- test "size" do
-  -- test "sum" do
+  test "sum" do
+    quickCheck \ (x :: Array Int) ->
+      Neon.sum x === Foldable.sum x
   -- test "swap" do
   -- test "todo" do
   -- test "truncate" do

@@ -68,16 +68,6 @@ clamp b t x =
   then clamp t b x
   else max b (min t x)
 
--- | Concatenates all the elements of a collection together. If the collection
--- | is empty, returns `zero`.
--- |
--- | ``` purescript
--- | concat ["ab", "cd", "ef"] -- "abcdef"
--- | ([] :: Array String) :concat -- ""
--- | ```
-concat :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.HasZero b) => a b -> b
-concat xs = Class.reduce (\ a e -> Class.add e a) Class.zero xs
-
 -- | Returns true if the container contains the element.
 -- |
 -- | ``` purescript
@@ -340,11 +330,14 @@ sign x =
 size :: forall a b. (Class.HasReduce a) => a b -> Int
 size xs = Class.reduce (\ a _ -> Class.add 1 a) 0 xs
 
--- | Adds all the elements of a container together.
+-- | Adds all the elements of a container together. If the container is empty,
+-- | returns `zero`.
 -- |
 -- | ``` purescript
--- | sum [1, 2, 3] -- 6
--- | sum [] -- 0
+-- | [1, 2, 3] :sum -- 6
+-- | ([] :: Array Int) :sum -- 0
+-- | ["ab", "cd", "ef"] :sum -- "abcdef"
+-- | ([] :: Array String) :sum -- ""
 -- | ```
 sum :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.HasZero b) => a b -> b
 sum xs = Class.reduce (\ a x -> Class.add x a) Class.zero xs
