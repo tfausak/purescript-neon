@@ -2,23 +2,25 @@
 -- | particularly surprising if you're already familiar with JavaScript's
 -- | operators.
 -- |
+-- | ```
 -- | Operator | Fixity | Precedence | Description
--- | ---      | ---    | ---        | ---
--- | `:`      | left   | 8          | reverse function application
--- | `^`      | right  | 7          | exponentiation
--- | `*`      | left   | 6          | multiplication
--- | `/`      | left   | 6          | division
--- | `%`      | left   | 6          | remainder
--- | `+`      | left   | 5          | addition
--- | `-`      | left   | 5          | subtraction
--- | `==`     | none   | 4          | equality
--- | `!=`     | none   | 4          | inequality
--- | `>`      | none   | 4          | greater than
--- | `>=`     | none   | 4          | greater than or equal to
--- | `<`      | none   | 4          | less than
--- | `<=`     | none   | 4          | less than or equal to
--- | `&&`     | right  | 3          | and
--- | `||`     | right  | 2          | or
+-- | -------- | ------ | ---------- | -----------
+-- | :        | left   | 8          | reverse function application
+-- | ^        | right  | 7          | exponentiation
+-- | *        | left   | 6          | multiplication
+-- | /        | left   | 6          | division
+-- | %        | left   | 6          | remainder
+-- | +        | left   | 5          | addition
+-- | -        | left   | 5          | subtraction
+-- | ==       | none   | 4          | equality
+-- | !=       | none   | 4          | inequality
+-- | >        | none   | 4          | greater than
+-- | >=       | none   | 4          | greater than or equal to
+-- | <        | none   | 4          | less than
+-- | <=       | none   | 4          | less than or equal to
+-- | &&       | right  | 3          | and
+-- | ||       | right  | 2          | or
+-- | ```
 -- |
 -- | Note that PureScript does not allow exporting an operator (like `+`)
 -- | without also exporting the function it's an alias of (like `_add`). The
