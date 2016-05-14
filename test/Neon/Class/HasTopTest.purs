@@ -5,8 +5,8 @@ import Global as Global
 import Prelude as Prelude
 import Test.Helper (Suite, assert, bind, test)
 
-suite :: Suite
-suite = test "HasTop" do
+tests :: Suite
+tests = test "HasTop" do
   test "Boolean" do
     assert "Prelude.top"
       (Neon.equal (Neon.top :: Boolean) Prelude.top)

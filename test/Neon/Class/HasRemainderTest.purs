@@ -5,8 +5,8 @@ import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 import Unsafe.Coerce as Coerce
 
-suite :: Suite
-suite = test "HasRemainder" do
+tests :: Suite
+tests = test "HasRemainder" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.remainder y x === Prelude.mod x y

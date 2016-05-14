@@ -4,8 +4,8 @@ import Neon as Neon
 import Data.Enum as Enum
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasFromInt" do
+tests :: Suite
+tests = test "HasFromInt" do
   test "Boolean" do
     quickCheck \ x ->
       let y = Neon.clamp (Neon.negate 1) 10 x

@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasNot" do
+tests :: Suite
+tests = test "HasNot" do
   test "Boolean" do
     quickCheck \ (x :: Boolean) ->
       Neon.not x === Prelude.not x

@@ -5,4 +5,4 @@ import Test.NeonTest as NeonTest
 
 main :: Main
 main = runTest do
-  NeonTest.suite
+  NeonTest.tests

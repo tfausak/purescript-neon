@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasApply" do
+tests :: Suite
+tests = test "HasApply" do
   test "Array" do
     let f x = Neon.add 2 x
         g x = Neon.multiply 2 x

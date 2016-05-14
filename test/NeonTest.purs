@@ -8,11 +8,11 @@ import Test.Neon.OperatorTest as OperatorTest
 import Test.Neon.PrimitiveTest as PrimitiveTest
 import Test.Helper (Suite, bind, test)
 
-suite :: Suite
-suite = test "Neon" do
-  ClassTest.suite
-  DataTest.suite
-  EffectTest.suite
-  HelperTest.suite
-  OperatorTest.suite
-  PrimitiveTest.suite
+tests :: Suite
+tests = test "Neon" do
+  ClassTest.tests
+  DataTest.tests
+  EffectTest.tests
+  HelperTest.tests
+  OperatorTest.tests
+  PrimitiveTest.tests

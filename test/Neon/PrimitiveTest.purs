@@ -6,9 +6,9 @@ import Test.Neon.Primitive.IntTest as IntTest
 import Test.Neon.Primitive.NumberTest as NumberTest
 import Test.Helper (Suite, bind, test)
 
-suite :: Suite
-suite = test "Primitive" do
-  CharTest.suite
-  FunctionTest.suite
-  IntTest.suite
-  NumberTest.suite
+tests :: Suite
+tests = test "Primitive" do
+  CharTest.tests
+  FunctionTest.tests
+  IntTest.tests
+  NumberTest.tests

@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, assert, bind, test)
 
-suite :: Suite
-suite = test "HasZero" do
+tests :: Suite
+tests = test "HasZero" do
   test "Array" do
     assert "[]"
       (Neon.equal (Neon.zero :: Array Int) [])

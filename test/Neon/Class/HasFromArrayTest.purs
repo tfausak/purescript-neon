@@ -6,8 +6,8 @@ import Data.String as String
 import Neon as Neon
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasFromArray" do
+tests :: Suite
+tests = test "HasFromArray" do
   test "Array" do
     quickCheck \ (x :: Array Int) ->
       (Neon.fromArray x :: Array Int) === x

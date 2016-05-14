@@ -5,8 +5,8 @@ import Data.Int as Int
 import Math as Math
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasPower" do
+tests :: Suite
+tests = test "HasPower" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.power y x === Int.floor (Math.pow (Int.toNumber x) (Int.toNumber y))

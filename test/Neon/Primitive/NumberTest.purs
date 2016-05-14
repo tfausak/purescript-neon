@@ -6,8 +6,8 @@ import Global as Global
 import Prelude as Prelude
 import Test.Helper (Suite, assert, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "Number" do
+tests :: Suite
+tests = test "Number" do
   test "aNumber" do
     quickCheck \ x ->
       Neon.aNumber x === Prelude.not (Global.isNaN x)

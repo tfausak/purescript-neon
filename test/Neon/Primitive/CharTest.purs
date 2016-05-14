@@ -4,8 +4,8 @@ import Neon as Neon
 import Data.Char as Char
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "Char" do
+tests :: Suite
+tests = test "Char" do
   test "toLower" do
     quickCheck \ x ->
       Neon.toLower x === Char.toLower x

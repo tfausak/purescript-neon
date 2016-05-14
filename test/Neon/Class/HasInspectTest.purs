@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, assert, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasInspect" do
+tests :: Suite
+tests = test "HasInspect" do
   test "List" do
     quickCheck \ (x :: Array Int) ->
       Neon.inspect x === Prelude.show x

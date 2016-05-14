@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasGreater" do
+tests :: Suite
+tests = test "HasGreater" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.greater y x === x Prelude.> y

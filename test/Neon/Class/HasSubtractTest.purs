@@ -6,8 +6,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasSubtract" do
+tests :: Suite
+tests = test "HasSubtract" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.subtract y x === x Array.\\ y

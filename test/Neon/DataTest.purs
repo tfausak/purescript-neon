@@ -4,6 +4,6 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, test)
 
-suite :: Suite
-suite = test "Data" do
+tests :: Suite
+tests = test "Data" do
   Prelude.pure Neon.unit

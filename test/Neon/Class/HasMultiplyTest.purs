@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasMultiply" do
+tests :: Suite
+tests = test "HasMultiply" do
   test "Int" do
     quickCheck \ (x :: Int) y ->
       Neon.multiply y x === Prelude.mul x y

@@ -4,8 +4,8 @@ import Data.Traversable as Traversable
 import Neon as Neon
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasTraverse" do
+tests :: Suite
+tests = test "HasTraverse" do
   let f x = Neon.Just x
   test "Array" do
     quickCheck \ (x :: Array Int) ->

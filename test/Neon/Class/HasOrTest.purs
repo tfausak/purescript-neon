@@ -7,8 +7,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasOr" do
+tests :: Suite
+tests = test "HasOr" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.or y x === Array.union x y

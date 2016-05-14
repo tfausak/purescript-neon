@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasChain" do
+tests :: Suite
+tests = test "HasChain" do
   test "Array" do
     let f x = [x, x]
     quickCheck \ (x :: Array Int) ->

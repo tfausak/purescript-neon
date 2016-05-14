@@ -3,8 +3,8 @@ module Test.Neon.OperatorTest where
 import Neon as Neon
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "Operator" do
+tests :: Suite
+tests = test "Operator" do
   test ":" do
     quickCheck \ (x :: Int) ->
       x Neon.: Neon.identity === Neon.identity x

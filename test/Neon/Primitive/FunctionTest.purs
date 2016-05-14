@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "Function" do
+tests :: Suite
+tests = test "Function" do
   test "identity" do
     quickCheck \ (x :: Int) ->
       Neon.identity x === Prelude.id x

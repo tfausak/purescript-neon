@@ -5,8 +5,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Suite, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "Helper" do
+tests :: Suite
+tests = test "Helper" do
   -- test "absoluteValue" do
   -- test "all" do
   -- test "any" do

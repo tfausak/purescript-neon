@@ -4,8 +4,8 @@ import Neon as Neon
 import Prelude as Prelude
 import Test.Helper (Aff, class Arbitrary, Suite, Test, bind, quickCheck, test, (===))
 
-suite :: Suite
-suite = test "HasCompare" do
+tests :: Suite
+tests = test "HasCompare" do
   let qc :: forall a. (Arbitrary a, Neon.HasCompare a, Prelude.Ord a) => Neon.Proxy a -> Test Aff
       qc _ = quickCheck \ (x :: a) y ->
         Neon.compare y x === Prelude.compare x y

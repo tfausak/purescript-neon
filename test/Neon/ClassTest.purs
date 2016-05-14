@@ -31,34 +31,34 @@ import Test.Neon.Class.HasTraverseTest as HasTraverseTest
 import Test.Neon.Class.HasZeroTest as HasZeroTest
 import Test.Helper (Suite, bind, test)
 
-suite :: Suite
-suite = test "Class" do
-  HasAddTest.suite
-  HasAndTest.suite
-  HasApplyTest.suite
-  HasBottomTest.suite
-  HasChainTest.suite
-  HasCompareTest.suite
-  HasDivideTest.suite
-  HasEqualTest.suite
-  HasFilterTest.suite
-  HasFromArrayTest.suite
-  HasFromIntTest.suite
-  HasGreaterTest.suite
-  HasInspectTest.suite
-  HasLessTest.suite
-  HasMapTest.suite
-  HasMultiplyTest.suite
-  HasNotTest.suite
-  HasOneTest.suite
-  HasOrTest.suite
-  HasPowerTest.suite
-  HasReduceTest.suite
-  HasRemainderTest.suite
-  HasSubtractTest.suite
-  HasToArrayTest.suite
-  HasToIntTest.suite
-  HasTopTest.suite
-  HasTraverseTest.suite
-  HasPureTest.suite
-  HasZeroTest.suite
+tests :: Suite
+tests = test "Class" do
+  HasAddTest.tests
+  HasAndTest.tests
+  HasApplyTest.tests
+  HasBottomTest.tests
+  HasChainTest.tests
+  HasCompareTest.tests
+  HasDivideTest.tests
+  HasEqualTest.tests
+  HasFilterTest.tests
+  HasFromArrayTest.tests
+  HasFromIntTest.tests
+  HasGreaterTest.tests
+  HasInspectTest.tests
+  HasLessTest.tests
+  HasMapTest.tests
+  HasMultiplyTest.tests
+  HasNotTest.tests
+  HasOneTest.tests
+  HasOrTest.tests
+  HasPowerTest.tests
+  HasReduceTest.tests
+  HasRemainderTest.tests
+  HasSubtractTest.tests
+  HasToArrayTest.tests
+  HasToIntTest.tests
+  HasTopTest.tests
+  HasTraverseTest.tests
+  HasPureTest.tests
+  HasZeroTest.tests
