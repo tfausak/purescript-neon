@@ -1,6 +1,7 @@
 module Neon.Class.HasInspect where
 
 import Data.Foldable as Foldable
+import Neon.Class.HasToArray as HasToArray
 import Neon.Data as Data
 import Prelude as Prelude
 
@@ -62,6 +63,11 @@ instance orderingHasInspect :: HasInspect Data.Ordering where
 
 instance proxyHasInspect :: HasInspect (Data.Proxy a) where
   inspect _ = "Proxy"
+
+instance setHasInspect :: (HasInspect a) => HasInspect (Data.Set a) where
+  inspect xs =
+    let toArray = HasToArray.toArray :: Data.Set a -> Array a
+    in Prelude.append "fromArray " (inspect (toArray xs))
 
 instance stringHasInspect :: HasInspect String where
   inspect x = Prelude.show x

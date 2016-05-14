@@ -24,3 +24,6 @@ instance listHasMap :: HasMap Data.List where
 
 instance maybeHasMap :: HasMap Data.Maybe where
   map f x = Prelude.map f x
+
+-- instance setHasMap :: HasMap Data.Set where
+--   map f xs = _

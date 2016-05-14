@@ -1,5 +1,6 @@
 module Neon.Class.HasPure where
 
+import Data.Set as Set
 import Neon.Data as Data
 import Neon.Effect as Effect
 import Prelude as Prelude
@@ -24,3 +25,6 @@ instance listHasPure :: HasPure Data.List where
 
 instance maybeHasPure :: HasPure Data.Maybe where
   pure x = Prelude.pure x
+
+instance setHasPure :: HasPure Data.Set where
+  pure x = Set.singleton x

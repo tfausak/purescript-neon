@@ -27,3 +27,6 @@ instance listHasApply :: HasApply Data.List where
 
 instance maybeHasApply :: HasApply Data.Maybe where
   apply f x = Prelude.apply f x
+
+-- instance setHasApply :: HasApply Data.Set where
+--   apply f x = _

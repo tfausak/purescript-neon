@@ -42,5 +42,8 @@ instance numberHasLess :: HasLess Number where
 instance orderingHasLess :: HasLess Data.Ordering where
   less y x = x Prelude.< y
 
+-- instance setHasLess :: HasLess (Data.Set a) where
+--   less ys xs = _
+
 instance stringHasLess :: HasLess String where
   less y x = x Prelude.< y

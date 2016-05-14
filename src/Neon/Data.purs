@@ -7,6 +7,7 @@ module Neon.Data
 import Control.Monad.Eff.Exception (Error) as Export
 import Data.List (List(Nil, Cons)) as Export
 import Data.Maybe (Maybe(Nothing, Just)) as Export
+import Data.Set (Set) as Export
 import Data.Tuple (Tuple(Tuple)) as Export
 import Prelude (Ordering(EQ, GT, LT), Unit, unit) as Export
 import Type.Proxy (Proxy(Proxy)) as Export

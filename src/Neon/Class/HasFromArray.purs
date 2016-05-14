@@ -24,5 +24,8 @@ instance listHasFromArray :: HasFromArray a (Data.List a) where
 instance maybeHasFromArray :: HasFromArray a (Data.Maybe a) where
   fromArray xs = Array.head xs
 
+-- instance setHasFromArray :: HasFromArray a (Data.Set a) where
+--   fromArray xs = _
+
 instance stringHasFromArray :: HasFromArray Char String where
   fromArray xs = String.fromCharArray xs

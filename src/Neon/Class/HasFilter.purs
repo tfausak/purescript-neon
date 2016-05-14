@@ -17,3 +17,6 @@ instance arrayHasFilter :: HasFilter Array where
 
 instance listHasFilter :: HasFilter Data.List where
   filter f xs = List.filter f xs
+
+-- instance setHasFilter :: HasFilter Data.Set where
+--   filter f xs = _

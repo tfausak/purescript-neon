@@ -30,3 +30,6 @@ instance listHasSubtract :: (HasEqual.HasEqual a) => HasSubtract (Data.List a) w
 
 instance numberHasSubtract :: HasSubtract Number where
   subtract y x = Prelude.sub x y
+
+-- instance setHasSubtract :: HasSubtract (Data.Set a) where
+--   subtract ys xs = _

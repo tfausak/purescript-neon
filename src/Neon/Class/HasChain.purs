@@ -24,3 +24,6 @@ instance listHasChain :: HasChain Data.List where
 
 instance maybeHasChain :: HasChain Data.Maybe where
   chain f mx = Prelude.bind mx f
+
+-- instance setHasChain :: HasChain Data.Set where
+--   chain f xs = _
