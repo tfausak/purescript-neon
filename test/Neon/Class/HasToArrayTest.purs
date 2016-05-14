@@ -4,10 +4,10 @@ import Data.List as List
 import Data.Maybe as Maybe
 import Data.String as String
 import Neon as Neon
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasToArray" do
+tests = suite "HasToArray" do
   test "Array" do
     quickCheck \ (x :: Array Int) ->
       Neon.toArray x === x

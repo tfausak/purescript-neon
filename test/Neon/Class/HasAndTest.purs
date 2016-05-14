@@ -5,10 +5,10 @@ import Data.Int.Bits as Bits
 import Data.List as List
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasAnd" do
+tests = suite "HasAnd" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.and y x === Array.intersect x y

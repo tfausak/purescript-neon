@@ -2,10 +2,10 @@ module Test.Neon.Class.HasZeroTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, test)
+import Test.Helper (Suite, assert, bind, suite, test)
 
 tests :: Suite
-tests = test "HasZero" do
+tests = suite "HasZero" do
   test "Array" do
     assert "[]"
       (Neon.equal (Neon.zero :: Array Int) [])

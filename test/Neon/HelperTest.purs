@@ -3,10 +3,10 @@ module Test.Neon.HelperTest where
 import Data.Foldable as Foldable
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "Helper" do
+tests = suite "Helper" do
   -- test "absoluteValue" do
   -- test "all" do
   -- test "any" do

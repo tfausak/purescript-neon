@@ -29,3 +29,6 @@ type Test a = a
 type Main = Test Eff
 
 type Suite = Test Aff
+
+suite :: String -> Suite -> Suite
+suite = Export.test

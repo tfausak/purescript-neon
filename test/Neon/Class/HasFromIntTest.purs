@@ -2,10 +2,10 @@ module Test.Neon.Class.HasFromIntTest where
 
 import Neon as Neon
 import Data.Enum as Enum
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasFromInt" do
+tests = suite "HasFromInt" do
   test "Boolean" do
     quickCheck \ x ->
       let y = Neon.clamp (Neon.negate 1) 10 x

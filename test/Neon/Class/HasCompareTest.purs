@@ -2,10 +2,10 @@ module Test.Neon.Class.HasCompareTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Aff, class Arbitrary, Suite, Test, bind, quickCheck, test, (===))
+import Test.Helper (Aff, class Arbitrary, Suite, Test, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasCompare" do
+tests = suite "HasCompare" do
   let qc :: forall a. (Arbitrary a, Neon.HasCompare a, Prelude.Ord a) => Neon.Proxy a -> Test Aff
       qc _ = quickCheck \ (x :: a) y ->
         Neon.compare y x === Prelude.compare x y

@@ -3,10 +3,10 @@ module Test.Neon.Class.HasFilterTest where
 import Data.Array as Array
 import Data.List as List
 import Neon as Neon
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasFilter" do
+tests = suite "HasFilter" do
   test "Array" do
     let f x = Neon.greater 0 x
     quickCheck \ (x :: Array Int) ->

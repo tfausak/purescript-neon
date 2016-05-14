@@ -2,10 +2,10 @@ module Test.Neon.Class.HasAddTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasAdd" do
+tests = suite "HasAdd" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.add y x === Prelude.append x y

@@ -2,10 +2,10 @@ module Test.Neon.Primitive.CharTest where
 
 import Neon as Neon
 import Data.Char as Char
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "Char" do
+tests = suite "Char" do
   test "toLower" do
     quickCheck \ x ->
       Neon.toLower x === Char.toLower x

@@ -3,10 +3,10 @@ module Test.Neon.Class.HasBottomTest where
 import Neon as Neon
 import Global as Global
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, test)
+import Test.Helper (Suite, assert, bind, suite, test)
 
 tests :: Suite
-tests = test "HasBottom" do
+tests = suite "HasBottom" do
   test "Boolean" do
     assert "Prelude.bottom"
       (Neon.equal (Neon.bottom :: Boolean) Prelude.bottom)

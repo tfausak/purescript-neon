@@ -4,10 +4,10 @@ import Neon as Neon
 import Data.Int as Int
 import Global as Global
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, quickCheck, test, (===))
+import Test.Helper (Suite, assert, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "Number" do
+tests = suite "Number" do
   test "aNumber" do
     quickCheck \ x ->
       Neon.aNumber x === Prelude.not (Global.isNaN x)

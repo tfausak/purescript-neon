@@ -5,10 +5,10 @@ import Data.Int.Bits as Bits
 import Data.List as List
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasOr" do
+tests = suite "HasOr" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.or y x === Array.union x y

@@ -2,10 +2,10 @@ module Test.Neon.Class.HasChainTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasChain" do
+tests = suite "HasChain" do
   test "Array" do
     let f x = [x, x]
     quickCheck \ (x :: Array Int) ->

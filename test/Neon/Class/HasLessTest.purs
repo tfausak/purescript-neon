@@ -2,10 +2,10 @@ module Test.Neon.Class.HasLessTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasLess" do
+tests = suite "HasLess" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.less y x === x Prelude.< y

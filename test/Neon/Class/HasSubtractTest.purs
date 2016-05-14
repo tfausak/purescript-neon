@@ -4,10 +4,10 @@ import Data.Array as Array
 import Data.List as List
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasSubtract" do
+tests = suite "HasSubtract" do
   test "Array" do
     quickCheck \ (x :: Array Int) y ->
       Neon.subtract y x === x Array.\\ y

@@ -2,10 +2,10 @@ module Test.Neon.Class.HasToIntTest where
 
 import Neon as Neon
 import Data.Enum as Enum
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasToInt" do
+tests = suite "HasToInt" do
   test "Boolean" do
     quickCheck \ (x :: Boolean) ->
       Neon.toInt x === Enum.fromEnum x

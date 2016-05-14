@@ -2,10 +2,10 @@ module Test.Neon.Class.HasReduceTest where
 
 import Data.Foldable as Foldable
 import Neon as Neon
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasReduce" do
+tests = suite "HasReduce" do
   let f x y = Neon.add y x
   test "Array" do
     quickCheck \ (x :: Int) (xs :: Array Int) ->

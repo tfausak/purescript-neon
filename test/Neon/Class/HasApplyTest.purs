@@ -2,10 +2,10 @@ module Test.Neon.Class.HasApplyTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, test, (===))
+import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
 
 tests :: Suite
-tests = test "HasApply" do
+tests = suite "HasApply" do
   test "Array" do
     let f x = Neon.add 2 x
         g x = Neon.multiply 2 x
