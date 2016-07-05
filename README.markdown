@@ -51,6 +51,9 @@ guiding principles:
 - Type classes should be designed for programmers, not mathematicians. This
   means `HasAdd` is a semigroup, but it's not called `Semigroup`.
 
+- Neon should not define its own data types. That means you can use `Maybe`
+  from `Data.Maybe` without translation.
+
 - Pure functions should not throw exceptions. This means `fromInt` returns a
   `Maybe` value. Pure functions that throw exceptions should be marked unsafe.
 
