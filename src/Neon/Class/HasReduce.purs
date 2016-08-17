@@ -20,3 +20,6 @@ instance listHasReduce :: HasReduce Data.List where
 
 instance maybeHasReduce :: HasReduce Data.Maybe where
   reduce f x mx = Foldable.foldl f x mx
+
+instance setHasReduce :: HasReduce Data.Set where
+  reduce f x xs = Foldable.foldl f x xs

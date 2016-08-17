@@ -42,5 +42,8 @@ instance numberHasGreater :: HasGreater Number where
 instance orderingHasGreater :: HasGreater Data.Ordering where
   greater y x = x Prelude.> y
 
+-- instance setHasGreater :: HasGreater (Data.Set a) where
+--   greater ys xs = _
+
 instance stringHasGreater :: HasGreater String where
   greater y x = x Prelude.> y

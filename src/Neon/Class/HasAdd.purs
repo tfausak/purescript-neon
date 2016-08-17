@@ -28,5 +28,8 @@ instance numberHasAdd :: HasAdd Number where
 instance orderingHasAdd :: HasAdd Data.Ordering where
   add y x = Prelude.append x y
 
+-- instance setHasAdd :: HasAdd (Data.Set a) where
+--   add y x = _
+
 instance stringHasAdd :: HasAdd String where
   add y x = Prelude.append x y

@@ -40,6 +40,9 @@ instance numberHasEqual :: HasEqual Number where
 instance orderingHasEqual :: HasEqual Data.Ordering where
   equal y x = Prelude.eq x y
 
+-- instance setHasEqual :: HasEqual (Data.Set a) where
+--   equal y x = _
+
 instance stringHasEqual :: HasEqual String where
   equal y x = Prelude.eq x y
 

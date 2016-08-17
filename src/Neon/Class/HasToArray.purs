@@ -1,6 +1,7 @@
 module Neon.Class.HasToArray where
 
 import Data.List as List
+import Data.Set as Set
 import Data.String as String
 import Neon.Data as Data
 
@@ -24,6 +25,9 @@ instance maybeHasToArray :: HasToArray (Data.Maybe a) a where
   toArray mx = case mx of
     Data.Nothing -> []
     Data.Just x -> [x]
+
+instance setHasToArray :: HasToArray (Data.Set a) a where
+  toArray xs = toArray (Set.toList xs)
 
 instance stringHasToArray :: HasToArray String Char where
   toArray x = String.toCharArray x

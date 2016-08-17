@@ -53,3 +53,6 @@ instance intHasOr :: HasOr Int where
 
 instance listHasOr :: (HasEqual.HasEqual a) => HasOr (Data.List a) where
   or ys xs = List.unionBy (\ x y -> HasEqual.equal y x) xs ys
+
+-- instance setHasOr :: HasOr (Data.Set a) where
+--   or ys xs = _

@@ -1,5 +1,6 @@
 module Neon.Class.HasZero where
 
+import Data.Set as Set
 import Neon.Data as Data
 import Prelude as Prelude
 
@@ -24,6 +25,9 @@ instance listHasZero :: HasZero (Data.List a) where
 
 instance numberHasZero :: HasZero Number where
   zero = Prelude.zero
+
+instance setHasZero :: HasZero (Data.Set a) where
+  zero = Set.empty
 
 instance stringHasZero :: HasZero String where
   zero = ""

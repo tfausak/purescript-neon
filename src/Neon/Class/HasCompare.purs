@@ -46,6 +46,9 @@ instance numberHasCompare :: HasCompare Number where
 instance orderingHasCompare :: HasCompare Data.Ordering where
   compare y x = defaultCompare y x
 
+-- instance setHasCompare :: HasCompare (Data.Set a) where
+--   compare y x = _
+
 instance stringHasCompare :: HasCompare String where
   compare y x = defaultCompare y x
 

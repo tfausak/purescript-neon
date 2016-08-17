@@ -53,3 +53,6 @@ instance intHasAnd :: HasAnd Int where
 
 instance listHasAnd :: (HasEqual.HasEqual a) => HasAnd (Data.List a) where
   and ys xs = List.intersectBy (\ x y -> HasEqual.equal y x) xs ys
+
+-- instance setHasAnd :: HasAnd (Data.Set a) where
+--   and yx xs = _

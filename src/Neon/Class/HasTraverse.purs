@@ -26,7 +26,10 @@ instance listHasTraverse :: HasTraverse Data.List where
     Data.Nil -> HasPure.pure Data.Nil
     Data.Cons x l -> HasApply.apply (HasMap.map Data.Cons (f x)) (traverse f l)
 
-instance laybeHasTraverse :: HasTraverse Data.Maybe where
+instance maybeHasTraverse :: HasTraverse Data.Maybe where
   traverse f mx = case mx of
     Data.Nothing -> HasPure.pure Data.Nothing
     Data.Just x -> HasMap.map Data.Just (f x)
+
+-- instance setHasTraverse :: HasTraverse Data.Set where
+--   traverse f xs = _
