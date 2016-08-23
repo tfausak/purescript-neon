@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "bower": "1.7.9",
+    "pulp": "9.0.1",
+    "purescript": "0.9.3"
+  },
+  "private": true,
+  "scripts": {
+    "bower": "bower",
+    "postinstall": "bower install",
+    "psc-publish": "psc-publish",
+    "pulp": "pulp",
+    "test": "pulp --then 'psc-publish --dry-run' test"
+  }
+}

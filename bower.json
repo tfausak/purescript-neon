@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "purescript-console": "1.0.0",
+    "purescript-eff": "1.0.0",
+    "purescript-prelude": "1.0.1",
+    "purescript-psci-support": "1.0.0"
+  },
+  "license": "MIT",
+  "name": "purescript-neon",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tfausak/purescript-neon.git"
+  }
+}
