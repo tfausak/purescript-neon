@@ -2,6 +2,7 @@
   "dependencies": {
     "purescript-console": "1.0.0",
     "purescript-eff": "1.0.0",
+    "purescript-math": "2.0.0",
     "purescript-prelude": "1.0.1",
     "purescript-psci-support": "1.0.0"
   },
