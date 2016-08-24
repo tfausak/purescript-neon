@@ -1,17 +1,32 @@
 module Neon (module Export, module Neon) where
 
-import Control.Applicative (pure) as Export
-import Control.Bind (bind) as Export
-import Control.Monad.Eff (Pure) as Export
+import Control.Applicative (class Applicative, pure, unless, when) as Export
+import Control.Apply (class Apply, apply) as Export
+import Control.Bind (class Bind, bind, join) as Export
+import Control.Category (class Category, id) as Export
+import Control.Monad (class Monad) as Export
+import Control.Monad.Eff (Eff, Pure, runPure) as Export
+import Control.Monad.Eff.Class (class MonadEff, liftEff) as Export
+import Control.Monad.Eff.Console (CONSOLE, log) as Export
+import Control.Monad.Eff.Unsafe (unsafeInterleaveEff, unsafePerformEff) as Export
 import Control.Semigroupoid (class Semigroupoid, compose) as Export
+import Data.BooleanAlgebra (class BooleanAlgebra) as Export
+import Data.Bounded (class Bounded, bottom, top) as Export
+import Data.CommutativeRing (class CommutativeRing) as Export
 import Data.Eq (class Eq, eq, notEq) as Export
 import Data.EuclideanRing (class EuclideanRing, div, mod) as Export
-import Data.HeytingAlgebra (class HeytingAlgebra, conj, disj) as Export
-import Data.Ord (class Ord, greaterThan, greaterThanOrEq, lessThan, lessThanOrEq) as Export
+import Data.Field (class Field) as Export
+import Data.Function (const, flip, on) as Export
+import Data.Functor (class Functor, map, void) as Export
+import Data.HeytingAlgebra (class HeytingAlgebra, conj, disj, not) as Export
+import Data.Ord (class Ord, abs, between, clamp, compare, comparing, greaterThan, greaterThanOrEq, lessThan, lessThanOrEq, max, min, signum) as Export
+import Data.Ordering (Ordering(EQ, GT, LT)) as Export
 import Data.Ring (class Ring, negate, sub) as Export
 import Data.Semigroup (class Semigroup, append) as Export
-import Data.Semiring (class Semiring, add, mul) as Export
+import Data.Semiring (class Semiring, add, mul, one, zero) as Export
+import Data.Show (class Show, show) as Export
 import Data.Unit (Unit, unit) as Export
+import Data.Void (Void, absurd) as Export
 import Math (pow) as Export
 
 import Control.Semigroupoid as Semigroupoid
