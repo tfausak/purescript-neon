@@ -2,7 +2,8 @@ module Test.Neon.Class.HasOneTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, suite, test)
+import Test.Helper (Suite, discard, assert, suite, test)
+
 
 tests :: Suite
 tests = suite "HasOne" do

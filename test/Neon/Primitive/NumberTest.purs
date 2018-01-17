@@ -4,7 +4,7 @@ import Neon as Neon
 import Data.Int as Int
 import Global as Global
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, assert, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "Number" do

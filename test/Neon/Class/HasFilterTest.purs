@@ -3,7 +3,7 @@ module Test.Neon.Class.HasFilterTest where
 import Data.Array as Array
 import Data.List as List
 import Neon as Neon
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasFilter" do

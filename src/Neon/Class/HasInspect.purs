@@ -27,7 +27,7 @@ class HasInspect a where
 instance arrayHasInspect :: (HasInspect a) => HasInspect (Array a) where
   inspect xs = case xs of
     [] -> "[]"
-    _ -> Foldable.mconcat
+    _ -> Foldable.fold
       ["[", Foldable.intercalate "," (Prelude.map inspect xs), "]"]
 
 instance booleanHasInspect :: HasInspect Boolean where
@@ -48,8 +48,8 @@ instance intHasInspect :: HasInspect Int where
 instance listHasInspect :: (HasInspect a) => HasInspect (Data.List a) where
   inspect xs = case xs of
     Data.Nil -> "Nil"
-    Data.Cons h t -> Foldable.mconcat
-      ["Cons (", inspect h, ") (", inspect t, ")"]
+    Data.Cons h t -> Foldable.fold
+      ["(", Foldable.intercalate " : " (Prelude.map inspect xs), " : Nil)"]
 
 instance numberHasInspect :: HasInspect Number where
   inspect x = Prelude.show x

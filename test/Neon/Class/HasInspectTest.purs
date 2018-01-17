@@ -2,7 +2,8 @@ module Test.Neon.Class.HasInspectTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, quickCheck, suite, test, (===))
+import Test.Helper
+  (Suite, discard, assert, quickCheck, suite, test, testSkip, success, (===))
 
 tests :: Suite
 tests = suite "HasInspect" do
@@ -15,7 +16,8 @@ tests = suite "HasInspect" do
   test "Char" do
     quickCheck \ (x :: Char) ->
       Neon.inspect x === Prelude.show x
-  -- test "Error" do
+  testSkip "Error" do
+    success
   test "Int" do
     quickCheck \ (x :: Int) ->
       Neon.inspect x === Prelude.show x

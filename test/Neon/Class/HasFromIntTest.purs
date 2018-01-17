@@ -2,7 +2,7 @@ module Test.Neon.Class.HasFromIntTest where
 
 import Neon as Neon
 import Data.Enum as Enum
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasFromInt" do

@@ -1,6 +1,7 @@
 module Neon.Primitive.Char where
 
 import Data.Char as Char
+import Data.String as String
 
 -- | Converts a character to lower case.
 -- |
@@ -17,7 +18,7 @@ toLower x = Char.toLower x
 -- | toString 'a' -- "a"
 -- | ```
 toString :: Char -> String
-toString x = Char.toString x
+toString x = String.singleton x
 
 -- | Converts a character to upper case.
 -- |

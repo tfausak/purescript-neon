@@ -4,7 +4,7 @@ import Data.Array as Array
 import Data.List as List
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasSubtract" do

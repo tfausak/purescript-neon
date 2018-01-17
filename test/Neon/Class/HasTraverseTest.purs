@@ -2,7 +2,7 @@ module Test.Neon.Class.HasTraverseTest where
 
 import Data.Traversable as Traversable
 import Neon as Neon
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasTraverse" do

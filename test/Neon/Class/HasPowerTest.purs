@@ -3,7 +3,8 @@ module Test.Neon.Class.HasPowerTest where
 import Neon as Neon
 import Data.Int as Int
 import Math as Math
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
+
 
 tests :: Suite
 tests = suite "HasPower" do

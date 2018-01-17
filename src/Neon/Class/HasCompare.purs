@@ -49,7 +49,7 @@ instance orderingHasCompare :: HasCompare Data.Ordering where
 instance stringHasCompare :: HasCompare String where
   compare y x = defaultCompare y x
 
-defaultCompare :: forall a. (HasGreater.HasGreater a, HasLess.HasLess a) => a -> a -> Data.Ordering
+defaultCompare :: forall a. HasGreater.HasGreater a => HasLess.HasLess a => a -> a -> Data.Ordering
 defaultCompare y x =
   if HasGreater.greater y x
     then Data.GT
