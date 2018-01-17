@@ -29,7 +29,8 @@ import Test.Neon.Class.HasToIntTest as HasToIntTest
 import Test.Neon.Class.HasTopTest as HasTopTest
 import Test.Neon.Class.HasTraverseTest as HasTraverseTest
 import Test.Neon.Class.HasZeroTest as HasZeroTest
-import Test.Helper (Suite, bind, suite)
+import Test.Helper (Suite, discard, suite)
+
 
 tests :: Suite
 tests = suite "Class" do

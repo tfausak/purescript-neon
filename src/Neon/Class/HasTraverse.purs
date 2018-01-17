@@ -15,7 +15,7 @@ import Neon.Data as Data
 -- | [1, 2] :traverse (\ x -> x :inspect :Just) -- Just ["1", "2"]
 -- | ```
 class HasTraverse t where
-  traverse :: forall a b m. (HasApply.HasApply m, HasMap.HasMap m, HasPure.HasPure m) => (a -> m b) -> t a -> m (t b)
+  traverse :: forall a b m. HasApply.HasApply m => HasMap.HasMap m => HasPure.HasPure m => (a -> m b) -> t a -> m (t b)
 
 instance lrrayHasTraverse :: HasTraverse Array where
   traverse f x = HasMap.map HasToArray.toArray

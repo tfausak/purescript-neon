@@ -2,7 +2,7 @@ module Test.Neon.Class.HasLessTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasLess" do

@@ -3,7 +3,7 @@ module Test.Neon.Class.HasTopTest where
 import Neon as Neon
 import Global as Global
 import Prelude as Prelude
-import Test.Helper (Suite, assert, bind, suite, test)
+import Test.Helper (Suite, discard, assert, suite, test)
 
 tests :: Suite
 tests = suite "HasTop" do

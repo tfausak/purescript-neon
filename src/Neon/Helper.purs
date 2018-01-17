@@ -7,6 +7,7 @@
 -- | container types.
 module Neon.Helper where
 
+import Control.Bind (discard)
 import Neon.Class as Class
 import Neon.Data as Data
 import Neon.Effect as Effect
@@ -19,7 +20,7 @@ import Unsafe.Coerce as Coerce
 -- | absoluteValue (-2) -- 2
 -- | absoluteValue 3 -- 3
 -- | ```
-absoluteValue :: forall a. (Class.HasLess a, Class.HasSubtract a, Class.HasZero a) => a -> a
+absoluteValue :: forall a. Class.HasLess a => Class.HasSubtract a => Class.HasZero a => a -> a
 absoluteValue x = if Class.less Class.zero x then negate x else x
 
 -- | Returns true if all of the elements in the collection pass the predicate.
@@ -62,7 +63,7 @@ bind x f = Class.chain f x
 -- | 6 :clamp 3 5 -- 5
 -- | 6 :clamp 5 3 -- 5
 -- | ```
-clamp :: forall a. (Class.HasGreater a, Class.HasLess a) => a -> a -> a -> a
+clamp :: forall a. Class.HasGreater a => Class.HasLess a => a -> a -> a -> a
 clamp b t x =
   if Class.greater t b
   then clamp t b x
@@ -74,7 +75,7 @@ clamp b t x =
 -- | [1, 2, 3] :contains 2 -- true
 -- | [1, 0, 3] :contains 2 -- false
 -- | ```
-contains :: forall a b. (Class.HasEqual b, Class.HasReduce a) => b -> a b -> Boolean
+contains :: forall a b. Class.HasEqual b => Class.HasReduce a => b -> a b -> Boolean
 contains x xs = any (Class.equal x) xs
 
 -- | Converts a function that operates on tuples to a normal function.
@@ -93,7 +94,7 @@ curry f = \ x y -> f (Data.Tuple x y)
 -- | decrement 'b' -- Just 'a'
 -- | decrement '\0' -- Nothing
 -- | ```
-decrement :: forall a. (Class.HasFromInt a, Class.HasToInt a) => a -> Data.Maybe a
+decrement :: forall a. Class.HasFromInt a => Class.HasToInt a => a -> Data.Maybe a
 decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 
 -- | Returns true if the number is divisible by the other.
@@ -102,7 +103,7 @@ decrement x = Class.fromInt (Class.subtract 1 (Class.toInt x))
 -- | 9 :divisibleBy 3 -- true
 -- | 8 :divisibleBy 3 -- false
 -- | ```
-divisibleBy :: forall a. (Class.HasEqual a, Class.HasRemainder a, Class.HasZero a) => a -> a -> Boolean
+divisibleBy :: forall a. Class.HasEqual a => Class.HasRemainder a => Class.HasZero a => a -> a -> Boolean
 divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 
 -- | Creates an array that ranges from the given upper bound down to the lower
@@ -113,7 +114,7 @@ divisibleBy y x = Class.equal Class.zero (Class.remainder y x)
 -- | 1 :downTo 1 -- [1]
 -- | 1 :downTo 3 -- []
 -- | ```
-downTo :: forall a. (Class.HasFromInt a, Class.HasLess a, Class.HasToInt a) => a -> a -> Array a
+downTo :: forall a. Class.HasFromInt a => Class.HasLess a => Class.HasToInt a => a -> a -> Array a
 downTo l h =
   let downToList :: a -> a -> Data.List a
       downToList b t = if Class.less b t
@@ -156,7 +157,7 @@ flatten xss = Class.chain Primitive.identity xss
 -- | 2 :greaterOrEqual 2 -- true
 -- | 2 :greaterOrEqual 3 -- false
 -- | ```
-greaterOrEqual :: forall a. (Class.HasEqual a, Class.HasGreater a) => a -> a -> Boolean
+greaterOrEqual :: forall a. Class.HasEqual a => Class.HasGreater a => a -> a -> Boolean
 greaterOrEqual y x = Class.or (Class.equal y x) (Class.greater y x)
 
 -- | Increases a value by one. If the value is already the top, nothing will be
@@ -166,7 +167,7 @@ greaterOrEqual y x = Class.or (Class.equal y x) (Class.greater y x)
 -- | increment 'a' -- Just 'b'
 -- | increment '\65535' -- Nothing
 -- | ```
-increment :: forall a. (Class.HasFromInt a, Class.HasToInt a) => a -> Data.Maybe a
+increment :: forall a. Class.HasFromInt a => Class.HasToInt a => a -> Data.Maybe a
 increment x = Class.fromInt (Class.add 1 (Class.toInt x))
 
 -- | Returns true if the number is infinite.
@@ -187,7 +188,7 @@ infinite x = Class.not (Primitive.finite x)
 -- | 2 :lessOrEqual 2 -- true
 -- | 2 :lessOrEqual 3 -- true
 -- | ```
-lessOrEqual :: forall a. (Class.HasEqual a, Class.HasLess a) => a -> a -> Boolean
+lessOrEqual :: forall a. Class.HasEqual a => Class.HasLess a => a -> a -> Boolean
 lessOrEqual y x = Class.or (Class.equal y x) (Class.less y x)
 
 -- | Returns the greater value.
@@ -205,7 +206,7 @@ max y x = if Class.greater y x then x else y
 -- | maximum [1, 3, 2] -- Just 3
 -- | maximum [] -- Nothing
 -- | ```
-maximum :: forall a b. (Class.HasGreater b, Class.HasReduce a) => a b -> Data.Maybe b
+maximum :: forall a b. Class.HasGreater b => Class.HasReduce a => a b -> Data.Maybe b
 maximum xs = Class.reduce
   (\ a x -> case a of
     Data.Nothing -> Data.Just x
@@ -228,7 +229,7 @@ min y x = if Class.less y x then x else y
 -- | minimum [2, 1, 3] -- Just 1
 -- | minimum [] -- Nothing
 -- | ```
-minimum :: forall a b. (Class.HasLess b, Class.HasReduce a) => a b -> Data.Maybe b
+minimum :: forall a b. Class.HasLess b => Class.HasReduce a => a b -> Data.Maybe b
 minimum xs = Class.reduce
   (\ a x -> case a of
     Data.Nothing -> Data.Just x
@@ -241,7 +242,7 @@ minimum xs = Class.reduce
 -- | ``` purescript
 -- | negate 2 -- -2
 -- | ```
-negate :: forall a. (Class.HasSubtract a, Class.HasZero a) => a -> a
+negate :: forall a. Class.HasSubtract a => Class.HasZero a => a -> a
 negate x = Class.subtract x Class.zero
 
 -- | Returns `true` if the number is not a valid number. This is useful to test
@@ -287,7 +288,7 @@ print x = Effect.log (Class.inspect x)
 -- | product [2, 3] -- 6
 -- | product [] -- 1
 -- | ```
-product :: forall a b. (Class.HasMultiply b, Class.HasOne b, Class.HasReduce a) => a b -> b
+product :: forall a b. Class.HasMultiply b => Class.HasOne b => Class.HasReduce a => a b -> b
 product xs = Class.reduce Class.multiply Class.one xs
 
 -- | Returns the reciprocal of the value by dividing one by it.
@@ -295,7 +296,7 @@ product xs = Class.reduce Class.multiply Class.one xs
 -- | ``` purescript
 -- | reciprocal 2 -- 0.5
 -- | ```
-reciprocal :: forall a. (Class.HasDivide a, Class.HasOne a) => a -> a
+reciprocal :: forall a. Class.HasDivide a => Class.HasOne a => a -> a
 reciprocal x = Class.divide x Class.one
 
 -- | Sequences actions and collects the results.
@@ -303,7 +304,7 @@ reciprocal x = Class.divide x Class.one
 -- | ``` purescript
 -- | sequence [Just 1, Just 2] -- Just [1, 2]
 -- | ```
-sequence :: forall a b c. (Class.HasApply b, Class.HasMap b, Class.HasTraverse a, Class.HasPure b) => a (b c) -> b (a c)
+sequence :: forall a b c. Class.HasApply b => Class.HasMap b => Class.HasTraverse a => Class.HasPure b => a (b c) -> b (a c)
 sequence xs = Class.traverse Primitive.identity xs
 
 -- | Returns the sign of a number.
@@ -313,7 +314,7 @@ sequence xs = Class.traverse Primitive.identity xs
 -- | sign 0 -- 0
 -- | sign (-2) -- -1
 -- | ```
-sign :: forall a. (Class.HasGreater a, Class.HasLess a, Class.HasOne a, Class.HasSubtract a, Class.HasZero a) => a -> a
+sign :: forall a. Class.HasGreater a => Class.HasLess a => Class.HasOne a => Class.HasSubtract a => Class.HasZero a => a -> a
 sign x =
   if Class.less Class.zero x
   then negate Class.one
@@ -339,7 +340,7 @@ size xs = Class.reduce (\ a _ -> Class.add 1 a) 0 xs
 -- | ["ab", "cd", "ef"] :sum -- "abcdef"
 -- | ([] :: Array String) :sum -- ""
 -- | ```
-sum :: forall a b. (Class.HasAdd b, Class.HasReduce a, Class.HasZero b) => a b -> b
+sum :: forall a b. Class.HasAdd b => Class.HasReduce a => Class.HasZero b => a b -> b
 sum xs = Class.reduce (\ a x -> Class.add x a) Class.zero xs
 
 -- | Swaps the values in a tuple.
@@ -411,7 +412,7 @@ unsafeLog m x = Effect.unsafePerformEff do
 -- | 1 :upTo 1 -- [1]
 -- | 3 :upTo 1 -- []
 -- | ```
-upTo :: forall a. (Class.HasFromInt a, Class.HasGreater a, Class.HasToInt a) => a -> a -> Array a
+upTo :: forall a. Class.HasFromInt a => Class.HasGreater a => Class.HasToInt a => a -> a -> Array a
 upTo h l =
   let upToList :: a -> a -> Data.List a
       upToList t b = if Class.greater t b

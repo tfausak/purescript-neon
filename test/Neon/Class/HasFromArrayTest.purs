@@ -4,7 +4,7 @@ import Data.Array as Array
 import Data.List as List
 import Data.String as String
 import Neon as Neon
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasFromArray" do

@@ -6,7 +6,7 @@ import Test.Neon.EffectTest as EffectTest
 import Test.Neon.HelperTest as HelperTest
 import Test.Neon.OperatorTest as OperatorTest
 import Test.Neon.PrimitiveTest as PrimitiveTest
-import Test.Helper (Suite, bind, suite)
+import Test.Helper (Suite, discard, suite)
 
 tests :: Suite
 tests = suite "Neon" do

@@ -20,7 +20,7 @@ import Control.Monad.Eff.Exception as Exception
 -- | ``` purescript
 -- | catch (\ x -> error x) (throw (exception "example")))
 -- | ```
-catch :: forall a b. (Exception.Error -> Eff.Eff b a) -> Eff.Eff (err :: Exception.EXCEPTION | b) a -> Eff.Eff b a
+catch :: forall a b. (Exception.Error -> Eff.Eff b a) -> Eff.Eff (exception :: Exception.EXCEPTION | b) a -> Eff.Eff b a
 catch = Exception.catchException
 
 -- | Throws an exception.
@@ -28,5 +28,5 @@ catch = Exception.catchException
 -- | ``` purescript
 -- | throw (exception "example"))
 -- | ```
-throw :: forall a b. Exception.Error -> Eff.Eff (err :: Exception.EXCEPTION | b) a
+throw :: forall a b. Exception.Error -> Eff.Eff (exception :: Exception.EXCEPTION | b) a
 throw = Exception.throwException

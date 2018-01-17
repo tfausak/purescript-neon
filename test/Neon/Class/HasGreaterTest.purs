@@ -2,7 +2,7 @@ module Test.Neon.Class.HasGreaterTest where
 
 import Neon as Neon
 import Prelude as Prelude
-import Test.Helper (Suite, bind, quickCheck, suite, test, (===))
+import Test.Helper (Suite, discard, quickCheck, suite, test, (===))
 
 tests :: Suite
 tests = suite "HasGreater" do
