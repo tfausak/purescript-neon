@@ -6,10 +6,7 @@
   },
   "private": true,
   "scripts": {
-    "bower": "bower",
     "postinstall": "bower install",
-    "psc-publish": "psc-publish",
-    "pulp": "pulp",
-    "test": "pulp test && psc-publish --dry-run"
+    "test": "pulp test"
   }
 }
