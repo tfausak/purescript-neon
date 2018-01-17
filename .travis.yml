@@ -1,19 +1,19 @@
-after_success:
-- rm -v travis_wait_*.log
-- npm run psc-publish | tail -n 1 > output/docs.json
-- |
-  if test $TRAVIS_TAG -a $GITHUB_TOKEN
-  then
-    curl -X POST https://pursuit.purescript.org/packages \
-      -d @output/docs.json \
-      -H 'Accept: application/json' \
-      -H "Authorization: token ${GITHUB_TOKEN}"
-  fi
-cache:
-  directories:
-  - node_modules
 language: node_js
 node_js:
-- '5'
+  - '9'
 script:
-- travis_wait npm test
+  - travis_wait npm test
+after_success:
+  - rm -v travis_wait_*.log
+  - npm run psc-publish | tail -n 1 > output/docs.json
+  - |
+    if test $TRAVIS_TAG -a $GITHUB_TOKEN
+    then
+      curl -X POST https://pursuit.purescript.org/packages \
+        -d @output/docs.json \
+        -H 'Accept: application/json' \
+        -H "Authorization: token ${GITHUB_TOKEN}"
+    fi
+cache:
+  directories:
+    - node_modules
