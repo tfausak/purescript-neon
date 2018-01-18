@@ -1,10 +1,15 @@
 language: node_js
 node_js: stable
+
+# Necessary to improve build time according to
+# https://github.com/purescript/purescript/issues/1880
+dist: trusty
+sudo: required
+
 script:
   - travis_wait npm test
 after_success:
-  - rm -v travis_wait_*.log
-  - |
+  - >-
     test $TRAVIS_TAG &&
     echo $GITHUB_TOKEN | pulp login &&
     yes | pulp publish --no-push
